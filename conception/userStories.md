@@ -9,38 +9,38 @@
 |Visiteur| Filtrer les recettes par categorie, auteurs, notes, et ingrédients | voir une selection de recettes |
 |---|---|---|
 |**Utilisateur**| - | - |
-|Utilisateur| Créer un clan | - |
+|Utilisateur| Créer un group | - |
 |Utilisateur| Créer une recette | d'ajouter une recette|
 |Utilisateur| Choisir les ingrédients pour ma recette  | ajouter des ingrédients|
 |Utilisateur| Choisir la quantité de chaque ingrédient  | choisir les proportions|
 |Utilisateur| Rediger une recette  | décrire les instructions|
 |Utilisateur| Specifier pour combien de personnes est la recette  | -|
-|Utilisateur| Effacer une recette qu'il a créé | effacer une recette|
+|Utilisateur| Effacer une de mes recettes | effacer une recette|
 |Utilisateur| Modifier une recette | modifier une recette|
-|Utilisateur| Demander à rejoindre un clan | - |
+|Utilisateur| Demander à rejoindre un group | - |
 |Utilisateur| Noter une recette | donner un avis plus 1/10 |
 |Utilisateur| Mettre une recette dans ses favoris | - |
-|Utilisateur| Enlever une recette dans ses favoris | - |
+|Utilisateur| Enlever une recette de ses favoris | - |
 |Utilisateur| Modifier son profil et mot de passe | - |
 |Utilisateur| Effacer mon compte | - |
 |Utilisateur| Réinitialiser son mot de passe | - |
 |---|---|---|
-|**Membre de Clan**| - | - |
-|Membre de Clan| Générer une liste de course | - |
-|Membre de Clan| Voir le planning de la semaine| consulter le planning |
-|**Chef de Clan**| - | - |
-|Chef de Clan| Supprimer son clan | - |
-|Chef de Clan| Associer un autre utilisateur avec le clan | - |
-|Chef de Clan| Choisir un plat pour un repas | - |
-|Chef de Clan| Indique le nombre de personnes pour chaque repas | - |
-|Chef de Clan| Supprimer un plat pour un repas | - |
-|Chef de Clan| Créer un planning de la semaine | - |
-|Chef de Clan| Stocker un planning en favori | - |
-|Chef de Clan| Changer le nom du clan | - |
-|Chef de Clan| Modifier le role des autres utilisateurs du clan | - |
-|Chef de Clan| Supprimer son clan | - |
+|**Membre de group**| - | - |
+|Membre de group| Générer une liste de course | - |
+|Membre de group| Voir le planning de la semaine| consulter le planning |
+|**Chef de group**| - | - |
+|Chef de group| Supprimer son group | - |
+|Chef de group| Associer un autre utilisateur avec le group | - |
+|Chef de group| Choisir un plat pour un repas | - |
+|Chef de group| Indique le nombre de personnes pour chaque repas | - |
+|Chef de group| Supprimer un plat pour un repas | - |
+|Chef de group| Créer un planning de la semaine | - |
+|Chef de group| Stocker un planning en favori | - |
+|Chef de group| Changer le nom du group | - |
+|Chef de group| Modifier le role des autres utilisateurs du group | - |
+|Chef de group| Supprimer son group | - |
 |**Admin**| - | - |
-|Admin| Supprimer un clan | - |
+|Admin| Supprimer un group | - |
 |Admin| Supprimer un utilisateur | - |
 |Admin| Modifier profil  utilisateur | - |
 |Admin| Supprimer une recette | - |
