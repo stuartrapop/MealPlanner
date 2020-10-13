@@ -25,10 +25,8 @@
 | champ    | type | contrainte |
 | -------- | ---- | ---------- |
 | id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| number_of_people | INTEGER | NOT NULL |
 | day | DATE | NOT NULL |
 | time | TEXT | NOT NULL |
-| recipe_id | INTEGER | NOT NULL, REFERENCES Recipe(id) |
 | group_id | INTEGER | NOT NULL, REFERENCES Group(id) |
 
 ## Group
@@ -76,3 +74,10 @@
 | ingredient_id  | INTEGER | NOT NULL, REFERENCES Ingredient(id) |
 | quantity    | INTEGER |  NOT NULL |
 | unit | TEXT | NOT NULL |
+
+## Meal_has_recipe
+| champ    | type | contrainte |
+| -------- | ---- | ---------- |
+| recipe_id  | INTEGER | NOT NULL, REFERENCES Recipe(id)|
+| meal_id  | INTEGER | NOT NULL, REFERENCES Meal(id) |
+| number_of_people | INTEGER |  NOT NULL |

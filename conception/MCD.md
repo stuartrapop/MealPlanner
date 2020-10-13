@@ -1,6 +1,6 @@
 INGREDIENT: ingredient id, name, family, weight, volume, countable
-HAS, 0N RECIPE, 11 MEAL
-MEAL: meal id, number of people, day, time(midi)
+HAS, 0N RECIPE, 1N MEAL: number of people
+MEAL: meal id, day, time(midi)
 OWNS, 0N GROUP, 11 MEAL
 GROUP: group id, name
 
@@ -15,3 +15,4 @@ GRADED, 0N RECIPE, 11 REVIEW
 REVIEW: review id, comment, grade
 WRITTEN, 0N USER, 11 REVIEW
 :
+
