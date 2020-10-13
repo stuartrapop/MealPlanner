@@ -5,8 +5,9 @@
 |**Visiteur**| - | - |
 |Visiteur| créer une compte | - |
 |Visiteur| me connecter en tant qu'utilisateur | - |
-|Visiteur| Voir la note de la recette | voir les avis |
+|Visiteur| Voir une recette | voir les avis |
 |Visiteur| Filtrer les recettes par categorie, auteurs, notes, et ingrédients | voir une selection de recettes |
+|Visiteur| Voir une recette | voir les avis |
 |---|---|---|
 |**Utilisateur**| - | - |
 |Utilisateur| Créer un group | - |
