@@ -1,91 +1,23 @@
-## Ingredient
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| name     | TEXT | NOT NULL   |
-| weight | BOOLEAN | NOT NULL|
-| volume | BOOLEAN | NOT NULL |
-| countable | BOOLEAN | NOT NULL |
-| URL | TEXT | NOT NULL |
-| sub_sub_family   | TEXT | |
-| sub_family  | TEXT |  |
-| sub_sub_family   | TEXT | |
-| user_id   | INTEGER | NOT NULL |
-|created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
-|updated_at| TIMESTAMPTZ |     |
+REVIEWED, 0N RECIPE, 11 REVIEW
+TYPE: type_id, type_name
+TYPE_DEFINES_RECIPE, 0N RECIPE, 1N TYPE: recipe_type_id, recipe_id
+RECIPE_CONTAINS_INGREDIENT, 1N INGREDIENT, 0N RECIPE: ingredient_id, recipe_id, quantity, unit
+INGREDIENT: ingredient_id, name, weight, volume, countable, URL
 
-## Recipe
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| title    | TEXT | NOT NULL   |
-| difficulty | TEXT | |
-| instructions | TEXT | |
-| type | TEXT |  |
-| cooking_time | INTEGER ||
-| URL | TEXT | NOT NULL |
-| sub_type  | TEXT |  |
-| sub_type  | TEXT | |
-|user_id | INTEGER |NOT NULL, REFERENCES User(id)|
+REVIEW: review_id, comment, grade, #recipe_id, #user_id
+USER_LIKES_RECIPE, 0N USER, 0N RECIPE: recipe_id, user_id
+RECIPE: recipe_id, title, difficulty, instructions, cooking time, URL, #user_id
+MEAL_HAS_RECIPE, 0N RECIPE, 1N MEAL: recipe_id, meal_id, number of people
+FAMILY_DESCRIBES_INGREDIENT, 0N INGREDIENT, 1N FAMILY: ingredient_family_id, ingredient_id
 
-## Meal
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| day | DATE | NOT NULL |
-| time | TEXT | NOT NULL |
-| group_id | INTEGER | NOT NULL, REFERENCES Group(id) |
+WRITTEN, 0N USER, 11 REVIEW
+USER: user_id, lastname, firstname, username, password, email
+AUTHORED, 0N USER, 11 RECIPE
+MEAL: meal_id, day, time, #group_id
+FAMILY: family_id, family_name
 
-## Group
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| name     | TEXT | NOT NULL   |          |
-|created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
-|updated_at| TIMESTAMPTZ |     |
-
-## User
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| lastname     | TEXT | NOT NULL |
-| firstname    | TEXT |NOT NULL  |
-| username    | TEXT |NOT NULL |
-| password    | TEXT | NOT NULL |
-| email    | TEXT | NOT NULL |
-|created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
-|updated_at| TIMESTAMPTZ |     |
-
-## Review
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
-| comment    | TEXT |        |
-| grade    | INTEGER |  NOT NULL |
-| favorite   | BOOLEAN | NOT NULL |
-| recipe_id   | INTEGER | NOT NULL |
-| user_id   | INTEGER | NOT NULL |
-|created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
-|updated_at| TIMESTAMPTZ |     |
-
-## User_belongs_group
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| user_id       | INTEGER | NOT NULL, REFERENCES User(id)|
-| group_id     | INTEGER | NOT NULL, REFERENCES Group(id)  |
-| user_role    | TEXT | NOT NULL |
-
-## Recipe_contains_ingredient
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| recipe_id  | INTEGER | NOT NULL, REFERENCES Recipe(id)|
-| ingredient_id  | INTEGER | NOT NULL, REFERENCES Ingredient(id) |
-| quantity    | INTEGER |  NOT NULL |
-| unit | TEXT | NOT NULL |
-
-## Meal_has_recipe
-| champ    | type | contrainte |
-| -------- | ---- | ---------- |
-| recipe_id  | INTEGER | NOT NULL, REFERENCES Recipe(id)|
-| meal_id  | INTEGER | NOT NULL, REFERENCES Meal(id) |
-| number_of_people | INTEGER |  NOT NULL |
+:
+USER_BELONGTO_GROUP, 0N USER, 1N GROUP: user_id, group_id, role
+GROUP: group_id, name
+OWNS, 0N GROUP, 11 MEAL :
+:
