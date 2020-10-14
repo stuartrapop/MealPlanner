@@ -18,6 +18,8 @@ CREATE TABLE "ingredient" (
     "id"  SERIAL PRIMARY KEY,
     "name" VARCHAR NOT NULL,
     "family" VARCHAR NOT NULL,
+    "group_1" VARCHAR,
+    "group_2" VARCHAR,
     "weight" BOOLEAN NOT NULL,
     "volume" BOOLEAN NOT NULL,
     "countable" BOOLEAN NOT NULL,
