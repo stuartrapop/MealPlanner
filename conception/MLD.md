@@ -6,6 +6,11 @@
 | weight | BOOLEAN | NOT NULL|
 | volume | BOOLEAN | NOT NULL |
 | countable | BOOLEAN | NOT NULL |
+| URL | TEXT | NOT NULL |
+| sub_sub_family   | TEXT | |
+| sub_family  | TEXT |  |
+| sub_sub_family   | TEXT | |
+| user_id   | INTEGER | NOT NULL |
 |created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
 |updated_at| TIMESTAMPTZ |     |
 
@@ -14,11 +19,13 @@
 | -------- | ---- | ---------- |
 | id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
 | title    | TEXT | NOT NULL   |
-| ingredients    | TEXT | NOT NULL |
 | difficulty | TEXT | |
 | instructions | TEXT | |
 | type | TEXT |  |
 | cooking_time | INTEGER ||
+| URL | TEXT | NOT NULL |
+| sub_type  | TEXT |  |
+| sub_type  | TEXT | |
 |user_id | INTEGER |NOT NULL, REFERENCES User(id)|
 
 ## Meal
@@ -55,6 +62,7 @@
 | id       | INTEGER | GENERATED ALWAYS AS IDENTITY, PRIMARY KEY |
 | comment    | TEXT |        |
 | grade    | INTEGER |  NOT NULL |
+| favorite   | BOOLEAN | NOT NULL |
 | recipe_id   | INTEGER | NOT NULL |
 | user_id   | INTEGER | NOT NULL |
 |created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |
