@@ -1,13 +1,15 @@
 // == Import npm
 import React from 'react';
+import Recipe from './Recipe';
 
 // == Import
 import './styles.scss';
+import recipes from '../../../data/recipes';
 
 // == Composant
 const Main = () => (
   <div className="main">
-    <h1>Composant : Main</h1>
+    <Recipe recipes={recipes} />
   </div>
 );
 
