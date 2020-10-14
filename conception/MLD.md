@@ -1,5 +1,5 @@
 REVIEWED, 0N RECIPE, 11 REVIEW
-TYPE: type_id, type_name
+TYPE: type_id, name
 TYPE_DEFINES_RECIPE, 0N RECIPE, 1N TYPE: recipe_type_id, recipe_id
 RECIPE_CONTAINS_INGREDIENT, 1N INGREDIENT, 0N RECIPE: ingredient_id, recipe_id, quantity, unit
 INGREDIENT: ingredient_id, name, weight, volume, countable, URL
@@ -14,10 +14,10 @@ WRITTEN, 0N USER, 11 REVIEW
 USER: user_id, lastname, firstname, username, password, email
 AUTHORED, 0N USER, 11 RECIPE
 MEAL: meal_id, day, time, #group_id
-FAMILY: family_id, family_name
+FAMILY: family_id, name
 
 :
-USER_BELONGTO_GROUP, 0N USER, 1N GROUP: user_id, group_id, role
+USER_BELONGTO_GROUP, 0N USER, 1N GROUP: user_id, group_id, user_role
 GROUP: group_id, name
 OWNS, 0N GROUP, 11 MEAL :
 :
