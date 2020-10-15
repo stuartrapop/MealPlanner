@@ -1,0 +1,36 @@
+.groups_details_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.groups_details_container ul {
+  margin: 2em 0;
+}
+
+.groups_details_container h1 {
+  font-size: 1.2em;
+  text-align: left;
+  font-weight: bold;
+  padding: 0.5em;
+}
+
+.my_groups {
+  padding: 2em;
+}
+
+.group_members {
+  padding: 2em;
+  background-color:#2ECC71;
+  color: white;
+}
+
+.group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+}
+
+.add_group {
+  font-weight: bold;
+}

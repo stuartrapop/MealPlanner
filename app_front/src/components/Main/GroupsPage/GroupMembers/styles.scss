@@ -1,0 +1,16 @@
+.user {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+}
+
+.add_member {
+  font-weight: bold;
+}
+
+.full_name {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
