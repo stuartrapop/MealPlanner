@@ -4,7 +4,12 @@
 }
 
 .groups_details_container ul {
-  margin: 2em 0;
+  margin: 1em auto;
+  width: 80%;
+}
+
+.groups_details_container a {
+  text-decoration: underline;
 }
 
 .groups_details_container h1 {
@@ -12,21 +17,34 @@
   text-align: left;
   font-weight: bold;
   padding: 0.5em;
+  width: 100%;
 }
 
 .my_groups {
   padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.groups_details_container svg {
+  width: 100%;
+}
+
+.group_members_container svg {
+  width: 100%;
 }
 
 .group_members {
   padding: 2em;
   background-color:#2ECC71;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .group {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   margin-bottom: 0.3em;
 }
@@ -34,3 +52,36 @@
 .add_group {
   font-weight: bold;
 }
+
+
+@media (min-width: 768px) {
+
+  .groups_details_container svg {
+    width: 20%;
+  }
+
+  .group_members_container svg {
+    width: 20%;
+  }
+
+  .groups_details_container ul {
+    margin: 1em auto;
+    width: 60%;
+  }
+ }
+
+ @media (min-width: 1201px) {
+  .groups_details_container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .my_groups {
+    width: 50%;
+  }
+
+  .group_members{
+    width: 50%;
+  }
+  
+ }

@@ -10,7 +10,12 @@
 }
 
 .full_name {
-  width: 30%;
   display: flex;
-  justify-content: flex-end;
+}
+
+.group_members_container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
