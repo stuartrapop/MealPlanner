@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './styles.scss';
+
 const Recipe = ({ recipes }) => (
   <div className="recipes">
     {recipes.map((recipe) => (
@@ -30,7 +31,7 @@ Recipe.propTypes = {
       difficulty: PropTypes.string,
       url: PropTypes.string,
       instruction: PropTypes.string,
-      ingredients: PropTypes.string,
+      ingredients: PropTypes.array,
     }).isRequired,
   ).isRequired,
 };

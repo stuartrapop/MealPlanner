@@ -7,12 +7,12 @@ const GroupsPage = ({ groups }) => (
   <div className="groups_details_container">
     <div className="my_groups">
       <h1>Mes Groupes</h1>
-      <ul>
+      <ul className="group_list">
         {groups.map((group) => {
           return (
             <li key={group.id} className="group">
               {group.name}
-              <a>Supprimer</a>
+              <a className="delete">Supprimer</a>
             </li>
           )
         } )}

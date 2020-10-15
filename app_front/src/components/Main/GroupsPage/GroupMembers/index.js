@@ -6,14 +6,18 @@ import './styles.scss';
 const GroupMembers = ({ targetGroup }) => (
   <div className="group_members_container">
     <h1>Membres du groupe {targetGroup.name}</h1>
-    <ul>
+    <ul className="group_list">
       {targetGroup.users.map((user) => {
         const fullname = `${user.firstname} ${user.lastname}`;
         return (
           <li key={user.id} className="user">
             <div className="full_name">{fullname}</div>
-            <p>Lecture</p>
-            <a>Supprimer</a>
+            <ul className="dropdown"> <a className="role_choice">Role actuel</a>
+              <li className="dropdown_choice"><a href="#"> Propriétaire </a></li>
+              <li className="dropdown_choice"><a href="#"> Lecture </a></li>
+              <li className="dropdown_choice"><a href="#"> Ecriture </a></li>
+            </ul>
+            <a className="delete">Supprimer</a>
           </li>
         );
       })}
