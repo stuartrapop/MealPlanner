@@ -1,11 +1,33 @@
-.recipes {
-  max-width: 800px;
-  &__instruction {
-    max-width: 90%;
-  }
-  &__logo {
-    
-  }
 
+.recipe {
+  background-color : #2ecb72
 }
+.recipe__title {
+  margin : 1rem auto;
+}
+.recipe__pic{
+  position: relative;
+  color : black;
+  background-color: white;
+}
+.recipe__pic__image {
+  max-width: 80%;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto 2rem auto;
+  
+}
+.recipe__pic__author {
+  position: absolute;
+  bottom :1;
+}
+.recipe__instruction {
+  width: 80%;
+  margin : 0 auto 2rem auto;
+  padding : 1rem;
+  border : 1px solid white;
+  background-color: white;
+  border-radius: 10px;
+}
+
 

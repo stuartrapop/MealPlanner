@@ -1,7 +1,10 @@
 .header {
-  background-color: grey;
+  
   width : 100vw;
   display: flex;
+  border : 1px solid white;
+  border-radius: 10px;
+  
 }
 .header__logo {
   width : 100px;

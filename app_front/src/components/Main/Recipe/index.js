@@ -12,8 +12,10 @@ const Recipe = ({ recipes }) => (
         <h2 className="recipe__title">
           {recipe.title} {recipe.difficulty}
         </h2>
-        <span className="recipe__author">{recipe.author}</span>
-        <img className="recipe__image" src={recipe.url} alt="logo recette" />
+        <div className="recipe__pic">
+          <span className="recipe__pic__author">{recipe.author}</span>
+          <img className="recipe__pic__image" src={recipe.url} alt="logo recette" />
+        </div>
         <div className="recipe__instruction">{recipe.instruction}</div>
         <Ingredients ingredients={recipe.ingredients} />
       </div>
