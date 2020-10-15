@@ -12,7 +12,7 @@ import groups from '../../../data/groups';
 const Main = () => (
   <div className="main">
     <Recipe recipes={recipes} />
-    <GroupsPage groups = {groups} />
+    <GroupsPage groups={groups} />
   </div>
 );
 
