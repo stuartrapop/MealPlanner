@@ -34,7 +34,7 @@ Recipe.propTypes = {
       difficulty: PropTypes.string,
       url: PropTypes.string,
       instruction: PropTypes.string,
-      ingredients: PropTypes.string,
+      ingredients: PropTypes.array,
     }).isRequired,
   ).isRequired,
 };
