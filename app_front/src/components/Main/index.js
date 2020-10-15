@@ -1,5 +1,11 @@
 // == Import npm
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 
@@ -10,10 +16,18 @@ import groups from '../../../data/groups';
 
 // == Composant
 const Main = () => (
-  <div className="main">
-    <Recipe recipes={recipes} />
-    <GroupsPage groups={groups} />
-  </div>
+  <Router>
+    <div className="main">
+      <Switch>
+        <Route path="/recette/1">
+          <Recipe recipes={recipes} />
+        </Route>
+        <Route path="/mon-espace/groupe">
+          <GroupsPage groups={groups} />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
 );
 
 // == Export
