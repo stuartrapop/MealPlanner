@@ -1,0 +1,23 @@
+ public | family                      | table    | planner
+ public | family_describes_ingredient | table    | planner
+ public | family_id_seq               | séquence | planner
+ public | group                       | table    | planner
+ public | group_id_seq                | séquence | planner
+ public | ingredient                  | table    | planner
+ public | ingredient_id_seq           | séquence | planner
+ public | meal                        | table    | planner
+ public | meal_has_recipe             | table    | planner
+ public | meal_id_seq                 | séquence | planner
+ public | recipe                      | table    | planner
+ public | recipe_contains_ingredient  | table    | planner
+ public | recipe_id_seq               | séquence | planner
+ public | review                      | table    | planner
+ public | review_id_seq               | séquence | planner
+ public | type                        | table    | planner
+ public | type_defines_recipe         | table    | planner
+ public | type_id_seq                 | séquence | planner
+ public | user                        | table    | planner
+ public | user_belongs_group          | table    | planner
+ public | user_id_seq                 | séquence | planner
+ public | user_likes_recipe           | table    | planner
+
