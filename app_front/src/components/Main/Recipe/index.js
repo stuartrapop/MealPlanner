@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './styles.scss';
-
 const Recipe = ({ recipes }) => (
   <div className="recipes">
     {recipes.map((recipe) => (
@@ -14,6 +13,7 @@ const Recipe = ({ recipes }) => (
         <img className="recipe__image" src={recipe.url} alt="logo recette" />
         <div className="recipe__instruction">{recipe.instruction}</div>
         <div className="recipe__ingredients">{recipe.ingredients}</div>
+        {/* create a new component instead of recipe.ingredients */}
       </div>
     ))}
   </div>
