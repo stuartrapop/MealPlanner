@@ -213,7 +213,11 @@ INSERT INTO  "type" ("id", "name")  VALUES
 (2, 'végétarien'),
 (3, 'végan'),
 (4, 'italien'),
-(5, 'japonais');
+(5, 'japonais'),
+(6, 'entrée'),
+(7, 'plat'),
+(8, 'déssert');
+
 
 
 INSERT INTO  "family" ("id", "name")  VALUES
@@ -224,7 +228,7 @@ INSERT INTO  "family" ("id", "name")  VALUES
 (5, 'noix'),
 (6, 'laitage'),
 (7, 'féculent'),
-(8, 'grasse');
+(8, 'matière grasse');
 
 INSERT INTO  "type_defines_recipe" ("type_id", "recipe_id")  VALUES
 (1, 2),
@@ -271,17 +275,17 @@ INSERT INTO  "user_likes_recipe" ("recipe_id", "user_id")  VALUES
 (2, 4);
 
 INSERT INTO  "user_belongs_group" ("user_id", "group_id", "user_role")  VALUES
-(1, 1 ,'owner'),
-(1, 2,'owner'),
-(1, 3,'owner'),
-(2, 1,'edit'),
-(2, 2,'edit'),
-(2, 3,'edit'),
-(3, 3,'view'),
-(4, 2,'view'),
-(4, 3,'edit'),
-(4, 5,'owner'),
-(4, 6,'owner');
+(1, 1 ,'créateur'),
+(1, 2,'créateur'),
+(1, 3,'créateur'),
+(2, 1,'peut modifier'),
+(2, 2,'peut modifier'),
+(2, 3,'peut modifier'),
+(3, 3,'lecture'),
+(4, 2,'lecture'),
+(4, 3,'peut modifier'),
+(4, 5,'créateur'),
+(4, 6,'créateur');
 
 INSERT INTO  "meal_has_recipe" ("meal_id", "recipe_id", "number_people")  VALUES
 (1, 1, 6),
