@@ -1,10 +1,14 @@
 import React from 'react';
+import AddMeal from './AddMeal';
+import Planning from './Planning';
 
 import './styles.scss';
 
 const MySpace = () => (
   <div className="myspace__container">
-    <h1>Test</h1>
+    <AddMeal />
+    <Planning />
+    <a>Génerer ma liste de courses</a>
   </div>
 );
 

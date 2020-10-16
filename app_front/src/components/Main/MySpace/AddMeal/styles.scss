@@ -1,0 +1,33 @@
+@use "src/styles/vars" as v;
+
+.scheduled__meals__container{
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: left;
+}
+
+.scheduled__meal {
+  margin: 1em 0;
+  font-weight: bold;
+}
+
+.scheduled__recipe {
+  margin: 0.5em 0 0.5em 150px;
+  font-weight: normal;
+}
+
+#add__meal__icon {
+  color: v.$primary-green;
+}
+
+#remove__meal__icon {
+  color: red;
+}
+
+.advanced__search__access h2 {
+  font-size: 1.1em;
+}
+
+.advanced__search__access {
+  margin-bottom: 2em;
+}
