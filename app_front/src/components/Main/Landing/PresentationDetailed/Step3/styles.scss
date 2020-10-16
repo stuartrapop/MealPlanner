@@ -1,6 +1,16 @@
 @use "src/styles/vars" as v;
 
-.presentation__detailed {
-  background-color: v.$primary-green;
-  color: white;
+.step3__container{
+  padding : 2em;
+}
+
+.shoppinglist__illustration {
+  background-color: white;
+  padding: 20px 20px 40px 20px;
+  width: 400px;
+}
+
+#signin__button {
+  background-color: white;
+  width: 100px;
 }

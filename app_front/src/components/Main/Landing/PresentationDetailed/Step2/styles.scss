@@ -1,6 +1,7 @@
 @use "src/styles/vars" as v;
 
-.presentation__detailed {
-  background-color: v.$primary-green;
-  color: white;
+.step2__container{
+  background-color: v.$light-grey;
+  padding: 2em;
+  color: black;
 }

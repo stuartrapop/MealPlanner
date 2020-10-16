@@ -1,6 +1,20 @@
 @use "src/styles/vars" as v;
 
-.presentation__detailed {
-  background-color: v.$primary-green;
-  color: white;
+.recipe__result__illustration {
+  height: 250px;
+  margin-left: 50px;
+}
+
+.step1__container {
+  margin-top: 3em;
+  padding: 1em;
+}
+
+.step1__container h1,p{
+  font-size: 1.2em;
+}
+
+.searchbar__illustration {
+  width: 300px;
+  margin-bottom: 1em;
 }
