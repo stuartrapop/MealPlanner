@@ -1,0 +1,12 @@
+@use "src/styles/vars" as v;
+
+.presentation__detailed {
+  background-color: v.$primary-green;
+  color: white;
+}
+
+.presentation__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
