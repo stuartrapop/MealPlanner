@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Icon } from 'semantic-ui-react';
 
 import './styles.scss';
 
@@ -35,16 +34,6 @@ const Step3 = () => (
       <line x1="1.74329" y1="81.331" x2="10.7433" y2="91.331" stroke="#2ECC71" strokeWidth="2" />
       <line x1="10.2151" y1="91.3804" x2="25.2151" y2="72.3804" stroke="#2ECC71" strokeWidth="2" />
     </svg>
-
-    <h2>Alors, envie de devenir maitre de l'organisation ?</h2>
-    <div>
-      <Button size="massive" inverted animated>
-        <Button.Content visible>S'inscrire</Button.Content>
-        <Button.Content hidden>
-          <Icon name="arrow right" />
-        </Button.Content>
-      </Button>
-    </div>
   </div>
 );
 

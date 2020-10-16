@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 import friends from './friends.jpg';
 import families from './families.jpg';
@@ -9,7 +9,7 @@ import './styles.scss';
 
 const TargetPresentation = () => (
   <section className="target">
-    <Card>
+    <Card id="card1">
       <Image src={families} wrapped ui={false} />
       <Card.Content>
         <Card.Header> <h1 className="target__card__tilte">Pour les familles</h1></Card.Header>
@@ -20,7 +20,7 @@ const TargetPresentation = () => (
       </Card.Content>
     </Card>
 
-    <Card className>
+    <Card id="card2">
       <Image src={colocs} wrapped ui={false} />
       <Card.Content>
         <Card.Header><h1 className="target__card__tilte">Pour les colocs et les couples</h1></Card.Header>
@@ -32,7 +32,7 @@ const TargetPresentation = () => (
       </Card.Content>
     </Card>
 
-    <Card>
+    <Card id="card3">
       <Image src={friends} wrapped ui={false} />
       <Card.Content>
         <Card.Header><h1 className="target__card__tilte">Pour les vacances entre amis</h1></Card.Header>

@@ -2,6 +2,7 @@
 
 .step3__container{
   padding : 2em;
+  width: 600px;
 }
 
 .shoppinglist__illustration {
@@ -13,4 +14,8 @@
 #signin__button {
   background-color: white;
   width: 100px;
+}
+
+.step3__container h1,p{
+  font-size: 1.2em;
 }

@@ -13,3 +13,37 @@
   text-align: center;
   font-size: 1em;
 }
+
+#card1 {
+  height: 370px;
+}
+
+#card1 img{
+  height: 230px;
+  object-fit: cover;
+}
+
+#card2 {
+  height: 370px;
+}
+
+#card2 img{
+  height: 230px;
+  object-fit: cover;
+}
+
+#card3 {
+  height: 370px;
+}
+
+#card3 img{
+  height: 230px;
+  object-fit: cover;
+}
+
+@media (min-width: 1200px) {
+  .target {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
