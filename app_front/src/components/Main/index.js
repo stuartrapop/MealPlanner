@@ -20,7 +20,7 @@ const Main = () => (
   <Router>
     <div className="main">
       <Switch>
-        <Route path="/">
+        <Route path="/" exact>
           <Landing />
         </Route>
         <Route path="/recette/1">
