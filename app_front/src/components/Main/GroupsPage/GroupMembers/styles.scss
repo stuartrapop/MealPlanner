@@ -1,0 +1,41 @@
+.user {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+}
+
+.add_member {
+  font-weight: bold;
+}
+
+.full_name {
+  display: flex;
+  width: 30%;
+}
+
+.group_members_container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dropdown {
+  width: 30%;
+}
+
+.dropdown:hover .choix_deroulant {
+  display: block;
+}
+
+.dropdown_choice {
+  display: none;
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.role_choice::after {
+  content: "▼";
+  margin-left: 1em;
+}
