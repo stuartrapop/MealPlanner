@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const {User} = require('../models');
 
 const userController = {
   // les cards d'une liste

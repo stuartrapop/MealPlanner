@@ -118,6 +118,7 @@ CREATE TABLE "recipe_contains_ingredient" (
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "ingredient_id" INTEGER  REFERENCES "ingredient" ("id"),
     "quantity" REAL  NOT NULL,
+    "unit" VARCHAR(30)  DEFAULT NULL,
     "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
     "updatedAt" TIMESTAMP
 );
@@ -237,19 +238,19 @@ INSERT INTO  "type_defines_recipe" ("type_id", "recipe_id")  VALUES
 (2, 4),
 (3, 4);
 
-INSERT INTO  "recipe_contains_ingredient" ("recipe_id", "ingredient_id", "quantity")  VALUES
-(1, 7, 0.3),
-(1, 8, 0.5),
-(1, 9, 0.2),
-(2, 9, 0.2),
-(2, 10, 0.5),
-(2, 11, 0.5),
-(3, 11, 0.5),
-(3, 12, 3),
-(3, 13, 6),
-(4, 14, 0.2),
-(4, 15, 2),
-(4, 16, 2);
+INSERT INTO  "recipe_contains_ingredient" ("recipe_id", "ingredient_id", "quantity", "unit")  VALUES
+(1, 7, 0.3, null),
+(1, 8, 0.5, null),
+(1, 9, 0.2, null),
+(2, 9, 0.2 null),
+(2, 10, 0.5 null),
+(2, 11, 0.5 null),
+(3, 11, 0.5 null),
+(3, 12, 3 null),
+(3, 13, 6 null),
+(4, 14, 0.2 null),
+(4, 15, 2 null),
+(4, 16, 2 null),
 
 
 INSERT INTO  "family_describes_ingredient" ("family_id", "ingredient_id")  VALUES
