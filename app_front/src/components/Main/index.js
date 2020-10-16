@@ -9,6 +9,7 @@ import {
 import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 import Landing from './Landing';
+import MySpace from './MySpace';
 
 // == Import
 import './styles.scss';
@@ -23,10 +24,13 @@ const Main = () => (
         <Route path="/" exact>
           <Landing />
         </Route>
+        <Route path="/mon-espace" exact>
+          <MySpace />
+        </Route>
         <Route path="/recette/1">
           <Recipe recipes={recipes} />
         </Route>
-        <Route path="/mon-espace/groupe">
+        <Route path="/mon-espace/groupe" exact>
           <GroupsPage groups={groups} />
         </Route>
       </Switch>
