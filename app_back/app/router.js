@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { familyController, groupController, ingredientController, mealController, recipeController, reviewController, typeController, userController } = require('./controllers')
+const {adminController, familyController, groupController, ingredientController, mealController, recipeController, reviewController, typeController, userController,  } = require('./controllers')
 
 
 // On rend le choix de l'entité paramétrable
@@ -10,15 +10,27 @@ router.get('/', (req, res) => {
   });
 
 router.get('/families', familyController.allFamilies);
+
 router.get('/groups', groupController.allGroups);
+router.get('/group/:id', groupController.oneGroup);
+
 router.get('/ingredients', ingredientController.allIngredients);
+
 router.get('/meals', mealController.allMeals);
+router.get('/meal/:id', mealController.oneMeal);
+
 router.get('/recipes', recipeController.allRecipes);
-router.get('/reviews', reviewController.allReviews);
+router.get('/recipe/:id', recipeController.oneRecipe);
+
+router.get('/recipes/reviews', reviewController.allReviews);
+router.get('/recipes/review/:id', reviewController.oneReview);
+
 router.get('/types', typeController.allTypes);
 
 router.get('/users', userController.allUsers);
+router.get('/user/:id', userController.oneUser);
 
+router.use( adminController.notFound);
 
 
 module.exports = router;

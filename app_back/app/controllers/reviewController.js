@@ -10,6 +10,23 @@ const reviewController = {
       res.json(reviews);
 
   },
+  oneReview: async (req, res) => {
+    try {
+    const reviewId = parseInt(req.params.id);
+    const review = await Review.findByPk(reviewId,{
+
+  });
+// send the details or not found
+    if(review){
+      res.json(review);
+    } else {
+      res.status(404).json({error: "review not found"});
+    }
+} catch(error) {
+  console.log(error);
+  res.status(500).json({error});
+}
+}
 };
 
 module.exports = reviewController;

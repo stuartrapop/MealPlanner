@@ -11,6 +11,23 @@ const mealController = {
       res.json(meals);
 
   },
+  oneMeal: async (req, res) => {
+    try {
+    const mealId = parseInt(req.params.id);
+    const meal = await Meal.findByPk(mealId,{
+      include:  "recipes"
+  });
+// send the details or not found
+    if(meal){
+      res.json(meal);
+    } else {
+      res.status(404).json({error: "meal not found"});
+    }
+} catch(error) {
+  console.log(error);
+  res.status(500).json({error});
+}
+}
 };
 
 module.exports = mealController;
