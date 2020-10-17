@@ -30,6 +30,8 @@ router.get('/types', typeController.allTypes);
 router.get('/users', userController.allUsers);
 router.get('/user/:id', userController.oneUser);
 
+
+router.post('/login', adminController.login);
 router.use( adminController.notFound);
 
 
