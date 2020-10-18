@@ -11,8 +11,8 @@ CREATE TABLE "ingredient" (
     "weight" BOOLEAN NOT NULL,
     "volume" BOOLEAN NOT NULL,
     "countable" BOOLEAN NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "user" (
@@ -22,8 +22,8 @@ CREATE TABLE "user" (
     "user_name" VARCHAR(20) NOT NULL,
     "password" VARCHAR(70) NOT NULL,
     "email" VARCHAR(50) NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 
@@ -36,15 +36,15 @@ CREATE TABLE "recipe" (
     "cooking_time" INTEGER  NOT NULL,
     "number_people" INTEGER NOT NULL,
     "user_id" INTEGER  REFERENCES "user" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "group" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" VARCHAR(30) NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "meal" (
@@ -52,8 +52,8 @@ CREATE TABLE "meal" (
     "day" DATE NOT NULL,
     "time" VARCHAR (25) NOT NULL,
     "group_id" INTEGER  REFERENCES "group" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 
@@ -66,43 +66,43 @@ CREATE TABLE "review" (
     "grade" INTEGER NOT NULL,
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "user_id" INTEGER  REFERENCES "user" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "type" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" VARCHAR(20) NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "family" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" VARCHAR(20) NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "type_defines_recipe" (
     "type_id" INTEGER  REFERENCES "type" ("id"),
     "recipe_id" INTEGER REFERENCES "recipe" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "family_describes_ingredient" (
     "family_id" INTEGER  REFERENCES "family" ("id"),
     "ingredient_id" INTEGER REFERENCES "ingredient" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "user_likes_recipe" (
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "user_id" INTEGER REFERENCES "user" ("id"),
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 
@@ -110,8 +110,8 @@ CREATE TABLE "user_belongs_group" (
     "user_id" INTEGER  REFERENCES "user" ("id"),
     "group_id" INTEGER REFERENCES "group" ("id"),
     "user_role" VARCHAR (25)  NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "recipe_contains_ingredient" (
@@ -119,8 +119,8 @@ CREATE TABLE "recipe_contains_ingredient" (
     "ingredient_id" INTEGER  REFERENCES "ingredient" ("id"),
     "quantity" REAL  NOT NULL,
     "unit" VARCHAR(30)  DEFAULT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 CREATE TABLE "meal_has_recipe" (
@@ -128,8 +128,8 @@ CREATE TABLE "meal_has_recipe" (
     "meal_id" INTEGER  REFERENCES "meal" ("id"),
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "number_people" INTEGER  NOT NULL,
-    "createdAt" TIMESTAMP NOT NULL DEFAULT NOW(),
-    "updatedAt" TIMESTAMP
+    "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP
 );
 
 
@@ -324,6 +324,12 @@ BEGIN;
 -- PostGres avec le type serial n"incrémente pas automatiquement de façon implicite la séquence rattaché à la colonne !
 -- Il faut donc mettre à jour la valeur courante de chacune des séquences en séléctionnant l"id maximum de chaque table
 --
-
--- need to investigate
+SELECT setval('user_id_seq', max(id)) FROM "user";
+SELECT setval('ingredient_id_seq', max(id)) FROM "ingredient";
+SELECT setval('recipe_id_seq', max(id)) FROM "recipe";
+SELECT setval('meal_id_seq', max(id)) FROM "meal";
+SELECT setval('group_id_seq', max(id)) FROM "group";
+SELECT setval('review_id_seq', max(id)) FROM "review";
+SELECT setval('type_id_seq', max(id)) FROM "type";
+SELECT setval('family_id_seq', max(id)) FROM "family";
 COMMIT;
