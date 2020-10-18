@@ -1,0 +1,9 @@
+@use "src/styles/vars" as v;
+
+.form {
+  background-color: v.$primary-green;
+  color :v.$light-grey;
+  // margin: 1rem;
+  padding : 1rem 2rem;
+}
+

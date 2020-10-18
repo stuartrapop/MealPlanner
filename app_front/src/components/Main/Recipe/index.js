@@ -23,8 +23,6 @@ const Recipe = ({ recipes }) => (
   </div>
 );
 
-export default Recipe;
-
 Recipe.propTypes = {
   recipes: PropTypes.arrayOf(
     PropTypes.shape({
@@ -38,3 +36,5 @@ Recipe.propTypes = {
     }).isRequired,
   ).isRequired,
 };
+
+export default Recipe;
