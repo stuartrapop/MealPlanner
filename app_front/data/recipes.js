@@ -1,11 +1,12 @@
 export default [
   {
     id: 1,
-    title: 'Pizza',
+    title: 'Pizza aux poivrons et olives',
     author: 'Arthur Dupont',
-    difficulty: 'dificile',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Pitigliano%2C_Italy_%285731636322%29.jpg/800px-Pitigliano%2C_Italy_%285731636322%29.jpg',
+    difficulty: 'Difficile',
+    url: 'https://images.unsplash.com/photo-1552539618-7eec9b4d1796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     instruction: "Dans un bol, faites un puis avec la farine, et mettez le sel d'un côté, la levure de l'autre - faites en sorte de ne pas mettre en contact le sel et la levure au démarrage - Ajoutez l/'eau au centre, mélangez pour obtenir une pâte homogène, et pétrissez 10 minutes à la main sur le plan de travail ou à l'aide d'une machine à pain ou d'un robot avec le crochet pétrisseur Ajoutez l'huile d'olive et pétrissez encore 5 minutes Couvrez d'un film alimentaire au contact de la pâte, et laissez lever 1 heure à température ambiante, la pâte doit doubler de volume Chassez l'air de la pâte, en appuyant dessus avec la main, puis divisez la pâte en 2 ou 3 boules selon le nombre de pizzas souhaitées Laissez les boules de pâte reposer 30 minutes en les couvrant de film alimentaire",
+    quantity: 2,
     ingredients: [
       '500 g de farine (ou un mélange de 250 g de farine normale + 250 g de farine à pain)',
       '1 c. à café de sel',

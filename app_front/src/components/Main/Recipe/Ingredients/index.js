@@ -7,11 +7,14 @@ import './styles.scss';
 
 // == Composant
 const Ingredients = ({ ingredients }) => (
-  <ul className="ingredients">
-    {ingredients.map((ingredient) => (
-      <li className="ingredient" key={ingredient}>{ingredient}</li>
-    ))}
-  </ul>
+  <div className="ingredients">
+    <h3> Pour ce faire, il vous faudra : </h3>
+    <ul>
+      {ingredients.map((ingredient) => (
+        <li className="ingredient" key={ingredient}><p>{ingredient}</p></li>
+      ))}
+    </ul>
+  </div>
 );
 
 // == Export

@@ -9,15 +9,19 @@ const Recipe = ({ recipes }) => (
   <div className="recipes">
     {recipes.map((recipe) => (
       <div className="recipe" key={recipe.id}>
-        <h2 className="recipe__title">
-          {recipe.title} {recipe.difficulty}
-        </h2>
+        <h2 className="recipe__title">{recipe.title}</h2>
+        <p className="recipe__difficulty"> Difficulté de cette recette : {recipe.difficulty}</p>
         <div className="recipe__pic">
-          <span className="recipe__pic__author">{recipe.author}</span>
           <img className="recipe__pic__image" src={recipe.url} alt="logo recette" />
+          <p className="recipe__author"> Cette recette vous est proposée par : <br /> {recipe.author}</p>
         </div>
-        <div className="recipe__instruction">{recipe.instruction}</div>
-        <Ingredients ingredients={recipe.ingredients} />
+        <div className="recipe__text__container">
+          <div className="recipe__instruction">
+            <h3 className="recipe__instruction__title"> Voici les instructions à suivre :</h3>
+            <p className="recipe__instruction__text">{recipe.instruction}</p>
+          </div>
+          <Ingredients ingredients={recipe.ingredients} />
+        </div>
       </div>
     ))}
   </div>
