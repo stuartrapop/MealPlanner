@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Button } from 'semantic-ui-react';
+import AddMealModal from './AddMealModal';
 
 import './styles.scss';
 

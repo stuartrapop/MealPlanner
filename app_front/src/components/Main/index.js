@@ -15,6 +15,7 @@ import MySpace from './MySpace';
 import './styles.scss';
 import recipes from '../../../data/recipes';
 import groups from '../../../data/groups';
+import AddMealModal from './MySpace/AddMeal/AddMealModal';
 
 // == Composant
 const Main = () => (
@@ -32,6 +33,9 @@ const Main = () => (
         </Route>
         <Route path="/mon-espace/groupe" exact>
           <GroupsPage groups={groups} />
+        </Route>
+        <Route path="/mon-espace/ajouter-repas" exact>
+          <AddMealModal />
         </Route>
       </Switch>
     </div>
