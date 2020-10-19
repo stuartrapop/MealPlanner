@@ -1,0 +1,50 @@
+@use "src/styles/vars" as v;
+
+.addMeal__modal {
+  background-color: RGBA(30,30,30,0.95);
+  padding-bottom: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+}
+
+.search__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  padding: 2em 0;
+}
+
+#small__input__box {
+  width: 60px;
+}
+
+#big__input__box {
+  width: 120px;
+}
+
+.search__zone .ui.input>input::placeholder {
+  color: black;
+  font-size: 0.8em;
+}
+
+.search__zone li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin: 1em 0;
+}
+
+.result__zone {
+  height: 300px;
+  width: 80%;
+  margin: auto;
+  border: 2px solid white;
+  margin-bottom: 2em;
+}
