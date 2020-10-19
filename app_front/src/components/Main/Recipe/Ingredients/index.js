@@ -14,11 +14,11 @@ const Ingredients = ({ ingredients }) => (
   </ul>
 );
 
-// == Export
-export default Ingredients;
-
 Ingredients.propTypes = {
   ingredients: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
 };
+// == Export
+export default Ingredients;
+

@@ -10,6 +10,7 @@ import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 import Landing from './Landing';
 import MySpace from './MySpace';
+import Recipes from './Recipes';
 
 // == Import
 import './styles.scss';
@@ -32,6 +33,9 @@ const Main = () => (
         </Route>
         <Route path="/mon-espace/groupe" exact>
           <GroupsPage groups={groups} />
+        </Route>
+        <Route path="/recettes" exact>
+          <Recipes />
         </Route>
       </Switch>
     </div>
