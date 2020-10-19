@@ -20,7 +20,6 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(email, password);
       axios.post('http://localhost:3000/login', { email, password }, { withCredentials: true })
         .then((response) => {
-          console.log('connexion utilisateur OK');
           store.dispatch(saveUser(response.data));
           console.log(response.data);
           next(action);
