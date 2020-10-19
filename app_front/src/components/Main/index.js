@@ -4,14 +4,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from 'react-router-dom';
+
 import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 import Landing from './Landing';
 import MySpace from './MySpace';
 import CreateAccount from './CreateAccount';
 
+import Recipes from './Recipes';
 
 // == Import
 import './styles.scss';
@@ -37,6 +38,9 @@ const Main = () => (
         </Route>
         <Route path="/creer-mon-compte" exact>
           <CreateAccount />
+        </Route>
+        <Route path="/recettes" exact>
+          <Recipes />
         </Route>
       </Switch>
     </div>
