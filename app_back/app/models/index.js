@@ -24,6 +24,30 @@ User.hasMany(Recipe, {
   as: "recipes"
 });
 
+//Pair defines 1 user can author many reviews
+Review.belongsTo(User, {
+  foreignKey: "userId",
+  as: "reviewer"
+});
+
+User.hasMany(Review, {
+  foreignKey: "userId",
+
+  as: "userReviews"
+});
+
+//Pair defines 1 recipe can have many reviews
+Review.belongsTo(Recipe, {
+  foreignKey: "recipeId",
+  as: "recipe"
+});
+
+Recipe.hasMany(Review, {
+  foreignKey: "recipeId",
+
+  as: "recipeReviews"
+});
+
 //Pair defines 1 group can have many meals
 Meal.belongsTo(Group, {
   foreignKey: "groupId",

@@ -107,8 +107,8 @@ CREATE TABLE "user_likes_recipe" (
 
 
 CREATE TABLE "user_belongs_group" (
-    "user_id" INTEGER  REFERENCES "user" ("id"),
     "group_id" INTEGER REFERENCES "group" ("id"),
+    "user_id" INTEGER  REFERENCES "user" ("id"),
     "user_role" VARCHAR (25)  NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMP
@@ -283,18 +283,22 @@ INSERT INTO  "user_likes_recipe" ("recipe_id", "user_id")  VALUES
 (1, 1),
 (2, 4);
 
-INSERT INTO  "user_belongs_group" ("user_id", "group_id", "user_role")  VALUES
-(1, 1 ,'créateur'),
-(1, 2,'créateur'),
-(1, 3,'créateur'),
-(2, 1,'peut modifier'),
-(2, 2,'peut modifier'),
-(2, 3,'peut modifier'),
+INSERT INTO  "user_belongs_group" ("group_id", "user_id",  "user_role")  VALUES
+
+(1, 4,'créateur'),
+(2, 3,'créateur'),
+(3, 2,'créateur'),
+(4, 1,'créateur'),
+(5, 1,'créateur'),
+(6, 1,'créateur'),
+(2, 4,'peut modifier'),
+(2, 4,'peut modifier'),
+(2, 5,'peut modifier'),
+(2, 6,'peut modifier'),
 (3, 3,'lecture'),
 (4, 2,'lecture'),
-(4, 3,'peut modifier'),
-(4, 5,'créateur'),
-(4, 6,'créateur');
+(4, 3,'peut modifier');
+
 
 INSERT INTO  "meal_has_recipe" ("meal_id", "recipe_id", "number_people")  VALUES
 (1, 1, 6),

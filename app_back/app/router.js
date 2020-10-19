@@ -14,6 +14,10 @@ router.get('/families', familyController.allFamilies);
 router.get('/groups', groupController.allGroups);
 router.get('/group/:id', groupController.oneGroup);
 
+router.post('/group/create', groupController.createGroup);
+router.patch('/group/:id', groupController.updateGroup);
+router.delete('/group/:id', groupController.deleteGroup);
+
 router.get('/ingredients', ingredientController.allIngredients);
 
 router.get('/meals', mealController.allMeals);
@@ -23,7 +27,11 @@ router.get('/recipes', recipeController.allRecipes);
 router.get('/recipe/:id', recipeController.oneRecipe);
 
 router.get('/recipes/reviews', reviewController.allReviews);
+
 router.get('/recipes/review/:id', reviewController.oneReview);
+router.post('/recipes/review/create', reviewController.createReview);
+router.delete('/recipes/review/:id', reviewController.deleteReview);
+router.patch('/recipes/review/:id', reviewController.updateReview);
 
 router.get('/types', typeController.allTypes);
 

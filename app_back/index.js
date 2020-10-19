@@ -1,13 +1,16 @@
 require('dotenv').config()
 const express = require('express')
+
+const bodyParser = require('body-parser');
 const app = express();
 const sanitizeHtml = require('sanitize-html');
 const cors = require('cors');
 const router = require('./app/router');
 
+app.use(bodyParser.json());
 
 // middleware CORS authorize API access from anywhere
-app.use(cors());
+app.use(cors({ origin : 'http://localhost:8080', credentials : true}));
 
 // for handling post encoded data
 app.use(express.urlencoded({extended: true}));
