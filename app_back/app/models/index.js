@@ -14,24 +14,24 @@ const RecipeContainsIngredient = require('./recipeContainsIngredient');
 
 //Pair defines 1 user can author many recipes.
 Recipe.belongsTo(User, {
-  foreignKey: "user_id",
+  foreignKey: "userId",
   as: "user"
 });
 
 User.hasMany(Recipe, {
-  foreignKey: "user_id",
+  foreignKey: "userId",
 
   as: "recipes"
 });
 
 //Pair defines 1 group can have many meals
 Meal.belongsTo(Group, {
-  foreignKey: "group_id",
+  foreignKey: "groupId",
   as: "group"
 });
 
 Group.hasMany(Meal, {
-  foreignKey: "group_id",
+  foreignKey: "groupId",
   as: "meals"
 });
 
@@ -39,90 +39,90 @@ Group.hasMany(Meal, {
 // Meal Recipe many to many - with extra fields
 Recipe.belongsToMany(Meal, {
   through: MealHasRecipe,
-  foreignKey: "recipe_id",
-  otherKey: "meal_id",
+  foreignKey: "recipeId",
+  otherKey: "mealId",
   as: "meals"
 });
 
 Meal.belongsToMany(Recipe, {
   through: MealHasRecipe,
-  foreignKey: "meal_id",
-  otherKey: "recipe_id",
+  foreignKey: "mealId",
+  otherKey: "recipeId",
   as: "recipes"
 });
 
 // User Group many to many - with extra fields
 Group.belongsToMany(User, {
   through: UserBelongsGroup,
-  foreignKey: "user_id",
-  otherKey: "group_id",
+  foreignKey: "userId",
+  otherKey: "groupId",
   as: "members"
 });
 
 User.belongsToMany(Group, {
   through: UserBelongsGroup,
-  foreignKey: "user_id",
-  otherKey: "group_id",
+  foreignKey: "userId",
+  otherKey: "groupId",
   as: "groups"
 });
 
 // Recipe Ingredient many to many - with extra fields
 Recipe.belongsToMany(Ingredient, {
   through: RecipeContainsIngredient,
-  foreignKey: "recipe_id",
-  otherKey: "ingredient_id",
+  foreignKey: "recipeId",
+  otherKey: "ingredientId",
   as: "ingredients"
 });
 
 Ingredient.belongsToMany(Recipe, {
   through: RecipeContainsIngredient,
-  foreignKey: "ingredient_id",
-  otherKey: "recipe_id",
+  foreignKey: "ingredientId",
+  otherKey: "recipeId",
   as: "recipes"
 });
 
 // User Recipe Likes many to many - with timeStampNamingConvention
 User.belongsToMany(Recipe, {
   through: 'user_likes_recipe',
-  foreignKey: "user_id",
-  otherKey: "recipe_id",
+  foreignKey: "userId",
+  otherKey: "recipeId",
   as: "favorites"
 });
 
 Recipe.belongsToMany(User, {
   through: 'user_likes_recipe',
-  foreignKey: "recipe_id",
-  otherKey: "user_id",
+  foreignKey: "recipeId",
+  otherKey: "userId",
   as: "fans"
 });
 
 // Family Ingredient many to many - with timeStampNamingConvention
 Family.belongsToMany(Ingredient, {
   through: 'family_describes_ingredient',
-  foreignKey: "family_id",
-  otherKey: "ingredient_id",
+  foreignKey: "familyId",
+  otherKey: "ingredientId",
   as: "ingredients"
 });
 
 Ingredient.belongsToMany(Family, {
   through: 'family_describes_ingredient',
-  foreignKey: "ingredient_id",
-  otherKey: "family_id",
+  foreignKey: "ingredientId",
+  otherKey: "familyId",
   as: "families"
 });
 
 // Type Recipe many to many - with timeStampNamingConvention
 Type.belongsToMany(Recipe, {
   through: 'type_defines_recipe',
-  foreignKey: "type_id",
-  otherKey: "recipe_id",
+  foreignKey: "typeId",
+  otherKey: "recipeId",
   as: "recipes"
 });
 
 Recipe.belongsToMany(Type, {
   through: 'type_defines_recipe',
-  foreignKey: "recipe_id",
-  otherKey: "type_id",
+  foreignKey: "recipeId",
+  otherKey: "typeId",
   as: "types"
 });
 

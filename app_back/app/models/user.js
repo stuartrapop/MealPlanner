@@ -5,15 +5,15 @@ const sequelize = require('../database');
 class User extends Model {}
 
 User.init({
-      first_name: {
+      firstName: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      last_name: {
+      lastName: {
          type: DataTypes.STRING,
         allowNull: false
       },
-      user_name: {
+      userName: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -25,14 +25,6 @@ User.init({
           type: DataTypes.STRING,
            allowNull: false
       }, 
-      createdAt: {
-        field: 'createdAt',
-        type: DataTypes.DATE,
-    },
-    updatedAt: {
-        field: 'updatedAt',
-        type: DataTypes.DATE, 
-    }, 
   },
     {
     sequelize,

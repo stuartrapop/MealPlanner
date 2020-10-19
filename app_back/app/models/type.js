@@ -9,14 +9,7 @@ Type.init({
         type: DataTypes.STRING,
         allowNull: false
       },
-      createdAt: {
-        field: 'createdAt',
-        type: DataTypes.DATE,
-    },
-    updatedAt: {
-        field: 'updatedAt',
-        type: DataTypes.DATE, 
-    }, 
+
   },
     {
     sequelize,

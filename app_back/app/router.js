@@ -29,9 +29,15 @@ router.get('/types', typeController.allTypes);
 
 router.get('/users', userController.allUsers);
 router.get('/user/:id', userController.oneUser);
+router.post('/user/create', adminController.createAccount);
+router.patch('/user/:id', adminController.updateAccount);
+router.delete('/user/:id', adminController.deleteAccount);
 
 
+router.patch('/changePassword', adminController.changePassword);
 router.post('/login', adminController.login);
+
+
 router.use( adminController.notFound);
 
 

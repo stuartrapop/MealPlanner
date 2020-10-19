@@ -7,9 +7,7 @@ const sequelize = new Sequelize(process.env.PG_URL, {
     camelCase : true},
     define: {
       // don't default to snake case 
-        underscored: false,
-       
-        
+        underscored: true,        
     }
 });
 

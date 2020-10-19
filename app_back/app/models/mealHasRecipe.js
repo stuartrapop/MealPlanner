@@ -5,19 +5,12 @@ const sequelize = require('../database');
 class MealHasRecipe extends Model {}
 
 MealHasRecipe.init({
-      number_people: {
+      numberPeople: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
 
-      createdAt: {
-        field: 'createdAt',
-        type: DataTypes.DATE,
-    },
-    updatedAt: {
-        field: 'updatedAt',
-        type: DataTypes.DATE, 
-    }, 
+ 
   },
     {
     sequelize,

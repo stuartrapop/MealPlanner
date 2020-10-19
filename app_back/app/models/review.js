@@ -13,14 +13,7 @@ Review.init({
          type: DataTypes.INTEGER,
         allowNull: false
       },
-      createdAt: {
-        field: 'createdAt',
-        type: DataTypes.DATE,
-    },
-    updatedAt: {
-        field: 'updatedAt',
-        type: DataTypes.DATE, 
-    }, 
+
   },
     {
     sequelize,
