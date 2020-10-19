@@ -17,6 +17,7 @@
 | title    | VARCHAR(30) | NOT NULL   |
 | difficulty | VARCHAR(15) | |
 | instructions | TEXT | |
+| number_people | INTEGER | |
 | cooking_time | INTEGER ||
 | URL | VARCHAR(100)  | NOT NULL |
 |user_id | INTEGER |NOT NULL, REFERENCES User(id)|
@@ -90,7 +91,7 @@
 | recipe_id       | INTEGER |  NOT NULL, REFERENCES Recipe(id) |
 | user_id    | INTEGER | NOT NULL, REFERENCES User(id)    |
 
-## User_belongs_to_group
+## User_belongs_group
 | champ    | type | contrainte |
 | -------- | ---- | ---------- |
 | user_id       | INTEGER | NOT NULL, REFERENCES User(id)|
@@ -111,4 +112,3 @@
 | recipe_id  | INTEGER | NOT NULL, REFERENCES Recipe(id)|
 | meal_id  | INTEGER | NOT NULL, REFERENCES Meal(id) |
 | number_of_people | INTEGER |  NOT NULL |
-

@@ -1,0 +1,45 @@
+@use "src/styles/vars" as v;
+
+.planning__day {
+  width: 12%;
+  background-color: white;
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+}
+
+.planning__day__header {
+  background-color: v.$primary-green;
+}
+
+.planning__day__header h1{
+  font-size: 1em;
+  color: white;
+  margin: 0;
+}
+
+.planning__day__header h2{
+  font-size: 1em;
+  color: white;
+  margin: 0;
+}
+
+.planning__day__box {
+  margin: 3px;
+  border: 2px solid v.$primary-green;
+}
+
+#add__meal__onplanning {
+  color: v.$primary-green;
+  margin: 10px auto;
+}
+
+.validated {
+  background-color: v.$primary-green;
+  color: white;
+}
+
+.validated p{
+  font-size: 1em;
+  margin: 0;
+}

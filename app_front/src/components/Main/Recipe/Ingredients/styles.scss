@@ -1,0 +1,10 @@
+@use "src/styles/vars" as v;
+
+.ingredients {
+  width: 95%;
+  margin : 0 auto;
+  padding : 1rem;
+  border : 1px solid v.$light-grey;
+  background-color: v.$light-grey;
+  border-radius: 10px;
+}

@@ -1,0 +1,11 @@
+@use "src/styles/vars" as v;
+
+.all__recipes {
+  background-color: v.$primary-green;
+  margin : 0 auto;
+}
+.one__recipe__image {
+  height : 250px;
+}
+
+

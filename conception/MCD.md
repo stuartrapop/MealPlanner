@@ -5,7 +5,7 @@ OWNS, 0N GROUP, 11 MEAL
 GROUP: group id, name
 
 CONTAINS, 1N INGREDIENT, 0N RECIPE: quantity, unit
-RECIPE: recipe id, title, difficulty, instructions, cooking time, URL, type, sub_type, sub_sub_type
+RECIPE: recipe id, title, difficulty, instructions, cooking time, URL,numver_people,type, sub_type, sub_sub_type
 AUTHORED, 0N USER, 11 RECIPE
 USER: user id, lastname, firstname, username, password, email
 BELONGS, 0N USER, 1N GROUP: role

@@ -1,0 +1,13 @@
+@use "src/styles/vars" as v;
+
+.planning__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.planning__container {
+  background-color: v.$light-grey;
+  padding: 2em 0;
+}
