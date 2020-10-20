@@ -49,6 +49,9 @@ const Header = ({
               {showMenuBoolean === true && (
                 <div className="hamburger__menu__container">
                   <Menu inverted vertical id="hamburger__menu">
+                    <Menu.Item>
+                      <Icon id="close__modal__icon" name="close" size="big" color="red" onClick={menuClick} />
+                    </Menu.Item>
                     <Menu.Item
                       name="Mon Espace"
                     />
