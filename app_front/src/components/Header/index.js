@@ -1,6 +1,9 @@
 // == Import npm
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import {
+  Icon,
+  Menu,
+} from 'semantic-ui-react';
 import LogInModal from 'src/containers/LogInModal';
 
 // == Import
@@ -12,6 +15,8 @@ const Header = ({
   handleConnexionButtonClick, // Fonction sans arguments qui appelle l'action displayConnexionModal
   handleCloseModalClick, // Fonction pour fermer la modale dans le composant enfant
   isLogged,
+  handleMenuClick,
+  showMenuBoolean, // Booléen représentant l'affichage du menu
 }) => {
   const handleClick = () => {
     handleConnexionButtonClick();
@@ -19,6 +24,10 @@ const Header = ({
 
   const handler = () => {
     handleCloseModalClick();
+  };
+
+  const menuClick = () => {
+    handleMenuClick();
   };
 
   return (
@@ -35,7 +44,30 @@ const Header = ({
             </div>
           )}
           {isLogged === true && (
-            <p>Menu Hamburger</p>
+            <>
+              <Icon id="hamburger__menu__icon" name="list" size="huge" onClick={menuClick} />
+              {showMenuBoolean === true && (
+                <div className="hamburger__menu__container">
+                  <Menu inverted vertical id="hamburger__menu">
+                    <Menu.Item
+                      name="Mon Espace"
+                    />
+                    <Menu.Item
+                      name="Recettes"
+                    />
+                    <Menu.Item
+                      name="Ma liste de courses"
+                    />
+                    <Menu.Item
+                      name="Paramètres"
+                    />
+                    <Menu.Item
+                      name="Déconnexion"
+                    />
+                  </Menu>
+                </div>
+              )}
+            </>
           )}
 
           {showModalBoolean === true && (

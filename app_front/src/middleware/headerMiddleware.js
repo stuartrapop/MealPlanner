@@ -1,10 +1,10 @@
 /* eslint-disable no-case-declarations */
-import { DISPLAY_CONNEXION_MODAL, showModal, REMOVE_CONNEXION_MODAL, closeModal } from '../actions/header';
+import { DISPLAY_CONNEXION_MODAL, showModal, REMOVE_CONNEXION_MODAL, closeModal, HANDLE_MENU_DISPLAY, toggleMenu } from '../actions/header';
 
 const headerMiddleware = (store) => (next) => (action) => {
+  const state = store.getState();
   switch (action.type) {
     case DISPLAY_CONNEXION_MODAL:
-      const state = store.getState();
       let { showModalBoolean } = state.header;
       showModalBoolean = true;
       // On veut simplement changer l'état d'un booléen dans le state
@@ -14,6 +14,12 @@ const headerMiddleware = (store) => (next) => (action) => {
       showModalBoolean = false;
       // On veut simplement changer l'état d'un booléen dans le state
       store.dispatch(closeModal(showModalBoolean));
+      break;
+    case HANDLE_MENU_DISPLAY:
+      console.log(state);
+      let { showMenuBoolean } = state.header;
+      showMenuBoolean = !showMenuBoolean;
+      store.dispatch(toggleMenu(showMenuBoolean));
       break;
     default:
       next(action);

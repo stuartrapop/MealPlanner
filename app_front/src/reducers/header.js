@@ -1,7 +1,8 @@
-import { SHOW_MODAL, CLOSE_MODAL } from '../actions/header';
+import { SHOW_MODAL, CLOSE_MODAL, TOGGLE_MENU } from '../actions/header';
 
 export const initialState = {
   showModalBoolean: false,
+  showMenuBoolean: false,
 };
 
 const headerReducer = (state = initialState, action = {}) => {
@@ -15,6 +16,11 @@ const headerReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         showModalBoolean: action.showModalBoolean,
+      };
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        showMenuBoolean: action.showMenuBoolean,
       };
     default:
       return state;

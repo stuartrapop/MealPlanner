@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 // importer les actions from 'src/actions/user'
-import { displayConnexionModal, removeConnexionModal } from 'src/actions/header';
+import { displayConnexionModal, removeConnexionModal, handleMenuDisplay } from 'src/actions/header';
 import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({
   showModalBoolean: state.header.showModalBoolean,
+  showMenuBoolean: state.header.showMenuBoolean,
   isLogged: state.user.isLogged,
 });
 
@@ -15,6 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleCloseModalClick: () => {
     dispatch(removeConnexionModal());
+  },
+
+  handleMenuClick: () => {
+    dispatch(handleMenuDisplay());
   },
 });
 
