@@ -76,13 +76,13 @@
 ## Type_defines_recipe
 | champ    | type | contrainte |
 | -------- | ---- | ---------- |
-| recipe_type_id       | INTEGER |  NOT NULL, REFERENCES Type(id) |
+| type_id       | INTEGER |  NOT NULL, REFERENCES Type(id) |
 | recipe_id    | INTEGER | NOT NULL, REFERENCES Recipe(id)    |
 
 ## Family_describes_ingredient
 | champ    | type | contrainte |
 | -------- | ---- | ---------- |
-| ingredient_family_id       | INTEGER |  NOT NULL, REFERENCES Family(id) |
+| family_id       | INTEGER |  NOT NULL, REFERENCES Family(id) |
 | ingredient_id    | INTEGER | NOT NULL, REFERENCES Ingredient(id)    |
 
 ## User_likes_recipe

@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import LogInModal from 'src/containers/LogInModal';
 
 // == Import
 import './styles.scss';
@@ -15,11 +16,11 @@ const Header = () => (
       <div className="connexion__zone">
         <Icon name="user circle outline" size="huge" className="login__icon" />
         <p>S'incrire / Se connecter</p>
+        <LogInModal />
       </div>
     </div>
     <div className="separator" />
   </div>
-
 );
 
 // == Export
