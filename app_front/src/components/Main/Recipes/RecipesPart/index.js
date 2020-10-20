@@ -13,7 +13,7 @@ import Tags from './Tags';
 const RecipesPart = ({ recipes }) => (
   <div className="all__recipes">
     {recipes.map((recipe) => (
-      <Card>
+      <Card id="card">
         <Image id="one__recipe__img" src={recipe.url} wrapped ui={false} />
         <Card.Content>
           <Card.Header>{recipe.title}</Card.Header>
