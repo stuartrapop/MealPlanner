@@ -5,15 +5,15 @@ const sequelize = require('../database');
 class Family extends Model {}
 
 Family.init({
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-    {
-    sequelize,
-    tableName: 'family'
+
+},
+{
+  sequelize,
+  tableName: 'family',
 });
 
 module.exports = Family;

@@ -1,16 +1,26 @@
 const express = require('express');
+
 const router = express.Router();
 
-const {adminController, familyController, groupController, ingredientController, mealController, recipeController, reviewController, typeController, userController,  } = require('./controllers')
+const {
+  adminController,
+  familyController,
+  groupController,
+  ingredientController,
+  mealController,
+  recipeController,
+  reviewController,
+  typeController,
+  userController,
+} = require('./controllers');
 
 const loginSchema = require('./schemas/login');
 const { validateBody } = require('./services/validator');
 
-
 // On rend le choix de l'entité paramétrable
 router.get('/', (req, res) => {
-    res.send('Meal Planner API!')
-  });
+  res.send('Meal Planner API!');
+});
 
 router.get('/families', familyController.allFamilies);
 
@@ -46,16 +56,13 @@ router.get('/types', typeController.allTypes);
 
 router.get('/users', userController.allUsers);
 router.get('/user/:id', userController.oneUser);
-router.post('/user/create',validateBody(loginSchema), adminController.createAccount);
+router.post('/user/create', validateBody(loginSchema), adminController.createAccount);
 router.patch('/user/:id', adminController.updateAccount);
 router.delete('/user/:id', adminController.deleteAccount);
-
 
 router.patch('/changePassword', adminController.changePassword);
 router.post('/login', adminController.login);
 
-
-router.use( adminController.notFound);
-
+router.use(adminController.notFound);
 
 module.exports = router;
