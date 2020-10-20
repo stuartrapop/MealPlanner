@@ -78,8 +78,8 @@ Meal.belongsToMany(Recipe, {
 // User Group many to many - with extra fields
 Group.belongsToMany(User, {
   through: UserBelongsGroup,
-  foreignKey: "userId",
-  otherKey: "groupId",
+  foreignKey: "groupId",
+  otherKey: "userId",
   as: "members"
 });
 

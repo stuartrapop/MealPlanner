@@ -1,8 +1,6 @@
 const {Group, User} = require('../models');
 
-
 const groupController = {
-
 
   // les cards d'une liste
   allGroups: async (req, res) => {
@@ -16,15 +14,83 @@ const groupController = {
                 association  : "recipes",
                 include : "ingredients" 
               }
-            ]}
-            
+            ]}   
         ]
-
     });
       // on renvoie les cartes
       res.json(groups);
-
   },
+// function to associate a user to a group
+  associateUser: async (userId, groupId, userRole) => {
+    const group = await Group.findByPk(groupId);
+    if (!group)
+    {
+      res.json({error: "group does not exist"});
+    }
+    const user = await User.findByPk(userId);
+    if (!user)
+    {
+      res.json({error: "user does not exist"});
+    }
+    await group.addMembers(user, {through : {user_role : userRole}});
+    return;
+},
+// function to remove a user from a group
+removeUser: async (userId, groupId) => {
+  const group = await Group.findByPk(groupId);
+  if (!group)
+  {
+    res.json({error: "group does not exist"});
+  }
+  const user = await User.findByPk(userId);
+  if (!user)
+  {
+    res.json({error: "user does not exist"});
+  }
+  // on renvoie les cartes
+  await group.removeMembers(user);
+  return;
+},
+
+// function to remove a non Owner member
+removeMember: async (req, res ) => {
+  try {
+  console.log("arrived in removeMember")
+  const groupId = parseInt(req.body.groupId);
+  const userId = parseInt(req.body.userId);
+
+  const group = await Group.findByPk(groupId,{
+    include : "members"
+  });
+  if (!group)
+  {
+    res.json({error: "group does not exist"});
+  }
+  const user = await User.findByPk(userId);
+  if (!user)
+  {
+    res.json({error: "user does not exist"});
+  }
+  const foundUser = group.members.find( member => member.id === userId);
+  if (!foundUser ) {
+    res.json({error: "this user is not a member of the group"});
+  }
+  if (foundUser.UserBelongsGroup.user_role === 'créateur')
+  {
+    res.json({error: "cannot delete the group owner"});
+  } else {
+    await group.removeMembers(user);
+    res.json({message: "member deleted"});
+  }
+
+ 
+ 
+
+} catch(error) {
+  console.log(error);
+  res.status(500).json({error});
+  }
+},
  // les cards d'une liste
 createGroup: async (req, res) => {
   try {
@@ -37,21 +103,39 @@ createGroup: async (req, res) => {
     }
 
     const group = await Group.create({name : name});
+    await groupController.associateUser(userId,group.id,"créateur")
 
-    await group.setMembers(user, {through : {user_role : "créature"}});
+// send the details or not found
+  if(group){
+    res.json({message: group});
+  } 
+} catch(error) {
+console.log(error);
+res.status(500).json({error});
+}
+},
 
-console.log(group.id);
-/*
-Group.findByPk(group.id).then( async(group) => {
-  try{
-      await Group.addMembers(userId); // 3 relationship are in db postId: 1 with userId: 1,2,3 
-  
-  }catch(e){
-      console.error(e);
+// les cards d'une liste
+addMember: async (req, res) => {
+  try {
+    const groupId = parseInt(req.body.groupId);
+    const userId = parseInt(req.body.userId);
+    const userRole = req.body.userRole;
+    const user = await User.findByPk( userId);
+    if(!user){
+      res.json({error: "user does not exist"});
+    }
+    let group = await Group.findByPk(groupId,{
+      include: "members",
+  });
+  if(!group){
+    res.json({error: "group does not exist"});
   }
-});*/
+    await groupController.associateUser(userId,groupId,userRole)
 
-
+    group = await Group.findByPk(groupId,{
+      include: "members",
+  });
 // send the details or not found
   if(group){
     res.json({message: group});
@@ -85,8 +169,7 @@ res.status(500).json({error});
 }
 },
 
-
-  oneGroup: async (req, res) => {
+oneGroup: async (req, res) => {
     try {
     const groupId = parseInt(req.params.id);
     const group = await Group.findByPk(groupId,{
@@ -99,8 +182,7 @@ res.status(500).json({error});
             association  : "recipes",
             include : "ingredients" 
           }
-        ]}
-        
+        ]}    
     ]
   });
 // send the details or not found
@@ -118,8 +200,12 @@ deleteGroup: async (req, res) => {
   try {
     const groupId = parseInt(req.params.id);
     const group = await Group.findByPk(groupId,{
-
+      include: "members",
   });
+  for (element of  group.members) {
+   await groupController.removeUser(element.id,groupId)
+  };
+ 
   if(!group){
     res.json({error: "group does not exist"});
   } else {

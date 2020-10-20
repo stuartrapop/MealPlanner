@@ -44,9 +44,14 @@
 | /group/create   | POST | Create group |
 | /group/:ID   | PATCH | Modify group |
 | /group/:ID   | Delete | Delete Group |
+| /group/addMember  | POST | add a member to a group |
+| /group/removeMember  | PATCH | remove a non owner from a group |
 | /meals  | GET | See all meals   |
 | /meal/:ID   | GET | See all meals  |
 | /meal/create   | POST | Create meal |
 | /meal/:ID   | PATCH | Modify meal |
 | /meal/:ID   | Delete | Delete meal |
+| /meal/addRecipe  | POST | add a recipe with number of people to a meal |
+| /meal/removeRecipe   | POST| remove a recipe from a meal |
+
 | /404 | ? | 404 |
