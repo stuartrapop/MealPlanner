@@ -9,7 +9,6 @@ export const initialState = {
   email: '',
   password: '',
   isLogged: false,
-  infos: {},
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -20,22 +19,18 @@ const userReducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
     case SAVE_USER:
+      console.log(action);
       const newState = {
         ...state,
-        isLogged: action.user.logged,
         email: '',
         password: '',
-        infos: {},
+        isLogged: action.isLogged,
+        pseudo: action.pseudo,
       };
-      if (action.user.logged) {
-        newState.infos = { pseudo: action.user.pseudo };
-      }
       return newState;
     case LOG_OUT:
       return {
-        ...state,
-        isLogged: false,
-        infos: {},
+        ...initialState,
       };
     default:
       return state;

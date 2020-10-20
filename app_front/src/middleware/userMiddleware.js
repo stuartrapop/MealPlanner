@@ -17,10 +17,13 @@ const userMiddleware = (store) => (next) => (action) => {
       // Depuis le state du store
       const state = store.getState();
       const { email, password } = state.user;
-      console.log(email, password);
       axios.post('http://localhost:3000/login', { email, password }, { withCredentials: true })
         .then((response) => {
-          store.dispatch(saveUser(response.data));
+          const newObject = {
+            isLogged: true,
+            pseudo: response.data.userName,
+          };
+          store.dispatch(saveUser(newObject.pseudo, newObject.isLogged));
           console.log(response.data);
           next(action);
         })

@@ -11,7 +11,7 @@ const LogInModal = ({
   password, // Value du champ password
   changeField, // Fonction qui met à jour le champ avec 2 params value et name du champ
   handleLogin, // Fonction à la soumission du formulaire sans param
-  islogged,
+  isLogged,
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -24,11 +24,11 @@ const LogInModal = ({
 
   return (
     <div className="login-form">
-      {islogged && (
-        <p>coucou</p>
+      {isLogged && (
+        <a>Déconnexion</a>
       )}
 
-      {!islogged && (
+      {!isLogged && (
       <div className="header">
         <form onSubmit={handleSubmit}>
           <Input onChange={handleChange} name="email" placeholder="Adresse Email" value={email} />
