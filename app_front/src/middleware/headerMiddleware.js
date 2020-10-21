@@ -1,5 +1,12 @@
 /* eslint-disable no-case-declarations */
-import { DISPLAY_CONNEXION_MODAL, showModal, REMOVE_CONNEXION_MODAL, closeModal, HANDLE_MENU_DISPLAY, toggleMenu } from '../actions/header';
+import {
+  DISPLAY_CONNEXION_MODAL,
+  showModal,
+  REMOVE_CONNEXION_MODAL,
+  closeModal,
+  HANDLE_MENU_DISPLAY,
+  toggleMenu,
+} from '../actions/header';
 import { HANDLE_LOG_OUT, logOut } from '../actions/user';
 
 const headerMiddleware = (store) => (next) => (action) => {

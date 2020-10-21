@@ -5,7 +5,7 @@ import {
   Icon,
   Menu,
 } from 'semantic-ui-react';
-import LogInModal from 'src/containers/LogInModal';
+import LogInModal from '../../containers/LogInModal';
 
 // == Import
 import './styles.scss';
@@ -36,7 +36,6 @@ const Header = ({
     handleLogOutClick();
   };
 
-  console.log('Render = Changement de state pris en compte');
   return (
     <div className="header">
       <div className="header__content">

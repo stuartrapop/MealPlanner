@@ -3,9 +3,9 @@ import {
   changeLoginFieldValue,
   logIn,
   logOut,
-} from 'src/actions/user';
+} from '../actions/user';
 
-import LogInModal from 'src/components/Header/LogInModal';
+import LogInModal from '../components/Header/LogInModal';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,

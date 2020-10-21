@@ -25,7 +25,7 @@ export const closeModal = (showModalBoolean) => ({
 
 export const handleMenuDisplay = () => ({
   type: HANDLE_MENU_DISPLAY,
-})
+});
 
 export const toggleMenu = (showMenuBoolean) => ({
   type: TOGGLE_MENU,

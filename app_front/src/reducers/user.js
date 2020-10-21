@@ -4,7 +4,7 @@ import {
   SAVE_USER,
   SEND_ERROR_MESSAGE,
   LOG_OUT,
-} from 'src/actions/user';
+} from '../actions/user';
 
 export const initialState = {
   email: '',

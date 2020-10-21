@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 // importer les actions from 'src/actions/user'
-import { displayConnexionModal, removeConnexionModal, handleMenuDisplay } from 'src/actions/header';
-import { handleLogOut } from 'src/actions/user';
-import Header from 'src/components/Header';
+import { displayConnexionModal, removeConnexionModal, handleMenuDisplay } from '../actions/header';
+import { handleLogOut } from '../actions/user';
+import Header from '../components/Header';
 
 const mapStateToProps = (state) => ({
   showModalBoolean: state.header.showModalBoolean,
