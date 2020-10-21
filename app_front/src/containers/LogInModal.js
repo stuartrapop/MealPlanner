@@ -3,15 +3,24 @@ import {
   changeLoginFieldValue,
   logIn,
   logOut,
+  handleSignIn,
+  toggleLogInComponent,
 } from '../actions/user';
 
 import LogInModal from '../components/Header/LogInModal';
 
 const mapStateToProps = (state) => ({
+  logInEmail: state.user.logInEmail,
+  logInPassword: state.user.logInPassword,
   email: state.user.email,
   password: state.user.password,
+  firstName: state.user.firstName,
+  lastName: state.user.lastName,
+  userName: state.user.userName,
   isLogged: state.user.isLogged,
   logInError: state.user.logInError,
+  signInWentSuccesfully: state.user.signInWentSuccesfully,
+  displaySignInComponent: state.user.displaySignInComponent,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,6 +33,12 @@ const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => {
     dispatch(logOut());
   },
+  handleSignin: () => {
+    dispatch(handleSignIn());
+  },
+  handleToggleLogInComponent: () => {
+    dispatch(toggleLogInComponent());
+  }
 });
 
 // Container

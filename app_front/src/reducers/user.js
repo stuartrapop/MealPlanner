@@ -4,13 +4,22 @@ import {
   SAVE_USER,
   SEND_ERROR_MESSAGE,
   LOG_OUT,
+  SIGN_IN,
+  TOGGLE_LOG_IN_COMPONENT,
 } from '../actions/user';
 
 export const initialState = {
+  logInEmail: '',
+  logInPassword: '',
   email: '',
   password: '',
+  firstName: '',
+  lastName: '',
+  userName: '',
   isLogged: false,
   logInError: false,
+  signInWentSuccesfully: null,
+  displaySignInComponent: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -27,6 +36,8 @@ const userReducer = (state = initialState, action = {}) => {
         password: '',
         isLogged: action.isLogged,
         pseudo: action.pseudo,
+        logInError: false,
+        signInWentSuccesfully: null,
       };
       return newState;
     case SEND_ERROR_MESSAGE:
@@ -38,6 +49,18 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: action.isLogged,
+      };
+    case SIGN_IN:
+      return {
+        ...state,
+        signInWentSuccesfully: action.signInWentSuccesfully,
+      };
+    case TOGGLE_LOG_IN_COMPONENT:
+      return {
+        ...state,
+        displaySignInComponent: !state.displaySignInComponent,
+        logInError: false,
+        signInWentSuccesfully: null,
       };
     default:
       return state;

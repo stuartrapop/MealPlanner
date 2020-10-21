@@ -32,6 +32,12 @@
   margin-bottom: 2em;
 }
 
+.add__meal__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media (min-width: 768px) {
   .addmeal__body{
     display: flex;
