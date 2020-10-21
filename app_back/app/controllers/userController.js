@@ -14,7 +14,7 @@ const userController = {
     try {
       const userId = parseInt(req.params.id, 10);
       const user = await User.findByPk(userId, {
-        include: [
+        include: [ // include groups then meals then recipes then ingredients
           {
             association: 'groups',
             include: [

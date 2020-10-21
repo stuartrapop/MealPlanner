@@ -13,16 +13,20 @@ const adminController = {
   isLogged: (req, res) => {
     console.log('>> POST /isLogged', req.session.user);
     if (req.session.user) {
-      res.json({ logged: true, pseudo: req.session.user.userName });
+      res.json({
+        isLogged: true,
+        pseudo: req.session.user.userName,
+        userId: req.session.user.id,
+      });
     }
     else {
-      res.json({ logged: false });
+      res.json({ isLogged: false });
     }
   },
 
   logout: (req, res) => {
     req.session.destroy();
-    res.json({ logged: false });
+    res.json({ isLogged: false });
   },
 
   login: async (req, res) => {
@@ -45,7 +49,7 @@ const adminController = {
         if (result) {
           req.session.user = user;
           console.log('<< 200 OK', user);
-          res.json({ logged: true, pseudo: user.userName });
+          res.json({ isLogged: true, pseudo: user.userName, userId: user.id });
         }
         else {
           res.status(404).json({ error: 'wrong password' });
