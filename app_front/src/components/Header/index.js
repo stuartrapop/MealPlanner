@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Icon,
   Menu,
@@ -17,6 +18,7 @@ const Header = ({
   isLogged,
   handleMenuClick,
   showMenuBoolean, // Booléen représentant l'affichage du menu
+  handleLogOutClick, // Fonction de déconnexion
 }) => {
   const handleClick = () => {
     handleConnexionButtonClick();
@@ -29,6 +31,10 @@ const Header = ({
   const menuClick = () => {
     handleMenuClick();
   };
+
+  const logOutClick = () => {
+    handleLogOutClick();
+  }
 
   return (
     <div className="header">
@@ -66,6 +72,7 @@ const Header = ({
                     />
                     <Menu.Item
                       name="Déconnexion"
+                      onClick={logOutClick}
                     />
                   </Menu>
                 </div>
@@ -83,6 +90,15 @@ const Header = ({
       <div className="separator" />
     </div>
   );
+};
+
+Header.propTypes = {
+  showMenuBoolean: PropTypes.bool.isRequired,
+  showModalBoolean: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  handleConnexionButtonClick: PropTypes.func.isRequired,
+  handleCloseModalClick: PropTypes.func.isRequired,
+  handleMenuClick: PropTypes.func.isRequired,
 };
 
 // == Export

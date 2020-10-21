@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { DISPLAY_CONNEXION_MODAL, showModal, REMOVE_CONNEXION_MODAL, closeModal, HANDLE_MENU_DISPLAY, toggleMenu } from '../actions/header';
+import { DISPLAY_CONNEXION_MODAL, showModal, REMOVE_CONNEXION_MODAL, closeModal, HANDLE_MENU_DISPLAY, toggleMenu, HANDLE_LOG_OUT, logOut } from '../actions/header';
 
 const headerMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
@@ -16,10 +16,14 @@ const headerMiddleware = (store) => (next) => (action) => {
       store.dispatch(closeModal(showModalBoolean));
       break;
     case HANDLE_MENU_DISPLAY:
-      console.log(state);
       let { showMenuBoolean } = state.header;
       showMenuBoolean = !showMenuBoolean;
       store.dispatch(toggleMenu(showMenuBoolean));
+      break;
+    case HANDLE_LOG_OUT:
+      let { isLogged } = state.user;
+      isLogged = false;
+      store.dispatch(logOut(isLogged));
       break;
     default:
       next(action);
