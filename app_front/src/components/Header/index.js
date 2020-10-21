@@ -34,8 +34,9 @@ const Header = ({
 
   const logOutClick = () => {
     handleLogOutClick();
-  }
+  };
 
+  console.log('Render = Changement de state pris en compte');
   return (
     <div className="header">
       <div className="header__content">
@@ -99,6 +100,7 @@ Header.propTypes = {
   handleConnexionButtonClick: PropTypes.func.isRequired,
   handleCloseModalClick: PropTypes.func.isRequired,
   handleMenuClick: PropTypes.func.isRequired,
+  handleLogOutClick: PropTypes.func.isRequired,
 };
 
 // == Export

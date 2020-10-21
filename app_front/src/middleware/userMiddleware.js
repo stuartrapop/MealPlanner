@@ -5,8 +5,8 @@ import axios from 'axios';
 import {
   LOG_IN,
   CHECK_IS_LOGGED,
-  LOG_OUT,
   saveUser,
+  sendErrorMessage,
 } from 'src/actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -24,11 +24,13 @@ const userMiddleware = (store) => (next) => (action) => {
             pseudo: response.data.userName,
           };
           store.dispatch(saveUser(newObject.pseudo, newObject.isLogged));
-          console.log(response.data);
           next(action);
         })
         .catch((e) => {
           console.error(e);
+          let { logInError } = state.user;
+          logInError = true;
+          store.dispatch(sendErrorMessage(logInError));
         });
       break;
     case CHECK_IS_LOGGED:
@@ -40,17 +42,6 @@ const userMiddleware = (store) => (next) => (action) => {
         store.dispatch(saveUser(response.data));
         next(action);
       })
-        .catch((e) => {
-          console.error(e);
-        });
-      break;
-    case LOG_OUT:
-      axios.post('http://localhost:3000/logout', {}, {
-        withCredentials: true,
-      })
-        .then(() => {
-          next(action);
-        })
         .catch((e) => {
           console.error(e);
         });

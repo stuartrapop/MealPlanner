@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input, Button, Icon } from 'semantic-ui-react';
 
 // == Import
@@ -12,7 +13,8 @@ const LogInModal = ({
   changeField, // Fonction qui met à jour le champ avec 2 params value et name du champ
   handleLogin, // Fonction à la soumission du formulaire sans param
   isLogged,
-  handler, //fonction du parent pour fermer la modale
+  handler, // fonction du parent pour fermer la modale
+  logInError,
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -41,12 +43,25 @@ const LogInModal = ({
             <Button secondary type="submit" className="login-form-button">Créer un compte</Button>
           </div>
         </form>
+        {logInError && (
+          <p className="logIn__error">Cette combinaison utilisateur/mot de passe n'est pas reconnue</p>
+        )}
       </div>
       )}
 
       {isLogged && (handler())}
     </div>
   );
+};
+
+LogInModal.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  handler: PropTypes.func.isRequired,
+  logInError: PropTypes.bool.isRequired,
 };
 
 // == Export

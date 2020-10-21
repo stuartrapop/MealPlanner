@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 // importer les actions from 'src/actions/user'
-import { displayConnexionModal, removeConnexionModal, handleMenuDisplay, handleLogOut } from 'src/actions/header';
+import { displayConnexionModal, removeConnexionModal, handleMenuDisplay } from 'src/actions/header';
+import { handleLogOut } from 'src/actions/user';
 import Header from 'src/components/Header';
 
 const mapStateToProps = (state) => ({

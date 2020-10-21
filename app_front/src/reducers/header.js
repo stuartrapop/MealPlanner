@@ -1,4 +1,4 @@
-import { SHOW_MODAL, CLOSE_MODAL, TOGGLE_MENU, LOG_OUT } from '../actions/header';
+import { SHOW_MODAL, CLOSE_MODAL, TOGGLE_MENU } from '../actions/header';
 
 export const initialState = {
   showModalBoolean: false,
@@ -21,11 +21,6 @@ const headerReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         showMenuBoolean: action.showMenuBoolean,
-      };
-    case LOG_OUT:
-      return {
-        ...state,
-        isLogged: action.isLogged,
       };
     default:
       return state;

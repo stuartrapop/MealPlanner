@@ -2,6 +2,7 @@
 import {
   CHANGE_LOGIN_FIELD_VALUE,
   SAVE_USER,
+  SEND_ERROR_MESSAGE,
   LOG_OUT,
 } from 'src/actions/user';
 
@@ -9,6 +10,7 @@ export const initialState = {
   email: '',
   password: '',
   isLogged: false,
+  logInError: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -19,7 +21,6 @@ const userReducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
     case SAVE_USER:
-      console.log(action);
       const newState = {
         ...state,
         email: '',
@@ -28,9 +29,15 @@ const userReducer = (state = initialState, action = {}) => {
         pseudo: action.pseudo,
       };
       return newState;
+    case SEND_ERROR_MESSAGE:
+      return {
+        ...state,
+        logInError: action.logInError,
+      };
     case LOG_OUT:
       return {
-        ...initialState,
+        ...state,
+        isLogged: action.isLogged,
       };
     default:
       return state;
