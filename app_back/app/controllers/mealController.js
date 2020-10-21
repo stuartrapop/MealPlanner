@@ -116,7 +116,8 @@ const mealController = {
       }
       // on renvoie les cartes
 
-      const foundRecipe = meal.recipes.find((recipe) => recipe.id === recipeId);
+      const foundRecipe = meal.recipes.find((recipeIterate) => recipeIterate.id === recipeId);
+
       if (!foundRecipe) {
         res.json({ error: 'this recipe is not part of the meal' });
       }
@@ -165,9 +166,6 @@ const mealController = {
       }
       for (const recipe of meal.recipes) {
         const recipeInstance = await Recipe.findByPk(recipe.id);
-        if (!recipe) {
-          res.json({ error: 'recipe does not exist' });
-        }
         await meal.removeRecipes(recipeInstance);
       }
       await meal.destroy();

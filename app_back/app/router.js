@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
+// import all controllers for utilities and routes
 const {
   adminController,
   familyController,
@@ -14,10 +15,11 @@ const {
   userController,
 } = require('./controllers');
 
+// Joi validator for new user
 const loginSchema = require('./schemas/login');
 const { validateBody } = require('./services/validator');
 
-// On rend le choix de l'entité paramétrable
+// routes with http method
 router.get('/', (req, res) => {
   res.send('Meal Planner API!');
 });
@@ -56,11 +58,14 @@ router.get('/types', typeController.allTypes);
 
 router.get('/users', userController.allUsers);
 router.get('/user/:id', userController.oneUser);
+// this route uses joi validator
 router.post('/user/create', validateBody(loginSchema), adminController.createAccount);
 router.patch('/user/:id', adminController.updateAccount);
 router.delete('/user/:id', adminController.deleteAccount);
 
 router.patch('/changePassword', adminController.changePassword);
+
+// login isLogged and logout use session info.
 router.post('/login', adminController.login);
 router.post('/isLogged', adminController.isLogged);
 router.post('/logout', adminController.logout);

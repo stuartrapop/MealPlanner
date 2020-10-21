@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
 
+// rules for password validation
 const complexityOptions = {
   min: 5,
   max: 30,
@@ -17,7 +18,6 @@ const loginSchema = Joi.object({
   userName: Joi.string().required(),
   email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'fr'] } }).required(),
   password: passwordComplexity(complexityOptions),
-  // password: Joi.string().min(5).required(),
 });
 
 module.exports = loginSchema;

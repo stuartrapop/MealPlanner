@@ -3,11 +3,15 @@ const { Review, User, Recipe } = require('../models');
 const reviewController = {
   // les cards d'une liste
   allReviews: async (req, res) => {
-    const reviews = await Review.findAll({
-
-    });
+    try {
+      const reviews = await Review.findAll();
       // on renvoie les cartes
-    res.json(reviews);
+      res.json(reviews);
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
   },
   oneReview: async (req, res) => {
     try {
