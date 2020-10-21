@@ -62,6 +62,8 @@ router.delete('/user/:id', adminController.deleteAccount);
 
 router.patch('/changePassword', adminController.changePassword);
 router.post('/login', adminController.login);
+router.post('/isLogged', adminController.isLogged);
+router.post('/logout', adminController.logout);
 
 router.use(adminController.notFound);
 

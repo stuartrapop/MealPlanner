@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 
 const bodyParser = require('body-parser');
 
@@ -9,6 +10,19 @@ const cors = require('cors');
 const router = require('./app/router');
 
 app.use(bodyParser.json());
+
+app.use(session(
+  {
+    secret: 'g5g48er7gergGER',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true, // stops access to cookies from the client
+      secure: false, // HTTPS is not required with false
+      maxAge: 1000 * 60 * 60 * 24, // cookie life in seconds. This maxage is 1 day.
+    },
+  },
+));
 
 // middleware CORS authorize API access from anywhere
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));

@@ -9,6 +9,22 @@ const adminController = {
     res.status = 404;
     res.json({ error: 'page not found' });
   },
+
+  isLogged: (req, res) => {
+    console.log('>> POST /isLogged', req.session.user);
+    if (req.session.user) {
+      res.json({ logged: true, pseudo: req.session.user.userName });
+    }
+    else {
+      res.json({ logged: false });
+    }
+  },
+
+  logout: (req, res) => {
+    req.session.destroy();
+    res.json({ logged: false });
+  },
+
   login: async (req, res) => {
     try {
       const { email } = req.body;
@@ -27,7 +43,9 @@ const adminController = {
         console.log('in compare result', result);
 
         if (result) {
-          res.json(user);
+          req.session.user = user;
+          console.log('<< 200 OK', user);
+          res.json({ logged: true, pseudo: user.userName });
         }
         else {
           res.status(404).json({ error: 'wrong password' });
