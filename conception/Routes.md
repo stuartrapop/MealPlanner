@@ -17,6 +17,8 @@
 | -------- | ---- | ---------- |
 | /        | GET | Description of API  |
 | /login        | GET | verify email and password  |
+| /isLogged       | POST| check if user is logged using express-session  |
+| /logout       | POST | remove express-session cookie connection  |
 | /createAccount        | POST | verify email and password  |
 | /changePassword        | PATCH | verify email and password  |
 | /users  | GET | See all users   |

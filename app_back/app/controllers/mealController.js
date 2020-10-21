@@ -136,7 +136,7 @@ const mealController = {
 
   // delete Meal route callback
   deleteMealUtil: async (mealId) => {
-    try {    
+    try {
       const meal = await Meal.findByPk(mealId, {
         include: ['recipes', 'group'],
       });

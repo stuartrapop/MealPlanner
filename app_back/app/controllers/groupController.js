@@ -1,4 +1,4 @@
-const { Group, User, Meal } = require('../models');
+const { Group, User } = require('../models');
 const mealController = require('./mealController');
 
 const groupController = {

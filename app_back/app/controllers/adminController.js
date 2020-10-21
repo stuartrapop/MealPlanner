@@ -86,10 +86,10 @@ const adminController = {
               lastName: userDetails.lastName,
               userName: userDetails.userName,
             },
-          ).then((user) => {
+          ).then((updatedUser) => {
             // send the details or not found
-            if (user) {
-              res.json(user);
+            if (updatedUser) {
+              res.json(updatedUser);
             }
           }).catch((error) => {
             console.log(error);
@@ -128,12 +128,12 @@ const adminController = {
         bcrypt.hash(userDetails.password, salt, (err, hash) => {
           userDetails.password = hash;
 
-          const user = User.create(
+          User.create(
             userDetails,
-          ).then((user) => {
+          ).then((createdUser) => {
             // send the details or not found
-            if (user) {
-              res.json(user);
+            if (createdUser) {
+              res.json(createdUser);
             }
             else {
               res.status(404).json({ error: 'wrong password' });
@@ -196,10 +196,10 @@ const adminController = {
               userDetails.password = hash;
               user.update(
                 { password: `${userDetails.password}` },
-              ).then((user) => {
+              ).then((updatedUser) => {
                 // send the details or not found
-                if (user) {
-                  res.json(user);
+                if (updatedUser) {
+                  res.json(updatedUser);
                 }
               }).catch((error) => {
                 console.log(error);
