@@ -1,4 +1,5 @@
-const { Group, User } = require('../models');
+const { Group, User, Meal } = require('../models');
+const mealController = require('./mealController');
 
 const groupController = {
 
@@ -24,25 +25,17 @@ const groupController = {
   // function to associate a user to a group
   associateUser: async (userId, groupId, userRole) => {
     const group = await Group.findByPk(groupId);
-    if (!group) {
-      res.json({ error: 'group does not exist' });
-    }
+
     const user = await User.findByPk(userId);
-    if (!user) {
-      res.json({ error: 'user does not exist' });
-    }
+
     await group.addMembers(user, { through: { user_role: userRole } });
   },
   // function to remove a user from a group
   removeUser: async (userId, groupId) => {
     const group = await Group.findByPk(groupId);
-    if (!group) {
-      res.json({ error: 'group does not exist' });
-    }
+
     const user = await User.findByPk(userId);
-    if (!user) {
-      res.json({ error: 'user does not exist' });
-    }
+
     // on renvoie les cartes
     await group.removeMembers(user);
   },
@@ -195,16 +188,30 @@ const groupController = {
     try {
       const groupId = parseInt(req.params.id, 10);
       const group = await Group.findByPk(groupId, {
-        include: 'members',
+        include: [
+          'members',
+          {
+            association: 'meals',
+            include: [
+              {
+                association: 'recipes',
+                include: 'ingredients',
+              },
+            ],
+          },
+        ],
       });
-      for (const element of group.members) {
-        await groupController.removeUser(element.id, groupId);
-      }
 
       if (!group) {
         res.json({ error: 'group does not exist' });
       }
       else {
+        for (const element of group.members) {
+          await groupController.removeUser(element.id, groupId);
+        }
+        for (const meal of group.meals) {
+          await mealController.deleteMealUtil(meal.id);
+        }
         await group.destroy();
         res.json({ message: 'group deleted' });
       }

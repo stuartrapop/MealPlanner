@@ -32,13 +32,9 @@ const mealController = {
   // function to associate a recipe to a meal
   associateRecipe: async (recipeId, mealId, numberPeople) => {
     const recipe = await Recipe.findByPk(recipeId);
-    if (!recipe) {
-      res.json({ error: 'recipe does not exist' });
-    }
+
     const meal = await Meal.findByPk(mealId);
-    if (!meal) {
-      res.json({ error: 'meal does not exist' });
-    }
+
     await meal.addRecipes(recipe, { through: { numberPeople } });
   },
   // les cards d'une liste
@@ -138,7 +134,25 @@ const mealController = {
     }
   },
 
-  // delete Meal
+  // delete Meal route callback
+  deleteMealUtil: async (mealId) => {
+    try {    
+      const meal = await Meal.findByPk(mealId, {
+        include: ['recipes', 'group'],
+      });
+      for (const recipe of meal.recipes) {
+        const recipeInstance = await Recipe.findByPk(recipe.id);
+        await meal.removeRecipes(recipeInstance);
+      }
+      await meal.destroy();
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
+  },
+
+  // delete Meal route callback
   deleteMeal: async (req, res) => {
     try {
       const mealId = parseInt(req.params.id, 10);
