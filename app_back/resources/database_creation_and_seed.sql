@@ -124,7 +124,6 @@ CREATE TABLE "recipe_contains_ingredient" (
 );
 
 CREATE TABLE "meal_has_recipe" (
-
     "meal_id" INTEGER  REFERENCES "meal" ("id"),
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "number_people" INTEGER  NOT NULL,
@@ -194,13 +193,13 @@ VALUES
 
 INSERT INTO  "meal" ("id", "day" , "time", "group_id" ) OVERRIDING SYSTEM VALUE
 VALUES 
-(1, '18/10/15', 'lunch', 1 ),
-(2, '18/10/15', 'dinner', 1 ),
-(3, '20/10/15', 'lunch', 1 ),
-(4, '21/10/15', 'dinner', 1 ),
-(5, '18/10/15', 'lunch', 2 ),
-(6, '19/10/15', 'lunch', 2 ),
-(7, '22/10/15', 'dinner', 2 );
+(1, '2020-10-15', 'lunch', 1 ),
+(2, '2020-10-16', 'dinner', 1 ),
+(3, '2020-10-17', 'lunch', 1 ),
+(4, '2020-10-18', 'dinner', 1 ),
+(5, '2020-10-19', 'lunch', 2 ),
+(6, '2020-10-20', 'lunch', 2 ),
+(7, '2020-10-21', 'dinner', 2 );
 
 
 
