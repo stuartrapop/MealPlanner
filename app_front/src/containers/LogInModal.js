@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleToggleLogInComponent: () => {
     dispatch(toggleLogInComponent());
-  }
+  },
 });
 
 // Container

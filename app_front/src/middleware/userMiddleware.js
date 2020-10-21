@@ -9,7 +9,6 @@ import {
   sendErrorMessage,
   HANDLE_SIGN_IN,
   signIn,
-  TOGGLE_LOG_IN_COMPONENT,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
