@@ -21,6 +21,7 @@ CREATE TABLE "user" (
     "last_name" VARCHAR(50) NOT NULL,
     "user_name" VARCHAR(20) NOT NULL,
     "password" VARCHAR(70) NOT NULL,
+    "account_role" VARCHAR (20) NOT NULL,
     "email" VARCHAR(50) NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMP
@@ -161,14 +162,15 @@ VALUES
 (16, 'carrottes',  true, false, false );
 
 
-INSERT INTO  "user" ("id", "first_name", "last_name", "user_name", "password", "email" )  OVERRIDING SYSTEM VALUE
+INSERT INTO  "user" ("id", "first_name", "last_name", "user_name", "password", "account_role", "email" )  OVERRIDING SYSTEM VALUE
 VALUES 
-(1, 'Pierre', 'Dupont', 'pierre1','French', 'pierre@gmail.com'),
-(2, 'Alice', 'Dupont', 'alice1','French1', 'alice@gmail.com'),
-(3, 'Carole', 'Dupont', 'carole1','French2', 'carole@gmail.com'),
-(4, 'Thierry', 'Dupont', 'thierry1','French3', 'thierry@gmail.com'),
-(5, 'Virgil', 'Kwiatkowski', 'virgil1','Polish1', 'virgilkwiatkowski@gmail.com'),
-(6, 'Clément', 'Herpe', 'clement1','German1', 'clement@gmail.com');
+(1, 'Stuart', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'admin', 'stuart@gmail.com'),
+(2, 'Virgil', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'admin', 'virgil@gmail.com'),
+(3, 'Clément', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'admin', 'clement@gmail.com'),
+(4, 'Stuart1', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'stuart1@gmail.com'),
+(5, 'Virgil1', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'user', 'virgil1@gmail.com'),
+(6, 'Clément2', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com');
+
 
 
 INSERT INTO  "recipe" ("id", "title" , "url","difficulty", "instructions" , "cooking_time","number_people", "user_id" ) 
