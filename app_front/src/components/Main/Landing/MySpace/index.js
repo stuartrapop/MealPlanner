@@ -4,12 +4,17 @@ import Planning from './Planning';
 
 import './styles.scss';
 
-const MySpace = () => (
-  <div className="myspace__container">
-    <AddMeal />
-    <Planning />
-    <a>Génerer ma liste de courses</a>
-  </div>
-);
+const MySpace = ({ fetchAllGroupsData }) => {
+  useEffect(() => {
+    fetchAllGroupsData();
+  }, []);
+  return (
+    <div className="myspace__container">
+      <AddMeal />
+      <Planning />
+      <a>Génerer ma liste de courses</a>
+    </div>
+  );
+};
 
 export default MySpace;
