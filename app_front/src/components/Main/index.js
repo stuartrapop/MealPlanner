@@ -8,14 +8,13 @@ import {
 import Recipes from '../../containers/Recipes';
 import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
-import Landing from './Landing';
-import MySpace from './MySpace';
+import Landing from '../../containers/Landing';
 import CreateAccount from './CreateAccount';
+import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 
 // == Import
 import './styles.scss';
 import groups from '../../../data/groups';
-import AddMealModal from './MySpace/AddMeal/AddMealModal';
 
 // == Composant
 const Main = () => (
@@ -24,9 +23,6 @@ const Main = () => (
       <Switch>
         <Route path="/" exact>
           <Landing />
-        </Route>
-        <Route path="/mon-espace" exact>
-          <MySpace />
         </Route>
         <Route path="/recette/1">
           <Recipe />

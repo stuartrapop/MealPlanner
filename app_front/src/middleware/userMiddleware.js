@@ -5,34 +5,40 @@ import axios from 'axios';
 import {
   LOG_IN,
   CHECK_IS_LOGGED,
-  LOG_OUT,
   saveUser,
-} from 'src/actions/user';
+  sendErrorMessage,
+  HANDLE_SIGN_IN,
+  signIn,
+} from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
+  const state = store.getState();
   switch (action.type) {
     // Sur l'action de LOG_IN, je tente de me connecter
     case LOG_IN:
       // Je récupère les valeurs des champs email et password
       // Depuis le state du store
-      const state = store.getState();
-      const { email, password } = state.user;
-      axios.post('http://localhost:3000/login', { email, password }, { withCredentials: true })
+      const { logInEmail, logInPassword } = state.user;
+      let email = logInEmail;
+      let password = logInPassword;
+      axios.post('http://3.127.235.222:3000/login', { email, password }, { withCredentials: true })
         .then((response) => {
           const newObject = {
             isLogged: true,
             pseudo: response.data.userName,
           };
           store.dispatch(saveUser(newObject.pseudo, newObject.isLogged));
-          console.log(response.data);
           next(action);
         })
         .catch((e) => {
           console.error(e);
+          let { logInError } = state.user;
+          logInError = true;
+          store.dispatch(sendErrorMessage(logInError));
         });
       break;
     case CHECK_IS_LOGGED:
-      axios.post('http://localhost:3000/isLogged', {}, {
+      axios.post('http://3.127.235.222:3000/isLogged', {}, {
         // Sert à envoyer le cookie au serveur
         // Sans ça, le serveur ne nous connais plus
         withCredentials: true,
@@ -44,15 +50,21 @@ const userMiddleware = (store) => (next) => (action) => {
           console.error(e);
         });
       break;
-    case LOG_OUT:
-      axios.post('http://localhost:3000/logout', {}, {
-        withCredentials: true,
-      })
+    case HANDLE_SIGN_IN:
+      const { firstName, lastName, userName } = state.user;
+      email = state.user.email;
+      password = state.user.password;
+      axios.post('http://3.127.235.222:3000/user/create', {
+        email, password, firstName, lastName, userName,
+      }, { withCredentials: true })
         .then(() => {
+          const signInWentSuccesfully = true;
+          store.dispatch(signIn(signInWentSuccesfully, []));
           next(action);
         })
         .catch((e) => {
-          console.error(e);
+          const signInWentSuccesfully = false;
+          store.dispatch(signIn(signInWentSuccesfully, e.response.data.details));
         });
       break;
     default:

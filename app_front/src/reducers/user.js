@@ -2,13 +2,25 @@
 import {
   CHANGE_LOGIN_FIELD_VALUE,
   SAVE_USER,
+  SEND_ERROR_MESSAGE,
   LOG_OUT,
-} from 'src/actions/user';
+  SIGN_IN,
+  TOGGLE_LOG_IN_COMPONENT,
+} from '../actions/user';
 
 export const initialState = {
+  logInEmail: '',
+  logInPassword: '',
   email: '',
   password: '',
+  firstName: '',
+  lastName: '',
+  userName: '',
   isLogged: false,
+  logInError: false,
+  signInWentSuccesfully: null,
+  displaySignInComponent: false,
+  errorMessage: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -19,18 +31,38 @@ const userReducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
     case SAVE_USER:
-      console.log(action);
       const newState = {
         ...state,
         email: '',
         password: '',
         isLogged: action.isLogged,
         pseudo: action.pseudo,
+        logInError: false,
+        signInWentSuccesfully: null,
       };
       return newState;
+    case SEND_ERROR_MESSAGE:
+      return {
+        ...state,
+        logInError: action.logInError,
+      };
     case LOG_OUT:
       return {
-        ...initialState,
+        ...state,
+        isLogged: action.isLogged,
+      };
+    case SIGN_IN:
+      return {
+        ...state,
+        signInWentSuccesfully: action.signInWentSuccesfully,
+        errorMessage: action.errorMessage,
+      };
+    case TOGGLE_LOG_IN_COMPONENT:
+      return {
+        ...state,
+        displaySignInComponent: !state.displaySignInComponent,
+        logInError: false,
+        signInWentSuccesfully: null,
       };
     default:
       return state;
