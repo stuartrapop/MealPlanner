@@ -11,6 +11,8 @@ import {
   signIn,
 } from '../actions/user';
 
+axios.defaults.withCredentials = true;
+
 const userMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   switch (action.type) {
@@ -23,11 +25,7 @@ const userMiddleware = (store) => (next) => (action) => {
       let password = logInPassword;
       axios.post('http://3.127.235.222:3000/login', { email, password }, { withCredentials: true })
         .then((response) => {
-          const newObject = {
-            isLogged: true,
-            pseudo: response.data.userName,
-          };
-          store.dispatch(saveUser(newObject.pseudo, newObject.isLogged));
+          store.dispatch(saveUser(response.data));
           next(action);
         })
         .catch((e) => {
@@ -43,6 +41,7 @@ const userMiddleware = (store) => (next) => (action) => {
         // Sans ça, le serveur ne nous connais plus
         withCredentials: true,
       }).then((response) => {
+        console.log(response.data);
         store.dispatch(saveUser(response.data));
         next(action);
       })

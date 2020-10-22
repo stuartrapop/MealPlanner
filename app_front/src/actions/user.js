@@ -20,10 +20,9 @@ export const logIn = () => ({
   type: LOG_IN,
 });
 
-export const saveUser = (pseudo, isLogged) => ({
+export const saveUser = (data) => ({
   type: SAVE_USER,
-  pseudo,
-  isLogged,
+  data,
 });
 
 export const checkIsLogged = () => ({

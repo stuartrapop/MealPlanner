@@ -33,10 +33,10 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_USER:
       const newState = {
         ...state,
-        email: '',
-        password: '',
-        isLogged: action.isLogged,
-        pseudo: action.pseudo,
+        logInEmail: '',
+        logInPassword: '',
+        isLogged: action.data.isLogged,
+        pseudo: action.data.pseudo,
         logInError: false,
         signInWentSuccesfully: null,
       };
