@@ -5,19 +5,19 @@ const sequelize = require('../database');
 class Meal extends Model {}
 
 Meal.init({
-      day: {
-        type: DataTypes.DATE,
-        allowNull: false
-      },
-      time: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
+  day: {
+    type: DataTypes.DATE,
+    allowNull: false,
   },
-    {
-    sequelize,
-    tableName: 'meal'
+  time: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+
+},
+{
+  sequelize,
+  tableName: 'meal',
 });
 
 module.exports = Meal;
