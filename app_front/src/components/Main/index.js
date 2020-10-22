@@ -10,6 +10,7 @@ import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 import Landing from '../../containers/Landing';
 import CreateAccount from './CreateAccount';
+import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 
 import Recipes from './Recipes';
 
@@ -17,7 +18,6 @@ import Recipes from './Recipes';
 import './styles.scss';
 import recipes from '../../../data/recipes';
 import groups from '../../../data/groups';
-import AddMealModal from './MySpace/AddMeal/AddMealModal';
 
 // == Composant
 const Main = () => (

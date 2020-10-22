@@ -8,6 +8,7 @@ export const LOG_OUT = 'LOG_OUT';
 export const HANDLE_SIGN_IN = 'HANDLE_SIGN_IN';
 export const SIGN_IN = 'SIGN_IN';
 export const TOGGLE_LOG_IN_COMPONENT = 'TOGGLE_LOG_IN_COMPONENT';
+export const SHOW_ERROR_MESSAGE = 'SHOW_ERROR_MESSAGE';
 
 export const changeLoginFieldValue = (value, name) => ({
   type: CHANGE_LOGIN_FIELD_VALUE,
@@ -47,9 +48,10 @@ export const handleSignIn = () => ({
   type: HANDLE_SIGN_IN,
 });
 
-export const signIn = (signInWentSuccesfully) => ({
+export const signIn = (signInWentSuccesfully, errorMessage) => ({
   type: SIGN_IN,
   signInWentSuccesfully,
+  errorMessage,
 });
 
 export const toggleLogInComponent = () => ({

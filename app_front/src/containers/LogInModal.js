@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   logInError: state.user.logInError,
   signInWentSuccesfully: state.user.signInWentSuccesfully,
   displaySignInComponent: state.user.displaySignInComponent,
+  errorMessage: state.user.errorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

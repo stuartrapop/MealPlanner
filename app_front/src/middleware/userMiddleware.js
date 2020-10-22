@@ -21,7 +21,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { logInEmail, logInPassword } = state.user;
       let email = logInEmail;
       let password = logInPassword;
-      axios.post('http://localhost:3000/login', { email, password }, { withCredentials: true })
+      axios.post('http://3.127.235.222:3000/login', { email, password }, { withCredentials: true })
         .then((response) => {
           const newObject = {
             isLogged: true,
@@ -38,7 +38,7 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
     case CHECK_IS_LOGGED:
-      axios.post('http://localhost:3000/isLogged', {}, {
+      axios.post('http://3.127.235.222:3000/isLogged', {}, {
         // Sert à envoyer le cookie au serveur
         // Sans ça, le serveur ne nous connais plus
         withCredentials: true,
@@ -54,18 +54,17 @@ const userMiddleware = (store) => (next) => (action) => {
       const { firstName, lastName, userName } = state.user;
       email = state.user.email;
       password = state.user.password;
-      axios.post('http://localhost:3000/user/create', {
+      axios.post('http://3.127.235.222:3000/user/create', {
         email, password, firstName, lastName, userName,
       }, { withCredentials: true })
         .then(() => {
           const signInWentSuccesfully = true;
-          store.dispatch(signIn(signInWentSuccesfully));
+          store.dispatch(signIn(signInWentSuccesfully, []));
           next(action);
         })
         .catch((e) => {
           const signInWentSuccesfully = false;
-          console.error(e);
-          store.dispatch(signIn(signInWentSuccesfully));
+          store.dispatch(signIn(signInWentSuccesfully, e.response.data.details));
         });
       break;
     default:

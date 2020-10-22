@@ -20,6 +20,7 @@ export const initialState = {
   logInError: false,
   signInWentSuccesfully: null,
   displaySignInComponent: false,
+  errorMessage: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -54,6 +55,7 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         signInWentSuccesfully: action.signInWentSuccesfully,
+        errorMessage: action.errorMessage,
       };
     case TOGGLE_LOG_IN_COMPONENT:
       return {

@@ -24,6 +24,7 @@ const LogInModal = ({
   signInWentSuccesfully,
   handleToggleLogInComponent, // fonction pour toggle le formulaire visible
   displaySignInComponent, // boolean représentant quel formulaire est affiché
+  errorMessage, // tableau qui contient l'erreur retournée par le serveur dans la case message
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -43,8 +44,7 @@ const LogInModal = ({
     handleSignin();
   };
 
-  const toggleLogInComponent = (evt) => {
-    evt.preventDefault();
+  const toggleLogInComponent = () => {
     handleToggleLogInComponent();
   };
 
@@ -64,7 +64,7 @@ const LogInModal = ({
             <Input onChange={handleChange} name="logInPassword" type="password" placeholder="Mot de passe" value={logInPassword} />
             <div className="login__form__button__container">
               <Button primary type="submit" className="login-form-button" onClick={handleLoginClick}>Se Connecter</Button>
-              <Button secondary type="submit" className="login-form-button" onClick={toggleLogInComponent}>Créer un compte</Button>
+              <Button secondary className="login-form-button" onClick={toggleLogInComponent}>Créer un compte</Button>
             </div>
           </form>
         )}
@@ -74,7 +74,9 @@ const LogInModal = ({
         )}
 
         {signInWentSuccesfully === false && (
-        <p className="logIn__error">Une erreur s'est produite, trouvez où et recommencez</p>
+          errorMessage.map((error) => (
+            <p className="logIn__error">{error.message}</p>
+          ))
         )}
 
         {displaySignInComponent && (
@@ -85,7 +87,7 @@ const LogInModal = ({
             <Input onChange={handleChange} name="lastName" type="text" placeholder="Nom" value={lastName} />
             <Input onChange={handleChange} name="userName" type="text" placeholder="Pseudo" value={userName} />
             <div className="login__form__button__container">
-              <Button secondary type="submit" className="login-form-button" onClick={toggleLogInComponent}>Se Connecter</Button>
+              <Button secondary className="login-form-button" onClick={toggleLogInComponent}>Se Connecter</Button>
               <Button primary type="submit" className="login-form-button" onClick={handleSigninClick}>Créer un compte</Button>
             </div>
           </form>
@@ -116,6 +118,7 @@ LogInModal.propTypes = {
   signInWentSuccesfully: PropTypes.bool.isRequired,
   handleToggleLogInComponent: PropTypes.func.isRequired,
   displaySignInComponent: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.array.isRequired,
 };
 
 // == Export
