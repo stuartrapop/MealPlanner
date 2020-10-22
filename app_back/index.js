@@ -19,13 +19,14 @@ app.use(session(
     cookie: {
       httpOnly: true, // stops access to cookies from the client
       secure: false, // HTTPS is not required with false
-      maxAge: 1000 * 60 * 60 * 24, // cookie life in seconds. This maxage is 1 day.
+      maxAge: 1000 * 60 * 60 * 24, // cookie life in seconds. This maxAge is 1 day.
     },
   },
 ));
 
 // middleware CORS authorize API access from anywhere
-app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+// app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+app.use(cors({ credentials: true }));
 
 // for handling post encoded data
 app.use(express.urlencoded({ extended: true }));

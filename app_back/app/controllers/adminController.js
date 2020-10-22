@@ -52,7 +52,7 @@ const adminController = {
           res.json({ isLogged: true, pseudo: user.userName, userId: user.id });
         }
         else {
-          res.status(404).json({ error: 'wrong password' });
+          res.status(401).json({ error: 'wrong password' });
         }
       });
     }
@@ -77,7 +77,7 @@ const adminController = {
         where: { email: `${userDetails.email}` },
       });
       if (!user) {
-        res.status(404).json({ error: 'email not in database' });
+        res.status(401).json({ error: 'email not in database' });
       }
 
       await bcrypt.compare(userDetails.password, user.password).then((result) => {
@@ -101,7 +101,7 @@ const adminController = {
           });
         }
         else {
-          res.status(404).json({ error: 'wrong password' });
+          res.status(401).json({ error: 'wrong password' });
         }
       });
     }
@@ -126,7 +126,7 @@ const adminController = {
         where: { email: `${userDetails.email}` },
       });
       if (emailCheck) {
-        res.status(404).json({ error: 'email already in database' });
+        res.status(401).json({ error: 'email already in database' });
       }
 
       await bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -145,7 +145,7 @@ const adminController = {
               });
             }
             else {
-              res.status(404).json({ error: 'wrong password' });
+              res.status(401).json({ error: 'wrong password' });
             }
           }).catch((error) => {
             console.log(error);
@@ -172,7 +172,7 @@ const adminController = {
         res.json({ message: 'user successfuly destroied' });
       }
       else {
-        res.status(404).json({ error: 'user not found' });
+        res.status(401).json({ error: 'user not found' });
       }
     }
     catch (error) {
@@ -193,7 +193,7 @@ const adminController = {
         where: { email: `${userDetails.email}` },
       });
       if (!user) {
-        res.status(404).json({ error: 'email not in database' });
+        res.status(401).json({ error: 'email not in database' });
       }
 
       await bcrypt.compare(userDetails.oldPassword, user.password).then((result) => {
@@ -218,7 +218,7 @@ const adminController = {
           });
         }
         else {
-          res.status(404).json({ error: 'wrong password' });
+          res.status(401).json({ error: 'wrong password' });
         }
       });
     }
