@@ -31,7 +31,13 @@ const userController = {
       });
       // send the details or not found
       if (user) {
-        res.json(user);
+        res.json({
+          userId: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          userName: user.userName,
+          groups: user.groups,
+        });
       }
       else {
         res.status(404).json({ error: 'user not found' });

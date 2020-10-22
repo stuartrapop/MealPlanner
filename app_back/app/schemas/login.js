@@ -16,6 +16,7 @@ const loginSchema = Joi.object({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   userName: Joi.string().required(),
+  accountRole: Joi.string(),
   email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'fr'] } }).required(),
   password: passwordComplexity(complexityOptions),
 });

@@ -118,6 +118,7 @@ const adminController = {
         lastName: req.body.lastName,
         userName: req.body.userName,
         email: req.body.email,
+        accountRole: req.body.accountRole || 'user',
         password: req.body.password,
       };
 
@@ -137,7 +138,11 @@ const adminController = {
           ).then((createdUser) => {
             // send the details or not found
             if (createdUser) {
-              res.json(createdUser);
+              res.json({
+                isLogged: false,
+                pseudo: createdUser.userName,
+                userId: createdUser.id,
+              });
             }
             else {
               res.status(404).json({ error: 'wrong password' });
