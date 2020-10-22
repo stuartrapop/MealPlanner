@@ -1,13 +1,45 @@
 @use "src/styles/vars" as v;
 
 .all__recipes {
-  background-color: v.$primary-green;
+  background-color: white;
   margin : 0 auto;
-}
-.one__recipe__image {
-  height : 250px;
 }
 
 #card {
-  margin : 1em auto;
+  margin : 1.5em auto;
+  box-shadow: 0 6PX 9PX RGBA(0, 0, 0, 0.15);
+  background-color: #fefefe;
+  &__title {
+    margin: 0.5em;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  &__rate {
+    background-color: v.$primary-green;
+  color : white;
+  }
 }  
+
+
+@media (min-width: 1200px) {
+  .all__recipes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #card {
+    width : 30%;
+    margin : 2rem auto;
+  }
+  .card__title {
+    margin : 2rem 0;
+  }
+  .card__image {
+    max-height: 30%;
+  }
+  .card__rate {
+    padding : 1rem 0;
+  }
+
+
+  
+ }

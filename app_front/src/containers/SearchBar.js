@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
+import SearchBar from '../components/Main/Recipes/SearchBar';
+
 import {
   startSearch,
   updateSelection,
   displaySelection,
-} from 'src/actions/searchBar';
-
-import SearchBar from 'src/components/Main/Recipes/SearchBar';
+} from '../actions/searchBar';
 
 const mapStateToProps = (state) => ({
   loading: state.searchBar.loading,
-  results: state.user.results,
   value: state.searchBar.value,
 });
 
@@ -26,10 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // Container
-const SearchBarContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SearchBar);
+const SearchBarContainer = connect(mapStateToProps, mapDispatchToProps)(SearchBar);
 
 // == Export
 export default SearchBarContainer;

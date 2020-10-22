@@ -1,0 +1,25 @@
+@use "src/styles/vars" as v;
+
+.form {
+  &__title {
+    font-size: 1.3em;
+  }
+  
+}
+
+@media (min-width: 1200px) {
+  .form {
+    margin-bottom: 1rem;
+    box-shadow: 0 6PX 9PX RGBA(0, 0, 0, 0.15);
+    text-align: center;
+    &__title {
+      font-size: 2rem;
+    }
+  }
+  .input {
+    width : 80%
+  }
+
+
+  
+ }

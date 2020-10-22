@@ -2,16 +2,18 @@ import axios from 'axios';
 import {
   UPDATE_SELECTION,
   displaySelection,
-} from 'src/actions/searchBar';
+} from '../actions/searchBar';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case UPDATE_SELECTION:      
+    case UPDATE_SELECTION:
       axios.get('http://localhost:3000/recipes')
         .then((response) => {
-          console.log(value);
-          const filteredValue = response.data;
-          store.dispatch(displaySelection(filteredValue));
+          const userInput = action.text.toLowerCase();
+          const values = response.data.map((data) => data.title);
+          store.dispatch(displaySelection(values));
+
+          console.log(userInput, values);
           // next(action);
         })
         .catch((e) => {

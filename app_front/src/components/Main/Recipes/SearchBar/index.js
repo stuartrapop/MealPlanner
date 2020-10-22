@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Icon, Input } from 'semantic-ui-react';
 import './styles.scss';
 
 const SearchBar = ({
@@ -17,24 +17,18 @@ const SearchBar = ({
     updatedSelection(value);
   };
   return (
-    <div className="jumbotron jumbotron-fluid mt-5 text-center">
-      <div className="container">
-        <h1 className="display-4 mb-3">
-          <i className="fa fa-search" /> Recherchez une recette
-        </h1>
-        <form id="searchForm" onSubmit={handleOnSubmit}>
-          <input
-            type="text"
-            className="form-control"
-            name="searchText"
-            placeholder="Search Movies, TV Series ..."
-            onChange={handleOnChange}
-          />
-          <button type="submit" className="btn btn-primary btn-bg mt-3">
-            Search
-          </button>
-        </form>
-      </div>
+    <div className="form">
+      <h2 className="form__title">Trouvez la recette de vos rêves !</h2>
+      <form id="form__searchBar" onSubmit={handleOnSubmit}>
+        <Input
+          id="form__input"
+          onChange={handleOnChange}
+          type="text"
+          name="recipes"
+          placeholder="Fondue savoyarde..."
+          icon={<Icon name="search" inverted circular link />}
+        />
+      </form>
     </div>
   );
 };

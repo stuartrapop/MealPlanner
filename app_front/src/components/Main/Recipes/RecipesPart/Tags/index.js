@@ -13,10 +13,10 @@ const Tags = ({ tag }) => (
   </Card.Meta>
 );
 
-Tags.propTypes = {
-  tag: PropTypes.arrayOf(
-    PropTypes.string,
-  ).isRequired,
-};
+// Tags.propTypes = {
+//   tag: PropTypes.arrayOf(
+//     PropTypes.string,
+//   ).isRequired,
+// };
 
 export default Tags;

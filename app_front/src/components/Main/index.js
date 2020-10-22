@@ -5,18 +5,15 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-
+import Recipes from '../../containers/Recipes';
 import Recipe from './Recipe';
 import GroupsPage from './GroupsPage';
 import Landing from './Landing';
 import MySpace from './MySpace';
 import CreateAccount from './CreateAccount';
 
-import Recipes from './Recipes';
-
 // == Import
 import './styles.scss';
-import recipes from '../../../data/recipes';
 import groups from '../../../data/groups';
 import AddMealModal from './MySpace/AddMeal/AddMealModal';
 
@@ -32,7 +29,7 @@ const Main = () => (
           <MySpace />
         </Route>
         <Route path="/recette/1">
-          <Recipe recipes={recipes} />
+          <Recipe />
         </Route>
         <Route path="/mon-espace/groupe" exact>
           <GroupsPage groups={groups} />
