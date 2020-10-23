@@ -5,10 +5,10 @@ import { Icon, Button, Dropdown } from 'semantic-ui-react';
 import './styles.scss';
 
 const AddMeal = ({ groups }) => {
-  const groupOptions2 = groups.groups.map((group) => ({
+  const groupOptions = groups.groups.map((group) => ({
     key: group.id,
     text: group.name,
-    value: group.name,
+    value: group.id,
   }));
 
   let meals;
@@ -34,20 +34,23 @@ const AddMeal = ({ groups }) => {
                 Ajouter un créneau
               </div>
               <div className="add__meal--right">
-                <Dropdown placeholder="Ardèche" fluid selection options={groupOptions2} />
+                <Dropdown placeholder="Groupe" fluid selection options={groupOptions} />
               </div>
             </div>
             {meals.map((meal) => (
-              <ul className="scheduled__meal">{meal.slug}
-                <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus circle" /> Ajouter une recette</li>
-                {meal.scheduledRecipes.map((recipe) => (
-                  <>
-                    <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus circle" />
-                      {recipe.title} <br /> {recipe.number_people} personnes
-                    </li>
-                  </>
-                ))}
-              </ul>
+              <div key={meal.key}>
+                {meal.slug} <Icon id="remove__meal__icon" name="minus circle" />
+                <ul className="scheduled__meal">
+                  <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus circle" /> Ajouter une recette</li>
+                  {meal.scheduledRecipes.map((recipe) => (
+                    <div key={recipe.id + meal.mealDate}>
+                      <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus circle" />
+                        {recipe.title} <br /> {recipe.number_people} personnes
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+              </div>
             ))}
           </ul>
         </div>
