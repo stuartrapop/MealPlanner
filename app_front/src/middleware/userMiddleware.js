@@ -13,6 +13,9 @@ import {
 
 axios.defaults.withCredentials = true;
 
+// const APISERVER = 'https://amanger.com/api';
+const APISERVER = 'http://localhost:3000';
+
 const userMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   switch (action.type) {
@@ -23,7 +26,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { logInEmail, logInPassword } = state.user;
       let email = logInEmail;
       let password = logInPassword;
-      axios.post('http://3.127.235.222:3000/login', { email, password }, { withCredentials: true })
+      axios.post(`${APISERVER}/login`, { email, password }, { withCredentials: true })
         .then((response) => {
           store.dispatch(saveUser(response.data));
           next(action);
@@ -36,7 +39,7 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
     case CHECK_IS_LOGGED:
-      axios.post('http://3.127.235.222:3000/isLogged', {}, {
+      axios.post(`${APISERVER}/isLogged`, {}, {
         // Sert à envoyer le cookie au serveur
         // Sans ça, le serveur ne nous connais plus
         withCredentials: true,
@@ -53,7 +56,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { firstName, lastName, userName } = state.user;
       email = state.user.email;
       password = state.user.password;
-      axios.post('http://3.127.235.222:3000/user/create', {
+      axios.post(`${APISERVER}/user/create`, {
         email, password, firstName, lastName, userName,
       }, { withCredentials: true })
         .then(() => {

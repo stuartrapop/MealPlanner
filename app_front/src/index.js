@@ -1,4 +1,5 @@
 // == Import : npm
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,6 +11,8 @@ import App from '../src/containers/App';
 import store from '../src/store';
 
 import 'semantic-ui-css/semantic.min.css';
+
+
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)

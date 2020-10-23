@@ -3,16 +3,39 @@ const { User } = require('../models');
 const userController = {
   // les cards d'une liste
   allUsers: async (req, res) => {
-    const users = await User.findAll({
-      include: ['recipes', 'favorites'],
+    try {
+      if (req.session.user) {
+        if (req.session.user.accountRole !== 'admin') {
+          res.status(401).json({ error: 'you are not authorized to see this page' });
+        }
+      }
+      else {
+        res.status(401).json({ error: 'you must be connected and authorized to see this page' });
+      }
 
-    });
+      const users = await User.findAll({
+        include: ['recipes', 'favorites'],
+
+      });
       // on renvoie les cartes
-    res.json(users);
+      res.json(users);
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
   },
   oneUser: async (req, res) => {
     try {
       const userId = parseInt(req.params.id, 10);
+      if (req.session.user) {
+        if (req.session.user.id !== userId && req.session.user.accountRole !== 'admin') {
+          res.status(401).json({ error: 'you are not authorized to see this page' });
+        }
+      }
+      else {
+        res.status(401).json({ error: 'you must be connected and authorized to see this page' });
+      }
       const user = await User.findByPk(userId, {
         include: [ // include groups then meals then recipes then ingredients
           {
