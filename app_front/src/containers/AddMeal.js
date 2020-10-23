@@ -2,11 +2,17 @@ import { connect } from 'react-redux';
 
 import AddMeal from '../components/Main/Landing/MySpace/AddMeal';
 
+import { chooseGroup } from '../actions/groups';
+
 const mapStateToProps = (state) => ({
-  groups: state.groups.groups,
+  userInfos: state.groups.userInfos,
+  activeGroup: state.groups.activeGroup,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+  chooseGroup: (value) => {
+    dispatch(chooseGroup(value));
+  },
 });
 
 // Container

@@ -5,7 +5,6 @@ import { fetchGroupsDatasAction } from '../actions/groups';
 import MySpace from '../components/Main/Landing/MySpace';
 
 const mapStateToProps = (state) => ({
-  groups: state.groups.groups,
   loading: state.groups.loading,
 });
 

@@ -4,23 +4,29 @@ import { Icon, Button, Dropdown } from 'semantic-ui-react';
 
 import './styles.scss';
 
-const AddMeal = ({ groups }) => {
-  const groupOptions = groups.groups.map((group) => ({
+const AddMeal = ({ userInfos, activeGroup, chooseGroup }) => {
+  const groupOptions = userInfos.groups.map((group) => ({
     key: group.id,
     text: group.name,
     value: group.id,
   }));
 
-  let meals;
-  for (let i = 0; i < groups.groups.length; i++) {
-    meals = groups.groups[i].meals.map((meal) => ({
-      key: meal.id,
-      mealDate: meal.day,
-      mealType: meal.time,
-      slug: `${meal.day} ${meal.time}`,
-      scheduledRecipes: meal.recipes,
-    }));
-  }
+  const meals = userInfos.groups[activeGroup].meals.map((meal) => ({
+    key: meal.id,
+    mealDate: meal.day,
+    mealType: meal.time,
+    slug: `${meal.day} ${meal.time}`,
+    scheduledRecipes: meal.recipes,
+  }));
+
+  const handleChooseGroup = (evt) => {
+    const isTargetedGroup = (group) => (group.name === evt.target.textContent);
+    const targetedGroup = userInfos.groups.find(isTargetedGroup);
+    console.log(targetedGroup);
+    // il s'agit du groupe, il nous faut maintenant son index dans le tableau
+    const targetedGroupIndex = userInfos.groups.findIndex(isTargetedGroup);
+    chooseGroup(targetedGroupIndex);
+  };
 
   return (
     <div className="addmeal__container">
@@ -30,25 +36,26 @@ const AddMeal = ({ groups }) => {
           <ul className="scheduled__meals__container">
             <div className="add__meal__container">
               <div className="add__meal--left">
-                <Icon id="add__meal__icon" name="plus circle" size="large" />
+                <Icon id="add__meal__icon" name="plus square outline" size="large" />
                 Ajouter un créneau
               </div>
               <div className="add__meal--right">
-                <Dropdown placeholder="Groupe" fluid selection options={groupOptions} />
+                <Dropdown placeholder="Groupe" fluid selection options={groupOptions} onChange={handleChooseGroup} />
               </div>
             </div>
             {meals.map((meal) => (
               <div key={meal.key}>
-                {meal.slug} <Icon id="remove__meal__icon" name="minus circle" />
+                <Icon id="remove__meal__icon" name="trash alternate outline" /> <em>{meal.slug}</em>
                 <ul className="scheduled__meal">
-                  <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus circle" /> Ajouter une recette</li>
+                  <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" /></li>
                   {meal.scheduledRecipes.map((recipe) => (
                     <div key={recipe.id + meal.mealDate}>
-                      <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus circle" />
-                        {recipe.title} <br /> {recipe.number_people} personnes
+                      <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus" />
+                        {recipe.title} - <i>{recipe.number_people} personnes </i>
                       </li>
                     </div>
                   ))}
+                  <div className="recipe__small__separator" />
                 </ul>
               </div>
             ))}
