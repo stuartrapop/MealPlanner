@@ -17,9 +17,9 @@ app.use(session(
     resave: true,
     saveUninitialized: true,
     cookie: {
-      sameSite: 'none',
-      httpOnly: true, // stops access to cookies from the client
-      secure: false, // HTTPS is not required with false
+    secure: false,
+    httpOnly: true,
+    sameSite: 'none',		
       maxAge: 1000 * 60 * 60 * 24, // cookie life in seconds. This maxAge is 1 day.
     },
   },
