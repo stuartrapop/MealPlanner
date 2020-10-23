@@ -1,10 +1,12 @@
 import React from 'react';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
-
+import AddMealModal from './AddMealModal';
 import './styles.scss';
 
-const AddMeal = ({ userInfos, activeGroup, chooseGroup }) => {
+const AddMeal = ({
+  userInfos, activeGroup, chooseGroup, sendAddMealModalAction, mealModalDisplayed,
+}) => {
   const groupOptions = userInfos.groups.map((group) => ({
     key: group.id,
     text: group.name,
@@ -28,6 +30,10 @@ const AddMeal = ({ userInfos, activeGroup, chooseGroup }) => {
     chooseGroup(targetedGroupIndex);
   };
 
+  const toggleAddMealModal = () => {
+    sendAddMealModalAction();
+  };
+
   return (
     <div className="addmeal__container">
       <h1>Vos repas prévus</h1>
@@ -35,7 +41,7 @@ const AddMeal = ({ userInfos, activeGroup, chooseGroup }) => {
         <div>
           <ul className="scheduled__meals__container">
             <div className="add__meal__container">
-              <div className="add__meal--left">
+              <div className="add__meal--left" onClick={toggleAddMealModal}>
                 <Icon id="add__meal__icon" name="plus square outline" size="large" />
                 Ajouter un créneau
               </div>
@@ -66,6 +72,9 @@ const AddMeal = ({ userInfos, activeGroup, chooseGroup }) => {
           <Button inverted color="orange">Parcourir les recettes !</Button>
         </div>
       </div>
+      {mealModalDisplayed && (
+        <AddMealModal />
+      )}
     </div>
   );
 };

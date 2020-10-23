@@ -1,9 +1,10 @@
-import { SEND_GROUPS_DATAS, CHOOSE_GROUP } from '../actions/groups';
+import { SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL } from '../actions/groups';
 
 export const initialState = {
   userInfos: {},
   loading: true,
   activeGroup: 0,
+  mealModalDisplayed: false,
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -18,6 +19,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activeGroup: action.value,
+      };
+    case TOGGLE_MEAL_MODAL:
+      return {
+        ...state,
+        mealModalDisplayed: true,
       };
     default:
       return state;
