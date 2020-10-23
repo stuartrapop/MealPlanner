@@ -9,6 +9,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case UPDATE_SELECTION:
       axios.get('http://localhost:3000/recipes')
         .then((response) => {
+          console.log(response.data)
           const userInput = action.text.toLowerCase();
           const values = response.data.map((data) => data.title);
           store.dispatch(displaySelection(values));

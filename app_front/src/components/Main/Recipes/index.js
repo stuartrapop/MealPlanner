@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from '../../../containers/SearchBar';
+import SearchBar from './SearchBar';
 import RecipesPart from './RecipesPart';
 
 import './styles.scss';
 
-const Recipes = ({ fetchrecipes, recipes }) => {
+const Recipes = ({ changeDisplayRecipe, fetchrecipes, recipes }) => {
   useEffect(() => {
     fetchrecipes();
   }, []);
   return (
     <div>
       <SearchBar />
-      <RecipesPart recipes={recipes} />
+      <RecipesPart
+        recipes={recipes}
+        changeDisplayRecipe={changeDisplayRecipe}
+      />
     </div>
   );
 };

@@ -6,7 +6,8 @@ import rootReducer from '../reducers';
 import logMiddleware from '../middleware/logMiddleware';
 import userMiddleware from '../middleware/userMiddleware';
 import searchBarMiddleware from '../middleware/searchBarMiddleware';
-import recipeMiddleware from '../middleware/recipesMiddleware';
+import recipesMiddleware from '../middleware/recipesMiddleware';
+import recipeMiddleware from '../middleware/recipeMiddleware';
 import headerMiddleware from '../middleware/headerMiddleware';
 
 // == Enhancers
@@ -17,6 +18,7 @@ const enhancers = composeEnhancers(
     logMiddleware,
     userMiddleware,
     searchBarMiddleware,
+    recipesMiddleware,
     recipeMiddleware,
     // secondMiddleware,
     headerMiddleware,

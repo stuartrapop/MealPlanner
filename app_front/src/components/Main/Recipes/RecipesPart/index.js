@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
+import { getSlugFromTitle } from '../../../../selectors/recipes';
 import './styles.scss';
 import {
   Card,
@@ -10,29 +11,37 @@ import {
 
 // import Tags from './Tags';
 
-const RecipesPart = ({ recipes }) => (
-  <div className="all__recipes">
-    {recipes.map((recipe) => (
-      <Card id="card" key={recipe.id}>
-        <Image id="card__image" src={recipe.url} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header id="card__title">{recipe.title}</Card.Header>
-          {/* <Tags tag={recipe.tag} /> */}
-        </Card.Content>
-        <Card.Content extra id="card__rate">
-          <a>
-            <Icon name="star" />
-            <Icon name="star" />
-            <Icon name="star" />
-            <Icon name="star" />
-            <Icon name="star half" />
-            4.5/5
-          </a>
-        </Card.Content>
-      </Card>
-    ))}
-  </div>
-);
+const RecipesPart = ({ changeDisplayRecipe, recipes }) => {
+  const handleOnClick = (event) => {
+    changeDisplayRecipe(event.target.id, event.target.title);
+  };
+  return (
+    <div className="all__recipes">
+      {recipes.map((recipe) => (
+        <Card id="card" key={recipe.id}>
+          <Image id="card__image" src={recipe.url} wrapped ui={false} />
+          <Card.Content>
+            <Card.Header id="card__title">{recipe.title}</Card.Header>
+            {/* <Tags tag={recipe.tag} /> */}
+          </Card.Content>
+          <Card.Content extra id="card__rate">
+            <a>
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star half" />
+              4.5/5
+            </a>
+          </Card.Content>
+          <Card.Content>
+            <button onClick={handleOnClick} type="button"><Link to={`/recette/${getSlugFromTitle(recipe.title)}`} id={recipe.id} title={recipe.title}>Voir les détails</Link></button>
+          </Card.Content>
+        </Card>
+      ))}
+    </div>
+  );
+};
 
 RecipesPart.propTypes = {
   recipes: PropTypes.arrayOf(

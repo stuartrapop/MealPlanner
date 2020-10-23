@@ -5,9 +5,12 @@ import {
   UPDATE_SELECTION,
   DISPLAY_SELECTION,
 } from '../actions/searchBar';
+import {
+  SAVE_RECIPES,
+} from '../actions/recipes';
 
 export const initialState = {
-  loading: false,
+  loading: true,
   results: [],
   text: '',
 };
@@ -19,6 +22,11 @@ const searchBarReducer = (state = initialState, action = {}) => {
         ...state,
         loading: false,
         value: action.text,
+      };
+    case SAVE_RECIPES:
+      return {
+        ...state,
+        loading: false,
       };
     case DISPLAY_SELECTION:
       return {
