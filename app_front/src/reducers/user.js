@@ -11,6 +11,7 @@ import {
 export const initialState = {
   logInEmail: '',
   logInPassword: '',
+  id: 0,
   email: '',
   password: '',
   firstName: '',
@@ -35,6 +36,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         logInEmail: '',
         logInPassword: '',
+        id: action.data.userId,
         isLogged: action.data.isLogged,
         pseudo: action.data.pseudo,
         logInError: false,

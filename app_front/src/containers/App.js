@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { checkIsLogged } from '../actions/user';
 import App from '../components/App';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -6,7 +6,7 @@ import TargetPresentation from './TargetPresentation';
 import PresentationDetailed from './PresentationDetailed';
 
 import './styles.scss';
-import MySpace from './MySpace';
+import MySpace from '../../../containers/MySpace';
 
 const Landing = ({ isLogged }) => (
   <div className="landing__body">

@@ -8,6 +8,7 @@ import userMiddleware from '../middleware/userMiddleware';
 import searchBarMiddleware from '../middleware/searchBarMiddleware';
 import recipeMiddleware from '../middleware/recipesMiddleware';
 import headerMiddleware from '../middleware/headerMiddleware';
+import groupsMiddleware from '../middleware/groupsMiddleware';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -18,8 +19,8 @@ const enhancers = composeEnhancers(
     userMiddleware,
     searchBarMiddleware,
     recipeMiddleware,
-    // secondMiddleware,
     headerMiddleware,
+    groupsMiddleware,
   ),
 );
 
