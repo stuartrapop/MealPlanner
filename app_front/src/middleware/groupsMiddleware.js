@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 import axios from 'axios';
 import {
-  FETCH_GROUPS_DATAS, sendGroupsDatas, SEND_TARGETED_VALUES, saveNewMeal, fetchGroupsDatasAction
+  FETCH_GROUPS_DATAS, sendGroupsDatas, SEND_TARGETED_VALUES, saveNewMeal, fetchGroupsDatasAction,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -23,7 +23,6 @@ const groupsMiddleware = (store) => (next) => (action) => {
       const groupId = state.groups.activeGroupId;
       const day = choosenDay;
       const time = choosenTime;
-      console.log(day, time, groupId);
       axios.post('http://3.127.235.222:3000/meal/create', { day, time, groupId }, { withCredentials: true })
         .then(() => {
           store.dispatch(saveNewMeal());

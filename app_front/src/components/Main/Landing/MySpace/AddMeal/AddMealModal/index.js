@@ -30,6 +30,10 @@ const AddMealModal = ({ sendAddMealModalAction, sendTargetedValuesCombinaisonAct
 
   const startDate = new Date();
 
+  // On ajoute une date de fin pour empêcher de prévoir ds 4 mois
+  const oneWeekFromNow = new Date();
+  oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 6);
+
   let selectedDate; // pour stocker nos données
   let selectedMeal; // pour stocker nos données
   // ici j'ai la valeur de la date choisie
@@ -62,7 +66,7 @@ const AddMealModal = ({ sendAddMealModalAction, sendTargetedValuesCombinaisonAct
         <Icon id="close__modal__icon" name="close" size="big" color="red" onClick={toggleAddMealModal} />
         <ul>
           <li>Date
-            <DatePicker local="fr" selected={startDate} onChange={assignDate} inline />
+            <DatePicker local="fr" selected={startDate} onChange={assignDate} inline maxDate={oneWeekFromNow} minDate={startDate} />
           </li>
           <li>Repas  <Dropdown id="big__input__box" placeholder="Repas" fluid selection options={groupOptions} onChange={assignMeal} />
           </li>

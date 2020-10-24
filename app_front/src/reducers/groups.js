@@ -21,7 +21,7 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activeGroup: action.targetIndexValue,
-        activeGroupId: action.targetIdValue,
+        activeGroupId: action.targetIdValue.id,
       };
     case TOGGLE_MEAL_MODAL:
       return {
