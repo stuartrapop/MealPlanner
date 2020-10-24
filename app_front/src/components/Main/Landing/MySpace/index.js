@@ -15,7 +15,7 @@ const MySpace = ({ fetchGroupsDatas, loading }) => {
   }, []);
   return (
     <div className="myspace__container">
-      {loading && ( 
+      {loading && (
         <div>
           <Segment>
             <Dimmer active inverted>

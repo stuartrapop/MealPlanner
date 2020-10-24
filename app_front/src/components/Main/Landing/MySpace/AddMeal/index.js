@@ -1,4 +1,6 @@
+/* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
 import AddMealModal from '../../../../../containers/AddMealModal';
@@ -13,18 +15,79 @@ const AddMeal = ({
     value: group.id,
   }));
 
-  const meals = userInfos.groups[activeGroup].meals.map((meal) => ({
-    key: meal.id,
-    mealDate: meal.day,
-    mealType: meal.time,
-    slug: `${meal.day} ${meal.time}`,
-    scheduledRecipes: meal.recipes,
+  function getDayName(dateStr, locale) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: 'long' });
+  }
+
+  const getDisplayedDate = (serverDate) => {
+    const transformedDate = new Date(serverDate.replace('-', '/'));
+    const secondTransformedDate = `${transformedDate.getMonth() + 1}/${transformedDate.getDate()}/${transformedDate.getFullYear()}`;
+    const mealDayName = getDayName(secondTransformedDate, 'fr-FR');
+    const frenchTransformedDate = `${transformedDate.getDate()}/${transformedDate.getMonth() + 1}/${transformedDate.getFullYear()}`;
+    return (`${mealDayName} - ${frenchTransformedDate}`);
+  };
+
+  const { meals } = userInfos.groups[activeGroup];
+
+  // On commence par en faire une copie avec des dates format date
+  const mealsConvertedToDate = meals.map((meal) => ({
+    id: meal.id,
+    day: new Date(meal.day.replace('-', '/')),
+    time: meal.time,
+    recipes: meal.recipes,
+    displayedDate: `${getDisplayedDate(meal.day)} - ${meal.time}`,
   }));
+
+  // On créer un tableau en modifiant les dates en fonction des times
+  const mealsConvertedToDateImproved = mealsConvertedToDate.map((meal) => {
+    if (meal.time === 'Déjeuner') {
+      return {
+        key: meal.id,
+        mealDate: meal.day.setHours(meal.day.getHours() + 12),
+        mealType: meal.time,
+        scheduledRecipes: meal.recipes,
+        displayedDate: meal.displayedDate,
+      };
+    }
+    if (meal.time === 'Dîner') {
+      return {
+        key: meal.id,
+        mealDate: meal.day.setHours(meal.day.getHours() + 19),
+        mealType: meal.time,
+        scheduledRecipes: meal.recipes,
+        displayedDate: meal.displayedDate,
+      };
+    }
+    return {
+      key: meal.id,
+      mealDate: meal.day.setHours(meal.day.getHours() + 0),
+      mealType: meal.time,
+      scheduledRecipes: meal.recipes,
+      displayedDate: meal.displayedDate,
+    };
+  });
+
+  // fonction servant à ranger les dates
+  const compare = (a, b) => {
+    const date1 = a.mealDate;
+    const date2 = b.mealDate;
+    let comparison = 0;
+    if (date1 > date2) {
+      comparison = 1;
+    }
+    else if (date1 < date2) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+  // On trie désormais le tableau par date la plus proche de maintenant
+  const sortedMealsArray = mealsConvertedToDateImproved.sort(compare);
+  console.log('sortedMealsArray :', sortedMealsArray);
 
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
     const targetedGroup = userInfos.groups.find(isTargetedGroup);
-    console.log(targetedGroup);
     const targetedGroupId = targetedGroup;
     // il s'agit du groupe, il nous faut maintenant son index dans le tableau
     const targetedGroupIndex = userInfos.groups.findIndex(isTargetedGroup);
@@ -50,9 +113,9 @@ const AddMeal = ({
                 <Dropdown placeholder="Groupe" fluid selection options={groupOptions} onChange={handleChooseGroup} />
               </div>
             </div>
-            {meals.map((meal) => (
+            {sortedMealsArray.map((meal) => (
               <div key={meal.key}>
-                <Icon id="remove__meal__icon" name="trash alternate outline" /> <em>{meal.slug}</em>
+                <Icon id="remove__meal__icon" name="trash alternate outline" /> <em>{meal.displayedDate}</em>
                 <ul className="scheduled__meal">
                   <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" /></li>
                   {meal.scheduledRecipes.map((recipe) => (
@@ -78,6 +141,20 @@ const AddMeal = ({
       )}
     </div>
   );
+};
+
+AddMeal.propTypes = {
+  userInfos: PropTypes.shape({
+    userId: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    userName: PropTypes.string,
+    groups: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  activeGroup: PropTypes.number.isRequired,
+  choosenGroup: PropTypes.func.isRequired,
+  sendAddMealModalAction: PropTypes.func.isRequired,
+  mealModalDisplayed: PropTypes.bool.isRequired,
 };
 
 export default AddMeal;

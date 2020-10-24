@@ -1,4 +1,6 @@
-import { SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE } from '../actions/groups';
+import {
+  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE,
+} from '../actions/groups';
 
 export const initialState = {
   userInfos: {},
@@ -15,8 +17,8 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userInfos: action.data,
-        loading: false,
         activeGroupId: action.data.groups[0].id,
+        loading: false,
       };
     case CHOOSE_GROUP:
       return {
