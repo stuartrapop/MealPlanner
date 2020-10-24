@@ -1,11 +1,11 @@
 import React from 'react';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
-import AddMealModal from './AddMealModal';
+import AddMealModal from '../../../../../containers/AddMealModal';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, chooseGroup, sendAddMealModalAction, mealModalDisplayed,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed,
 }) => {
   const groupOptions = userInfos.groups.map((group) => ({
     key: group.id,
@@ -25,9 +25,10 @@ const AddMeal = ({
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
     const targetedGroup = userInfos.groups.find(isTargetedGroup);
     console.log(targetedGroup);
+    const targetedGroupId = targetedGroup;
     // il s'agit du groupe, il nous faut maintenant son index dans le tableau
     const targetedGroupIndex = userInfos.groups.findIndex(isTargetedGroup);
-    chooseGroup(targetedGroupIndex);
+    choosenGroup(targetedGroupIndex, targetedGroupId);
   };
 
   const toggleAddMealModal = () => {

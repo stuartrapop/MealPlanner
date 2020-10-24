@@ -11,8 +11,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseGroup: (value) => {
-    dispatch(chooseGroup(value));
+  choosenGroup: (targetIndexValue, targetIdValue) => {
+    dispatch(chooseGroup(targetIndexValue, targetIdValue));
   },
 
   sendAddMealModalAction: () => {
