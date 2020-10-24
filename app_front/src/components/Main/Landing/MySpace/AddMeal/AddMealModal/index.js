@@ -9,7 +9,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 registerLocale('fr', fr);
 setDefaultLocale('fr');
 
-const AddMealModal = ({ sendAddMealModalAction, sendTargetedValuesCombinaisonAction }) => {
+const AddMealModal = ({
+  sendAddMealModalAction,
+  sendTargetedValuesCombinaisonAction,
+  displayErrorMessage,
+  errorMessageBoolean,
+}) => {
   const groupOptions = [
     {
       key: 1,
@@ -52,7 +57,7 @@ const AddMealModal = ({ sendAddMealModalAction, sendTargetedValuesCombinaisonAct
       sendTargetedValuesCombinaisonAction(selectedDate, selectedMeal);
     }
     else {
-      console.log('erreur'); // Ajouter box message d'erreur
+      displayErrorMessage();
     }
   };
 
@@ -72,7 +77,10 @@ const AddMealModal = ({ sendAddMealModalAction, sendTargetedValuesCombinaisonAct
           </li>
         </ul>
       </div>
-      <Button inverted content="Valider" onClick={sendTargetedValuesCombinaison} />
+      <Button primary content="Valider" onClick={sendTargetedValuesCombinaison} />
+      {errorMessageBoolean && (
+        <p className="input__value__error">Veillez à bien remplir les 2 champs !</p>
+      )}
     </div>
   );
 };

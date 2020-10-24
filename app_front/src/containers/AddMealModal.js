@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 
 import AddMealModal from '../components/Main/Landing/MySpace/AddMeal/AddMealModal';
 
-import { toggleMealModal, sendTargetedValues } from '../actions/groups';
+import { toggleMealModal, sendTargetedValues, sendErrorMessage } from '../actions/groups';
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+  errorMessageBoolean: state.groups.errorMessageBoolean,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -13,6 +14,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sendTargetedValuesCombinaisonAction: (choosenDate, choosenTime) => {
     dispatch(sendTargetedValues(choosenDate, choosenTime));
+  },
+  displayErrorMessage: () => {
+    dispatch(sendErrorMessage());
   },
 });
 

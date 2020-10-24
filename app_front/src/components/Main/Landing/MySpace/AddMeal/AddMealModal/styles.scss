@@ -48,3 +48,16 @@
   border: 2px solid white;
   margin-bottom: 2em;
 }
+
+.input__value__error{
+  margin-top: 1em;
+  color: red;
+  padding: 1em;
+  background-color: white;
+  font-size: 0.8em;
+  border-radius: 5px;
+}
+
+.search__zone #close__modal__icon {
+  margin-top: 150px;
+}
