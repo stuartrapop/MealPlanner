@@ -9,11 +9,12 @@ const mapStateToProps = (state) => ({
   activeGroup: state.groups.activeGroup,
   mealModalDisplayed: state.groups.mealModalDisplayed,
   addRecipeZoneDisplayed: state.groups.addRecipeZoneDisplayed,
+  groupValueDropdown: state.groups.groupValueDropdown,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  choosenGroup: (targetIndexValue, targetIdValue) => {
-    dispatch(chooseGroup(targetIndexValue, targetIdValue));
+  choosenGroup: (targetIndexValue, targetIdValue, targetedGroupValue) => {
+    dispatch(chooseGroup(targetIndexValue, targetIdValue, targetedGroupValue));
   },
 
   sendAddMealModalAction: () => {
@@ -24,8 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(removeMealAction(targetMealId));
   },
 
-  sendToggleAddRecipeZone: () => {
-    dispatch(toggleAddRecipeZone());
+  sendToggleAddRecipeZone: (id) => {
+    dispatch(toggleAddRecipeZone(id));
   },
 });
 

@@ -1,5 +1,5 @@
 import {
-  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE, TOGGLE_ADD_RECIPE_ZONE,
+  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE, TOGGLE_ADD_RECIPE_ZONE, UPDATE_ADD_RECIPE_DISPLAYED_ARRAY,
 } from '../actions/groups';
 
 export const initialState = {
@@ -9,7 +9,8 @@ export const initialState = {
   activeGroupId: 0,
   mealModalDisplayed: false,
   errorMessageBoolean: false,
-  addRecipeZoneDisplayed: false,
+  addRecipeZoneDisplayed: [],
+  groupValueDropdown: '',
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -18,7 +19,8 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userInfos: action.data,
-        activeGroupId: action.data.groups[0].id,
+        activeGroupId: action.data.groups[state.activeGroup].id,
+        groupValueDropdown: action.data.groups[state.activeGroup].name,
         loading: false,
       };
     case CHOOSE_GROUP:
@@ -26,6 +28,7 @@ const groupsReducer = (state = initialState, action = {}) => {
         ...state,
         activeGroup: action.targetIndexValue,
         activeGroupId: action.targetIdValue.id,
+        groupValueDropdown: action.targetedGroupValue,
       };
     case TOGGLE_MEAL_MODAL:
       return {
@@ -46,7 +49,17 @@ const groupsReducer = (state = initialState, action = {}) => {
     case TOGGLE_ADD_RECIPE_ZONE:
       return {
         ...state,
-        addRecipeZoneDisplayed: !state.addRecipeZoneDisplayed,
+        addRecipeZoneDisplayed: state.addRecipeZoneDisplayed.map((element, index) => {
+          if (index == action.id) {
+            return (true);
+          }
+          return (false);
+        }),
+      };
+    case UPDATE_ADD_RECIPE_DISPLAYED_ARRAY:
+      return {
+        ...state,
+        addRecipeZoneDisplayed: action.newArray,
       };
     default:
       return state;

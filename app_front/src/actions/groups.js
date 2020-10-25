@@ -7,6 +7,7 @@ export const SAVE_NEW_MEAL = 'SAVE_NEW_MEAL';
 export const SEND_ERROR_MESSAGE = 'SEND_ERROR_MESSAGE';
 export const REMOVE_MEAL_ACTION = 'REMOVE_MEAL_ACTION';
 export const TOGGLE_ADD_RECIPE_ZONE = 'TOGGLE_ADD_RECIPE_ZONE';
+export const UPDATE_ADD_RECIPE_DISPLAYED_ARRAY = 'UPDATE_ADD_RECIPE_DISPLAYED_ARRAY';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -17,10 +18,11 @@ export const sendGroupsDatas = (data) => ({
   data,
 });
 
-export const chooseGroup = (targetIndexValue, targetIdValue) => ({
+export const chooseGroup = (targetIndexValue, targetIdValue, targetedGroupValue) => ({
   type: CHOOSE_GROUP,
   targetIndexValue,
   targetIdValue,
+  targetedGroupValue,
 });
 
 export const toggleMealModal = () => ({
@@ -46,6 +48,12 @@ export const removeMealAction = (targetMealId) => ({
   targetMealId,
 });
 
-export const toggleAddRecipeZone = () => ({
+export const toggleAddRecipeZone = (id) => ({
   type: TOGGLE_ADD_RECIPE_ZONE,
+  id,
+});
+
+export const updateAddRecipeZoneDisplayedArray = (newArray) => ({
+  type: UPDATE_ADD_RECIPE_DISPLAYED_ARRAY,
+  newArray,
 });

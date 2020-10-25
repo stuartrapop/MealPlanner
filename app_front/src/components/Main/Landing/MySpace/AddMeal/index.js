@@ -9,13 +9,16 @@ import AddRecipeZone from './AddRecipeZone';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, addRecipeZoneDisplayed, sendToggleAddRecipeZone,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, addRecipeZoneDisplayed, sendToggleAddRecipeZone, groupValueDropdown,
 }) => {
-  const groupOptions = userInfos.groups.map((group) => ({
+  const groupOptionsConstructor = userInfos.groups.map((group) => ({
     key: group.id,
     text: group.name,
-    value: group.id,
+    value: group.name,
   }));
+
+  const lowestIdFirstSort = (a, b) => (a.key - b.key);
+  const groupOptions = groupOptionsConstructor.sort(lowestIdFirstSort);
 
   function getDayName(dateStr, locale) {
     const date = new Date(dateStr);
@@ -88,11 +91,12 @@ const AddMeal = ({
 
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
-    const targetedGroup = userInfos.groups.find(isTargetedGroup);
-    const targetedGroupId = targetedGroup;
-    // il s'agit du groupe, il nous faut maintenant son index dans le tableau
+    const targetedGroupId = userInfos.groups.find(isTargetedGroup);
+    // Position
     const targetedGroupIndex = userInfos.groups.findIndex(isTargetedGroup);
-    choosenGroup(targetedGroupIndex, targetedGroupId);
+    // Valeur
+    const targetedGroupValue = evt.target.textContent;
+    choosenGroup(targetedGroupIndex, targetedGroupId, targetedGroupValue);
   };
 
   const toggleAddMealModal = () => {
@@ -103,8 +107,10 @@ const AddMeal = ({
     sendRemoveMealAction(evt.target.parentNode.id);
   };
 
-  const toggleAddRecipeZone = () => {
-    sendToggleAddRecipeZone();
+  const toggleAddRecipeZone = (evt) => {
+    const isTargetedMeal = (meal) => (meal.key == evt.target.closest('div').id);
+    const targetedMealIndex = sortedMealsArray.findIndex(isTargetedMeal);
+    sendToggleAddRecipeZone(targetedMealIndex);
   };
 
   return (
@@ -119,15 +125,15 @@ const AddMeal = ({
                 Ajouter un créneau
               </div>
               <div className="add__meal--right">
-                <Dropdown placeholder="Groupe" fluid selection options={groupOptions} onChange={handleChooseGroup} />
+                <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
               </div>
             </div>
-            {sortedMealsArray.map((meal) => (
+            {sortedMealsArray.map((meal, index) => (
               <div key={meal.key} id={meal.key}>
                 <Icon id="remove__meal__icon" name="trash alternate outline" onClick={removeMealClick} /> <em>{meal.displayedDate}</em>
                 <ul className="scheduled__meal">
                   <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" onClick={toggleAddRecipeZone} /></li>
-                  {addRecipeZoneDisplayed && (
+                  {addRecipeZoneDisplayed[index] && (
                     <AddRecipeZone />
                   )}
                   {meal.scheduledRecipes.map((recipe) => (
@@ -168,7 +174,7 @@ AddMeal.propTypes = {
   sendAddMealModalAction: PropTypes.func.isRequired,
   mealModalDisplayed: PropTypes.bool.isRequired,
   sendRemoveMealAction: PropTypes.func.isRequired,
-  addRecipeZoneDisplayed: PropTypes.bool.isRequired,
+  addRecipeZoneDisplayed: PropTypes.array.isRequired,
   sendToggleAddRecipeZone: PropTypes.func.isRequired,
 };
 

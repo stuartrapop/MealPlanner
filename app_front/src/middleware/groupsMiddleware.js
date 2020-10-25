@@ -7,6 +7,7 @@ import {
   saveNewMeal,
   fetchGroupsDatasAction,
   REMOVE_MEAL_ACTION,
+  updateAddRecipeZoneDisplayedArray,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -16,7 +17,19 @@ const groupsMiddleware = (store) => (next) => (action) => {
       const { id } = state.user;
       axios.get(`http://3.127.235.222:3000/user/${id}`, {}, { withCredentials: true })
         .then((response) => {
+          // On créer un tableau avec autant de case que de meals et toutes initialisée à false
+          const mealNumber = (response.data.groups[state.groups.activeGroup].meals.length);
+          const newaddRecipeZoneDisplayed = [];
+          for (let i = 0; i < mealNumber; i++) {
+            newaddRecipeZoneDisplayed.push(false);
+          }
+          // On trie l'ordre des groupes renvoyé afin d'avoir toujours le même
+          const lowestIdFirstSort = (a, b) => (a.id - b.id);
+          const orderedResponse = response.data.groups.sort(lowestIdFirstSort);
+          console.log(orderedResponse);
+          // On appelle les fonctions
           store.dispatch(sendGroupsDatas(response.data));
+          store.dispatch(updateAddRecipeZoneDisplayedArray(newaddRecipeZoneDisplayed));
           next(action);
         })
         .catch((e) => {
