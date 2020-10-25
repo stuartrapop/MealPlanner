@@ -1,5 +1,5 @@
 import {
-  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE,
+  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE, TOGGLE_ADD_RECIPE_ZONE,
 } from '../actions/groups';
 
 export const initialState = {
@@ -9,6 +9,7 @@ export const initialState = {
   activeGroupId: 0,
   mealModalDisplayed: false,
   errorMessageBoolean: false,
+  addRecipeZoneDisplayed: false,
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -41,6 +42,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         errorMessageBoolean: true,
+      };
+    case TOGGLE_ADD_RECIPE_ZONE:
+      return {
+        ...state,
+        addRecipeZoneDisplayed: !state.addRecipeZoneDisplayed,
       };
     default:
       return state;

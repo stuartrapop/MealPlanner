@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
 import AddMealModal from '../../../../../containers/AddMealModal';
+import AddRecipeZone from './AddRecipeZone';
+
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, addRecipeZoneDisplayed, sendToggleAddRecipeZone,
 }) => {
   const groupOptions = userInfos.groups.map((group) => ({
     key: group.id,
@@ -101,6 +103,10 @@ const AddMeal = ({
     sendRemoveMealAction(evt.target.parentNode.id);
   };
 
+  const toggleAddRecipeZone = () => {
+    sendToggleAddRecipeZone();
+  };
+
   return (
     <div className="addmeal__container">
       <h1>Vos repas prévus</h1>
@@ -120,7 +126,10 @@ const AddMeal = ({
               <div key={meal.key} id={meal.key}>
                 <Icon id="remove__meal__icon" name="trash alternate outline" onClick={removeMealClick} /> <em>{meal.displayedDate}</em>
                 <ul className="scheduled__meal">
-                  <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" /></li>
+                  <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" onClick={toggleAddRecipeZone} /></li>
+                  {addRecipeZoneDisplayed && (
+                    <AddRecipeZone />
+                  )}
                   {meal.scheduledRecipes.map((recipe) => (
                     <div key={recipe.id + meal.mealDate}>
                       <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus" />
@@ -159,6 +168,8 @@ AddMeal.propTypes = {
   sendAddMealModalAction: PropTypes.func.isRequired,
   mealModalDisplayed: PropTypes.bool.isRequired,
   sendRemoveMealAction: PropTypes.func.isRequired,
+  addRecipeZoneDisplayed: PropTypes.bool.isRequired,
+  sendToggleAddRecipeZone: PropTypes.func.isRequired,
 };
 
 export default AddMeal;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button, Dropdown, Icon } from 'semantic-ui-react';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import fr from 'date-fns/locale/fr';
@@ -84,13 +83,6 @@ const AddMealModal = ({
       )}
     </div>
   );
-};
-
-AddMealModal.propTypes = {
-  sendAddMealModalAction: PropTypes.func.isRequired,
-  sendTargetedValuesCombinaisonAction: PropTypes.func.isRequired,
-  displayErrorMessage: PropTypes.func.isRequired,
-  errorMessageBoolean: PropTypes.bool.isRequired,
 };
 
 export default AddMealModal;
