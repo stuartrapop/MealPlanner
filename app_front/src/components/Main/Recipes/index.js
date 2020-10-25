@@ -10,8 +10,11 @@ const Recipes = ({ changeDisplayRecipe, fetchrecipes, recipes }) => {
     fetchrecipes();
   }, []);
   return (
-    <div>
+    <div className="recipes__container">
       <SearchBar />
+      <div className="recipes__title">
+        Qu'est ce qu'on mange ce soir ?
+      </div>
       <RecipesPart
         recipes={recipes}
         changeDisplayRecipe={changeDisplayRecipe}
@@ -21,6 +24,7 @@ const Recipes = ({ changeDisplayRecipe, fetchrecipes, recipes }) => {
 };
 
 Recipes.propTypes = {
+  changeDisplayRecipe: PropTypes.func.isRequired,
   fetchrecipes: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(
     PropTypes.shape({

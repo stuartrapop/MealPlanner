@@ -17,8 +17,7 @@ const SearchBar = ({
     updatedSelection(value);
   };
   return (
-    <div className="form">
-      <h2 className="form__title">Trouvez la recette de vos rêves !</h2>
+    <div className="form__container">
       <form id="form__searchBar" onSubmit={handleOnSubmit}>
         <Input
           id="form__input"
@@ -26,7 +25,7 @@ const SearchBar = ({
           type="text"
           name="recipes"
           placeholder="Fondue savoyarde..."
-          icon={<Icon name="search" inverted circular link />}
+          icon={<Icon id="search__icon"name="search" inverted circular link />}
         />
       </form>
     </div>

@@ -6,7 +6,6 @@ const recipesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_RECIPE:
       const {recipe, displayRecipe } = state.recipe;
-      console.log('display recipe', displayRecipe);
       axios.get(`http://3.127.235.222:3000/recipe/${displayRecipe}`)
         .then((response) => {
           store.dispatch(oneRecipe(response.data));

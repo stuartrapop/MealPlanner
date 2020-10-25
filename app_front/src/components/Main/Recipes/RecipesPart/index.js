@@ -12,33 +12,39 @@ import {
 // import Tags from './Tags';
 
 const RecipesPart = ({ changeDisplayRecipe, recipes }) => {
-  const handleOnClick = (event) => {
+  const handleOnDoubleClick = (event) => {
     changeDisplayRecipe(event.target.id, event.target.title);
   };
   return (
-    <div className="all__recipes">
-      {recipes.map((recipe) => (
-        <Card id="card" key={recipe.id}>
-          <Image id="card__image" src={recipe.url} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header id="card__title">{recipe.title}</Card.Header>
-            {/* <Tags tag={recipe.tag} /> */}
-          </Card.Content>
-          <Card.Content extra id="card__rate">
-            <a>
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star half" />
-              4.5/5
-            </a>
-          </Card.Content>
-          <Card.Content>
-            <button onClick={handleOnClick} type="button"><Link to={`/recette/${getSlugFromTitle(recipe.title)}`} id={recipe.id} title={recipe.title}>Voir les détails</Link></button>
-          </Card.Content>
-        </Card>
-      ))}
+    <div className="body">
+      <div className="container">
+        {recipes.map((recipe) => (
+          <div className="card" key={recipe.id}>
+            <div className="face face1">
+              <div className="content">
+                <img src="https://images.unsplash.com/photo-1584541305671-af4f46b4be2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="recipe" />
+                <h3 className="recipes__subtitle">{recipe.title}</h3>
+
+              </div>
+            </div>
+            <div className="face face2">
+              <div className="content">
+                <h3> {recipe.title}</h3>
+                <a>
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star half" />
+                  4.5/5
+                </a>
+                <p className="recipes__infos"> Temps de préparation : {recipe.cooking_time} minutes <br /> Difficulté de la recette : {recipe.difficulty}</p>
+                <a href={`/recette/${getSlugFromTitle(recipe.title)}`} className="recipes__button" id={recipe.id} title={recipe.title}>Découvrir la recette complète</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
