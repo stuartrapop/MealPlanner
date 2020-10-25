@@ -7,7 +7,7 @@ import AddMealModal from '../../../../../containers/AddMealModal';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction,
 }) => {
   const groupOptions = userInfos.groups.map((group) => ({
     key: group.id,
@@ -83,7 +83,6 @@ const AddMeal = ({
   };
   // On trie désormais le tableau par date la plus proche de maintenant
   const sortedMealsArray = mealsConvertedToDateImproved.sort(compare);
-  console.log('sortedMealsArray :', sortedMealsArray);
 
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
@@ -96,6 +95,10 @@ const AddMeal = ({
 
   const toggleAddMealModal = () => {
     sendAddMealModalAction();
+  };
+
+  const removeMealClick = (evt) => {
+    sendRemoveMealAction(evt.target.parentNode.id);
   };
 
   return (
@@ -114,8 +117,8 @@ const AddMeal = ({
               </div>
             </div>
             {sortedMealsArray.map((meal) => (
-              <div key={meal.key}>
-                <Icon id="remove__meal__icon" name="trash alternate outline" /> <em>{meal.displayedDate}</em>
+              <div key={meal.key} id={meal.key}>
+                <Icon id="remove__meal__icon" name="trash alternate outline" onClick={removeMealClick} /> <em>{meal.displayedDate}</em>
                 <ul className="scheduled__meal">
                   <li className="scheduled__recipe"> <Icon id="add__meal__icon" name="plus" /></li>
                   {meal.scheduledRecipes.map((recipe) => (
@@ -155,6 +158,7 @@ AddMeal.propTypes = {
   choosenGroup: PropTypes.func.isRequired,
   sendAddMealModalAction: PropTypes.func.isRequired,
   mealModalDisplayed: PropTypes.bool.isRequired,
+  sendRemoveMealAction: PropTypes.func.isRequired,
 };
 
 export default AddMeal;

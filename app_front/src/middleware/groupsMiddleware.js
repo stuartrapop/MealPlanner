@@ -1,7 +1,12 @@
 /* eslint-disable no-case-declarations */
 import axios from 'axios';
 import {
-  FETCH_GROUPS_DATAS, sendGroupsDatas, SEND_TARGETED_VALUES, saveNewMeal, fetchGroupsDatasAction,
+  FETCH_GROUPS_DATAS,
+  sendGroupsDatas,
+  SEND_TARGETED_VALUES,
+  saveNewMeal,
+  fetchGroupsDatasAction,
+  REMOVE_MEAL_ACTION,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -26,6 +31,17 @@ const groupsMiddleware = (store) => (next) => (action) => {
       axios.post('http://3.127.235.222:3000/meal/create', { day, time, groupId }, { withCredentials: true })
         .then(() => {
           store.dispatch(saveNewMeal());
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case REMOVE_MEAL_ACTION:
+      const mealId = action.targetMealId;
+      axios.delete(`http://3.127.235.222:3000/meal/${mealId}`, {}, { withCredentials: true })
+        .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
         })

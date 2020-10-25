@@ -5,6 +5,7 @@ export const TOGGLE_MEAL_MODAL = 'TOGGLE_MEAL_MODAL';
 export const SEND_TARGETED_VALUES = 'SEND_TARGETED_VALUES';
 export const SAVE_NEW_MEAL = 'SAVE_NEW_MEAL';
 export const SEND_ERROR_MESSAGE = 'SEND_ERROR_MESSAGE';
+export const REMOVE_MEAL_ACTION = 'REMOVE_MEAL_ACTION';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -37,4 +38,9 @@ export const saveNewMeal = () => ({
 
 export const sendErrorMessage = () => ({
   type: SEND_ERROR_MESSAGE,
+});
+
+export const removeMealAction = (targetMealId) => ({
+  type: REMOVE_MEAL_ACTION,
+  targetMealId,
 });

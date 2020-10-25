@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import AddMeal from '../components/Main/Landing/MySpace/AddMeal';
 
-import { chooseGroup, toggleMealModal } from '../actions/groups';
+import { chooseGroup, toggleMealModal, removeMealAction } from '../actions/groups';
 
 const mapStateToProps = (state) => ({
   userInfos: state.groups.userInfos,
@@ -17,6 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   sendAddMealModalAction: () => {
     dispatch(toggleMealModal());
+  },
+
+  sendRemoveMealAction: (targetMealId) => {
+    dispatch(removeMealAction(targetMealId));
   },
 });
 
