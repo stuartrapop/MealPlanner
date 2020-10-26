@@ -25,9 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(removeMealAction(targetMealId));
   },
 
-  sendToggleAddRecipeZone: (id) => {
-    dispatch(toggleAddRecipeZone(id));
-  },
 });
 
 // Container

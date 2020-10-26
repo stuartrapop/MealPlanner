@@ -7,11 +7,13 @@ import AddMeal from '../../../../containers/AddMeal';
 import Planning from './Planning';
 
 import './styles.scss';
+import { fetchRecipes } from '../../../../actions/recipes';
 
 const MySpace = ({ fetchGroupsDatas, loading }) => {
   // On commence par récupére toutes les données qui seront necessaires au chargement du composant
   useEffect(() => {
     fetchGroupsDatas();
+    fetchRecipes();
   }, []);
   return (
     <div className="myspace__container">

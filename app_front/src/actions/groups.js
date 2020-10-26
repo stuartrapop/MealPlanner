@@ -6,8 +6,10 @@ export const SEND_TARGETED_VALUES = 'SEND_TARGETED_VALUES';
 export const SAVE_NEW_MEAL = 'SAVE_NEW_MEAL';
 export const SEND_ERROR_MESSAGE = 'SEND_ERROR_MESSAGE';
 export const REMOVE_MEAL_ACTION = 'REMOVE_MEAL_ACTION';
-export const TOGGLE_ADD_RECIPE_ZONE = 'TOGGLE_ADD_RECIPE_ZONE';
-export const UPDATE_ADD_RECIPE_DISPLAYED_ARRAY = 'UPDATE_ADD_RECIPE_DISPLAYED_ARRAY';
+export const CHANGE_ACTIVE_ENTRY_ID = 'CHANGE_ACTIVE_ENTRY_ID';
+export const START_SEARCH = 'START_SEARCH';
+export const SHOW_RESULTS_ACTION = 'SHOW_RESULTS_ACTION';
+export const ADD_RECIPE_TO_DB = 'ADD_RECIPE_TO_DB';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -48,12 +50,24 @@ export const removeMealAction = (targetMealId) => ({
   targetMealId,
 });
 
-export const toggleAddRecipeZone = (id) => ({
-  type: TOGGLE_ADD_RECIPE_ZONE,
-  id,
+export const changeActiveEntryId = (entryId) => ({
+  type: CHANGE_ACTIVE_ENTRY_ID,
+  entryId,
 });
 
-export const updateAddRecipeZoneDisplayedArray = (newArray) => ({
-  type: UPDATE_ADD_RECIPE_DISPLAYED_ARRAY,
-  newArray,
+export const handleSearchChange = (input) => ({
+  type: START_SEARCH,
+  input,
+});
+
+export const showResultsAction = (possibleResults) => ({
+  type: SHOW_RESULTS_ACTION,
+  possibleResults,
+});
+
+export const addRecipeToDB = (id, recipeName, numberPeople) => ({
+  type: ADD_RECIPE_TO_DB,
+  id,
+  recipeName,
+  numberPeople,
 });
