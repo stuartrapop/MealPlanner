@@ -45,6 +45,7 @@
 | lastname     | VARCHAR(50) | NOT NULL |
 | firstname    | VARCHAR(50) |NOT NULL  |
 | username    | VARCHAR(20) |NOT NULL |
+| account_role   | VARCHAR(20) |NOT NULL |
 | password    | VARCHAR(70) | NOT NULL |
 | email    | VARCHAR(50) | NOT NULL |
 |created_at| TIMESTAMPTZ | NOT NULL, DEFAULT NOW() |

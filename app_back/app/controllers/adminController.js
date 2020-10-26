@@ -7,7 +7,7 @@ const adminController = {
 
   notFound: async (req, res) => {
     res.status = 404;
-    res.json({ error: 'page not found' });
+    res.json({ error: ['page not found'] });
   },
 
   isLogged: (req, res) => {
@@ -38,7 +38,7 @@ const adminController = {
         where: { email: `${email}` },
       });
       if (!user) {
-        res.status(404).json({ error: 'email not found' });
+        res.status(401).json({ error: 'email not found' });
       }
 
       console.log('password', password, 'user.password', user.password);

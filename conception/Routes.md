@@ -16,7 +16,7 @@
 | path    | method | comment |
 | -------- | ---- | ---------- |
 | /        | GET | Description of API  |
-| /login        | GET | verify email and password  |
+| /login        | POST | verify email and password  |
 | /isLogged       | POST| check if user is logged using express-session  |
 | /logout       | POST | remove express-session cookie connection  |
 | /createAccount        | POST | verify email and password  |
