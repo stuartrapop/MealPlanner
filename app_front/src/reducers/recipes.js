@@ -1,7 +1,6 @@
-import { SAVE_RECIPES } from '../actions/recipes';
+import { SAVE_RECIPES, ONE_RECIPE } from '../actions/recipes';
 import { filterRecipes } from '../selectors/recipes';
 import { MODIFY_SEARCH } from '../actions/searchBar';
-import { ONE_RECIPE } from '../actions/recipe';
 
 export const initialState = {
   recipes: [],

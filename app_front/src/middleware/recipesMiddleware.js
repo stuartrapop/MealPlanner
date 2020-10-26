@@ -1,6 +1,10 @@
 import axios from 'axios';
-import { FETCH_RECIPES, saveRecipes } from '../actions/recipes';
-import { GET_RECIPE, oneRecipe } from '../actions/recipe';
+import {
+  FETCH_RECIPES,
+  saveRecipes,
+  GET_RECIPE,
+  oneRecipe,
+} from '../actions/recipes';
 
 const recipesMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
