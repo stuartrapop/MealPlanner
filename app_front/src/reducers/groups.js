@@ -40,6 +40,7 @@ const groupsReducer = (state = initialState, action = {}) => {
         ...state,
         mealModalDisplayed: false,
         errorMessageBoolean: false,
+        addRecipeZoneDisplayed: state.addRecipeZoneDisplayed.push(false),
       };
     case SEND_ERROR_MESSAGE:
       return {

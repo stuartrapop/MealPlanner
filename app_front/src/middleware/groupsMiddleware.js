@@ -25,8 +25,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
           }
           // On trie l'ordre des groupes renvoyé afin d'avoir toujours le même
           const lowestIdFirstSort = (a, b) => (a.id - b.id);
-          const orderedResponse = response.data.groups.sort(lowestIdFirstSort);
-          console.log(orderedResponse);
+          response.data.groups.sort(lowestIdFirstSort);
           // On appelle les fonctions
           store.dispatch(sendGroupsDatas(response.data));
           store.dispatch(updateAddRecipeZoneDisplayedArray(newaddRecipeZoneDisplayed));
