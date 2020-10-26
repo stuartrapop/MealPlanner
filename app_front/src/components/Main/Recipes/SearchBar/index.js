@@ -3,22 +3,15 @@ import { Icon, Input } from 'semantic-ui-react';
 import './styles.scss';
 
 const SearchBar = ({
-  updatedSelection,
-  value,
   modifySearch,
   searchInput
 }) => {
   const handleOnChange = (event) => {
     modifySearch(event.target.value);
   };
-  const handleOnSubmit = (event) => {
-    console.log(value);
-    event.preventDefault();
-    updatedSelection(value);
-  };
   return (
     <div className="form__container">
-      <form id="form__searchBar" onSubmit={handleOnSubmit}>
+      <form id="form__searchBar">
         <Input
           id="form__input"
           onChange={handleOnChange}

@@ -11,7 +11,6 @@ import Recipe from '../../containers/Recipe';
 import GroupsPage from './GroupsPage';
 
 import Landing from '../../containers/Landing';
-import CreateAccount from './CreateAccount';
 import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 
 // == Import
@@ -37,9 +36,6 @@ const Main = ({ loading }) => (
           />
           <Route path="/mon-espace/groupe" exact>
             <GroupsPage groups={groups} />
-          </Route>
-          <Route path="/creer-mon-compte" exact>
-            <CreateAccount />
           </Route>
           <Route path="/recettes" exact>
             <Recipes />

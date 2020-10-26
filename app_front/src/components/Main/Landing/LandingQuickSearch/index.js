@@ -1,47 +1,67 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Input, Card, Icon, Image, Label, Button,
 } from 'semantic-ui-react';
-import cookies from './cookies.jpg';
-
 import './styles.scss';
 
-const LandingQuickSearch = () => (
-  <section className="landing__search">
-    <h1>Un avant goût de nos recettes ?</h1>
-    <Input className="search__bar" icon="search" placeholder="Rechercher" />
+const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
+  const handleOnChange = (event) => {
+    modifySearch(event.target.value);
+  };
+  return (
+    <section className="landing__search">
+      <h1>Un avant goût de nos recettes ?</h1>
+      <Input
+        id="form__input"
+        onChange={handleOnChange}
+        value={searchInput}
+        type="text"
+        name="recipes"
+        className="search__bar"
+        icon="search"
+        placeholder="Rechercher"
+      />
+      <h1>Nos coups de coeur du moment</h1>
+      {searchedRecipes.slice(1, 3).map((recipes) => (
+        <Card className="card__from__landing__page">
+          <Image key={recipes.id} id="trendy__recipe__img" src={recipes.url} wrapped ui={false} />
+          <Card.Content>
+            <Card.Header />
+            <Card.Meta>
+              <Label color="green" horizontal>
+                Vegetarien
+              </Label>
+              <Label color="purple" horizontal>
+                Dessert
+              </Label>
+            </Card.Meta>
+            <Card.Description>
+              Une recette pour de délicieux cookies
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star" />
+              <Icon name="star half" />
+              4.5/5
+            </a>
+          </Card.Content>
+        </Card>
+      ))}
+      <a href="/recettes">
+        <Button id="see__all__button">Découvrir toutes les recettes</Button>
+      </a>
+    </section>
+  );
+};
 
-    <h1>Nos coups de coeur du moment</h1>
-    <Card>
-      <Image id="trendy__recipe__img" src={cookies} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>Cookies fondants maison</Card.Header>
-        <Card.Meta>
-          <Label color="green" horizontal>
-            Vegetarien
-          </Label>
-          <Label color="purple" horizontal>
-            Dessert
-          </Label>
-        </Card.Meta>
-        <Card.Description>
-          Une recette pour de délicieux cookies
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <a>
-          <Icon name="star" />
-          <Icon name="star" />
-          <Icon name="star" />
-          <Icon name="star" />
-          <Icon name="star half" />
-          4.5/5
-        </a>
-      </Card.Content>
-    </Card>
-
-    <Button id="see__all__button">Découvrir toutes les recettes</Button>
-  </section>
-);
-
+LandingQuickSearch.propTypes = {
+  searchedRecipes: PropTypes.func.isRequired,
+  searchInput: PropTypes.func.isRequired,
+  modifySearch: PropTypes.func.isRequired,
+};
 export default LandingQuickSearch;

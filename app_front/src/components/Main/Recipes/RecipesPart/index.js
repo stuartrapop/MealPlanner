@@ -6,10 +6,7 @@ import './styles.scss';
 
 // import Tags from './Tags';
 
-const RecipesPart = ({ searchedRecipes }) => {
-  console.log('searchedrecipes', searchedRecipes);
-  
-  return(
+const RecipesPart = ({ searchedRecipes }) => (
   <div className="body">
     <div className="container">
       {searchedRecipes.map((recipe) => (
@@ -39,7 +36,7 @@ const RecipesPart = ({ searchedRecipes }) => {
       ))}
     </div>
   </div>
-)};
+);
 
 RecipesPart.propTypes = {
   searchedRecipes: PropTypes.arrayOf(
