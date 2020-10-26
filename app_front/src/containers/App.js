@@ -5,7 +5,7 @@ import { fetchRecipes } from '../actions/recipes';
 import App from '../components/App';
 
 const mapStateToProps = (state) => ({
-  loading: state.searchBar.loading,
+  loading: state.recipes.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

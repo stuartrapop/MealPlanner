@@ -5,7 +5,8 @@ export const fetchRecipes = () => ({
   type: FETCH_RECIPES,
 });
 
-export const saveRecipes = (recipes) => ({
+export const saveRecipes = (recipes, searchedRecipes) => ({
   type: SAVE_RECIPES,
   recipes,
+  searchedRecipes,
 });

@@ -28,13 +28,26 @@ export const getUrlFromTitle = (title) => `/recipe/${getSlugFromTitle(title)}`;
 
 // objectif : récupérer dans le state,
 // la recette qui contient le titre slugifié qui correspond à la valeur de ownProps.slug
-export const getRecipeBySlug = (recipes, slug) =>  { 
-  
-  console.log('recipes', recipes)
-  
+export const getRecipeBySlug = (recipes, slug) => {
+  console.log('recipes', recipes);
+
   return recipes.find((recipe) => {
+    const slugifiedTitle = getSlugFromTitle(recipe.title);
 
-  const slugifiedTitle = getSlugFromTitle(recipe.title);
+    return slugifiedTitle === slug;
+  });
+};
 
-  return slugifiedTitle === slug;
-})};
+// function to return recipes which contain search string
+// const stringWithoutAccent = "Crème Brulée"
+// str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+// > "Creme Brulee"
+
+export const filterRecipes = (recipes, searchInput) => {
+  const stringWithoutAccent = searchInput.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  // if (searchInput === '') {
+  //   return recipes;
+  // }
+  return recipes.filter((recipe) => recipe.title.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().includes(stringWithoutAccent));
+};

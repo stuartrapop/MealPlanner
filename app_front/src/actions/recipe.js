@@ -1,6 +1,7 @@
 export const GET_RECIPE = 'GET_RECIPE';
 export const ONE_RECIPE = 'ONE_RECIPE';
 export const CHANGE_DISPLAY_RECIPE = 'CHANGE_DISPLAY_RECIPE';
+export const SAVE_RECIPES = 'SAVE_RECIPES';
 
 export const getRecipe = (text) => ({
   type: GET_RECIPE,
@@ -13,8 +14,7 @@ export const oneRecipe = (recipe, text) => ({
   text,
 });
 
-export const changeDisplayRecipe = (recipeId, recipeSlug) => ({
-  type: CHANGE_DISPLAY_RECIPE,
-  recipeId,
-  recipeSlug,
+export const saveRecipes = (recipes) => ({
+  type: SAVE_RECIPES,
+  recipes,
 });

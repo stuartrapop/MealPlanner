@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 import SearchBar from '../components/Main/Recipes/SearchBar';
-
 import {
-  startSearch,
+  modifySearch,
   updateSelection,
   displaySelection,
 } from '../actions/searchBar';
 
 const mapStateToProps = (state) => ({
-  loading: state.searchBar.loading,
-  value: state.searchBar.value,
+  loading: state.recipes.loading,
+  searchInput: state.recipes.searchInput,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startRecipesSearch: (text) => {
-    dispatch(startSearch(text));
+  modifySearch: (searchInput) => {
+    dispatch(modifySearch(searchInput));
   },
   updatedSelection: (text) => {
     dispatch(updateSelection(text));

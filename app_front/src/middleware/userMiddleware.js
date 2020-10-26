@@ -15,7 +15,7 @@ import {
 axios.defaults.withCredentials = true;
 
 // const APISERVER = 'https://amanger.com/api';
-const APISERVER = 'http://localhost:3000';
+const APISERVER = 'http://3.127.235.222:3000';
 
 const userMiddleware = (store) => (next) => (action) => {
   const state = store.getState();

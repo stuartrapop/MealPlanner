@@ -3,14 +3,14 @@ import { Icon, Input } from 'semantic-ui-react';
 import './styles.scss';
 
 const SearchBar = ({
-  startRecipesSearch,
   updatedSelection,
   value,
+  modifySearch,
+  searchInput
 }) => {
   const handleOnChange = (event) => {
-    startRecipesSearch(event.target.value);
+    modifySearch(event.target.value);
   };
-
   const handleOnSubmit = (event) => {
     console.log(value);
     event.preventDefault();
@@ -22,10 +22,11 @@ const SearchBar = ({
         <Input
           id="form__input"
           onChange={handleOnChange}
+          value={searchInput}
           type="text"
           name="recipes"
           placeholder="Fondue savoyarde..."
-          icon={<Icon id="search__icon"name="search" inverted circular link />}
+          icon={<Icon id="search__icon" name="search" inverted circular link />}
         />
       </form>
     </div>

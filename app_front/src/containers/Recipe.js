@@ -4,7 +4,6 @@ import { getRecipe } from '../actions/recipe';
 import { getRecipeBySlug } from '../selectors/recipes';
 
 const mapStateToProps = (state, ownProps) => ({
-  // recipe: state.recipe.recipe,
   recipe: getRecipeBySlug(state.recipes.recipes, ownProps.slug),
 });
 

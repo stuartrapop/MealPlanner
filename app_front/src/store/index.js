@@ -5,9 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import logMiddleware from '../middleware/logMiddleware';
 import userMiddleware from '../middleware/userMiddleware';
-import searchBarMiddleware from '../middleware/searchBarMiddleware';
 import recipesMiddleware from '../middleware/recipesMiddleware';
-import recipeMiddleware from '../middleware/recipeMiddleware';
 import headerMiddleware from '../middleware/headerMiddleware';
 import groupsMiddleware from '../middleware/groupsMiddleware';
 
@@ -18,9 +16,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     logMiddleware,
     userMiddleware,
-    searchBarMiddleware,
     recipesMiddleware,
-    recipeMiddleware,
     headerMiddleware,
     groupsMiddleware,
   ),
