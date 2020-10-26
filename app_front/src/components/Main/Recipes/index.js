@@ -10,7 +10,7 @@ const Recipes = ({ changeDisplayRecipe, fetchrecipes, recipes }) => {
     fetchrecipes();
   }, []);
   return (
-    <div className="recipes__container">
+    <section className="recipes__container">
       <SearchBar />
       <div className="recipes__title">
         Qu'est ce qu'on mange ce soir ?
@@ -19,7 +19,7 @@ const Recipes = ({ changeDisplayRecipe, fetchrecipes, recipes }) => {
         recipes={recipes}
         changeDisplayRecipe={changeDisplayRecipe}
       />
-    </div>
+    </section>
   );
 };
 

@@ -31,12 +31,9 @@ const Main = ({ loading }) => (
           </Route>
           <Route
             path="/recette/:slug"
-            render={({ match }) => {
-              console.log('match :', match);
-              return (
-                <Recipe slug={match.params.slug} />
-              );
-            }}
+            render={({ match }) => (
+              <Recipe slug={match.params.slug} />
+            )}
           />
           <Route path="/mon-espace/groupe" exact>
             <GroupsPage groups={groups} />

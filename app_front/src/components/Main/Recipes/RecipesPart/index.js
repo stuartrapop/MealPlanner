@@ -22,7 +22,7 @@ const RecipesPart = ({ changeDisplayRecipe, recipes }) => {
           <div className="card" key={recipe.id}>
             <div className="face face1">
               <div className="content">
-                <img src="https://images.unsplash.com/photo-1584541305671-af4f46b4be2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="recipe" />
+                <img className="recipes__picture" src="https://images.unsplash.com/photo-1584541305671-af4f46b4be2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="recipe" />
                 <h3 className="recipes__subtitle">{recipe.title}</h3>
 
               </div>

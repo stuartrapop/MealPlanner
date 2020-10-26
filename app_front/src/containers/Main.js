@@ -7,12 +7,12 @@ const mapStateToProps = (state) => ({
   loading: state.searchBar.loading,
 });
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = () => {};
 
 // Container
 const MainContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  {},
 )(Main);
 
 // == Export

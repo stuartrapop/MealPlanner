@@ -6,21 +6,20 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const Ingredients = ({ recipe }) => {(
+const Ingredients = ({ recipe }) => (
   <div className="ingredients">
     <h3> Pour ce faire, il vous faudra : </h3>
     <ul>
-      
-        <li className="ingredient" key={recipe.id}><p>{recipe.id}</p></li>
-     
+      {recipe.map((ingredient) => (
+        <li className="ingredient" key={ingredient.id}>{ingredient.RecipeContainsIngredient.quantity} {ingredient.name}</li>
+      ))}
     </ul>
   </div>
-)};
+);
 
 // Ingredients.propTypes = {
 //   ingredients: PropTypes.arrayOf(
 //     PropTypes.string,
 //   ).isRequired,
 // };
-// // == Export
 export default Ingredients;

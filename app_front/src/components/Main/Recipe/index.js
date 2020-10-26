@@ -9,10 +9,10 @@ const Recipe = ({ getOneRecipe, recipe }) => {
     getOneRecipe();
   }, []);
   return (
-    <div>
+    <section className="one__recipe">
       <Description recipe={recipe} />
-      {/* <Ingredients recipe={recipe} /> */}
-    </div>
+      {/* <Ingredients recipe={recipe.ingredients} /> */}
+    </section>
   );
 };
 
