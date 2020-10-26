@@ -10,7 +10,7 @@ const Footer = () => (
     <div className="separator" />
     <div className="footer__content">
       <div className="top__part">
-        <p>L'équipe</p>
+        <a href="/about"><p> À propos de nous</p></a>
         <p>Confidentialité</p>
       </div>
       <div className="bottom__part">

@@ -1,0 +1,33 @@
+@use "src/styles/vars" as v;
+
+.about {
+  background-color: v.$background-light;
+  height :100%;
+ 
+
+  &__image {
+    display :block;
+    width: 400px;
+    height:  400px;
+    margin : 0 auto;
+    padding-bottom :v.$gutter;
+  }
+  &__container {
+    background-color: white;
+    margin : 0 auto;
+    width : 80%;
+    height : 100%;
+    padding : 1.5* v.$gutter;
+
+  }
+
+  &__title {
+    font-size: v.$main-title;
+  }
+  width : 80%;
+  margin : 0 auto;
+}
+
+@media (min-width: 1200px) {
+  
+}

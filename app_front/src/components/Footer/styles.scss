@@ -1,4 +1,10 @@
+@use "src/styles/vars" as v;
 
+.footer {
+  width: 100%;
+ 
+
+}
 .top__part {
   display: flex;
   width: 80%;
@@ -7,6 +13,21 @@
   justify-content: space-between;
 }
 
+.top__part.a {
+  text-decoration: none;
+  color : v.$link-blue 
+}
+
+.top__part p {
+  text-decoration: none;
+  color : v.$link-blue 
+}
+
 .bottom__part {
   text-align: center;
+}
+
+.bottom__part p {
+  text-decoration: none;
+  color : v.$link-blue 
 }

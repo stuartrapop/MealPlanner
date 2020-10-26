@@ -45,7 +45,7 @@ const userController = {
                 association: 'meals',
                 include: {
                   association: 'recipes',
-                  include: 'ingredients',
+                  include: ['ingredients', 'types'],
                 },
               },
             ],
