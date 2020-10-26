@@ -9,6 +9,7 @@ import {
   sendErrorMessage,
   HANDLE_SIGN_IN,
   signIn,
+  HANDLE_LOG_OUT,
 } from '../actions/user';
 
 axios.defaults.withCredentials = true;
@@ -64,6 +65,15 @@ const userMiddleware = (store) => (next) => (action) => {
         .catch((e) => {
           const signInWentSuccesfully = false;
           store.dispatch(signIn(signInWentSuccesfully, e.response.data.details));
+        });
+      break;
+    case HANDLE_LOG_OUT:
+      axios.post('http://3.127.235.222:3000/logout', {}, { withCredentials: true })
+        .then(() => {
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
         });
       break;
     default:

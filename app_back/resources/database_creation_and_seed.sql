@@ -21,6 +21,7 @@ CREATE TABLE "user" (
     "last_name" VARCHAR(50) NOT NULL,
     "user_name" VARCHAR(20) NOT NULL,
     "password" VARCHAR(70) NOT NULL,
+    "account_role" VARCHAR (20) NOT NULL,
     "email" VARCHAR(50) NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMP
@@ -107,8 +108,8 @@ CREATE TABLE "user_likes_recipe" (
 
 
 CREATE TABLE "user_belongs_group" (
-    "user_id" INTEGER  REFERENCES "user" ("id"),
     "group_id" INTEGER REFERENCES "group" ("id"),
+    "user_id" INTEGER  REFERENCES "user" ("id"),
     "user_role" VARCHAR (25)  NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMP
@@ -124,7 +125,6 @@ CREATE TABLE "recipe_contains_ingredient" (
 );
 
 CREATE TABLE "meal_has_recipe" (
-
     "meal_id" INTEGER  REFERENCES "meal" ("id"),
     "recipe_id" INTEGER  REFERENCES "recipe" ("id"),
     "number_people" INTEGER  NOT NULL,
@@ -162,14 +162,15 @@ VALUES
 (16, 'carrottes',  true, false, false );
 
 
-INSERT INTO  "user" ("id", "first_name", "last_name", "user_name", "password", "email" )  OVERRIDING SYSTEM VALUE
+INSERT INTO  "user" ("id", "first_name", "last_name", "user_name", "password", "account_role", "email" )  OVERRIDING SYSTEM VALUE
 VALUES 
-(1, 'Pierre', 'Dupont', 'pierre1','French', 'pierre@gmail.com'),
-(2, 'Alice', 'Dupont', 'alice1','French1', 'alice@gmail.com'),
-(3, 'Carole', 'Dupont', 'carole1','French2', 'carole@gmail.com'),
-(4, 'Thierry', 'Dupont', 'thierry1','French3', 'thierry@gmail.com'),
-(5, 'Virgil', 'Kwiatkowski', 'virgil1','Polish1', 'virgilkwiatkowski@gmail.com'),
-(6, 'Clément', 'Herpe', 'clement1','German1', 'clement@gmail.com');
+(1, 'Stuart', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'admin', 'stuart@gmail.com'),
+(2, 'Virgil', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'admin', 'virgil@gmail.com'),
+(3, 'Clément', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'admin', 'clement@gmail.com'),
+(4, 'Stuart1', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'stuart1@gmail.com'),
+(5, 'Virgil1', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'user', 'virgil1@gmail.com'),
+(6, 'Clément2', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com');
+
 
 
 INSERT INTO  "recipe" ("id", "title" , "url","difficulty", "instructions" , "cooking_time","number_people", "user_id" ) 
@@ -194,13 +195,13 @@ VALUES
 
 INSERT INTO  "meal" ("id", "day" , "time", "group_id" ) OVERRIDING SYSTEM VALUE
 VALUES 
-(1, '18/10/15', 'lunch', 1 ),
-(2, '18/10/15', 'dinner', 1 ),
-(3, '20/10/15', 'lunch', 1 ),
-(4, '21/10/15', 'dinner', 1 ),
-(5, '18/10/15', 'lunch', 2 ),
-(6, '19/10/15', 'lunch', 2 ),
-(7, '22/10/15', 'dinner', 2 );
+(1, '2020-10-15', 'lunch', 1 ),
+(2, '2020-10-16', 'dinner', 1 ),
+(3, '2020-10-17', 'lunch', 1 ),
+(4, '2020-10-18', 'dinner', 1 ),
+(5, '2020-10-19', 'lunch', 2 ),
+(6, '2020-10-20', 'lunch', 2 ),
+(7, '2020-10-21', 'dinner', 2 );
 
 
 
@@ -283,18 +284,22 @@ INSERT INTO  "user_likes_recipe" ("recipe_id", "user_id")  VALUES
 (1, 1),
 (2, 4);
 
-INSERT INTO  "user_belongs_group" ("user_id", "group_id", "user_role")  VALUES
-(1, 1 ,'créateur'),
-(1, 2,'créateur'),
-(1, 3,'créateur'),
-(2, 1,'peut modifier'),
-(2, 2,'peut modifier'),
-(2, 3,'peut modifier'),
+INSERT INTO  "user_belongs_group" ("group_id", "user_id",  "user_role")  VALUES
+
+(1, 4,'créateur'),
+(2, 3,'créateur'),
+(3, 2,'créateur'),
+(4, 1,'créateur'),
+(5, 1,'créateur'),
+(6, 1,'créateur'),
+(2, 4,'peut modifier'),
+(2, 4,'peut modifier'),
+(2, 5,'peut modifier'),
+(2, 6,'peut modifier'),
 (3, 3,'lecture'),
 (4, 2,'lecture'),
-(4, 3,'peut modifier'),
-(4, 5,'créateur'),
-(4, 6,'créateur');
+(4, 3,'peut modifier');
+
 
 INSERT INTO  "meal_has_recipe" ("meal_id", "recipe_id", "number_people")  VALUES
 (1, 1, 6),

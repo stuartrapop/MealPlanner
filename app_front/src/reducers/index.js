@@ -4,6 +4,7 @@ import searchBar from './searchBar';
 import recipes from './recipes';
 import header from './header';
 import recipe from './recipe';
+import groups from './groups';
 
 export default combineReducers({
   user,
@@ -11,4 +12,5 @@ export default combineReducers({
   recipes,
   header,
   recipe,
+  groups,
 });

@@ -32,6 +32,7 @@ const headerMiddleware = (store) => (next) => (action) => {
       let { isLogged } = state.user;
       isLogged = false;
       store.dispatch(logOut(isLogged));
+      next(action);
       break;
     default:
       next(action);

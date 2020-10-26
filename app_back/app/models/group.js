@@ -5,15 +5,15 @@ const sequelize = require('../database');
 class Group extends Model {}
 
 Group.init({
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-    {
-    sequelize,
-    tableName: 'group'
+
+},
+{
+  sequelize,
+  tableName: 'group',
 });
 
 module.exports = Group;
