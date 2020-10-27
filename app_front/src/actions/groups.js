@@ -11,6 +11,7 @@ export const START_SEARCH = 'START_SEARCH';
 export const SHOW_RESULTS_ACTION = 'SHOW_RESULTS_ACTION';
 export const ADD_RECIPE_TO_DB = 'ADD_RECIPE_TO_DB';
 export const SEND_NUMBER_PEOPLE_ACTION = 'SEND_NUMBER_PEOPLE_ACTION';
+export const REMOVE_RECIPE_ACTION = 'REMOVE_RECIPE_ACTION';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -75,4 +76,10 @@ export const addRecipeToDB = (mealId, recipeId) => ({
 export const sendNumberPeopleAction = (nbPeople) => ({
   type: SEND_NUMBER_PEOPLE_ACTION,
   nbPeople,
+});
+
+export const removeRecipeAction = (mealId, recipeId) => ({
+  type: REMOVE_RECIPE_ACTION,
+  mealId,
+  recipeId,
 });

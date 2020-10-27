@@ -9,7 +9,7 @@ import AddRecipeZone from '../../../../../containers/AddRecipeZone';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, groupValueDropdown,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, groupValueDropdown, sendRemoveRecipeAction,
 }) => {
   const groupOptionsConstructor = userInfos.groups.map((group) => ({
     key: group.id,
@@ -90,7 +90,6 @@ const AddMeal = ({
   }, Object.create(null));
 
   const groupedByDaysArray = Object.values(groupedByDays);
-  console.log(groupedByDaysArray);
 
   const sortArrayByDay = (a, b) => {
     if (a[0].mealDate > b[0].mealDate) {
@@ -124,6 +123,10 @@ const AddMeal = ({
     sendRemoveMealAction(evt.target.parentNode.id);
   };
 
+  const removeRecipeClick = (evt, data) => {
+    sendRemoveRecipeAction(data.mealid, data.recipeid);
+  };
+
   return (
     <div className="addmeal__container">
       <h1>Vos repas prévus</h1>
@@ -140,7 +143,7 @@ const AddMeal = ({
               </div>
             </div>
             {finalArray.map((day) => (
-              <div className="day__schedule__box">
+              <div className="day__schedule__box" key={day[0].mealDay}>
                 <em className="day__date">{day[0].displayedDate}</em>
                 <div>
                   {day.map((meal) => (
@@ -151,9 +154,10 @@ const AddMeal = ({
                           id={meal.key}
                         />
                         {meal.scheduledRecipes.map((recipe) => (
-                          <div key={recipe.id + meal.mealDate}>
-                            <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus" />
-                              {recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i>
+                          <div key={recipe.id + meal.mealDate} className="recipe__box">
+                            <li className="scheduled__recipe">
+                              <Icon id="remove__meal__icon" name="minus" onClick={removeRecipeClick} mealid={meal.key} recipeid={recipe.id} />
+                              <p>{recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i></p>
                             </li>
                           </div>
                         ))}

@@ -8,10 +8,12 @@ import {
   fetchGroupsDatasAction,
   REMOVE_MEAL_ACTION,
   ADD_RECIPE_TO_DB,
+  REMOVE_RECIPE_ACTION,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
+  var mealId, recipeId;
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;
@@ -56,9 +58,22 @@ const groupsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case ADD_RECIPE_TO_DB:
-      const { mealId, recipeId } = action;
+      mealId = action.mealId;
+      recipeId = action.recipeId;
       const { numberPeople } = state.groups;
       axios.post('http://3.127.235.222:3000/meal/addRecipe', { recipeId, mealId, numberPeople }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case REMOVE_RECIPE_ACTION:
+      mealId = action.mealId;
+      recipeId = action.recipeId;
+      axios.post('http://3.127.235.222:3000/meal/removeRecipe', { mealId, recipeId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);

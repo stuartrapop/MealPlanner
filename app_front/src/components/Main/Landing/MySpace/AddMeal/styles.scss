@@ -83,6 +83,13 @@ i {
   margin: .3em auto .3em auto;
 }
 
+.scheduled__recipe {
+  display: flex;
+}
+
+.scheduled__recipe p {
+  font-size: 1em;
+}
 
 @media (min-width: 768px) {
   .addmeal__body{
