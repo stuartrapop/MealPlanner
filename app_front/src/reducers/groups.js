@@ -7,6 +7,7 @@ import {
   CHANGE_ACTIVE_ENTRY_ID,
   START_SEARCH,
   SHOW_RESULTS_ACTION,
+  SEND_NUMBER_PEOPLE_ACTION,
 } from '../actions/groups';
 
 export const initialState = {
@@ -21,6 +22,7 @@ export const initialState = {
   recipesSearchLoading: false,
   recipesSearchResults: [],
   recipesSearchValue: '',
+  numberPeople: 2,
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -70,6 +72,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         recipesSearchResults: action.possibleResults,
+      };
+    case SEND_NUMBER_PEOPLE_ACTION:
+      return {
+        ...state,
+        numberPeople: action.nbPeople,
       };
     default:
       return state;

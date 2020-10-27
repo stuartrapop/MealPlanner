@@ -16,6 +16,8 @@ const AddRecipeZone = ({
   handleSearchChangeAction, // fonction qui gère les frappes
   showResults, // fonction pour afficher les résultats
   addRecipeToDB,
+  numberPeople,
+  sendNumberPeopleAction, // fonction pour mettre à jour le nb de personnes
 }) => {
   const source = recipesList.map((recipe) => ({
     key: recipe.id,
@@ -25,9 +27,8 @@ const AddRecipeZone = ({
     price: `${recipe.cooking_time} min`,
   }));
 
-  let numberPeople = '2';
   const numberPeopleChange = (evt) => {
-    numberPeople = evt.target.textContent;
+    sendNumberPeopleAction(evt.target.textContent);
   };
 
   const changeActiveEntryId = () => {
@@ -41,8 +42,8 @@ const AddRecipeZone = ({
     showResults(possibleResults);
   };
 
-  const handleResultSelection = (evt) => {
-    addRecipeToDB(id, evt.target.textContent, numberPeople);
+  const handleResultSelection = (evt, data) => {
+    addRecipeToDB(id, data.result.key);
   };
 
   const nbPeopleOptions = [

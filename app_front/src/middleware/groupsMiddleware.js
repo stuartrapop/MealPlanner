@@ -56,11 +56,8 @@ const groupsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case ADD_RECIPE_TO_DB:
-      const mealId = action.id;
-      const { numberPeople } = action;
-      const { recipeName } = action;
-      const findRecipeId = state.recipes.recipes.find((recipe) => recipe.title === recipeName);
-      const recipeId = findRecipeId.id;
+      const { mealId, recipeId } = action;
+      const { numberPeople } = state.groups;
       axios.post('http://3.127.235.222:3000/meal/addRecipe', { recipeId, mealId, numberPeople }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());

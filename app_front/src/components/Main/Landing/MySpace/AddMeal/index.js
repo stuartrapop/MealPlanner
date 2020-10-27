@@ -9,7 +9,7 @@ import AddRecipeZone from '../../../../../containers/AddRecipeZone';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, addRecipeZoneDisplayed, groupValueDropdown,
+  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, groupValueDropdown,
 }) => {
   const groupOptionsConstructor = userInfos.groups.map((group) => ({
     key: group.id,
@@ -33,15 +33,22 @@ const AddMeal = ({
     return (`${mealDayName} - ${frenchTransformedDate}`);
   };
 
+  const getFrenchizedDay = (day) => {
+    const transformedDate = new Date(day.replace('-', '/'));
+    const frenchTransformedDate = `${transformedDate.getDate()}/${transformedDate.getMonth() + 1}/${transformedDate.getFullYear()}`;
+    return (frenchTransformedDate);
+  };
+
   const { meals } = userInfos.groups[activeGroup];
 
   // On commence par en faire une copie avec des dates format date
   const mealsConvertedToDate = meals.map((meal) => ({
     id: meal.id,
-    day: new Date(meal.day.replace('-', '/')),
+    day: meal.day,
+    date: new Date(meal.day.replace('-', '/')),
     time: meal.time,
     recipes: meal.recipes,
-    displayedDate: `${getDisplayedDate(meal.day)} - ${meal.time}`,
+    displayedDate: `${getDisplayedDate(meal.day)}`,
   }));
 
   // On créer un tableau en modifiant les dates en fonction des times
@@ -49,7 +56,8 @@ const AddMeal = ({
     if (meal.time === 'Déjeuner') {
       return {
         key: meal.id,
-        mealDate: meal.day.setHours(meal.day.getHours() + 12),
+        mealDay: getFrenchizedDay(meal.day),
+        mealDate: meal.date.setHours(meal.date.getHours() + 12),
         mealType: meal.time,
         scheduledRecipes: meal.recipes,
         displayedDate: meal.displayedDate,
@@ -58,7 +66,8 @@ const AddMeal = ({
     if (meal.time === 'Dîner') {
       return {
         key: meal.id,
-        mealDate: meal.day.setHours(meal.day.getHours() + 19),
+        mealDay: getFrenchizedDay(meal.day),
+        mealDate: meal.date.setHours(meal.date.getHours() + 19),
         mealType: meal.time,
         scheduledRecipes: meal.recipes,
         displayedDate: meal.displayedDate,
@@ -66,28 +75,36 @@ const AddMeal = ({
     }
     return {
       key: meal.id,
-      mealDate: meal.day.setHours(meal.day.getHours() + 0),
+      mealDay: getFrenchizedDay(meal.day),
+      mealDate: meal.date.setHours(meal.date.getHours() + 0),
       mealType: meal.time,
       scheduledRecipes: meal.recipes,
       displayedDate: meal.displayedDate,
     };
   });
 
-  // fonction servant à ranger les dates
-  const compare = (a, b) => {
-    const date1 = a.mealDate;
-    const date2 = b.mealDate;
-    let comparison = 0;
-    if (date1 > date2) {
-      comparison = 1;
+  const groupedByDays = mealsConvertedToDateImproved.reduce((r, a) => {
+    r[a.mealDay] = r[a.mealDay] || [];
+    r[a.mealDay].push(a);
+    return r;
+  }, Object.create(null));
+
+  const groupedByDaysArray = Object.values(groupedByDays);
+  console.log(groupedByDaysArray);
+
+  const sortArrayByDay = (a, b) => {
+    if (a[0].mealDate > b[0].mealDate) {
+      return 1;
     }
-    else if (date1 < date2) {
-      comparison = -1;
+    if (a[0].mealDate < b[0].mealDate) {
+      return -1;
     }
-    return comparison;
+
+    return 0;
   };
-  // On trie désormais le tableau par date la plus proche de maintenant
-  const sortedMealsArray = mealsConvertedToDateImproved.sort(compare);
+
+  const finalArray = groupedByDaysArray.sort(sortArrayByDay);
+  console.log(finalArray);
 
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
@@ -114,30 +131,37 @@ const AddMeal = ({
         <div>
           <ul className="scheduled__meals__container">
             <div className="add__meal__container">
+              <div className="add__meal--right">
+                <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
+              </div>
               <div className="add__meal--left" onClick={toggleAddMealModal}>
                 <Icon id="add__meal__icon" name="plus square outline" size="large" />
                 Ajouter un créneau
               </div>
-              <div className="add__meal--right">
-                <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
-              </div>
             </div>
-            {sortedMealsArray.map((meal) => (
-              <div key={meal.key} id={meal.key}>
-                <Icon id="remove__meal__icon" name="trash alternate outline" onClick={removeMealClick} /> <em>{meal.displayedDate}</em>
-                <ul className="scheduled__meal">
-                  <AddRecipeZone
-                    id={meal.key}
-                  />
-                  {meal.scheduledRecipes.map((recipe) => (
-                    <div key={recipe.id + meal.mealDate}>
-                      <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus" />
-                        {recipe.title} - <i>{recipe.number_people} personnes </i>
-                      </li>
+            {finalArray.map((day) => (
+              <div className="day__schedule__box">
+                <em className="day__date">{day[0].displayedDate}</em>
+                <div>
+                  {day.map((meal) => (
+                    <div key={meal.key} id={meal.key}>
+                      <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} /> <em>{meal.mealType}</em>
+                      <ul className="scheduled__meal">
+                        <AddRecipeZone
+                          id={meal.key}
+                        />
+                        {meal.scheduledRecipes.map((recipe) => (
+                          <div key={recipe.id + meal.mealDate}>
+                            <li className="scheduled__recipe"> <Icon id="remove__meal__icon" name="minus" />
+                              {recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i>
+                            </li>
+                          </div>
+                        ))}
+                      </ul>
+                      <div className="separator" />
                     </div>
                   ))}
-                  <div className="recipe__small__separator" />
-                </ul>
+                </div>
               </div>
             ))}
           </ul>
