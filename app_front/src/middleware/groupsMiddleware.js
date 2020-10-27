@@ -13,7 +13,8 @@ import {
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
-  var mealId, recipeId;
+  let mealId;
+  let recipeId;
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;

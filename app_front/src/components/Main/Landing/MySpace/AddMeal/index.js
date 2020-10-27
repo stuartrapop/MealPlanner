@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
 import AddMealModal from '../../../../../containers/AddMealModal';
@@ -89,7 +90,11 @@ const AddMeal = ({
     return r;
   }, Object.create(null));
 
+  // On compare les dates reçues avec aujourd'hui pour ne pas afficher les passées
   const groupedByDaysArray = Object.values(groupedByDays);
+  const today = new Date();
+  const todayFormated = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+  const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDay >= todayFormated);
 
   const sortArrayByDay = (a, b) => {
     if (a[0].mealDate > b[0].mealDate) {
@@ -102,7 +107,7 @@ const AddMeal = ({
     return 0;
   };
 
-  const finalArray = groupedByDaysArray.sort(sortArrayByDay);
+  const finalArray = cleanedFromPastArray.sort(sortArrayByDay);
   console.log(finalArray);
 
   const handleChooseGroup = (evt) => {
@@ -172,7 +177,9 @@ const AddMeal = ({
         </div>
         <div className="advanced__search__access">
           <h2> En manque d'inspiration ?</h2>
-          <Button inverted color="orange">Parcourir les recettes !</Button>
+          <Link to="/recettes">
+            <Button inverted color="orange">Parcourir les recettes !</Button>
+          </Link>
         </div>
       </div>
       {mealModalDisplayed && (
