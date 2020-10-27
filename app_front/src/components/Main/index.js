@@ -8,14 +8,14 @@ import {
 } from 'react-router-dom';
 import Recipes from '../../containers/Recipes';
 import Recipe from '../../containers/Recipe';
-import GroupsPage from './GroupsPage';
-
+import GroupsPage from './GroupsPage'; 
 import Landing from '../../containers/Landing';
 import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 
 // == Import
 import './styles.scss';
 import groups from '../../../data/groups';
+import ShoppingList from '../../containers/ShoppingList';
 
 // == Composant
 const Main = ({ loading }) => (
@@ -42,6 +42,9 @@ const Main = ({ loading }) => (
           </Route>
           <Route path="/mon-espace/ajouter-repas" exact>
             <AddMealModal />
+          </Route>
+          <Route path="/liste" exact>
+            <ShoppingList />
           </Route>
         </div>
         )}

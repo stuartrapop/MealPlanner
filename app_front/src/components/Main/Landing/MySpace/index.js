@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Dimmer, Loader, Image, Segment,
 } from 'semantic-ui-react';
@@ -28,14 +29,13 @@ const MySpace = ({ fetchGroupsDatas, loading }) => {
           </Segment>
         </div>
       )}
-
       {!loading && (
       <>
         <AddMeal />
         <Planning />
       </>
       )}
-      <a>Génerer ma liste de courses</a>
+      <Link to="/liste">Génerer ma liste de courses</Link>
     </div>
   );
 };

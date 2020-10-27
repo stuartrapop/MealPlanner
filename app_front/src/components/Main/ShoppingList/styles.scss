@@ -1,0 +1,6 @@
+@use "src/styles/vars" as v;
+
+.list__item {
+  display: flex;
+  justify-content: space-between;
+}
