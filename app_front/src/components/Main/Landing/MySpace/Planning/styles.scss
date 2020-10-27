@@ -2,12 +2,19 @@
 
 .planning__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   margin-bottom: 2em;
 }
 
-.planning__container {
-  background-color: v.$light-grey;
-  padding: 2em 0;
+.planning__description {
+  display: flex;
+  align-items: center;
+  margin-left: 30%;
+  font-weight: bold;
+}
+
+.description__component {
+  width: 30%;
+  margin: 3px;
 }
