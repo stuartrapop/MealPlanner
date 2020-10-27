@@ -7,12 +7,12 @@ import './styles.scss';
 // import Tags from './Tags';
 
 const RecipesPart = ({ searchedRecipes }) => (
-  <div className="body">
-    <div className="container">
+  <div className="body__recipes">
+    <div className="container__recipes">
       {searchedRecipes.map((recipe) => (
-        <div className="card" key={recipe.id}>
-          <div className="face face1">
-            <div className="content">
+        <div className="card__recipes" key={recipe.id}>
+          <div className="card__recipes__face face1">
+            <div className="card__recipes__content">
               <img className="recipes__picture" src="https://images.unsplash.com/photo-1584541305671-af4f46b4be2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="recipe" />
               <h3 className="recipes__subtitle">{recipe.title}</h3>
             </div>

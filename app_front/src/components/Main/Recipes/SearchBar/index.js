@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Input } from 'semantic-ui-react';
 import './styles.scss';
 
 const SearchBar = ({
   modifySearch,
-  searchInput
+  searchInput,
 }) => {
   const handleOnChange = (event) => {
     modifySearch(event.target.value);
@@ -25,5 +26,8 @@ const SearchBar = ({
     </div>
   );
 };
-
+SearchBar.propTypes = {
+  modifySearch: PropTypes.func.isRequired,
+  searchInput: PropTypes.string.isRequired,
+};
 export default SearchBar;

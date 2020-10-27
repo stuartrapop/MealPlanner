@@ -51,5 +51,8 @@ const Main = ({ loading }) => (
   </Router>
 );
 
-// == Export
+Main.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};
+
 export default Main;

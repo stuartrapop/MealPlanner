@@ -23,21 +23,15 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
         placeholder="Rechercher"
       />
       <h1>Nos coups de coeur du moment</h1>
-      {searchedRecipes.slice(1, 3).map((recipes) => (
+      {searchedRecipes.slice(0, 3).map((recipes) => (
         <Card className="card__from__landing__page">
           <Image key={recipes.id} id="trendy__recipe__img" src={recipes.url} wrapped ui={false} />
           <Card.Content>
             <Card.Header />
-            <Card.Meta>
-              <Label color="green" horizontal>
-                Vegetarien
-              </Label>
-              <Label color="purple" horizontal>
-                Dessert
-              </Label>
-            </Card.Meta>
             <Card.Description>
-              Une recette pour de délicieux cookies
+              <h2> {recipes.title}</h2>
+              <p> Temps de préparation : {recipes.cooking_time} minutes </p>
+              <p>  Difficulté de la recette : {recipes.difficulty} </p>
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
@@ -60,8 +54,16 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
 };
 
 LandingQuickSearch.propTypes = {
-  searchedRecipes: PropTypes.func.isRequired,
-  searchInput: PropTypes.func.isRequired,
+  searchedRecipes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      cooking_time: PropTypes.number,
+      difficulty: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
+  searchInput: PropTypes.string.isRequired,
   modifySearch: PropTypes.func.isRequired,
 };
+
 export default LandingQuickSearch;
