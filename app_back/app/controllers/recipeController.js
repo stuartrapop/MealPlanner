@@ -4,7 +4,7 @@ const recipeController = {
   // les cards d'une liste
   allRecipes: async (req, res) => {
     const recipes = await Recipe.findAll({
-      include: 'ingredients',
+      include: ['ingredients', 'types'],
 
     });
       // on renvoie les cartes
@@ -14,7 +14,7 @@ const recipeController = {
     try {
       const recipeId = parseInt(req.params.id, 10);
       const recipe = await Recipe.findByPk(recipeId, {
-        include: 'ingredients',
+        include: ['ingredients', 'types'],
       });
       // send the details or not found
       if (recipe) {
