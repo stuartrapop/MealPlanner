@@ -16,6 +16,7 @@ import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 import './styles.scss';
 import groups from '../../../data/groups';
 import ShoppingList from '../../containers/ShoppingList';
+import Pdf from "react-to-pdf";
 
 // == Composant
 const Main = ({ loading }) => (

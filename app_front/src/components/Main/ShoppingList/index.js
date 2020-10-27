@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
+import Pdf from 'react-to-pdf';
+
+const ref = React.createRef();
 
 const ShoppingList = ({ userInfos, groupId }) => {
   console.log('userInfos', userInfos);
@@ -72,7 +75,8 @@ const ShoppingList = ({ userInfos, groupId }) => {
     }
     else {
       weight = 'Litre(s)';
-      quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 100);    }
+      quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 100);
+    }
     return (
       <ul className="list__item">
         <li>{oneItem.ingredientName}</li>
@@ -82,20 +86,19 @@ const ShoppingList = ({ userInfos, groupId }) => {
 
     );
   });
-  console.log('ShppingList Result', shoppingListResults);
-  console.log('Ingredient List', listForShopping);
-
-  console.log('condensed shopping list', condensedShoppingList);
-
-  console.log(groupInfos);
   return (
     <div className="list__container">
-      <ul className="list__item">
-        <li>aliment</li>
-        <li>quantité</li>
-        <li>unité</li>
-      </ul>
-      {list}
+      <Pdf targetRef={ref} filename="ma-liste-de-crouses.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Ma liste de course au format Pdf</button>}
+      </Pdf>
+      <div ref={ref}>
+        <ul className="list__item">
+          <li>aliment</li>
+          <li>quantité</li>
+          <li>unité</li>
+        </ul>
+        {list}
+      </div>
     </div>
   );
 };
