@@ -32,6 +32,9 @@ const cors = require('cors');
 
 // app.use('/api', exampleProxy);
 
+
+
+
 app.use('/api', createProxyMiddleware({ target: 'http://amanger.com', changeOrigin: true }));
 const router = require('./app/router');
 
