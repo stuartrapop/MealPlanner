@@ -39,6 +39,7 @@ const userController = {
         lastName: user.lastName,
         pseudo: user.userName,
         userId: user.id,
+        
       }));
 
       // on renvoie les cartes

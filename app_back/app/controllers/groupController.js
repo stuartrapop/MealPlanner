@@ -161,7 +161,7 @@ const groupController = {
         include: 'members',
       });
 
-      console.log(group)
+      console.log(group);
 
       if (group) {
       // send the details or not found
@@ -170,12 +170,13 @@ const groupController = {
           lastName: user.lastName,
           pseudo: user.userName,
           userId: user.id,
+          userRole: user.UserBelongsGroup.user_role,
         }));
 
         // on renvoie les cartes
         res.json({
-          groupId : group.id,
-          groupName : group.name,
+          groupId: group.id,
+          groupName: group.name,
           groupMemberArray,
         });
       }
