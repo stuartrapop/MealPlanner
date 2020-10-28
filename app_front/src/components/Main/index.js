@@ -8,15 +8,14 @@ import {
 } from 'react-router-dom';
 import Recipes from '../../containers/Recipes';
 import Recipe from '../../containers/Recipe';
-import GroupsPage from './GroupsPage'; 
+import GroupsPage from '../../containers/GroupsPage';
+
 import Landing from '../../containers/Landing';
 import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
 
 // == Import
 import './styles.scss';
-import groups from '../../../data/groups';
 import ShoppingList from '../../containers/ShoppingList';
-import Pdf from "react-to-pdf";
 
 // == Composant
 const Main = ({ loading }) => (
@@ -35,8 +34,8 @@ const Main = ({ loading }) => (
               <Recipe slug={match.params.slug} />
             )}
           />
-          <Route path="/mon-espace/groupe" exact>
-            <GroupsPage groups={groups} />
+          <Route path="/mon-espace/groupes" exact>
+            <GroupsPage />
           </Route>
           <Route path="/recettes" exact>
             <Recipes />

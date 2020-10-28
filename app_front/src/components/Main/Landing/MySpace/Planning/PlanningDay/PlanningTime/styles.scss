@@ -1,0 +1,13 @@
+@use "src/styles/vars" as v;
+
+.found__recipes li {
+  margin: 5px 2px;
+  padding: 0.2em;
+  font-size: 0.8em;
+  background-color: lightgray;
+}
+
+.planning__day__box:after{
+  content: '.';
+  visibility: hidden;
+}

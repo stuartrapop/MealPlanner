@@ -1,4 +1,7 @@
+@use "src/styles/vars" as v;
+
 .myspace__container {
   text-align: center;
   padding: 3em 2em;
+  background-color:v.$light-grey;
 }

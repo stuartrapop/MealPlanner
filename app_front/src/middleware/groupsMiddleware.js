@@ -7,28 +7,26 @@ import {
   saveNewMeal,
   fetchGroupsDatasAction,
   REMOVE_MEAL_ACTION,
-  updateAddRecipeZoneDisplayedArray,
+  ADD_RECIPE_TO_DB,
+  REMOVE_RECIPE_ACTION,
+  FETCH_GROUP_MEMBERS,
+  sendGroupMembers,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
+  let mealId;
+  let recipeId;
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;
       axios.get(`http://3.127.235.222:3000/user/${id}`, {}, { withCredentials: true })
         .then((response) => {
-          // On créer un tableau avec autant de case que de meals et toutes initialisée à false
-          const mealNumber = (response.data.groups[state.groups.activeGroup].meals.length);
-          const newaddRecipeZoneDisplayed = [];
-          for (let i = 0; i < mealNumber; i++) {
-            newaddRecipeZoneDisplayed.push(false);
-          }
           // On trie l'ordre des groupes renvoyé afin d'avoir toujours le même
           const lowestIdFirstSort = (a, b) => (a.id - b.id);
           response.data.groups.sort(lowestIdFirstSort);
           // On appelle les fonctions
           store.dispatch(sendGroupsDatas(response.data));
-          store.dispatch(updateAddRecipeZoneDisplayedArray(newaddRecipeZoneDisplayed));
           next(action);
         })
         .catch((e) => {
@@ -37,8 +35,9 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_TARGETED_VALUES:
       const { choosenDay, choosenTime } = action;
-      const groupId = state.groups.activeGroupId;
-      const day = choosenDay;
+      let groupId = state.groups.activeGroupId;
+      const dayString = `${choosenDay}`;
+      const day = dayString.split('/').join('-');
       const time = choosenTime;
       axios.post('http://3.127.235.222:3000/meal/create', { day, time, groupId }, { withCredentials: true })
         .then(() => {
@@ -51,10 +50,46 @@ const groupsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case REMOVE_MEAL_ACTION:
-      const mealId = action.targetMealId;
-      axios.delete(`http://3.127.235.222:3000/meal/${mealId}`, {}, { withCredentials: true })
+      const mealIdForURL = action.targetMealId;
+      axios.delete(`http://3.127.235.222:3000/meal/${mealIdForURL}`, {}, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case ADD_RECIPE_TO_DB:
+      mealId = action.mealId;
+      recipeId = action.recipeId;
+      const { numberPeople } = state.groups;
+      axios.post('http://3.127.235.222:3000/meal/addRecipe', { recipeId, mealId, numberPeople }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case REMOVE_RECIPE_ACTION:
+      mealId = action.mealId;
+      recipeId = action.recipeId;
+      axios.post('http://3.127.235.222:3000/meal/removeRecipe', { mealId, recipeId }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case FETCH_GROUP_MEMBERS:
+      groupId = action.groupId;
+      axios.get(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
+        .then((response) => {
+          store.dispatch(sendGroupMembers(response.data));
           next(action);
         })
         .catch((e) => {

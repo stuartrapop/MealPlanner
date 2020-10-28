@@ -6,8 +6,14 @@ export const SEND_TARGETED_VALUES = 'SEND_TARGETED_VALUES';
 export const SAVE_NEW_MEAL = 'SAVE_NEW_MEAL';
 export const SEND_ERROR_MESSAGE = 'SEND_ERROR_MESSAGE';
 export const REMOVE_MEAL_ACTION = 'REMOVE_MEAL_ACTION';
-export const TOGGLE_ADD_RECIPE_ZONE = 'TOGGLE_ADD_RECIPE_ZONE';
-export const UPDATE_ADD_RECIPE_DISPLAYED_ARRAY = 'UPDATE_ADD_RECIPE_DISPLAYED_ARRAY';
+export const CHANGE_ACTIVE_ENTRY_ID = 'CHANGE_ACTIVE_ENTRY_ID';
+export const START_SEARCH = 'START_SEARCH';
+export const SHOW_RESULTS_ACTION = 'SHOW_RESULTS_ACTION';
+export const ADD_RECIPE_TO_DB = 'ADD_RECIPE_TO_DB';
+export const SEND_NUMBER_PEOPLE_ACTION = 'SEND_NUMBER_PEOPLE_ACTION';
+export const REMOVE_RECIPE_ACTION = 'REMOVE_RECIPE_ACTION';
+export const FETCH_GROUP_MEMBERS = 'FETCH_GROUP_MEMBERS';
+export const SEND_GROUP_MEMBERS = 'SEND_GROUP_MEMBERS';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -48,12 +54,44 @@ export const removeMealAction = (targetMealId) => ({
   targetMealId,
 });
 
-export const toggleAddRecipeZone = (id) => ({
-  type: TOGGLE_ADD_RECIPE_ZONE,
-  id,
+export const changeActiveEntryId = (entryId) => ({
+  type: CHANGE_ACTIVE_ENTRY_ID,
+  entryId,
 });
 
-export const updateAddRecipeZoneDisplayedArray = (newArray) => ({
-  type: UPDATE_ADD_RECIPE_DISPLAYED_ARRAY,
-  newArray,
+export const handleSearchChange = (input) => ({
+  type: START_SEARCH,
+  input,
+});
+
+export const showResultsAction = (possibleResults) => ({
+  type: SHOW_RESULTS_ACTION,
+  possibleResults,
+});
+
+export const addRecipeToDB = (mealId, recipeId) => ({
+  type: ADD_RECIPE_TO_DB,
+  mealId,
+  recipeId,
+});
+
+export const sendNumberPeopleAction = (nbPeople) => ({
+  type: SEND_NUMBER_PEOPLE_ACTION,
+  nbPeople,
+});
+
+export const removeRecipeAction = (mealId, recipeId) => ({
+  type: REMOVE_RECIPE_ACTION,
+  mealId,
+  recipeId,
+});
+
+export const fetchGroupMembers = (groupId) => ({
+  type: FETCH_GROUP_MEMBERS,
+  groupId,
+});
+
+export const sendGroupMembers = (data) => ({
+  type: SEND_GROUP_MEMBERS,
+  data,
 });
