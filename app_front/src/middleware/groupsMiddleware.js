@@ -13,6 +13,8 @@ import {
   sendGroupMembers,
 } from '../actions/groups';
 
+
+
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   let mealId;
@@ -20,7 +22,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;
-      axios.get(`http://3.127.235.222:3000/user/${id}`, {}, { withCredentials: true })
+      axios.get(`${process.env.APISERVER}/user/${id}`, {}, { withCredentials: true })
         .then((response) => {
           // On trie l'ordre des groupes renvoyé afin d'avoir toujours le même
           const lowestIdFirstSort = (a, b) => (a.id - b.id);
@@ -39,7 +41,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       const dayString = `${choosenDay}`;
       const day = dayString.split('/').join('-');
       const time = choosenTime;
-      axios.post('http://3.127.235.222:3000/meal/create', { day, time, groupId }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/meal/create`, { day, time, groupId }, { withCredentials: true })
         .then(() => {
           store.dispatch(saveNewMeal());
           store.dispatch(fetchGroupsDatasAction());
@@ -51,7 +53,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case REMOVE_MEAL_ACTION:
       const mealIdForURL = action.targetMealId;
-      axios.delete(`http://3.127.235.222:3000/meal/${mealIdForURL}`, {}, { withCredentials: true })
+      axios.delete(`${process.env.APISERVER}/meal/${mealIdForURL}`, {}, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
@@ -64,7 +66,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       mealId = action.mealId;
       recipeId = action.recipeId;
       const { numberPeople } = state.groups;
-      axios.post('http://3.127.235.222:3000/meal/addRecipe', { recipeId, mealId, numberPeople }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/meal/addRecipe`, { recipeId, mealId, numberPeople }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);

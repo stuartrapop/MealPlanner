@@ -1,14 +1,17 @@
-const paths = require('./paths');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
 
 module.exports = {
+  node: {
+    fs: 'empty',
+  },
   entry: [
     // SCSS
-    paths.src + '/styles/index.scss',
+    `${paths.src}/styles/index.scss`,
     // JS
-    paths.src + '/index.js',
+    `${paths.src}/index.js`,
   ],
 
   resolve: {
@@ -21,22 +24,22 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { 
+        {
           from: paths.static,
           to: '',
-        }
+        },
       ],
     }),
 
     new HtmlWebpackPlugin({
-      favicon: paths.assets + '/favicon.ico',
-      template: paths.assets + '/index.html',
+      favicon: `${paths.assets}/favicon.ico`,
+      template: `${paths.assets}/index.html`,
     }),
   ],
 
   module: {
     rules: [
-      //JS
+      // JS
       {
         test: /\.js$/,
         exclude: /node_modules/,

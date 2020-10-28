@@ -1,8 +1,10 @@
 // == Import : npm
-
+import dotenv from 'dotenv';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+
+dotenv.config();
 
 // == Import : local
 // Composants
