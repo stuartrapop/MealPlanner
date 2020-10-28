@@ -57,6 +57,7 @@ router.patch('/recipes/review/:id', reviewController.updateReview);
 router.get('/types', typeController.allTypes);
 
 router.get('/users', userController.allUsers);
+router.get('/users/pseudos', userController.getPseudos);
 router.get('/user/:id', userController.oneUser);
 // this route uses joi validator
 router.post('/user/create', validateBody(loginSchema), adminController.createAccount);

@@ -15,7 +15,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;
-      axios.get(`http://3.127.235.222:3000/user/${id}`, {}, { withCredentials: true })
+      axios.get(`https://amanger.com/api/user/${id}`, {}, { withCredentials: true })
         .then((response) => {
           // On créer un tableau avec autant de case que de meals et toutes initialisée à false
           const mealNumber = (response.data.groups[state.groups.activeGroup].meals.length);

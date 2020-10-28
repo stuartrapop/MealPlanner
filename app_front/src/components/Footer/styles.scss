@@ -2,8 +2,14 @@
 
 .footer {
   width: 100%;
- 
+  color : v.$link-blue;
+  padding: v.$gutter;
 
+}
+
+#footer__list {
+  display:flex;
+  justify-content: space-around;
 }
 .top__part {
   display: flex;

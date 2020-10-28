@@ -25,6 +25,32 @@ const userController = {
       res.status(500).json({ error });
     }
   },
+  getPseudos: async (req, res) => {
+    try {
+      if (req.session.user) {
+        res.status(401).json({ error: 'you must be connected to see this page' });
+      }
+
+      const users = await User.findAll({
+
+      });
+      const pseudoArray = users.map((user) => ({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        pseudo: user.userName,
+        userId: user.id,
+      }));
+
+      // on renvoie les cartes
+      res.json({
+        pseudoArray,
+      });
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
+  },
   oneUser: async (req, res) => {
     try {
       const userId = parseInt(req.params.id, 10);
@@ -45,7 +71,10 @@ const userController = {
                 association: 'meals',
                 include: {
                   association: 'recipes',
-                  include: ['ingredients', 'types'],
+                  include: [{
+                    association: 'ingredients',
+                    include: 'families',
+                  }, 'types'],
                 },
               },
             ],

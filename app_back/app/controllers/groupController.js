@@ -158,22 +158,22 @@ const groupController = {
     try {
       const groupId = parseInt(req.params.id, 10);
       const group = await Group.findByPk(groupId, {
-        include: [
-          'members',
-          {
-            association: 'meals',
-            include: [
-              {
-                association: 'recipes',
-                include: 'ingredients',
-              },
-            ],
-          },
-        ],
+        include: 'members',
       });
-      // send the details or not found
+
       if (group) {
-        res.json(group);
+      // send the details or not found
+        const groupMemberArray = group.members.map((user) => ({
+          firstName: user.firstName,
+          lastName: user.lastName,
+          pseudo: user.userName,
+          userId: user.id,
+        }));
+
+        // on renvoie les cartes
+        res.json({
+          groupMemberArray,
+        });
       }
       else {
         res.status(404).json({ error: 'group not found' });

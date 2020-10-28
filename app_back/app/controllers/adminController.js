@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const async = require('async');
 const { User } = require('../models');
 
 const saltRounds = 10;
@@ -122,37 +123,52 @@ const adminController = {
         password: req.body.password,
       };
 
-      const emailCheck = await User.findOne({
+      const emailTest = await User.findOne({
         where: { email: `${userDetails.email}` },
       });
-      if (emailCheck) {
-        res.status(401).json({ error: 'email already in database' });
+      if (emailTest) {
+        res.status(401).json({ error: 'cet email existe déjà' });
+      }
+      let userNameTest;
+      console.log('emailTest', emailTest);
+      if (!emailTest) {
+        userNameTest = await User.findOne({
+          where: { userName: `${userDetails.userName}` },
+        });
       }
 
-      await bcrypt.genSalt(saltRounds, (err, salt) => {
-        bcrypt.hash(userDetails.password, salt, (err, hash) => {
-          userDetails.password = hash;
+      if (userNameTest) {
+        res.status(401).json({ error: 'Le pseudo proposé est déja pris' });
+      }
 
-          User.create(
-            userDetails,
-          ).then((createdUser) => {
+      console.log('will create', (!emailTest && !userNameTest));
+
+      if (!emailTest && !userNameTest) {
+        await bcrypt.genSalt(saltRounds, (err, salt) => {
+          bcrypt.hash(userDetails.password, salt, (err, hash) => {
+            userDetails.password = hash;
+
+            User.create(
+              userDetails,
+            ).then((createdUser) => {
             // send the details or not found
-            if (createdUser) {
-              res.json({
-                isLogged: false,
-                pseudo: createdUser.userName,
-                userId: createdUser.id,
-              });
-            }
-            else {
-              res.status(401).json({ error: 'wrong password' });
-            }
-          }).catch((error) => {
-            console.log(error);
-            res.status(500).json({ error });
+              if (createdUser) {
+                res.json({
+                  isLogged: false,
+                  pseudo: createdUser.userName,
+                  userId: createdUser.id,
+                });
+              }
+              else {
+                res.status(401).json({ error: 'wrong password' });
+              }
+            }).catch((error) => {
+              console.log(error);
+              res.status(500).json({ error });
+            });
           });
         });
-      });
+      }
     }
     catch (error) {
       console.log(error);

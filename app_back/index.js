@@ -32,9 +32,6 @@ const cors = require('cors');
 
 // app.use('/api', exampleProxy);
 
-
-
-
 app.use('/api', createProxyMiddleware({ target: 'http://amanger.com', changeOrigin: true }));
 const router = require('./app/router');
 
@@ -55,7 +52,7 @@ app.use(session(
 ));
 
 // middleware CORS authorize API access from anywhere
-app.use(cors({ origin: ['http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'], credentials: true }));
+app.use(cors({ origin: ['http:amanger.com', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'], credentials: true }));
 
 // for handling post encoded data
 app.use(express.urlencoded({ extended: true }));
