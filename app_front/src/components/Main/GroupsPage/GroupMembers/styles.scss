@@ -5,13 +5,18 @@
   margin-bottom: 0.3em;
 }
 
+.member_list {
+  width: 100%;
+}
+
 .add_member {
   font-weight: bold;
 }
 
 .full_name {
   display: flex;
-  width: 30%;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .group_members_container{
@@ -19,10 +24,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-}
-
-.dropdown {
-  width: 30%;
 }
 
 .dropdown:hover .choix_deroulant {

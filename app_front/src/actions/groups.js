@@ -14,6 +14,17 @@ export const SEND_NUMBER_PEOPLE_ACTION = 'SEND_NUMBER_PEOPLE_ACTION';
 export const REMOVE_RECIPE_ACTION = 'REMOVE_RECIPE_ACTION';
 export const FETCH_GROUP_MEMBERS = 'FETCH_GROUP_MEMBERS';
 export const SEND_GROUP_MEMBERS = 'SEND_GROUP_MEMBERS';
+export const DELETE_GROUP_ACTION = 'DELETE_GROUP_ACTION';
+export const LEAVE_GROUP_ACTION = 'LEAVE_GROUP_ACTION';
+export const TOGGLE_CREATE_GROUP_MODAL_ACTION = 'TOGGLE_CREATE_GROUP_MODAL_ACTION';
+export const SAVE_GROUP_NAME_CHANGE = 'SAVE_GROUP_NAME_CHANGE';
+export const CREATE_GROUP_ACTION = 'CREATE_GROUP_ACTION';
+export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+export const SEND_ALL_USERS = 'SEND_ALL_USERS';
+export const TOGGLE_ADD_MEMBER_MODAL_ACTION = 'TOGGLE_ADD_MEMBER_MODAL_ACTION';
+export const SHOW_POSSIBLE_MEMBERS_ACTION = 'SHOW_POSSIBLE_MEMBERS_ACTION';
+export const MEMBER_SEARCH_INPUT_ACTION = 'MEMBER_SEARCH_INPUT_ACTION';
+export const ADD_MEMBER_TO_GROUP_ACTION = 'ADD_MEMBER_TO_GROUP_ACTION';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -94,4 +105,59 @@ export const fetchGroupMembers = (groupId) => ({
 export const sendGroupMembers = (data) => ({
   type: SEND_GROUP_MEMBERS,
   data,
+});
+
+export const deleteGroupAction = (groupId) => ({
+  type: DELETE_GROUP_ACTION,
+  groupId,
+});
+
+export const leaveGroupAction = (groupId, userId) => ({
+  type: LEAVE_GROUP_ACTION,
+  groupId,
+  userId,
+});
+
+export const toggleCreateGroupModalAction = () => ({
+  type: TOGGLE_CREATE_GROUP_MODAL_ACTION,
+});
+
+export const saveGroupNameChange = (input) => ({
+  type: SAVE_GROUP_NAME_CHANGE,
+  input,
+});
+
+export const createGroupAction = (groupName, userId) => ({
+  type: CREATE_GROUP_ACTION,
+  groupName,
+  userId,
+});
+
+export const fetchAllUsersAction = () => ({
+  type: FETCH_ALL_USERS,
+});
+
+export const sendAllUsers = (usersList) => ({
+  type: SEND_ALL_USERS,
+  usersList,
+});
+
+export const toggleAddMemberModalAction = () => ({
+  type: TOGGLE_ADD_MEMBER_MODAL_ACTION,
+});
+
+export const showPossibleMembersAction = (possibleMembers) => ({
+  type: SHOW_POSSIBLE_MEMBERS_ACTION,
+  possibleMembers,
+});
+
+export const memberSearchInputAction = (input) => ({
+  type: MEMBER_SEARCH_INPUT_ACTION,
+  input,
+});
+
+export const addMemberToGroupAction = (groupId, userId) => ({
+  type: ADD_MEMBER_TO_GROUP_ACTION,
+  groupId,
+  userId,
 });

@@ -9,6 +9,12 @@ import {
   SHOW_RESULTS_ACTION,
   SEND_NUMBER_PEOPLE_ACTION,
   SEND_GROUP_MEMBERS,
+  TOGGLE_CREATE_GROUP_MODAL_ACTION,
+  SAVE_GROUP_NAME_CHANGE,
+  SEND_ALL_USERS,
+  TOGGLE_ADD_MEMBER_MODAL_ACTION,
+  SHOW_POSSIBLE_MEMBERS_ACTION,
+  MEMBER_SEARCH_INPUT_ACTION,
 } from '../actions/groups';
 
 export const initialState = {
@@ -24,7 +30,12 @@ export const initialState = {
   recipesSearchResults: [],
   recipesSearchValue: '',
   numberPeople: 2,
-  groupMembers: {},
+  createGroupModalBool: false,
+  groupNameInputValue: '',
+  usersList: [],
+  addMemberModalBool: false,
+  membersSearchResults: [],
+  membersSearchValue: '',
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -84,6 +95,36 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         groupMembers: action.data,
+      };
+    case TOGGLE_CREATE_GROUP_MODAL_ACTION:
+      return {
+        ...state,
+        createGroupModalBool: !state.createGroupModalBool,
+      };
+    case SAVE_GROUP_NAME_CHANGE:
+      return {
+        ...state,
+        groupNameInputValue: action.input,
+      };
+    case SEND_ALL_USERS:
+      return {
+        ...state,
+        usersList: action.usersList,
+      };
+    case TOGGLE_ADD_MEMBER_MODAL_ACTION:
+      return {
+        ...state,
+        addMemberModalBool: !state.addMemberModalBool,
+      };
+    case SHOW_POSSIBLE_MEMBERS_ACTION:
+      return {
+        ...state,
+        membersSearchResults: action.possibleMembers,
+      };
+    case MEMBER_SEARCH_INPUT_ACTION:
+      return {
+        ...state,
+        membersSearchValue: action.input,
       };
     default:
       return state;
