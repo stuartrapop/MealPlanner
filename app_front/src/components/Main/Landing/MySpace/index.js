@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Dimmer, Loader, Image, Segment,
 } from 'semantic-ui-react';
@@ -7,11 +8,13 @@ import AddMeal from '../../../../containers/AddMeal';
 import Planning from './Planning';
 
 import './styles.scss';
+import { fetchRecipes } from '../../../../actions/recipes';
 
 const MySpace = ({ fetchGroupsDatas, loading }) => {
   // On commence par récupére toutes les données qui seront necessaires au chargement du composant
   useEffect(() => {
     fetchGroupsDatas();
+    fetchRecipes();
   }, []);
   return (
     <div className="myspace__container">
@@ -28,14 +31,13 @@ const MySpace = ({ fetchGroupsDatas, loading }) => {
           </Segment>
         </div>
       )}
-
       {!loading && (
       <>
         <AddMeal />
         <Planning />
       </>
       )}
-      <a>Génerer ma liste de courses</a>
+      <Link to="/liste">Génerer ma liste de courses</Link>
     </div>
   );
 };

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const Description = ({ recipe }) => (
   <div className="recipe__description__container" key={recipe.id}>
-    {/* <h2 className="recipe__title">{recipe.title}</h2>
+    <h2 className="recipe__title">{recipe.title}</h2>
       <p className="recipe__difficulty"> Difficulté de cette recette : {recipe.difficulty}</p>
-      <p className="recipes__infos"> Temps de préparation : {recipe.cooking_time} minutes</p> */}
+      <p className="recipes__infos"> Temps de préparation : {recipe.cooking_time} minutes</p>
     <div className="circle recipe__picture">
       <img className="recipe__pic__image" src={recipe.url} alt="logo recette" />
     </div>

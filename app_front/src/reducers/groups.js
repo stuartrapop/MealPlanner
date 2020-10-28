@@ -1,5 +1,14 @@
 import {
-  SEND_GROUPS_DATAS, CHOOSE_GROUP, TOGGLE_MEAL_MODAL, SAVE_NEW_MEAL, SEND_ERROR_MESSAGE, TOGGLE_ADD_RECIPE_ZONE, UPDATE_ADD_RECIPE_DISPLAYED_ARRAY,
+  SEND_GROUPS_DATAS,
+  CHOOSE_GROUP,
+  TOGGLE_MEAL_MODAL,
+  SAVE_NEW_MEAL,
+  SEND_ERROR_MESSAGE,
+  CHANGE_ACTIVE_ENTRY_ID,
+  START_SEARCH,
+  SHOW_RESULTS_ACTION,
+  SEND_NUMBER_PEOPLE_ACTION,
+  SEND_GROUP_MEMBERS,
 } from '../actions/groups';
 
 export const initialState = {
@@ -9,8 +18,13 @@ export const initialState = {
   activeGroupId: 0,
   mealModalDisplayed: false,
   errorMessageBoolean: false,
-  addRecipeZoneDisplayed: [],
   groupValueDropdown: '',
+  addMealEntryActive: 0,
+  recipesSearchLoading: false,
+  recipesSearchResults: [],
+  recipesSearchValue: '',
+  numberPeople: 2,
+  groupMembers: {},
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -40,27 +54,36 @@ const groupsReducer = (state = initialState, action = {}) => {
         ...state,
         mealModalDisplayed: false,
         errorMessageBoolean: false,
-        addRecipeZoneDisplayed: state.addRecipeZoneDisplayed.push(false),
       };
     case SEND_ERROR_MESSAGE:
       return {
         ...state,
         errorMessageBoolean: true,
       };
-    case TOGGLE_ADD_RECIPE_ZONE:
+    case CHANGE_ACTIVE_ENTRY_ID:
       return {
         ...state,
-        addRecipeZoneDisplayed: state.addRecipeZoneDisplayed.map((element, index) => {
-          if (index == action.id) {
-            return (true);
-          }
-          return (false);
-        }),
+        addMealEntryActive: action.entryId,
       };
-    case UPDATE_ADD_RECIPE_DISPLAYED_ARRAY:
+    case START_SEARCH:
       return {
         ...state,
-        addRecipeZoneDisplayed: action.newArray,
+        recipesSearchValue: action.input,
+      };
+    case SHOW_RESULTS_ACTION:
+      return {
+        ...state,
+        recipesSearchResults: action.possibleResults,
+      };
+    case SEND_NUMBER_PEOPLE_ACTION:
+      return {
+        ...state,
+        numberPeople: action.nbPeople,
+      };
+    case SEND_GROUP_MEMBERS:
+      return {
+        ...state,
+        groupMembers: action.data,
       };
     default:
       return state;

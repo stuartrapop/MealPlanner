@@ -1,2 +1,10 @@
 @use "src/styles/vars" as v;
 
+.add__recipe_zone .input {
+  width: 80%;
+}
+
+#select__number__people.inline.dropdown {
+  width: 10%;
+  margin-left: 7px;
+}

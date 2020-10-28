@@ -20,10 +20,6 @@
   color: v.$primary-green;
 }
 
-#remove__meal__icon {
-  color: red;
-}
-
 .advanced__search__access h2 {
   font-size: 1.1em;
 }
@@ -34,6 +30,7 @@
 
 .add__meal__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -51,6 +48,55 @@ em {
 
 i {
   font-style: italic;
+}
+
+.add__meal--left {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add__meal__clickable__part {
+  display: flex;
+  margin-top: 2em;
+}
+
+.day__schedule__box{
+  padding: 1em;
+  margin: 1em 0;
+  background-color: lightgray;
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+}
+
+.day__date {
+  font-size: 1.3em;
+  text-transform: capitalize;
+  width: 100%;
+  padding: 0.5em;
+  display: block;
+  text-align: center;
+  background-color: v.$primary-green;
+  color: white;
+  margin-bottom: 1em;
+  border: 1px solid v.$light-grey;
+}
+
+.separator {
+  height: 1px;
+  width: 98%;
+  background-color: darkgray;
+  margin: .3em auto .3em auto;
+}
+
+.scheduled__recipe {
+  display: flex;
+}
+
+.scheduled__recipe p {
+  font-size: 1em;
 }
 
 @media (min-width: 768px) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PresentationSimple from './PresentationSimple';
-import LandingQuickSearch from './LandingQuickSearch';
+import LandingQuickSearch from '../../../containers/LandingQuickSearch';
 import TargetPresentation from './TargetPresentation';
 import PresentationDetailed from './PresentationDetailed';
 

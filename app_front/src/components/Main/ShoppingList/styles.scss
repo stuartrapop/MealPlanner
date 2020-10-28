@@ -1,0 +1,21 @@
+@use "src/styles/vars" as v;
+
+
+.list__container {
+   width: 60%;
+   margin : 0 auto;
+}
+table {
+  border-collapse: collapse;
+  margin : 0 auto;
+}
+td {
+  border: 1px solid black;
+  padding : 0.5rem;
+}
+.list__item {
+ 
+  &__quantity {
+    text-align: left;
+  }
+}

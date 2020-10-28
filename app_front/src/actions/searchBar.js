@@ -1,21 +1,11 @@
-export const CLEAN_QUERY = 'CLEAN_QUERY';
-export const START_SEARCH = 'START_SEARCH';
-export const FINISH_SEARCH = 'FINISH_SEARCH';
+export const MODIFY_SEARCH = 'MODIFY_SEARCH';
 export const UPDATE_SELECTION = 'UPDATE_SELECTION';
 export const DISPLAY_SELECTION = 'DISPLAY_SELECTION';
 
-// export const cleanQuery = () => ({
-//   type: CLEAN_QUERY,
-// });
-
-export const startSearch = (text) => ({
-  type: START_SEARCH,
-  text,
+export const modifySearch = (searchInput) => ({
+  type: MODIFY_SEARCH,
+  searchInput,
 });
-
-// export const finishSearch = () => ({
-//   type: FINISH_SEARCH,
-// });
 
 export const updateSelection = (text) => ({
   type: UPDATE_SELECTION,

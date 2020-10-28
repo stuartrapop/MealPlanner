@@ -11,7 +11,7 @@ const Recipe = ({ getOneRecipe, recipe }) => {
   return (
     <section className="one__recipe">
       <Description recipe={recipe} />
-      {/* <Ingredients recipe={recipe.ingredients} /> */}
+      <Ingredients recipe={recipe.ingredients} />
     </section>
   );
 };
