@@ -9,7 +9,7 @@ import {
 import Recipes from '../../containers/Recipes';
 import Recipe from '../../containers/Recipe';
 import GroupsPage from '../../containers/GroupsPage';
-
+import EditProfile from '../../containers/EditProfile';
 import Landing from '../../containers/Landing';
 import About from './About';
 import AddMealModal from './Landing/MySpace/AddMeal/AddMealModal';
@@ -20,11 +20,10 @@ import ShoppingList from '../../containers/ShoppingList';
 
 // == Composant
 const Main = ({ loading }) => (
-  <Router>
-    <div className="main">
-      <Switch>
-        {loading && (<div>loading</div>)}
-        {!loading && (
+  <div className="main">
+    <Switch>
+      {loading && (<div>loading</div>)}
+      {!loading && (
         <div>
           <Route path="/" exact>
             <Landing />
@@ -50,11 +49,13 @@ const Main = ({ loading }) => (
           <Route path="/liste" exact>
             <ShoppingList />
           </Route>
+          <Route path="/mon-espace/parametres" exact>
+            <EditProfile />
+          </Route>
         </div>
-        )}
-      </Switch>
-    </div>
-  </Router>
+      )}
+    </Switch>
+  </div>
 );
 
 Main.propTypes = {

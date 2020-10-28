@@ -1,6 +1,10 @@
 // == Import npm
 import React, { useEffect } from 'react';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 // == Import
 import Header from '../../containers/Header';
 import Footer from '../Footer';
@@ -15,9 +19,11 @@ const App = ({ checkIsLogged, fetchrecipes }) => {
   }, []);
   return (
     <div className="app">
-      <Header />
-      <Main />
-      <Footer />
+      <Router>
+        <Header />
+        <Main />
+        <Footer />
+      </Router>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 // == Import npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Icon,
   Menu,
 } from 'semantic-ui-react';
 import LogInModal from '../../containers/LogInModal';
-
 // == Import
 import './styles.scss';
 
@@ -69,9 +69,9 @@ const Header = ({
                     <Menu.Item
                       name="Ma liste de courses"
                     />
-                    <Menu.Item
-                      name="Paramètres"
-                    />
+                    <Menu.Item >
+                      <Link to="/mon-espace/parametres"> Paramètres </Link>
+                    </Menu.Item>
                     <Menu.Item
                       name="Déconnexion"
                       onClick={logOutClick}
