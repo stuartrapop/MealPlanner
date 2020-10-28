@@ -25,6 +25,7 @@ const Planning = () => {
   };
 
   const today = new Date();
+  
 
   // Fonction pour incrémenter la date
   const getDay = (date, number) => {
