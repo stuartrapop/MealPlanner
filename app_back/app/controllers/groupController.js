@@ -161,6 +161,8 @@ const groupController = {
         include: 'members',
       });
 
+      console.log(group)
+
       if (group) {
       // send the details or not found
         const groupMemberArray = group.members.map((user) => ({
@@ -172,6 +174,8 @@ const groupController = {
 
         // on renvoie les cartes
         res.json({
+          groupId : group.id,
+          groupName : group.name,
           groupMemberArray,
         });
       }
