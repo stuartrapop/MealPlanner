@@ -143,8 +143,11 @@ const AddMeal = ({
                 <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
               </div>
               <div className="add__meal--left" onClick={toggleAddMealModal}>
-                <Icon id="add__meal__icon" name="plus square outline" size="large" />
-                Ajouter un créneau
+                <Link to="/mon-espace/groupes"> Gérer mes groupes </Link>
+                <div className="add__meal__clickable__part">
+                  <Icon id="add__meal__icon" name="plus square outline" size="large" />
+                  Ajouter un créneau
+                </div>
               </div>
             </div>
             {finalArray.map((day) => (

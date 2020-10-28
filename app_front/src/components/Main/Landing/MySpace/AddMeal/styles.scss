@@ -52,6 +52,14 @@ i {
 
 .add__meal--left {
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add__meal__clickable__part {
+  display: flex;
+  margin-top: 2em;
 }
 
 .day__schedule__box{

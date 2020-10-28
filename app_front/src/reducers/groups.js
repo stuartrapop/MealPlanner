@@ -8,6 +8,7 @@ import {
   START_SEARCH,
   SHOW_RESULTS_ACTION,
   SEND_NUMBER_PEOPLE_ACTION,
+  SEND_GROUP_MEMBERS,
 } from '../actions/groups';
 
 export const initialState = {
@@ -23,6 +24,7 @@ export const initialState = {
   recipesSearchResults: [],
   recipesSearchValue: '',
   numberPeople: 2,
+  groupMembers: {},
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -77,6 +79,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         numberPeople: action.nbPeople,
+      };
+    case SEND_GROUP_MEMBERS:
+      return {
+        ...state,
+        groupMembers: action.data,
       };
     default:
       return state;

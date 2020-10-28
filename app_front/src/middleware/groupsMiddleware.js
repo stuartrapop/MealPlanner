@@ -9,6 +9,8 @@ import {
   REMOVE_MEAL_ACTION,
   ADD_RECIPE_TO_DB,
   REMOVE_RECIPE_ACTION,
+  FETCH_GROUP_MEMBERS,
+  sendGroupMembers,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -33,7 +35,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_TARGETED_VALUES:
       const { choosenDay, choosenTime } = action;
-      const groupId = state.groups.activeGroupId;
+      let groupId = state.groups.activeGroupId;
       const dayString = `${choosenDay}`;
       const day = dayString.split('/').join('-');
       const time = choosenTime;
@@ -77,6 +79,17 @@ const groupsMiddleware = (store) => (next) => (action) => {
       axios.post('http://3.127.235.222:3000/meal/removeRecipe', { mealId, recipeId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case FETCH_GROUP_MEMBERS:
+      groupId = action.groupId;
+      axios.get(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
+        .then((response) => {
+          store.dispatch(sendGroupMembers(response.data));
           next(action);
         })
         .catch((e) => {

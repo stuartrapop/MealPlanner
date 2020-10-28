@@ -12,6 +12,8 @@ export const SHOW_RESULTS_ACTION = 'SHOW_RESULTS_ACTION';
 export const ADD_RECIPE_TO_DB = 'ADD_RECIPE_TO_DB';
 export const SEND_NUMBER_PEOPLE_ACTION = 'SEND_NUMBER_PEOPLE_ACTION';
 export const REMOVE_RECIPE_ACTION = 'REMOVE_RECIPE_ACTION';
+export const FETCH_GROUP_MEMBERS = 'FETCH_GROUP_MEMBERS';
+export const SEND_GROUP_MEMBERS = 'SEND_GROUP_MEMBERS';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -82,4 +84,14 @@ export const removeRecipeAction = (mealId, recipeId) => ({
   type: REMOVE_RECIPE_ACTION,
   mealId,
   recipeId,
+});
+
+export const fetchGroupMembers = (groupId) => ({
+  type: FETCH_GROUP_MEMBERS,
+  groupId,
+});
+
+export const sendGroupMembers = (data) => ({
+  type: SEND_GROUP_MEMBERS,
+  data,
 });
