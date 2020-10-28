@@ -29,7 +29,8 @@ const ShoppingList = ({ userInfos, groupId }) => {
             numberPeopleMeal: recipe.MealHasRecipe.numberPeople,
             ingredientsList: recipe.ingredients
               .map((ingredient) => (
-                {
+                { 
+                  family: ingredient.families.name,
                   ingredientName: ingredient.name,
                   weight: ingredient.weight,
                   volume: ingredient.volume,
