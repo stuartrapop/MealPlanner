@@ -31,7 +31,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
             numberPeopleMeal: recipe.MealHasRecipe.numberPeople,
             ingredientsList: recipe.ingredients
               .map((ingredient) => (
-                { 
+                {
                   family: ingredient.families.name,
                   ingredientName: ingredient.name,
                   weight: ingredient.weight,
@@ -46,17 +46,17 @@ const ShoppingList = ({ userInfos, groupId }) => {
     }
   });
   console.log(shoppingListResults);
-  
+
   shoppingListResults.forEach((recipe) => {
     if (recipe) {
-    if (recipe.length !== 0) {
-      const multiplier = recipe[0].numberPeopleMeal / recipe[0].numberPeopleRecipe;
-      recipe[0].ingredientsList.forEach((ingredient) => {
-        ingredient.adjustedQuantity = ingredient.quantity * multiplier;
-        listForShopping.push(ingredient);
-      });
+      if (recipe.length !== 0) {
+        const multiplier = recipe[0].numberPeopleMeal / recipe[0].numberPeopleRecipe;
+        recipe[0].ingredientsList.forEach((ingredient) => {
+          ingredient.adjustedQuantity = ingredient.quantity * multiplier;
+          listForShopping.push(ingredient);
+        });
+      }
     }
-}
   });
   const condensedShoppingList = [];
 

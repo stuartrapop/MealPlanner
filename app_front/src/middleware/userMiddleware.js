@@ -14,9 +14,9 @@ import {
 
 axios.defaults.withCredentials = true;
 
-
-
 const userMiddleware = (store) => (next) => (action) => {
+
+  const { id, firstName, lastName, userName } = state.user;
   const state = store.getState();
   switch (action.type) {
     // Sur l'action de LOG_IN, je tente de me connecter
@@ -53,7 +53,7 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
     case HANDLE_SIGN_IN:
-      const { firstName, lastName, userName } = state.user;
+      // const { firstName, lastName, userName } = state.user; This has been commented as we declare in L19
       email = state.user.email;
       password = state.user.password;
       axios.post(`${APISERVER}/user/create`, {
@@ -76,6 +76,18 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((e) => {
           console.log(e);
+        });
+      break;
+      case UPDATE_ACCOUNT_INFOS:
+      axios.patch(`${process.env.APISERVER}/user/${id}`, { firstName, lastName, userName }, { withCredentials: true })
+        .then((response) => {
+          next(action);
+        })
+        .catch((e) => {
+          console.error(e);
+          let { logInError } = state.user;
+          logInError = true;
+          store.dispatch(sendErrorMessage(logInError));
         });
       break;
     default:
