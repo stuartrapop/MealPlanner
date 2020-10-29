@@ -89,6 +89,7 @@ const userController = {
           firstName: user.firstName,
           lastName: user.lastName,
           userName: user.userName,
+          email: user.email,
           groups: user.groups,
         });
       }

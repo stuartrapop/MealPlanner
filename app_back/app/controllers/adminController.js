@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const async = require('async');
-const { User } = require('../models');
+const { User, Group } = require('../models');
+const groupController = require('./groupController');
 
 const saltRounds = 10;
 
@@ -158,6 +159,11 @@ const adminController = {
                   pseudo: createdUser.userName,
                   userId: createdUser.id,
                 });
+
+                Group.create({ name: `Mon groupe-${createdUser.userName}` })
+                  .then((newGroup) => {
+                    groupController.associateUser(createdUser.id, newGroup.id, 'Propriétaire');
+                  });
               }
               else {
                 res.status(401).json({ error: 'wrong password' });

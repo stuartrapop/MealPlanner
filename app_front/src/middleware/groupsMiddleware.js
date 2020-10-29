@@ -102,7 +102,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log('valeur de response :', response.data);
           store.dispatch(sendGroupMembers(response.data));
-          next(action);
+          
         })
         .catch((e) => {
           console.log(e);
