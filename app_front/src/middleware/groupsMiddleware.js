@@ -87,7 +87,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case REMOVE_RECIPE_ACTION:
       mealId = action.mealId;
       recipeId = action.recipeId;
-      axios.post('http://3.127.235.222:3000/meal/removeRecipe', { mealId, recipeId }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/meal/removeRecipe`, { mealId, recipeId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
@@ -98,7 +98,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case FETCH_GROUP_MEMBERS:
       groupId = action.groupId;
-      axios.get(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
+      axios.get(`${process.env.APISERVER}/group/${groupId}`, { withCredentials: true })
         .then((response) => {
           console.log('valeur de response :', response.data);
           store.dispatch(sendGroupMembers(response.data));
@@ -110,7 +110,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case DELETE_GROUP_ACTION:
       groupId = action.groupId;
-      axios.delete(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
+      axios.delete(`${process.env.APISERVER}/group/${groupId}`, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
@@ -122,7 +122,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case LEAVE_GROUP_ACTION:
       groupId = action.groupId;
       let { userId } = action;
-      axios.post('http://3.127.235.222:3000/group/removeMember', { groupId, userId }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/group/removeMember`, { groupId, userId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
@@ -134,7 +134,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case CREATE_GROUP_ACTION:
       name = action.groupName;
       userId = action.userId;
-      axios.post('http://3.127.235.222:3000/group/create', { name, userId }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/group/create`, { name, userId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           store.dispatch(toggleCreateGroupModalAction());
@@ -145,7 +145,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
         });
       break;
     case FETCH_ALL_USERS:
-      axios.get('http://3.127.235.222:3000/users/pseudos', { withCredentials: true })
+      axios.get(`${process.env.APISERVER}/users/pseudos`, { withCredentials: true })
         .then((response) => {
           store.dispatch(sendAllUsers(response.data));
         })
@@ -157,7 +157,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       groupId = action.groupId;
       userId = action.userId;
       const userRole = 'Lecture';
-      axios.post('http://3.127.235.222:3000/group/addMember', { groupId, userId, userRole }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/group/addMember`, { groupId, userId, userRole }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
           store.dispatch(toggleAddMemberModalAction());
