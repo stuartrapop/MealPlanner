@@ -1,7 +1,13 @@
 import { connect } from 'react-redux';
 
 import AddRecipeZone from '../components/Main/Landing/MySpace/AddMeal/AddRecipeZone';
-import { changeActiveEntryId, handleSearchChange, showResultsAction, addRecipeToDB, sendNumberPeopleAction, } from '../actions/groups';
+import { changeActiveEntryId,
+  handleSearchChange,
+  showResultsAction,
+  addRecipeToDB,
+  sendNumberPeopleAction,
+  resetActiveEntryIdAction,
+} from '../actions/groups';
 
 const mapStateToProps = (state) => ({
   addMealEntryActive: state.groups.addMealEntryActive,
@@ -31,6 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   sendNumberPeopleAction: (nbPeople) => {
     dispatch(sendNumberPeopleAction(nbPeople));
+  },
+
+  resetActiveEntryIdAction: () => {
+    dispatch(resetActiveEntryIdAction());
   },
 });
 

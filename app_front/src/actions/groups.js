@@ -25,6 +25,7 @@ export const TOGGLE_ADD_MEMBER_MODAL_ACTION = 'TOGGLE_ADD_MEMBER_MODAL_ACTION';
 export const SHOW_POSSIBLE_MEMBERS_ACTION = 'SHOW_POSSIBLE_MEMBERS_ACTION';
 export const MEMBER_SEARCH_INPUT_ACTION = 'MEMBER_SEARCH_INPUT_ACTION';
 export const ADD_MEMBER_TO_GROUP_ACTION = 'ADD_MEMBER_TO_GROUP_ACTION';
+export const RESET_ACTIVE_ENTRY_ACTION = 'RESET_ACTIVE_ENTRY_ACTION';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -160,4 +161,8 @@ export const addMemberToGroupAction = (groupId, userId) => ({
   type: ADD_MEMBER_TO_GROUP_ACTION,
   groupId,
   userId,
+});
+
+export const resetActiveEntryIdAction = () => ({
+  type: RESET_ACTIVE_ENTRY_ACTION,
 });

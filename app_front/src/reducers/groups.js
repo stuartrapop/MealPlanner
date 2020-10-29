@@ -15,6 +15,7 @@ import {
   TOGGLE_ADD_MEMBER_MODAL_ACTION,
   SHOW_POSSIBLE_MEMBERS_ACTION,
   MEMBER_SEARCH_INPUT_ACTION,
+  RESET_ACTIVE_ENTRY_ACTION,
 } from '../actions/groups';
 
 export const initialState = {
@@ -125,6 +126,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         membersSearchValue: action.input,
+      };
+    case RESET_ACTIVE_ENTRY_ACTION:
+      return {
+        ...state,
+        addMealEntryActive: 0,
       };
     default:
       return state;

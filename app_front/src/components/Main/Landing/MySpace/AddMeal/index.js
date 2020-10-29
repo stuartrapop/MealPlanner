@@ -84,7 +84,20 @@ const AddMeal = ({
     };
   });
 
-  const groupedByDays = mealsConvertedToDateImproved.reduce((r, a) => {
+  const sortArrayByDate = (a, b) => {
+    if (a.mealDate > b.mealDate) {
+      return 1;
+    }
+    if (a.mealDate < b.mealDate) {
+      return -1;
+    }
+
+    return 0;
+  };
+
+  const sortedBydateArray = mealsConvertedToDateImproved.sort(sortArrayByDate);
+
+  const groupedByDays = sortedBydateArray.reduce((r, a) => {
     r[a.mealDay] = r[a.mealDay] || [];
     r[a.mealDay].push(a);
     return r;
@@ -96,19 +109,8 @@ const AddMeal = ({
   const todayFormated = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
   const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDay >= todayFormated);
 
-  const sortArrayByDay = (a, b) => {
-    if (a[0].mealDate > b[0].mealDate) {
-      return 1;
-    }
-    if (a[0].mealDate < b[0].mealDate) {
-      return -1;
-    }
-
-    return 0;
-  };
-
-  const finalArray = cleanedFromPastArray.sort(sortArrayByDay);
-  console.log(finalArray);
+  const finalArray = cleanedFromPastArray;
+  console.log('final array: ', finalArray);
 
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);

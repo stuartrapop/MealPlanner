@@ -18,6 +18,7 @@ const AddRecipeZone = ({
   addRecipeToDB,
   numberPeople,
   sendNumberPeopleAction, // fonction pour mettre à jour le nb de personnes
+  resetActiveEntryIdAction,
 }) => {
   const source = recipesList.map((recipe) => ({
     key: recipe.id,
@@ -33,6 +34,10 @@ const AddRecipeZone = ({
 
   const changeActiveEntryId = () => {
     changeActiveEntryIdAction(id);
+  };
+
+  const resetActiveEntryId = () => {
+    resetActiveEntryIdAction();
   };
 
   const handleSearchChange = (evt) => {
@@ -89,12 +94,15 @@ const AddRecipeZone = ({
             />{' '}
             personnes lors de ce repas.
           </div>
-          <Search
-            onResultSelect={handleResultSelection}
-            onSearchChange={handleSearchChange}
-            results={recipesSearchResults}
-            value={recipesSearchValue}
-          />
+          <div className="recipe__research__zone">
+            <Search
+              onResultSelect={handleResultSelection}
+              onSearchChange={handleSearchChange}
+              results={recipesSearchResults}
+              value={recipesSearchValue}
+            />
+            <Icon name="close" onClick={resetActiveEntryId} />
+          </div>
         </div>
       )}
     </div>
