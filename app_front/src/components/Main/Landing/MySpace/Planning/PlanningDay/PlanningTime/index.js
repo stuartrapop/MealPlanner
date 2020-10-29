@@ -5,8 +5,6 @@ import './styles.scss';
 const PlanningTime = ({
   time, stateLikeDay, userInfos, activeGroup,
 }) => {
-  console.log('combinaison unique: ', stateLikeDay, time);
-  // On a donc quelque chose comme Petit-Déjeuner 2020-10-26
   // Il faut maintenant vérifier si ce meal est présent dans le state
   // eslint-disable-next-line max-len
   const dayIsIncluded = userInfos.groups[activeGroup].meals.filter((meal) => meal.day === stateLikeDay);
@@ -18,7 +16,10 @@ const PlanningTime = ({
       <div className="planning__day__box--found">
         <ul className="found__recipes">
           {includedMealContent.recipes.map((recipe) => (
-            <li key={`${recipe.id}${stateLikeDay}`}>{recipe.title}</li>
+            <li key={`${recipe.id}${stateLikeDay}`}>
+              {recipe.title}
+              <div className="notification__number__people">{recipe.MealHasRecipe.numberPeople}</div>
+            </li>
           ))}
         </ul>
       </div>

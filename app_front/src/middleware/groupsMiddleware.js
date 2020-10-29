@@ -11,7 +11,38 @@ import {
   REMOVE_RECIPE_ACTION,
   FETCH_GROUP_MEMBERS,
   sendGroupMembers,
+  DELETE_GROUP_ACTION,
+  LEAVE_GROUP_ACTION,
+  CREATE_GROUP_ACTION,
+  toggleCreateGroupModalAction,
+  FETCH_ALL_USERS,
+  sendAllUsers,
+  ADD_MEMBER_TO_GROUP_ACTION,
+  toggleAddMemberModalAction,
+  fetchGroupMembers,
+
 } from '../actions/groups';
+
+function deepClone(o) {
+  /**
+   * This excludes null
+   */
+  if (o && typeof o === 'object') {
+    if (Array.isArray(o)) {
+      return o.map((a) => deepClone(a));
+    } if (o.constructor === Object) {
+      return Object.entries(o).reduce((prev, [k, v]) => ({ ...prev, [k]: deepClone(v) }), {});
+    }
+    /**
+     * Now it depends on how you would recreate the Object, or not...
+     */
+    return o;
+  }
+  /**
+   * BTW, function is another important case you might consider...
+   */
+  return o;
+}
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
@@ -89,7 +120,67 @@ const groupsMiddleware = (store) => (next) => (action) => {
       groupId = action.groupId;
       axios.get(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
         .then((response) => {
+          console.log('valeur de response :', response.data);
           store.dispatch(sendGroupMembers(response.data));
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case DELETE_GROUP_ACTION:
+      groupId = action.groupId;
+      axios.delete(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case LEAVE_GROUP_ACTION:
+      groupId = action.groupId;
+      let { userId } = action;
+      axios.post('http://3.127.235.222:3000/group/removeMember', { groupId, userId }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case CREATE_GROUP_ACTION:
+      name = action.groupName;
+      userId = action.userId;
+      axios.post('http://3.127.235.222:3000/group/create', { name, userId }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
+          store.dispatch(toggleCreateGroupModalAction());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case FETCH_ALL_USERS:
+      axios.get('http://3.127.235.222:3000/users/pseudos', { withCredentials: true })
+        .then((response) => {
+          store.dispatch(sendAllUsers(response.data));
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case ADD_MEMBER_TO_GROUP_ACTION:
+      groupId = action.groupId;
+      userId = action.userId;
+      const userRole = 'Lecture';
+      axios.post('http://3.127.235.222:3000/group/addMember', { groupId, userId, userRole }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupMembers(groupId));
+          store.dispatch(toggleAddMemberModalAction());
           next(action);
         })
         .catch((e) => {
