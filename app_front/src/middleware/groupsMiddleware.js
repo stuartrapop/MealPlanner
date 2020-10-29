@@ -23,6 +23,27 @@ import {
 
 } from '../actions/groups';
 
+function deepClone(o) {
+  /**
+   * This excludes null
+   */
+  if (o && typeof o === 'object') {
+    if (Array.isArray(o)) {
+      return o.map((a) => deepClone(a));
+    } if (o.constructor === Object) {
+      return Object.entries(o).reduce((prev, [k, v]) => ({ ...prev, [k]: deepClone(v) }), {});
+    }
+    /**
+     * Now it depends on how you would recreate the Object, or not...
+     */
+    return o;
+  }
+  /**
+   * BTW, function is another important case you might consider...
+   */
+  return o;
+}
+
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   let mealId;
@@ -99,6 +120,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       groupId = action.groupId;
       axios.get(`http://3.127.235.222:3000/group/${groupId}`, { withCredentials: true })
         .then((response) => {
+          console.log('valeur de response :', response.data);
           store.dispatch(sendGroupMembers(response.data));
           next(action);
         })
@@ -145,7 +167,6 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case FETCH_ALL_USERS:
       axios.get('http://3.127.235.222:3000/users/pseudos', { withCredentials: true })
         .then((response) => {
-          console.log('liste des users: ', response.data);
           store.dispatch(sendAllUsers(response.data));
         })
         .catch((e) => {

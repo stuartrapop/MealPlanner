@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   addMemberModalBool: state.groups.addMemberModalBool,
   membersSearchResults: state.groups.membersSearchResults,
   membersSearchValue: state.groups.membersSearchValue,
+  userInfos: state.groups.userInfos,
 });
 
 const mapDispatchToProps = (dispatch) => ({

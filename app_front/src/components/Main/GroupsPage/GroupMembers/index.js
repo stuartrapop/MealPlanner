@@ -7,6 +7,7 @@ import {
 import './styles.scss';
 
 const GroupMembers = ({
+  userInfos,
   groupMembers,
   memberSearchAction,
   usersList, // liste de tous les utilisateurs du site
@@ -18,12 +19,9 @@ const GroupMembers = ({
   addMemberToGroup,
 }) => {
   const roleOptions = [
-    { key: '1', text: 'Propriétaire', value: '1' },
-    { key: '2', text: 'Ecriture', value: '2' },
-    { key: '3', text: 'Lecture', value: '3' },
+    { key: '1', text: 'Ecriture', value: '1' },
+    { key: '2', text: 'Lecture', value: '2' },
   ];
-
-  console.log(usersList);
 
   const source = usersList.pseudoArray.map((user) => ({
     key: user.userId,
@@ -45,27 +43,40 @@ const GroupMembers = ({
     addMemberToGroup(groupMembers.groupId, data.result.key);
   };
 
+  // eslint-disable-next-line max-len
+  const userDetailsInGroup = groupMembers.groupMemberArray.find((user) => user.userId = userInfos.userId);
+  console.log(userDetailsInGroup);
+  const userRoleInGroup = userDetailsInGroup.userRole;
+  console.log(userRoleInGroup);
+
   return (
     <div className="group_members_container">
       <h1>Membres du groupe {groupMembers.groupName}</h1>
       <ul className="member_list">
-        {groupMembers.groupMemberArray.map((member) => {
-          const fullname = `${member.firstName} ${member.lastName}`;
-          return (
+        {groupMembers.groupMemberArray.map((member) => (
+          <div>
+            {userRoleInGroup === 'Propriétaire' && (
             <li key={member.id} className="user">
-              <div className="full_name">{fullname}</div>
+              <div className="full_name">{member.firstName} {member.lastName}</div>
               <Dropdown
                 id="select__member__role"
-                floating
                 inline
                 options={roleOptions}
                 scrolling
                 defaultValue={member.userRole}
-              />{' '}
-              <a className="delete">Supprimer</a>
+                text={member.userRole}
+              />
+              <Icon name="trash" />
             </li>
-          );
-        })}
+            )}
+            {userRoleInGroup !== 'Propriétaire' && (
+              <li key={member.id} className="user">
+                <div className="full_name">{member.firstName} {member.lastName}</div>
+                <div className="display__members__role">{member.userRole}</div>
+              </li>
+            )}
+          </div>
+        ))}
       </ul>
       <Modal
         basic
@@ -87,6 +98,7 @@ const GroupMembers = ({
         </Header>
         <Modal.Content>
           <Search
+            id="add__group__modal"
             onResultSelect={handleMemberSelection}
             onSearchChange={handleMemberSearchChange}
             results={membersSearchResults}
