@@ -61,7 +61,7 @@ const groupController = {
       if (!foundUser) {
         res.json({ error: 'this user is not a member of the group' });
       }
-      if (foundUser.UserBelongsGroup.user_role === 'créateur') {
+      if (foundUser.UserBelongsGroup.user_role === 'Propriétaire') {
         res.json({ error: 'cannot delete the group owner' });
       }
       else {
@@ -85,7 +85,7 @@ const groupController = {
       }
 
       const group = await Group.create({ name });
-      await groupController.associateUser(userId, group.id, 'créateur');
+      await groupController.associateUser(userId, group.id, 'Propriétaire');
 
       // send the details or not found
       if (group) {

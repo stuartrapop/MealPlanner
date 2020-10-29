@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const path = require('path');
 
 const bodyParser = require('body-parser');
 
@@ -31,6 +32,12 @@ const sanitizeHtml = require('sanitize-html');
 const cors = require('cors');
 
 // app.use('/api', exampleProxy);
+
+
+
+app.get('/ping', (req, res) => res.send('pong'));
+
+app.use(express.static(path.join(__dirname, '../app_front/dist/')));
 
 app.use('/api', createProxyMiddleware({ target: 'http://amanger.com', changeOrigin: true }));
 const router = require('./app/router');
