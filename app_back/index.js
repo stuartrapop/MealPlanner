@@ -75,7 +75,13 @@ app.use(session({
 // CORS
 app.use((req, res, next) => {
   // on autorise explicitement le domaine du front
-  res.header('Access-Control-Allow-Origin', 'http://3.127.235.222/');
+
+  const allowedOrigins = ['http:amanger.com', 'http://3.127.235.222', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'];
+  const { origin } = req.headers;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  // res.header('Access-Control-Allow-Origin', 'http://3.127.235.222/');
   // on autorise le partage du cookie
   res.header('Access-Control-Allow-Credentials', true);
   // on autorise le partage de ressources entre origines
