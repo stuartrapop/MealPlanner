@@ -1262,20 +1262,19 @@ INSERT INTO  "user_likes_recipe" ("recipe_id", "user_id")  VALUES
 (2, 4);
 
 INSERT INTO  "user_belongs_group" ("group_id", "user_id",  "user_role")  VALUES
-
-(1, 4,'créateur'),
-(2, 3,'créateur'),
-(3, 2,'créateur'),
-(4, 1,'créateur'),
-(5, 1,'créateur'),
-(6, 1,'créateur'),
-(2, 4,'peut modifier'),
-(2, 4,'peut modifier'),
-(2, 5,'peut modifier'),
-(2, 6,'peut modifier'),
-(3, 3,'lecture'),
-(4, 2,'lecture'),
-(4, 3,'peut modifier');
+(1, 4,'Propriétaire'),
+(2, 3,'Propriétaire'),
+(3, 2,'Propriétaire'),
+(4, 1,'Propriétaire'),
+(5, 1,'Propriétaire'),
+(6, 1,'Propriétaire'),
+(2, 4,'Ecriture'),
+(2, 4,'Ecriture'),
+(2, 5,'Ecriture'),
+(2, 6,'Ecriture'),
+(3, 3,'Lecture'),
+(4, 2,'Lecture'),
+(4, 3,'Ecriture');
 
 
 INSERT INTO  "meal_has_recipe" ("meal_id", "recipe_id", "number_people")  VALUES

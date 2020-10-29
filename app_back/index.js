@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const path = require('path');
 
 const bodyParser = require('body-parser');
 
@@ -32,6 +33,12 @@ const cors = require('cors');
 
 // app.use('/api', exampleProxy);
 
+
+
+app.get('/ping', (req, res) => res.send('pong'));
+
+app.use(express.static(path.join(__dirname, '../app_front/dist/')));
+
 app.use('/api', createProxyMiddleware({ target: 'http://amanger.com', changeOrigin: true }));
 const router = require('./app/router');
 
@@ -52,7 +59,14 @@ app.use(session(
 ));
 
 // middleware CORS authorize API access from anywhere
-app.use(cors({ origin: ['http:amanger.com', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'], credentials: true }));
+app.use(cors({ origin: ['http:amanger.com', 'http://3.127.235.222', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'], credentials: true }));
+
+app.use((request, response, next) => {
+  response.header('Access-Control-Allow-Credentials', true);
+  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  response.header('Access-Control-Allow-Methods', 'GET, PATCH, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 
 // for handling post encoded data
 app.use(express.urlencoded({ extended: true }));

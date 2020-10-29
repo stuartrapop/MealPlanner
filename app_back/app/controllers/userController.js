@@ -27,7 +27,7 @@ const userController = {
   },
   getPseudos: async (req, res) => {
     try {
-      if (req.session.user) {
+      if (!req.session.user) {
         res.status(401).json({ error: 'you must be connected to see this page' });
       }
 
@@ -39,6 +39,7 @@ const userController = {
         lastName: user.lastName,
         pseudo: user.userName,
         userId: user.id,
+        
       }));
 
       // on renvoie les cartes
