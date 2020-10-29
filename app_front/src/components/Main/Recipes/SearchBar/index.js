@@ -10,6 +10,9 @@ const SearchBar = ({
   const handleOnChange = (event) => {
     modifySearch(event.target.value);
   };
+  console.log(event.target.value);
+  
+  console.log(searchInput);
   return (
     <div className="form__container">
       <form id="form__searchBar">

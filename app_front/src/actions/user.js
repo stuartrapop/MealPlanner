@@ -9,6 +9,7 @@ export const HANDLE_SIGN_IN = 'HANDLE_SIGN_IN';
 export const SIGN_IN = 'SIGN_IN';
 export const TOGGLE_LOG_IN_COMPONENT = 'TOGGLE_LOG_IN_COMPONENT';
 export const SHOW_ERROR_MESSAGE = 'SHOW_ERROR_MESSAGE';
+export const MODIFY_DETAILS = 'MODIFY_DETAILS';
 
 export const changeLoginFieldValue = (value, name) => ({
   type: CHANGE_LOGIN_FIELD_VALUE,
@@ -55,4 +56,9 @@ export const signIn = (signInWentSuccesfully, errorMessage) => ({
 
 export const toggleLogInComponent = () => ({
   type: TOGGLE_LOG_IN_COMPONENT,
+});
+
+export const modifyDetails = (editProfil) => ({
+  type: MODIFY_DETAILS,
+  editProfil,
 });

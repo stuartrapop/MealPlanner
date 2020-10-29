@@ -14,12 +14,14 @@ const ShoppingList = ({ userInfos, groupId }) => {
   console.log('groupInfos', groupInfos);
 
   const shoppingListResults = groupInfos.meals.map((meal) => {
-    const today = new Date();
+    const startingDay = new Date();
     console.log('meal day', meal.day);
-    console.log('today', today);
+    console.log('today', startingDay);
     const mealDay = new Date(meal.day);
     console.log(mealDay);
-    if (mealDay >= today) {
+    startingDay.setDate(startingDay.getDate() - 1);
+
+    if (mealDay >= startingDay) {
       return (
 
         meal.recipes.map((recipe) => (
