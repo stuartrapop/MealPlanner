@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Input, Card, Icon, Image, Label, Button,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
@@ -46,9 +47,9 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
           </Card.Content>
         </Card>
       ))}
-      <a href="/recettes">
+      <Link to="/recettes">
         <Button id="see__all__button">Découvrir toutes les recettes</Button>
-      </a>
+      </Link>
     </section>
   );
 };

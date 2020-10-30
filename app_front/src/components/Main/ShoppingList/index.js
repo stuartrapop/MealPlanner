@@ -15,15 +15,10 @@ const ShoppingList = ({ userInfos, groupId }) => {
 
   const shoppingListResults = groupInfos.meals.map((meal) => {
     const startingDay = new Date();
-    console.log('meal day', meal.day);
-    console.log('today', startingDay);
     const mealDay = new Date(meal.day);
-    console.log(mealDay);
-    startingDay.setDate(startingDay.getDate() - 1);
-
+    startingDay.setDate(startingDay.getDate() - 0.99);
     if (mealDay >= startingDay) {
       return (
-
         meal.recipes.map((recipe) => (
           {
             recipeTitle: recipe.title,
@@ -32,21 +27,19 @@ const ShoppingList = ({ userInfos, groupId }) => {
             ingredientsList: recipe.ingredients
               .map((ingredient) => (
                 {
-                  family: ingredient.families.name,
+                  familyName: ingredient.families[0].name,
                   ingredientName: ingredient.name,
                   weight: ingredient.weight,
                   volume: ingredient.volume,
                   countable: ingredient.countable,
                   quantity: ingredient.RecipeContainsIngredient.quant,
+                  familyId: ingredient.families[0].id,
                 }
               )),
           }
-
         )));
     }
   });
-  console.log(shoppingListResults);
-
   shoppingListResults.forEach((recipe) => {
     if (recipe) {
       if (recipe.length !== 0) {
@@ -69,6 +62,19 @@ const ShoppingList = ({ userInfos, groupId }) => {
       condensedShoppingList.push(item);
     }
   });
+  console.log('condensed', condensedShoppingList);
+  const groupByFamily = (objectsArray, familyItem) => objectsArray.reduce((acc, obj) => {
+    const cle = obj[familyItem];
+    if (!acc[cle]) {
+      acc[cle] = [];
+    }
+    acc[cle].push(obj);
+    return acc;
+  }, {});
+
+  const ingredientsByFamily = groupByFamily(condensedShoppingList, 'familyName');
+  console.log('ingredeintfamily', ingredientsByFamily);
+
   const list = condensedShoppingList.map((oneItem) => {
     let countable;
     let volume;
@@ -98,17 +104,17 @@ const ShoppingList = ({ userInfos, groupId }) => {
       countable = 'Pièce(s)';
       quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 100);
     }
-
+    console.log('oneitem', oneItem);
     return (
       <tr className="list__item">
-        <td>{oneItem.ingredientName}</td>
         <td className="list__item__quantity">{quantity}</td>
         <td>{weight}{volume}{countable}</td>
       </tr>
-
     );
   });
+
   return (
+
     <div>
       <div ref={ref} className="list__container">
         <table>
@@ -120,6 +126,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
           {list}
         </table>
       </div>
+      <div>{ingredientsByFamily.Sucres[0].familyName}</div>
       <Pdf targetRef={ref} filename="ma-liste-de-crouses.pdf">
         {({ toPdf }) => <button type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
       </Pdf>

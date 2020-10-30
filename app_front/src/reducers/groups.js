@@ -18,6 +18,9 @@ import {
   RESET_ACTIVE_ENTRY_ACTION,
   TOGGLE_ERROR_MESSAGE_DISPLAY,
 } from '../actions/groups';
+import {
+  SAVE_USER,
+} from '../actions/user';
 
 export const initialState = {
   userInfos: {},
@@ -138,6 +141,10 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         errorMessageDisplayed: !state.errorMessageDisplayed,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
       };
     default:
       return state;

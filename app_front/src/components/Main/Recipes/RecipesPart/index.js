@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { getSlugFromTitle } from '../../../../selectors/recipes';
 import './styles.scss';
 
@@ -29,7 +30,7 @@ const RecipesPart = ({ searchedRecipes }) => (
                 4.5/5
               </a>
               <p className="recipes__infos"> Temps de préparation : {recipe.cooking_time} minutes <br /> Difficulté de la recette : {recipe.difficulty}</p>
-              <a href={`/recette/${getSlugFromTitle(recipe.title)}`} className="recipes__button" id={recipe.id} title={recipe.title}>Découvrir la recette complète</a>
+              <Link to={`/recette/${getSlugFromTitle(recipe.title)}`} className="recipes__button" id={recipe.id} title={recipe.title}>Découvrir la recette complète</Link>
             </div>
           </div>
         </div>

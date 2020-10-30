@@ -12,22 +12,23 @@ import {
   HANDLE_LOG_OUT,
   UPDATE_ACCOUNT_INFOS,
 } from '../actions/user';
+import { fetchGroupsDatasAction } from '../actions/groups';
 
 axios.defaults.withCredentials = true;
 
 const userMiddleware = (store) => (next) => (action) => {
-  // const {
-  //   id, firstName, lastName, userName,
-  // } = state.user;
   const state = store.getState();
-  switch (action.type) {
+  const {
+    id, firstName, lastName, userName,
+  } = state.user;
+    switch (action.type) {
     // Sur l'action de LOG_IN, je tente de me connecter
     case LOG_IN:
       // Je récupère les valeurs des champs email et password
       // Depuis le state du store
       const { logInEmail, logInPassword } = state.user;
       let email = logInEmail;
-      let password = logInPassword;
+      let password = logInPassword; 
       axios.post(`${process.env.APISERVER}/login`, { email, password }, { withCredentials: true })
         .then((response) => {
           store.dispatch(saveUser(response.data));
@@ -58,7 +59,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // const { firstName, lastName, userName } = state.user; This has been commented as we declare in L19
       email = state.user.email;
       password = state.user.password;
-      axios.post(`${APISERVER}/user/create`, {
+      axios.post(`${process.env.APISERVER}/user/create`, {
         email, password, firstName, lastName, userName,
       }, { withCredentials: true })
         .then(() => {
@@ -82,8 +83,9 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     case UPDATE_ACCOUNT_INFOS:
       axios.patch(`${process.env.APISERVER}/user/${id}`, { firstName, lastName, userName }, { withCredentials: true })
-        .then((response) => {
+        .then(() => {
           next(action);
+          store.dispatch(fetchGroupsDatasAction());
         })
         .catch((e) => {
           console.error(e);
