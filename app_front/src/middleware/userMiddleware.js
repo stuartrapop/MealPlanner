@@ -10,13 +10,15 @@ import {
   HANDLE_SIGN_IN,
   signIn,
   HANDLE_LOG_OUT,
+  UPDATE_ACCOUNT_INFOS,
 } from '../actions/user';
 
 axios.defaults.withCredentials = true;
 
 const userMiddleware = (store) => (next) => (action) => {
-
-  const { id, firstName, lastName, userName } = state.user;
+  // const {
+  //   id, firstName, lastName, userName,
+  // } = state.user;
   const state = store.getState();
   switch (action.type) {
     // Sur l'action de LOG_IN, je tente de me connecter
@@ -78,7 +80,7 @@ const userMiddleware = (store) => (next) => (action) => {
           console.log(e);
         });
       break;
-      case UPDATE_ACCOUNT_INFOS:
+    case UPDATE_ACCOUNT_INFOS:
       axios.patch(`${process.env.APISERVER}/user/${id}`, { firstName, lastName, userName }, { withCredentials: true })
         .then((response) => {
           next(action);
