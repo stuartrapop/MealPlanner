@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
   editProfil: state.user.editProfil,
   defaultUserInfos: state.groups.userInfos,
 });
-
+// test
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, name) => {
     dispatch(changeLoginFieldValue(value, name));
