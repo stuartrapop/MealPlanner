@@ -4,17 +4,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-dotenv.config();
-
 // == Import : local
 // Composants
-import App from '../src/containers/App';
+import App from './containers/App';
 // Store
-import store from '../src/store';
+import store from './store';
 
 import 'semantic-ui-css/semantic.min.css';
 
-
+dotenv.config();
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)

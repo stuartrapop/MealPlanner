@@ -6,7 +6,8 @@ import {
   LOG_OUT,
   SIGN_IN,
   TOGGLE_LOG_IN_COMPONENT,
-  MODIFY_DETAILS,
+  INSERT_DEFAULT_USER_INFOS,
+  UPDATE_ACCOUNT_INFOS,
 } from '../actions/user';
 
 export const initialState = {
@@ -45,10 +46,19 @@ const userReducer = (state = initialState, action = {}) => {
         signInWentSuccesfully: null,
       };
       return newState;
-    case MODIFY_DETAILS:
+    case INSERT_DEFAULT_USER_INFOS:
       return {
         ...state,
-        editProfil: action.editProfil,
+        userName: action.userName,
+        firstName: action.firstName,
+        lastName: action.lastName,
+      };
+    case UPDATE_ACCOUNT_INFOS:
+      return {
+        ...state,
+        userName: '',
+        firstName: '',
+        lastName: '',
       };
     case SEND_ERROR_MESSAGE:
       return {

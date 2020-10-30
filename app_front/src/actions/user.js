@@ -10,6 +10,8 @@ export const SIGN_IN = 'SIGN_IN';
 export const TOGGLE_LOG_IN_COMPONENT = 'TOGGLE_LOG_IN_COMPONENT';
 export const SHOW_ERROR_MESSAGE = 'SHOW_ERROR_MESSAGE';
 export const MODIFY_DETAILS = 'MODIFY_DETAILS';
+export const INSERT_DEFAULT_USER_INFOS = 'INSERT_DEFAULT_USER_INFOS';
+export const UPDATE_ACCOUNT_INFOS = 'UPDATE_ACCOUNT_INFOS';
 
 export const changeLoginFieldValue = (value, name) => ({
   type: CHANGE_LOGIN_FIELD_VALUE,
@@ -62,3 +64,13 @@ export const modifyDetails = (editProfil) => ({
   type: MODIFY_DETAILS,
   editProfil,
 });
+
+export const insertDefaultUserInfos = (userName, firstName, lastName) => ({
+  type: INSERT_DEFAULT_USER_INFOS,
+  userName,
+  firstName,
+  lastName,
+});
+ export const updateAccountInfos =() => ({
+  type: UPDATE_ACCOUNT_INFOS,
+ })
