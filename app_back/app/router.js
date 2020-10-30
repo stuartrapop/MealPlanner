@@ -17,7 +17,10 @@ const {
 
 // Joi validator for new user
 const loginSchema = require('./schemas/login');
+const changeUserDetailsSchema = require('./schemas/changeUserDetails');
 const { validateBody } = require('./services/validator');
+
+const { checkUserOrAdmin, checkAdmin, groupOwner } = require('./middleware/authorizations');
 
 // routes with http method
 router.get('/', (req, res) => {
@@ -30,10 +33,10 @@ router.get('/groups', groupController.allGroups);
 router.get('/group/:id', groupController.oneGroup);
 
 router.post('/group/create', groupController.createGroup);
-router.patch('/group/:id', groupController.updateGroup);
-router.delete('/group/:id', groupController.deleteGroup);
-router.post('/group/addMember', groupController.addMember);
-router.post('/group/removeMember', groupController.removeMember);
+router.patch('/group/:id', groupOwner(), groupController.updateGroup);
+router.delete('/group/:id', groupOwner(), groupController.deleteGroup);
+router.post('/group/addMember', groupOwner(), groupController.addMember);
+router.post('/group/removeMember', groupOwner(), groupController.removeMember);
 
 router.get('/ingredients', ingredientController.allIngredients);
 
@@ -56,15 +59,15 @@ router.patch('/recipes/review/:id', reviewController.updateReview);
 
 router.get('/types', typeController.allTypes);
 
-router.get('/users', userController.allUsers);
+router.get('/users', checkAdmin(), userController.allUsers);
 router.get('/users/pseudos', userController.getPseudos);
-router.get('/user/:id', userController.oneUser);
+router.get('/user/:id', checkUserOrAdmin(), userController.oneUser);
 // this route uses joi validator
 router.post('/user/create', validateBody(loginSchema), adminController.createAccount);
-router.patch('/user/:id', adminController.updateAccount);
-router.delete('/user/:id', adminController.deleteAccount);
+router.patch('/user/:id', checkUserOrAdmin(), validateBody(changeUserDetailsSchema), adminController.updateAccount);
+router.delete('/user/:id', checkUserOrAdmin(), adminController.deleteAccount);
 
-router.patch('/changePassword', adminController.changePassword);
+router.patch('/changePassword', checkUserOrAdmin(), adminController.changePassword);
 
 // login isLogged and logout use session info.
 router.post('/login', adminController.login);

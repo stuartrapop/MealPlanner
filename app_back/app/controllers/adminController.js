@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const async = require('async');
+
 const { User, Group } = require('../models');
 const groupController = require('./groupController');
 
@@ -71,41 +71,39 @@ const adminController = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         userName: req.body.userName,
-        email: req.body.email,
-        password: req.body.password,
       };
 
-      const user = await User.findOne({
-        where: { email: `${userDetails.email}` },
+      const userId = parseInt(req.params.id, 10);
+      const user = await User.findByPk(userId, {
+
       });
-      if (!user) {
-        res.status(401).json({ error: 'email not in database' });
+      // send the details or not found
+      if (user) {
+        await user.update(
+          {
+            firstName: userDetails.firstName,
+            lastName: userDetails.lastName,
+            userName: userDetails.userName,
+          },
+        ).then((updatedUser) => {
+        // send the details or not found
+          if (updatedUser) {
+            res.json({
+              userId: updatedUser.id,
+              firstName: updatedUser.firstName,
+              lastName: updatedUser.lastName,
+              pseudo: updatedUser.userName,
+              email: updatedUser.email,
+            });
+          }
+        }).catch((error) => {
+          console.log(error);
+          res.status(500).json({ error });
+        });
       }
-
-      await bcrypt.compare(userDetails.password, user.password).then((result) => {
-        console.log('in compare result', result);
-
-        if (result) {
-          user.update(
-            {
-              firstName: userDetails.firstName,
-              lastName: userDetails.lastName,
-              userName: userDetails.userName,
-            },
-          ).then((updatedUser) => {
-            // send the details or not found
-            if (updatedUser) {
-              res.json(updatedUser);
-            }
-          }).catch((error) => {
-            console.log(error);
-            res.status(500).json({ error });
-          });
-        }
-        else {
-          res.status(401).json({ error: 'wrong password' });
-        }
-      });
+      else {
+        res.status(404).json({ error: 'user not found' });
+      }
     }
     catch (error) {
       console.log(error);
