@@ -16,6 +16,7 @@ import {
   SHOW_POSSIBLE_MEMBERS_ACTION,
   MEMBER_SEARCH_INPUT_ACTION,
   RESET_ACTIVE_ENTRY_ACTION,
+  TOGGLE_ERROR_MESSAGE_DISPLAY,
 } from '../actions/groups';
 
 export const initialState = {
@@ -37,6 +38,7 @@ export const initialState = {
   addMemberModalBool: false,
   membersSearchResults: [],
   membersSearchValue: '',
+  errorMessageDisplayed: false,
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -131,6 +133,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         addMealEntryActive: 0,
+      };
+    case TOGGLE_ERROR_MESSAGE_DISPLAY:
+      return {
+        ...state,
+        errorMessageDisplayed: !state.errorMessageDisplayed,
       };
     default:
       return state;

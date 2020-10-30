@@ -26,6 +26,8 @@ export const SHOW_POSSIBLE_MEMBERS_ACTION = 'SHOW_POSSIBLE_MEMBERS_ACTION';
 export const MEMBER_SEARCH_INPUT_ACTION = 'MEMBER_SEARCH_INPUT_ACTION';
 export const ADD_MEMBER_TO_GROUP_ACTION = 'ADD_MEMBER_TO_GROUP_ACTION';
 export const RESET_ACTIVE_ENTRY_ACTION = 'RESET_ACTIVE_ENTRY_ACTION';
+export const REMOVE_USER_ACTION = 'REMOVE_USER_ACTION';
+export const TOGGLE_ERROR_MESSAGE_DISPLAY = 'TOGGLE_ERROR_MESSAGE_DISPLAY';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -165,4 +167,14 @@ export const addMemberToGroupAction = (groupId, userId) => ({
 
 export const resetActiveEntryIdAction = () => ({
   type: RESET_ACTIVE_ENTRY_ACTION,
+});
+
+export const removeUserAction = (groupId, userId) => ({
+  type: REMOVE_USER_ACTION,
+  groupId,
+  userId,
+});
+
+export const toggleErrorMessageDisplay = () => ({
+  type: TOGGLE_ERROR_MESSAGE_DISPLAY,
 });

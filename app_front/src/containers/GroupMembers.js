@@ -6,6 +6,8 @@ import {
   showPossibleMembersAction,
   memberSearchInputAction,
   addMemberToGroupAction,
+  removeUserAction,
+  toggleErrorMessageDisplay,
 } from '../actions/groups';
 
 const mapStateToProps = (state) => ({
@@ -15,6 +17,7 @@ const mapStateToProps = (state) => ({
   membersSearchResults: state.groups.membersSearchResults,
   membersSearchValue: state.groups.membersSearchValue,
   userInfos: state.groups.userInfos,
+  errorMessageDisplayed: state.groups.errorMessageDisplayed,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -33,6 +36,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   addMemberToGroup: (groupId, userId) => {
     dispatch(addMemberToGroupAction(groupId, userId));
+  },
+
+  removeUserAction: (groupId, userId) => {
+    dispatch(removeUserAction(groupId, userId));
+  },
+
+  toggleErrorMessageDisplay: () => {
+    dispatch(toggleErrorMessageDisplay());
   },
 });
 

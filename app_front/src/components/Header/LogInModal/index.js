@@ -2,10 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Icon } from 'semantic-ui-react';
-
 // == Import
 import './styles.scss';
-
 // == Composant
 const LogInModal = ({
   logInEmail, // valeur du champ email dans le form login
@@ -29,35 +27,28 @@ const LogInModal = ({
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
-
   const handleLoginClick = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
-
   const handleClick = () => {
     handler();
   };
-
   const handleSigninClick = (evt) => {
     evt.preventDefault();
     handleSignin();
   };
-
   const toggleLogInComponent = () => {
     handleToggleLogInComponent();
   };
-
   return (
     <div className="login__modal">
       <Icon id="close__modal__icon" name="close" size="big" color="red" onClick={handleClick} />
-
       {!isLogged && (
       <div className="login__form">
         {logInError && (
           <p className="logIn__error">Cette combinaison utilisateur/mot de passe n'est pas reconnue</p>
         )}
-
         {!displaySignInComponent && (
           <form id="login__form__1">
             <Input onChange={handleChange} name="logInEmail" placeholder="Adresse Email" value={logInEmail} />
@@ -68,17 +59,14 @@ const LogInModal = ({
             </div>
           </form>
         )}
-
         {signInWentSuccesfully && (
           <p className="signIn__validation">Votre compte est bien crée, vous pouvez désormais vous connecter</p>
         )}
-
         {signInWentSuccesfully === false && (
           errorMessage.map((error) => (
             <p className="logIn__error">{error.message}</p>
           ))
         )}
-
         {displaySignInComponent && (
           <form id="login__form__2">
             <Input onChange={handleChange} name="email" placeholder="Adresse Email" value={email} />
@@ -92,15 +80,12 @@ const LogInModal = ({
             </div>
           </form>
         )}
-
       </div>
       )}
-
       {isLogged && (handler())}
     </div>
   );
 };
-
 LogInModal.propTypes = {
   logInEmail: PropTypes.string.isRequired,
   logInPassword: PropTypes.string.isRequired,
@@ -120,6 +105,5 @@ LogInModal.propTypes = {
   displaySignInComponent: PropTypes.bool.isRequired,
   errorMessage: PropTypes.array.isRequired,
 };
-
 // == Export
 export default LogInModal;

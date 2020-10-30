@@ -20,9 +20,10 @@ import {
   ADD_MEMBER_TO_GROUP_ACTION,
   toggleAddMemberModalAction,
   fetchGroupMembers,
+  REMOVE_USER_ACTION,
+  toggleErrorMessageDisplay,
 
 } from '../actions/groups';
-
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
@@ -37,6 +38,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
           const lowestIdFirstSort = (a, b) => (a.id - b.id);
           response.data.groups.sort(lowestIdFirstSort);
           // On appelle les fonctions
+          console.log(response.data);
           store.dispatch(sendGroupsDatas(response.data));
           next(action);
         })
@@ -46,7 +48,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_TARGETED_VALUES:
       const { choosenDay, choosenTime } = action;
-      let groupId = state.groups.activeGroupId;
+      let groupId = state.groupsactiveGroupId;
       const dayString = `${choosenDay}`;
       const day = dayString.split('/').join('-');
       const time = choosenTime;
@@ -161,6 +163,19 @@ const groupsMiddleware = (store) => (next) => (action) => {
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
           store.dispatch(toggleAddMemberModalAction());
+          store.dispatch(toggleErrorMessageDisplay());
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case REMOVE_USER_ACTION:
+      groupId = action.groupId;
+      userId = action.userId;
+      axios.post('http://3.127.235.222:3000/group/removeMember', { groupId, userId }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupMembers(groupId));
           next(action);
         })
         .catch((e) => {

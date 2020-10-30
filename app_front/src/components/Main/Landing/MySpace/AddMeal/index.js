@@ -10,7 +10,14 @@ import AddRecipeZone from '../../../../../containers/AddRecipeZone';
 import './styles.scss';
 
 const AddMeal = ({
-  userInfos, activeGroup, choosenGroup, sendAddMealModalAction, mealModalDisplayed, sendRemoveMealAction, groupValueDropdown, sendRemoveRecipeAction,
+  userInfos,
+  activeGroup,
+  choosenGroup,
+  sendAddMealModalAction,
+  mealModalDisplayed,
+  sendRemoveMealAction,
+  groupValueDropdown,
+  sendRemoveRecipeAction,
 }) => {
   const groupOptionsConstructor = userInfos.groups.map((group) => ({
     key: group.id,
@@ -110,8 +117,12 @@ const AddMeal = ({
   const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDay >= todayFormated);
 
   const finalArray = cleanedFromPastArray;
-  console.log('final array: ', finalArray);
 
+  // On souhaite avoir le role de l'utilisateur dans le groupe actif
+  const { UserBelongsGroup } = userInfos.groups[activeGroup];
+  const userRoleInActiveGroup = UserBelongsGroup.user_role;
+
+  // Fonctions de gestions des évènements
   const handleChooseGroup = (evt) => {
     const isTargetedGroup = (group) => (group.name === evt.target.textContent);
     const targetedGroupId = userInfos.groups.find(isTargetedGroup);
@@ -144,12 +155,14 @@ const AddMeal = ({
               <div className="add__meal--right">
                 <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
               </div>
-              <div className="add__meal--left" onClick={toggleAddMealModal}>
+              <div className="add__meal--left">
                 <Link to="/mon-espace/groupes"> Gérer mes groupes </Link>
-                <div className="add__meal__clickable__part">
+                {userRoleInActiveGroup !== 'Lecture' && (
+                <div className="add__meal__clickable__part" onClick={toggleAddMealModal}>
                   <Icon id="add__meal__icon" name="plus square outline" size="large" />
                   Ajouter un créneau
                 </div>
+                )}
               </div>
             </div>
             {finalArray.map((day) => (
@@ -158,15 +171,25 @@ const AddMeal = ({
                 <div>
                   {day.map((meal) => (
                     <div key={meal.key} id={meal.key}>
-                      <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} /> <em>{meal.mealType}</em>
+                      {userRoleInActiveGroup !== 'Lecture' && (
+                        <>
+                          <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} /> <em>{meal.mealType}</em>
+                        </>
+                      )}
                       <ul className="scheduled__meal">
+                        {userRoleInActiveGroup !== 'Lecture' && (
                         <AddRecipeZone
                           id={meal.key}
                         />
+                        )}
                         {meal.scheduledRecipes.map((recipe) => (
                           <div key={recipe.id + meal.mealDate} className="recipe__box">
                             <li className="scheduled__recipe">
-                              <Icon id="remove__meal__icon" name="minus" onClick={removeRecipeClick} mealid={meal.key} recipeid={recipe.id} />
+                              {userRoleInActiveGroup !== 'Lecture' && (
+                              <>
+                                <Icon id="remove__meal__icon" name="minus" onClick={removeRecipeClick} mealid={meal.key} recipeid={recipe.id} />
+                              </>
+                              )}
                               <p>{recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i></p>
                             </li>
                           </div>

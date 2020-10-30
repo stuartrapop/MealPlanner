@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Header, Icon, Modal, Dropdown, Search,
+  Button, Header, Icon, Modal, Dropdown, Search, Message,
 } from 'semantic-ui-react';
 
 import './styles.scss';
@@ -17,6 +18,9 @@ const GroupMembers = ({
   membersSearchResults,
   membersSearchValue,
   addMemberToGroup,
+  removeUserAction,
+  errorMessageDisplayed,
+  toggleErrorMessageDisplay,
 }) => {
   const roleOptions = [
     { key: '1', text: 'Ecriture', value: '1' },
@@ -40,14 +44,22 @@ const GroupMembers = ({
   };
 
   const handleMemberSelection = (evt, data) => {
-    addMemberToGroup(groupMembers.groupId, data.result.key);
+    const memberIsPresent = groupMembers.groupMemberArray.find(((element) => element.userId === data.result.key));
+    if (!memberIsPresent) {
+      addMemberToGroup(groupMembers.groupId, data.result.key);
+    }
+    else {
+      toggleErrorMessageDisplay();
+    }
+  };
+
+  const removeUserClick = (evt, data) => {
+    removeUserAction(groupMembers.groupId, data.memberid);
   };
 
   // eslint-disable-next-line max-len
-  const userDetailsInGroup = groupMembers.groupMemberArray.find((user) => user.userId = userInfos.userId);
-  console.log(userDetailsInGroup);
+  const userDetailsInGroup = groupMembers.groupMemberArray.find((user) => user.userId === userInfos.userId);
   const userRoleInGroup = userDetailsInGroup.userRole;
-  console.log(userRoleInGroup);
 
   return (
     <div className="group_members_container">
@@ -56,18 +68,33 @@ const GroupMembers = ({
         {groupMembers.groupMemberArray.map((member) => (
           <div>
             {userRoleInGroup === 'Propriétaire' && (
-            <li key={member.id} className="user">
-              <div className="full_name">{member.firstName} {member.lastName}</div>
-              <Dropdown
-                id="select__member__role"
-                inline
-                options={roleOptions}
-                scrolling
-                defaultValue={member.userRole}
-                text={member.userRole}
-              />
-              <Icon name="trash" />
-            </li>
+              <li key={member.userId} className="user">
+                <div className="full_name">{member.firstName} {member.lastName}</div>
+                {member.userRole !== 'Propriétaire' && (
+                <>
+                  <Dropdown
+                    id="select__member__role"
+                    inline
+                    options={roleOptions}
+                    scrolling
+                    defaultValue={member.userRole}
+                    text={member.userRole}
+                  />
+                  <Icon name="trash" memberid={member.userId} onClick={removeUserClick} />
+                </>
+                )}
+                {member.userRole === 'Propriétaire' && (
+                <>
+                  <Dropdown
+                    id="select__member__role"
+                    inline
+                    defaultValue={member.userRole}
+                    text={member.userRole}
+                  />
+                  <Icon name="child" />
+                </>
+                )}
+              </li>
             )}
             {userRoleInGroup !== 'Propriétaire' && (
               <li key={member.id} className="user">
@@ -78,42 +105,49 @@ const GroupMembers = ({
           </div>
         ))}
       </ul>
-      <Modal
-        basic
-        onClose={openAddMemberModal}
-        onOpen={openAddMemberModal}
-        open={addMemberModalBool}
-        size="small"
-        trigger={(
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="25" cy="25" r="23.5" fill="white" stroke="#2ECC71" strokeWidth="3" />
-            <line x1="25.5" y1="17" x2="25.5" y2="34" stroke="#2ECC71" strokeWidth="3" />
-            <line x1="34" y1="25.5" x2="17" y2="25.5" stroke="#2ECC71" strokeWidth="3" />
-          </svg>
+      {userRoleInGroup === 'Propriétaire' && (
+        <Modal
+          basic
+          onClose={openAddMemberModal}
+          onOpen={openAddMemberModal}
+          open={addMemberModalBool}
+          size="small"
+          trigger={(
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="25" cy="25" r="23.5" fill="white" stroke="#2ECC71" strokeWidth="3" />
+              <line x1="25.5" y1="17" x2="25.5" y2="34" stroke="#2ECC71" strokeWidth="3" />
+              <line x1="34" y1="25.5" x2="17" y2="25.5" stroke="#2ECC71" strokeWidth="3" />
+            </svg>
           )}
-      >
-        <Header icon>
-          <Icon name="group" />
-          Recherchez un utilisateur
-        </Header>
-        <Modal.Content>
-          <Search
-            id="add__group__modal"
-            onResultSelect={handleMemberSelection}
-            onSearchChange={handleMemberSearchChange}
-            results={membersSearchResults}
-            value={membersSearchValue}
-          />
-        </Modal.Content>
-        <Modal.Actions>
-          <Button basic color="red" inverted onClick={openAddMemberModal}>
-            <Icon name="remove" /> Annuler
-          </Button>
-          <Button color="green" inverted onClick={openAddMemberModal}>
-            <Icon name="checkmark" /> Inviter
-          </Button>
-        </Modal.Actions>
-      </Modal>
+        >
+          <Header icon>
+            <Icon name="group" />
+            Recherchez un utilisateur
+          </Header>
+          <Modal.Content>
+            <Search
+              id="add__group__modal"
+              onResultSelect={handleMemberSelection}
+              onSearchChange={handleMemberSearchChange}
+              results={membersSearchResults}
+              value={membersSearchValue}
+            />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button basic color="red" inverted onClick={openAddMemberModal}>
+              <Icon name="remove" /> Annuler
+            </Button>
+            <Button color="green" inverted onClick={openAddMemberModal}>
+              <Icon name="checkmark" /> Inviter
+            </Button>
+          </Modal.Actions>
+          {errorMessageDisplayed && (
+          <Message negative>
+            <Message.Header>Oups, le membre fait déjà parti du groupe !</Message.Header>
+          </Message>
+          )}
+        </Modal>
+      )}
     </div>
   );
 };
