@@ -48,10 +48,11 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_TARGETED_VALUES:
       const { choosenDay, choosenTime } = action;
-      let groupId = state.groupsactiveGroupId;
+      let groupId = state.groups.activeGroupId;
       const dayString = `${choosenDay}`;
       const day = dayString.split('/').join('-');
       const time = choosenTime;
+      console.log(day, time, groupId);
       axios.post(`${process.env.APISERVER}/meal/create`, { day, time, groupId }, { withCredentials: true })
         .then(() => {
           store.dispatch(saveNewMeal());

@@ -2,13 +2,10 @@ import React from 'react';
 import { Button, Dropdown, Icon } from 'semantic-ui-react';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import fr from 'date-fns/locale/fr';
-
 import './styles.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-
 registerLocale('fr', fr);
 setDefaultLocale('fr');
-
 const AddMealModal = ({
   sendAddMealModalAction,
   sendTargetedValuesCombinaisonAction,
@@ -32,13 +29,10 @@ const AddMealModal = ({
       value: 3,
     },
   ];
-
   const startDate = new Date();
-
   // On ajoute une date de fin pour empêcher de prévoir ds 4 mois
   const oneWeekFromNow = new Date();
   oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 6);
-
   let selectedDate; // pour stocker nos données
   let selectedMeal; // pour stocker nos données
   // ici j'ai la valeur de la date choisie
@@ -51,7 +45,6 @@ const AddMealModal = ({
   const assignMeal = (evt) => {
     selectedMeal = evt.target.textContent;
   };
-
   const sendTargetedValuesCombinaison = () => {
     if (selectedDate && selectedMeal) {
       sendTargetedValuesCombinaisonAction(selectedDate, selectedMeal);
@@ -60,11 +53,9 @@ const AddMealModal = ({
       displayErrorMessage();
     }
   };
-
   const toggleAddMealModal = () => {
     sendAddMealModalAction();
   };
-
   return (
     <div className="addMeal__modal">
       <div className="search__zone">
@@ -84,5 +75,4 @@ const AddMealModal = ({
     </div>
   );
 };
-
 export default AddMealModal;
