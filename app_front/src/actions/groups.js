@@ -28,6 +28,9 @@ export const ADD_MEMBER_TO_GROUP_ACTION = 'ADD_MEMBER_TO_GROUP_ACTION';
 export const RESET_ACTIVE_ENTRY_ACTION = 'RESET_ACTIVE_ENTRY_ACTION';
 export const REMOVE_USER_ACTION = 'REMOVE_USER_ACTION';
 export const TOGGLE_ERROR_MESSAGE_DISPLAY = 'TOGGLE_ERROR_MESSAGE_DISPLAY';
+export const TOGGLE_EDIT_GROUP_NAME_ZONE = 'TOGGLE_EDIT_GROUP_NAME_ZONE';
+export const UPDATE_GROUP_NEW_NAME_ACTION = 'UPDATE_GROUP_NEW_NAME_ACTION';
+export const SEND_NEW_GROUP_NAME = 'SEND_NEW_GROUP_NAME';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -177,4 +180,20 @@ export const removeUserAction = (groupId, userId) => ({
 
 export const toggleErrorMessageDisplay = () => ({
   type: TOGGLE_ERROR_MESSAGE_DISPLAY,
+});
+
+export const toggleEditGroupNameZone = (groupIndex) => ({
+  type: TOGGLE_EDIT_GROUP_NAME_ZONE,
+  groupIndex,
+});
+
+export const updateGroupNewNameAction = (input) => ({
+  type: UPDATE_GROUP_NEW_NAME_ACTION,
+  input,
+});
+
+export const sendNewGroupName = (newName, groupid) => ({
+  type: SEND_NEW_GROUP_NAME,
+  newName,
+  groupid,
 });

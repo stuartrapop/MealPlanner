@@ -22,6 +22,7 @@ import {
   fetchGroupMembers,
   REMOVE_USER_ACTION,
   toggleErrorMessageDisplay,
+  SEND_NEW_GROUP_NAME,
 
 } from '../actions/groups';
 
@@ -177,6 +178,17 @@ const groupsMiddleware = (store) => (next) => (action) => {
       axios.post('http://3.127.235.222:3000/group/removeMember', { groupId, userId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
+          next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case SEND_NEW_GROUP_NAME:
+      const { newName, groupid } = action;
+      axios.patch(`http://3.127.235.222:3000/group/${groupid}`, { newName }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
           next(action);
         })
         .catch((e) => {

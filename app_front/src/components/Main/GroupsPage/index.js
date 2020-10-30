@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import {
+  Link,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button, Header, Icon, Modal, Input,
@@ -18,13 +21,17 @@ const GroupsPage = ({
   saveGroupNameChange,
   groupNameInputValue,
   handleCreateGroup,
-  fetchAllUsers
+  fetchAllUsers,
+  toggleEditGroupNameZone,
+  editGroupNameZoneDisplay,
+  updateGroupNewNameAction,
+  newGroupNameProposal,
+  sendNewGroupNameAction,
 }) => {
   useEffect(() => {
     fetchAllUsers();
   }, []);
   // useEffect avec getGroupMembers de [0]
-  console.log(userInfos.groups);
   const getGroupMembers = (evt) => {
     fetchGroupMembers(evt.target.id);
   };
@@ -43,20 +50,50 @@ const GroupsPage = ({
   const handleGroupNameChange = (evt, data) => {
     saveGroupNameChange(data.value);
   };
+  const editGroupName = (evt, data) => {
+    toggleEditGroupNameZone(data.groupindex);
+  };
+  const closeAllGroupNameZone = () => {
+    toggleEditGroupNameZone(-1);
+  };
+  const updateGroupNewName = (evt, data) => {
+    updateGroupNewNameAction(data.value);
+  };
+  const sendNewGroupName = (evt, data) => {
+    sendNewGroupNameAction(newGroupNameProposal, data.groupid);
+  };
 
   return (
     <div className="groups_details_container">
       <div className="my_groups">
+        <Link to="/">
+          <div className="return__MySpace">
+            <Icon name="arrow left" />
+            Mon Espace
+          </div>
+        </Link>
         <h1>Mes Groupes</h1>
         <ul className="group_list">
           {userInfos.groups.map((group, index) => (
             <li key={group.id} className="group">
-              <a onClick={getGroupMembers} id={group.id}>{group.name}</a>
-              {group.UserBelongsGroup.user_role === 'Propriétaire' && (
-              <a className="delete" id={group.id} onClick={handleDeleteGroupClick}>Supprimer</a>
+              <Icon name="edit outline" groupindex={index} onClick={editGroupName} />
+              {editGroupNameZoneDisplay === index && (
+                <div className="modify__group__name">
+                  <Input placeholder="Nouveau nom..." onChange={updateGroupNewName} />
+                  <Icon name="check" onClick={sendNewGroupName} groupid={group.id} color="green" />
+                  <Icon name="cancel" onClick={closeAllGroupNameZone} color="red" />
+                </div>
               )}
-              {group.UserBelongsGroup.user_role !== 'Propriétaire' && (
-              <a className="delete" id={group.id} onClick={handleLeaveGroupClick}>Quitter</a>
+              {editGroupNameZoneDisplay !== index && (
+                <div className="group__role__action">
+                  <h2 onClick={getGroupMembers} id={group.id}>{group.name}</h2>
+                  {group.UserBelongsGroup.user_role === 'Propriétaire' && (
+                  <a className="delete" id={group.id} onClick={handleDeleteGroupClick}>Supprimer</a>
+                  )}
+                  {group.UserBelongsGroup.user_role !== 'Propriétaire' && (
+                  <a className="delete" id={group.id} onClick={handleLeaveGroupClick}>Quitter</a>
+                  )}
+                </div>
               )}
             </li>
           ))}
