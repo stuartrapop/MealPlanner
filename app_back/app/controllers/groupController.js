@@ -130,6 +130,40 @@ const groupController = {
     }
   },
 
+  // les cards d'une liste
+  changeMemberRole: async (req, res) => {
+    try {
+      const groupId = parseInt(req.body.groupId, 10);
+      const userId = parseInt(req.body.userId, 10);
+      const { userRole } = req.body;
+      const user = await User.findByPk(userId);
+      if (!user) {
+        res.status(403).json({ error: 'user does not exist' });
+      }
+      let group = await Group.findByPk(groupId, {
+        include: 'members',
+      });
+      if (!group) {
+        res.status(403).json({ error: 'group does not exist' });
+      }
+
+      await group.addMembers(user, { through: { user_role: userRole } });
+      
+
+      group = await Group.findByPk(groupId, {
+        include: 'members',
+      });
+      // send the details or not found
+      if (group) {
+        res.json({ message: group });
+      }
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
+  },
+
   updateGroup: async (req, res) => {
     try {
       const { name } = req.body;
