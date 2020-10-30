@@ -12,6 +12,7 @@ export const SHOW_ERROR_MESSAGE = 'SHOW_ERROR_MESSAGE';
 export const MODIFY_DETAILS = 'MODIFY_DETAILS';
 export const INSERT_DEFAULT_USER_INFOS = 'INSERT_DEFAULT_USER_INFOS';
 export const UPDATE_ACCOUNT_INFOS = 'UPDATE_ACCOUNT_INFOS';
+export const REMOVE_ACCOUNT = 'REMOVE_ACCOUNT';
 
 export const changeLoginFieldValue = (value, name) => ({
   type: CHANGE_LOGIN_FIELD_VALUE,
@@ -71,6 +72,10 @@ export const insertDefaultUserInfos = (userName, firstName, lastName) => ({
   firstName,
   lastName,
 });
- export const updateAccountInfos =() => ({
+export const updateAccountInfos = () => ({
   type: UPDATE_ACCOUNT_INFOS,
- })
+});
+export const removeAccount = (accountId) => ({
+  type: REMOVE_ACCOUNT,
+  accountId,
+});

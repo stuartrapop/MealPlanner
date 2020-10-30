@@ -8,25 +8,31 @@ import './styles.scss';
 
 // == Composant
 const EditProfile = ({
-  email, userName, firstName, lastName, editProfil, changeField, defaultUserInfos, insertDefaultUserInfos, updateAccountInfos,
+  email,
+  userName,
+  firstName,
+  lastName,
+  editProfil,
+  changeField,
+  defaultUserInfos,
+  insertDefaultUserInfos,
+  updateAccountInfos,
+  removeAccount,
 }) => {
   useEffect(() => {
     insertDefaultUserInfos(defaultUserInfos);
   }, []);
-  const handleChange = (evt) => {
-    console.log('event.target', evt.target);
-
-    return (
-      changeField(evt.target.value, evt.target.name)
-    );
-  };
+  console.log('default', defaultUserInfos);
+  const handleChange = (evt) => (
+    changeField(evt.target.value, evt.target.name)
+  );
   const updateClick = (event) => {
-    
     // event.preventDefault();
     updateAccountInfos();
   };
-  console.log(editProfil);
-
+  const removeAccountOnClick = (event) => {
+    removeAccount(event.target.id);
+  };
   return (
     <div>
       <form id="login__form__edit__profile">
@@ -35,8 +41,8 @@ const EditProfile = ({
         <Input onChange={handleChange} name="lastName" type="text" placeholder="Nom" value={lastName} />
         <Input onChange={handleChange} name="userName" type="text" placeholder="Pseudo" value={userName} />
         <div className="login__form__button__container">
-          <Link  to="/" onClick={updateClick} secondary className="login-form-button"> Mettre à jour mes informations</Link>
-          {/* <Button secondary className="login-form-button" onClick={toggleLogInComponent}>Supprimer mon compte</Button> */}
+          <Link to="/" onClick={updateClick} secondary className="login-form-button"> Mettre à jour mes informations</Link>
+          <Link to="/" secondary className="login-form-button" id={defaultUserInfos.userId} onClick={removeAccountOnClick}>Supprimer mon compte</Link>
 
         </div>
       </form>

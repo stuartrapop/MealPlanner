@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 // importer les actions from 'src/actions/user'
 import EditProfile from '../components/Main/EditProfile';
-import { changeLoginFieldValue, insertDefaultUserInfos, updateAccountInfos } from '../actions/user';
+import {
+  changeLoginFieldValue,
+  insertDefaultUserInfos,
+  updateAccountInfos,
+  removeAccount,
+} from '../actions/user';
 
 const mapStateToProps = (state) => ({
   email: 'stuart @gmail.com',
@@ -23,6 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateAccountInfos: () => {
     dispatch(updateAccountInfos());
+  },
+  removeAccount: (accountId) => {
+    dispatch(removeAccount(accountId));
   },
 });
 
