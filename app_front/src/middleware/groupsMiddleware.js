@@ -23,13 +23,15 @@ import {
   REMOVE_USER_ACTION,
   toggleErrorMessageDisplay,
   SEND_NEW_GROUP_NAME,
-
+  toggleEditGroupNameZone,
+  CHANGE_ROLE_ACTION,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
   const state = store.getState();
   let mealId;
   let recipeId;
+  let userRole;
   switch (action.type) {
     case FETCH_GROUPS_DATAS:
       const { id } = state.user;
@@ -160,7 +162,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case ADD_MEMBER_TO_GROUP_ACTION:
       groupId = action.groupId;
       userId = action.userId;
-      const userRole = 'Lecture';
+      userRole = 'Lecture';
       axios.post('http://3.127.235.222:3000/group/addMember', { groupId, userId, userRole }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
@@ -186,10 +188,23 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_NEW_GROUP_NAME:
       const { newName, groupid } = action;
-      axios.patch(`http://3.127.235.222:3000/group/${groupid}`, { newName }, { withCredentials: true })
+      axios.patch(`http://3.127.235.222:3000/group/${groupid}`, { name: newName }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
+          store.dispatch(toggleEditGroupNameZone(-1));
           next(action);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      break;
+    case CHANGE_ROLE_ACTION:
+      userRole = action.userRole;
+      userId = action.userId;
+      groupId = state.groups.groupMembers.groupId;
+      axios.patch('http://3.127.235.222:3000/group/changeMemberRole', { userId, groupId, userRole }, { withCredentials: true })
+        .then(() => {
+          store.dispatch(fetchGroupsDatasAction());
         })
         .catch((e) => {
           console.log(e);

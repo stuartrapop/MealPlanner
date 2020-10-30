@@ -31,6 +31,7 @@ export const TOGGLE_ERROR_MESSAGE_DISPLAY = 'TOGGLE_ERROR_MESSAGE_DISPLAY';
 export const TOGGLE_EDIT_GROUP_NAME_ZONE = 'TOGGLE_EDIT_GROUP_NAME_ZONE';
 export const UPDATE_GROUP_NEW_NAME_ACTION = 'UPDATE_GROUP_NEW_NAME_ACTION';
 export const SEND_NEW_GROUP_NAME = 'SEND_NEW_GROUP_NAME';
+export const CHANGE_ROLE_ACTION = 'CHANGE_ROLE_ACTION';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -196,4 +197,10 @@ export const sendNewGroupName = (newName, groupid) => ({
   type: SEND_NEW_GROUP_NAME,
   newName,
   groupid,
+});
+
+export const changeRoleAction = (userRole, userId) => ({
+  type: CHANGE_ROLE_ACTION,
+  userRole,
+  userId,
 });

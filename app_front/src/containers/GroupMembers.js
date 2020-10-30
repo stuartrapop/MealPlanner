@@ -8,6 +8,7 @@ import {
   addMemberToGroupAction,
   removeUserAction,
   toggleErrorMessageDisplay,
+  changeRoleAction,
 } from '../actions/groups';
 
 const mapStateToProps = (state) => ({
@@ -44,6 +45,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   toggleErrorMessageDisplay: () => {
     dispatch(toggleErrorMessageDisplay());
+  },
+
+  changeRoleAction: (userRole, userId) => {
+    dispatch(changeRoleAction(userRole, userId));
   },
 });
 

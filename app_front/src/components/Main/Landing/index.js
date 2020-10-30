@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PresentationSimple from './PresentationSimple';
 import LandingQuickSearch from '../../../containers/LandingQuickSearch';
 import TargetPresentation from './TargetPresentation';
-import PresentationDetailed from './PresentationDetailed';
+import PresentationDetailed from '../../../containers/PresentationDetailed';
 
 import './styles.scss';
 import MySpace from '../../../containers/MySpace';

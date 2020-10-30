@@ -60,17 +60,20 @@ const Header = ({
                     <Menu.Item>
                       <Icon id="close__modal__icon" name="close" size="big" color="red" onClick={menuClick} />
                     </Menu.Item>
-                    <Menu.Item
-                      name="Mon Espace"
-                    />
-                    <Menu.Item
-                      name="Recettes"
-                    />
-                    <Menu.Item
-                      name="Ma liste de courses"
-                    />
-                    <Menu.Item >
-                      <Link to="/mon-espace/parametres"> Paramètres </Link>
+                    <Menu.Item>
+                      <Link to="/" onClick={menuClick}> Mon Espace </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link to="/recettes" onClick={menuClick}> Parcourir les recettes </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link to="/liste" onClick={menuClick}> Ma Liste de Courses </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link to="/mon-espace/parametres" onClick={menuClick}> Paramètres </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link to="/about" onClick={menuClick}> L'Equipe </Link>
                     </Menu.Item>
                     <Menu.Item
                       name="Déconnexion"
