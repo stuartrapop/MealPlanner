@@ -22,7 +22,6 @@ const userMiddleware = (store) => (next) => (action) => {
   const {
     id, firstName, lastName, userName,
   } = state.user;
-  // let accountId = state.userInfos.userId;
   switch (action.type) {
     // Sur l'action de LOG_IN, je tente de me connecter
     case LOG_IN:
@@ -70,7 +69,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((e) => {
           const signInWentSuccesfully = false;
-          store.dispatch(signIn(signInWentSuccesfully, e.response.data.details));
+          store.dispatch(signIn(signInWentSuccesfully, e.response.data.error.details));
         });
       break;
     case HANDLE_LOG_OUT:

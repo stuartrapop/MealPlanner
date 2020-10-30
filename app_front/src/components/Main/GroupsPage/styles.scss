@@ -3,9 +3,13 @@
   flex-direction: column;
 }
 
+.groups_details_container i.icon {
+  height: auto;
+}
+
 .group_list {
   margin: 1em auto;
-  width: 80%;
+  width: 95%;
 }
 
 .delete {
@@ -51,13 +55,51 @@
 .group {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3em;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0.8em;
 }
 
 .add_group {
   font-weight: bold;
 }
 
+.modify__group__name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 0.2em;
+}
+
+.modify__group__name .ui.input {
+  width: 80%;
+}
+
+.group__role__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 0.2em;
+}
+
+.group__role__action h2 {
+  font-size: 1em;
+  text-transform: capitalize;
+  margin: auto;
+}
+
+.group i.icon.outline {
+  margin-bottom: 0.4em;
+}
+
+.return__MySpace {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
 @media (min-width: 768px) {
 

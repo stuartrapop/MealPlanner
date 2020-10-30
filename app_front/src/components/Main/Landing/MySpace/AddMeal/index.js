@@ -175,9 +175,10 @@ const AddMeal = ({
                     <div key={meal.key} id={meal.key}>
                       {userRoleInActiveGroup !== 'Lecture' && (
                         <>
-                          <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} /> <em>{meal.mealType}</em>
+                          <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} />
                         </>
                       )}
+                      <em>{meal.mealType}</em>
                       <ul className="scheduled__meal">
                         {userRoleInActiveGroup !== 'Lecture' && (
                         <AddRecipeZone

@@ -21,6 +21,7 @@ const GroupMembers = ({
   removeUserAction,
   errorMessageDisplayed,
   toggleErrorMessageDisplay,
+  changeRoleAction,
 }) => {
   const roleOptions = [
     { key: '1', text: 'Ecriture', value: '1' },
@@ -61,6 +62,10 @@ const GroupMembers = ({
   const userDetailsInGroup = groupMembers.groupMemberArray.find((user) => user.userId === userInfos.userId);
   const userRoleInGroup = userDetailsInGroup.userRole;
 
+  const changeRoleClick = (evt, data) => {
+    changeRoleAction(evt.target.textContent, data.linkeduser);
+  };
+
   return (
     <div className="group_members_container">
       <h1>Membres du groupe {groupMembers.groupName}</h1>
@@ -77,8 +82,9 @@ const GroupMembers = ({
                     inline
                     options={roleOptions}
                     scrolling
-                    defaultValue={member.userRole}
-                    text={member.userRole}
+                    onChange={changeRoleClick}
+                    placeholder={member.userRole}
+                    linkeduser={member.userId}
                   />
                   <Icon name="trash" memberid={member.userId} onClick={removeUserClick} />
                 </>

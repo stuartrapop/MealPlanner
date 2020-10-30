@@ -17,6 +17,8 @@ import {
   MEMBER_SEARCH_INPUT_ACTION,
   RESET_ACTIVE_ENTRY_ACTION,
   TOGGLE_ERROR_MESSAGE_DISPLAY,
+  TOGGLE_EDIT_GROUP_NAME_ZONE,
+  UPDATE_GROUP_NEW_NAME_ACTION,
 } from '../actions/groups';
 import {
   SAVE_USER,
@@ -42,6 +44,8 @@ export const initialState = {
   membersSearchResults: [],
   membersSearchValue: '',
   errorMessageDisplayed: false,
+  editGroupNameZoneDisplay: -1,
+  newGroupNameProposal: '',
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -145,6 +149,16 @@ const groupsReducer = (state = initialState, action = {}) => {
     case SAVE_USER:
       return {
         ...state,
+      };
+    case TOGGLE_EDIT_GROUP_NAME_ZONE:
+      return {
+        ...state,
+        editGroupNameZoneDisplay: action.groupIndex,
+      };
+    case UPDATE_GROUP_NEW_NAME_ACTION:
+      return {
+        ...state,
+        newGroupNameProposal: action.input,
       };
     default:
       return state;

@@ -20,12 +20,26 @@ const Planning = () => {
 
   // On créer une fonction pour renvoyer les dates sous forme JJ/MM/AAAA
   const getStateLikeDay = (day) => {
-    const stateLikeTransformedDate = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+    let test;
+    if (day.getDate() < 10) {
+      test = true;
+    }
+    else {
+      test = false;
+    }
+
+    let stateLikeTransformedDate;
+    if (test) {
+      stateLikeTransformedDate = `${day.getFullYear()}-${day.getMonth() + 1}-0${day.getDate()}`;
+    }
+    else {
+      stateLikeTransformedDate = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+    }
+
     return (stateLikeTransformedDate);
   };
 
   const today = new Date();
-  
 
   // Fonction pour incrémenter la date
   const getDay = (date, number) => {

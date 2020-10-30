@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button, Icon } from 'semantic-ui-react';
+import {
+  Input, Button, Icon, Message,
+} from 'semantic-ui-react';
 // == Import
 import './styles.scss';
 // == Composant
@@ -46,9 +49,6 @@ const LogInModal = ({
       <Icon id="close__modal__icon" name="close" size="big" color="red" onClick={handleClick} />
       {!isLogged && (
       <div className="login__form">
-        {logInError && (
-          <p className="logIn__error">Cette combinaison utilisateur/mot de passe n'est pas reconnue</p>
-        )}
         {!displaySignInComponent && (
           <form id="login__form__1">
             <Input onChange={handleChange} name="logInEmail" placeholder="Adresse Email" value={logInEmail} />
@@ -57,15 +57,15 @@ const LogInModal = ({
               <Button primary type="submit" className="login-form-button" onClick={handleLoginClick}>Se Connecter</Button>
               <Button secondary className="login-form-button" onClick={toggleLogInComponent}>Créer un compte</Button>
             </div>
+            {logInError && (
+            <div className="login__failed">
+              <Message negative>
+                <Message.Header>Mais... Qui êtes vous ? aManger ne vous a pas reconnu...</Message.Header>
+                <p>Il s'agit sans doute d'une erreur dans vos identifiants !</p>
+              </Message>
+            </div>
+            )}
           </form>
-        )}
-        {signInWentSuccesfully && (
-          <p className="signIn__validation">Votre compte est bien crée, vous pouvez désormais vous connecter</p>
-        )}
-        {signInWentSuccesfully === false && (
-          errorMessage.map((error) => (
-            <p className="logIn__error">{error.message}</p>
-          ))
         )}
         {displaySignInComponent && (
           <form id="login__form__2">
@@ -79,6 +79,27 @@ const LogInModal = ({
               <Button primary type="submit" className="login-form-button" onClick={handleSigninClick}>Créer un compte</Button>
             </div>
           </form>
+        )}
+        {signInWentSuccesfully && (
+          <div className="signin__successful">
+            <Message positive>
+              <Message.Header>Votre enregistrement a bien été pris en compte !</Message.Header>
+              <p>
+                Vous pouvez désormais vous connecter via l'onglet connexion.
+              </p>
+            </Message>
+          </div>
+        )}
+        {signInWentSuccesfully === false && (
+          <div className="signin__failed">
+            <Message
+              error
+              header="Oups, quelque chose n'a pas fonctionné..."
+              list={errorMessage.map((error) => (
+                error.message
+              ))}
+            />
+          </div>
         )}
       </div>
       )}
