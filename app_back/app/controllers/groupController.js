@@ -106,13 +106,13 @@ const groupController = {
       const { userRole } = req.body;
       const user = await User.findByPk(userId);
       if (!user) {
-        res.json({ error: 'user does not exist' });
+        res.status(403).json({ error: 'user does not exist' });
       }
       let group = await Group.findByPk(groupId, {
         include: 'members',
       });
       if (!group) {
-        res.json({ error: 'group does not exist' });
+        res.status(403).json({ error: 'group does not exist' });
       }
       await groupController.associateUser(userId, groupId, userRole);
 
