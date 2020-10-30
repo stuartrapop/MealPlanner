@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon, Divider, List } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -26,7 +27,7 @@ const Footer = () => (
 
 
     <List id="footer__list" horizontal equal width grid link>
-      <List.Item as="a">À propos de nous</List.Item>
+      <List.Item as="a"><Link to="/about"> À propos de nous</Link></List.Item>
       <List.Item as="a">Confidentialité</List.Item>
       <List.Item as="a"><Icon copyright name="copyright" /> aManger 2020 - Made in Jason</List.Item>
     </List>

@@ -1,5 +1,6 @@
 const { Group, User } = require('../models');
 const mealController = require('./mealController');
+const { checkAdmin } = require('../middleware/authorizations');
 
 const groupController = {
 
@@ -106,15 +107,50 @@ const groupController = {
       const { userRole } = req.body;
       const user = await User.findByPk(userId);
       if (!user) {
-        res.json({ error: 'user does not exist' });
+        res.status(403).json({ error: 'user does not exist' });
       }
       let group = await Group.findByPk(groupId, {
         include: 'members',
       });
       if (!group) {
-        res.json({ error: 'group does not exist' });
+        res.status(403).json({ error: 'group does not exist' });
       }
       await groupController.associateUser(userId, groupId, userRole);
+
+      group = await Group.findByPk(groupId, {
+        include: 'members',
+      });
+      // send the details or not found
+      if (group) {
+        res.json({ message: group });
+      }
+    }
+    catch (error) {
+      console.log(error);
+      res.status(500).json({ error });
+    }
+  },
+
+  // les cards d'une liste
+  changeMemberRole: async (req, res) => {
+    try {
+      const groupId = parseInt(req.body.groupId, 10);
+      const userId = parseInt(req.body.userId, 10);
+      const { userRole } = req.body;
+
+      console.log('change Member Role', groupId, userId, userRole);
+      const user = await User.findByPk(userId);
+      if (!user) {
+        res.status(403).json({ error: 'user does not exist' });
+      }
+      let group = await Group.findByPk(groupId, {
+        include: 'members',
+      });
+      if (!group) {
+        res.status(403).json({ error: 'group does not exist' });
+      }
+
+      await group.setMembers(user, { through: { user_role: userRole } });
 
       group = await Group.findByPk(groupId, {
         include: 'members',
@@ -189,36 +225,59 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
+
   deleteGroup: async (req, res) => {
     try {
       const groupId = parseInt(req.params.id, 10);
-      const group = await Group.findByPk(groupId, {
-        include: [
-          'members',
-          {
-            association: 'meals',
-            include: [
-              {
-                association: 'recipes',
-                include: 'ingredients',
-              },
-            ],
-          },
-        ],
+      const userId = parseInt(req.body.userId, 10);
+
+      const user = await User.findByPk(userId, {
+        include: 'groups',
+
       });
 
-      if (!group) {
-        res.json({ error: 'group does not exist' });
+      const ownerGroupList = user.groups.filter((group) => group.UserBelongsGroup.user_role === 'Propriétaire');
+      const checkOwner = user.groups.find((group) => (group.UserBelongsGroup.user_role === 'Propriétaire') && (group.id = groupId));
+
+      console.log('checkowner', checkOwner, 'number of groups', ownerGroupList.length);
+
+      if (!checkOwner) {
+        res.status(400).json({ error: 'Vous ne pouvez pas éffacer une groupe qui ne vous appartient pas' });
       }
+      else
+      if (ownerGroupList.length < 2) {
+        res.status(400).json({ error: 'Vous ne pouvez pas éffacer votre derniere groupe' });
+      }
+
       else {
-        for (const element of group.members) {
-          await groupController.removeUser(element.id, groupId);
+        const group = await Group.findByPk(groupId, {
+          include: [
+            'members',
+            {
+              association: 'meals',
+              include: [
+                {
+                  association: 'recipes',
+                  include: 'ingredients',
+                },
+              ],
+            },
+          ],
+        });
+
+        if (!group) {
+          res.json({ error: 'group does not exist' });
         }
-        for (const meal of group.meals) {
-          await mealController.deleteMealUtil(meal.id);
+        else {
+          for (const element of group.members) {
+            await groupController.removeUser(element.id, groupId);
+          }
+          for (const meal of group.meals) {
+            await mealController.deleteMealUtil(meal.id);
+          }
+          await group.destroy();
+          res.json({ message: 'group deleted' });
         }
-        await group.destroy();
-        res.json({ message: 'group deleted' });
       }
     }
     catch (error) {

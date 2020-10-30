@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
 } from 'react-router-dom';
@@ -19,11 +20,11 @@ const App = ({ checkIsLogged, fetchrecipes }) => {
   }, []);
   return (
     <div className="app">
-      <Router>
+      <HashRouter>
         <Header />
         <Main />
         <Footer />
-      </Router>
+      </HashRouter>
     </div>
   );
 };

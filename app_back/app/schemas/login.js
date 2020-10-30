@@ -24,14 +24,16 @@ const loginSchema = Joi.object({
   }),
   accountRole: Joi.string(),
   email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'org', 'fr'] } }).required().messages({
-    'string.email': 'Vous devez spécifier un email valable',
+    'string.email': 'Vous devez spécifier un email valide',
+    'string.empty': 'Vous devez spécifier un email',
   }),
   password: passwordComplexity(complexityOptions).messages({
-    'passwordComplexity.symbol': 'Error mot de passe : au moins un symbol',
-    'passwordComplexity.numeric': 'Error mot de passe : au moins un chiffre',
-    'passwordComplexity.tooShort': 'Error mot de passe : au moins 5 charactères',
-    'passwordComplexity.lowercase': 'Error mot de passe : au moins une lettre miniscule',
-    'passwordComplexity.uppercase': 'Error mot de passe : au moins une lettre majiscule',
+    'passwordComplexity.symbol': 'Votre mot de passe doit contenir au moins un symbole (! * / + - ; ex...)',
+    'string.empty': 'Vous devez spécifier un mot de passe',
+    'passwordComplexity.numeric': 'Votre mot de passe doit contenir au moins un chiffre',
+    'passwordComplexity.tooShort': 'Votre mot de passe doit contenir au moins 5 caractères',
+    'passwordComplexity.lowercase': 'Votre mot de passe doit contenir au moins une lettre minuscule',
+    'passwordComplexity.uppercase': 'Votre mot de passe doit contenir au moins une lettre majuscule',
   }),
 });
 

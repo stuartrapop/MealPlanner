@@ -13,10 +13,7 @@ const userController = {
         res.status(401).json({ error: 'you must be connected and authorized to see this page' });
       }
 
-      const users = await User.findAll({
-        include: ['recipes', 'favorites'],
-
-      });
+      const users = await User.findAll();
       // on renvoie les cartes
       res.json(users);
     }
@@ -39,7 +36,6 @@ const userController = {
         lastName: user.lastName,
         pseudo: user.userName,
         userId: user.id,
-        
       }));
 
       // on renvoie les cartes
@@ -55,14 +51,6 @@ const userController = {
   oneUser: async (req, res) => {
     try {
       const userId = parseInt(req.params.id, 10);
-      if (req.session.user) {
-        if (req.session.user.id !== userId && req.session.user.accountRole !== 'admin') {
-          res.status(401).json({ error: 'you are not authorized to see this page' });
-        }
-      }
-      else {
-        res.status(401).json({ error: 'you must be connected and authorized to see this page' });
-      }
       const user = await User.findByPk(userId, {
         include: [ // include groups then meals then recipes then ingredients
           {
@@ -89,6 +77,7 @@ const userController = {
           firstName: user.firstName,
           lastName: user.lastName,
           userName: user.userName,
+          email: user.email,
           groups: user.groups,
         });
       }
