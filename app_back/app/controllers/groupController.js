@@ -136,6 +136,8 @@ const groupController = {
       const groupId = parseInt(req.body.groupId, 10);
       const userId = parseInt(req.body.userId, 10);
       const { userRole } = req.body;
+
+      console.log('change Member Role', groupId, userId, userRole);
       const user = await User.findByPk(userId);
       if (!user) {
         res.status(403).json({ error: 'user does not exist' });
@@ -147,8 +149,7 @@ const groupController = {
         res.status(403).json({ error: 'group does not exist' });
       }
 
-      await group.addMembers(user, { through: { user_role: userRole } });
-      
+      await group.setMembers(user, { through: { user_role: userRole } });
 
       group = await Group.findByPk(groupId, {
         include: 'members',

@@ -33,10 +33,12 @@ router.get('/groups', groupController.allGroups);
 router.get('/group/:id', groupController.oneGroup);
 
 router.post('/group/create', groupController.createGroup);
+router.patch('/group/changeMemberRole', groupController.changeMemberRole);
 router.patch('/group/:id', groupOwner(), groupController.updateGroup);
 router.delete('/group/:id', groupOwner(), groupController.deleteGroup);
 router.post('/group/addMember', groupController.addMember);
 router.post('/group/removeMember', groupController.removeMember);
+
 
 router.get('/ingredients', ingredientController.allIngredients);
 
