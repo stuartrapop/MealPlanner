@@ -113,10 +113,12 @@ const AddMeal = ({
   // On compare les dates reçues avec aujourd'hui pour ne pas afficher les passées
   const groupedByDaysArray = Object.values(groupedByDays);
   const today = new Date();
-  const todayFormated = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
-  const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDay >= todayFormated);
+  const todayInHours = today.setHours(today.getHours() - 23);
+
+  const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDate >= todayInHours);
 
   const finalArray = cleanedFromPastArray;
+  console.log(finalArray);
 
   // On souhaite avoir le role de l'utilisateur dans le groupe actif
   const { UserBelongsGroup } = userInfos.groups[activeGroup];
