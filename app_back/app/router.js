@@ -36,7 +36,7 @@ router.post('/group/create', groupController.createGroup);
 router.patch('/group/:id', groupOwner(), groupController.updateGroup);
 router.delete('/group/:id', groupOwner(), groupController.deleteGroup);
 router.post('/group/addMember', groupOwner(), groupController.addMember);
-router.post('/group/removeMember', groupOwner(), groupController.removeMember);
+router.post('/group/removeMember',  groupController.removeMember);
 
 router.get('/ingredients', ingredientController.allIngredients);
 
