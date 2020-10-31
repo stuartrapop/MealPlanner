@@ -11,10 +11,10 @@ const Recipes = ({ fetchrecipes }) => {
   }, []);
   return (
     <section className="recipes__container">
-      <SearchBar />
-      <div className="recipes__title">
-        Qu'est ce qu'on mange ce soir ?
-      </div>
+      <figure className="pic__container">
+        <SearchBar />
+        <img className="pic__header" src="https://images.unsplash.com/photo-1483137140003-ae073b395549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="header logo" />
+      </figure>
       <RecipesPart />
     </section>
   );

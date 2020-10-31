@@ -22,7 +22,7 @@ const Footer = () => (
       </div>
     </div> */}
 
-    <Divider inverted section />
+    {/* <Divider inverted section /> */}
 
 
 

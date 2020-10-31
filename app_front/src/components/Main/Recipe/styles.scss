@@ -1,19 +1,28 @@
+@use "src/styles/vars" as v;
+.one__recipe__container {
+  width: 80%;
+  margin : 0 auto;
+}
 
-.recipe__description__container{
-   position: relative;
-   width: 100%;
-   padding: 50px;
- }
- .circle {
-   position: relative;
-   overflow: hidden;
- }
- .circle.recipe__picture {
-   width: 50%;
-   height: 50%;
-   float: left;
-   border-radius: 50%;
-   margin : 10%;
-   shape-outside: circle();
- }
- 
+.one__recipe__sub__container {
+  display: flex;
+  justify-content: center;
+}
+.recipe__title {
+  text-align: center;
+  color : #3f6149;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  border-top : solid 1px #3f6149;
+  border-bottom : solid 1px #3f6149;
+  padding: 5rem 0;
+}
+.recipe__pic__image {
+  object-fit:cover;
+  object-position:50% 50%;
+  position: relative ;
+  width: 50%;
+  box-sizing: border-box;
+  height: 50%;
+}
+

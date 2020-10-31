@@ -14,14 +14,14 @@ const RecipesPart = ({ searchedRecipes }) => (
         <div className="card__recipes" key={recipe.id}>
           <div className="card__recipes__face face1">
             <div className="card__recipes__content">
-              <img className="recipes__picture" src="https://images.unsplash.com/photo-1584541305671-af4f46b4be2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="recipe" />
+              <img className="recipes__picture" src={recipe.url} alt="recipe" />
               <h3 className="recipes__subtitle">{recipe.title}</h3>
             </div>
           </div>
           <div className="face face2">
             <div className="content">
-              <h3> {recipe.title}</h3>
-              <a>
+              <h3 className="recipes__second__subtitle"> {recipe.title}</h3>
+              <a id="recipes__icons">
                 <Icon name="star" />
                 <Icon name="star" />
                 <Icon name="star" />

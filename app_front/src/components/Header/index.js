@@ -93,7 +93,6 @@ const Header = ({
           )}
         </div>
       </div>
-      <div className="separator" />
     </div>
   );
 };

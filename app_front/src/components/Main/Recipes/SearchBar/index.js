@@ -10,9 +10,6 @@ const SearchBar = ({
   const handleOnChange = (event) => {
     modifySearch(event.target.value);
   };
-  console.log(event.target.value);
-  
-  console.log(searchInput);
   return (
     <div className="form__container">
       <form id="form__searchBar">
@@ -25,6 +22,9 @@ const SearchBar = ({
           placeholder="Fondue savoyarde..."
           icon={<Icon id="search__icon" name="search" inverted circular link />}
         />
+        <div className="recipes__title">
+          Qu'est ce qu'on mange ce soir ?
+        </div>
       </form>
     </div>
   );
