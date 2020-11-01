@@ -652,7 +652,12 @@ VALUES
 ( 1, 'Pommes au four', 'https://images.unsplash.com/photo-1603777953672-2fc2e32d4076', 'Facile', 'Préchauffez votre four à 190°C. Évidez les pommes en leur centre pour ôter les pépins, sans les éplucher. Mettez-les dans un plat allant au four. Dans le trou central de chacune, versez le sucre roux. Arrosez-les de jus de pomme ou versez un verre d’eau au fond du plat. Faites cuire une demi heure. Les pommes doivent être bien tendres. Servez les pommes tièdes, en dessert.', 30, 4, 1 ),
 ( 2, 'Mafé vegan', 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2', 'Facile', 'Éplucher les carottes et la patate douce et les couper en petits dés. Faire revenir l’ail et l’oignon avec l’huile d’arachide dans un faitout, puis ajouter les légumes. Laisser cuire en remuant régulièrement pendant 5 minutes. Couvrir avec le bouillon de légumes. S’il n’y en pas assez, ajouter de l’eau jusqu’à couvrir complètement. Saler. Ajouter les épices, le jus du citron, le piment, les PST, le coulis de tomates et la purée de cacahuètes. Laisser mijoter au moins une demi-heure. Au bout d’une heure, c’est un vrai régal.', 90, 6, 1 ),
 ( 3, 'Lasagne courgettes aubergines mozza', 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3', 'Facile', 'Trancher les légumes dans la longueur, passer les tranches sous le grill avec un peu d’huile d’olive, de fleur de sel, de poivre et d’herbes de Provence. Dans un plat à gratin de taille moyenne, disposer un fond de coulis de tomate, une couche de pâtes à lasagne, une couche de tranches de courgettes et aubergines grillés, une couche de tranches de mozza puis on recommence sauce pâte légumes fromage jusqu’à épuisement des ingrédients, on finit par la mozza. Enfourner au th 6 (180°C) pour 35 à 40 min.', 60, 6, 1 ),
-( 4, 'Rôti de porc aux oignons', 'https://images.unsplash.com/photo-1514944617518-12c7891ec602', 'Facile', 'Préchauffez le four à 200°C. Pelez les gousses d’ail, ôtez leurs germes et coupez-les en longueur, en deux ou quatre. Déposez le rôti dans un plat allant au four. Piquez-le avec l’ail : avec un petit couteau, entaillez la chair pour y introduire les gousses. Enfournez pendant 15 minutes. Pendant ce temps, préparez les oignons et les pommes de terre. Épluchez-les. Coupez l’oignon en rondelles et les pommes de terre en grosses frites. Mélangez-les dans un saladier. Salez et poivrez. Après 15 minutes de cuisson, ajoutez les légumes autour du rôti. Couvrez d’une feuille d’aluminium et remettez le plat au four. Laissez cuire trois quart d’heure. Retournez les pommes de terre à mi-cuisson pour qu’elles soient toutes dorées. Servez chaud avec une salade verte à l’échalote', 80, 4, 1 );
+( 4, 'Rôti de porc aux oignons', 'https://images.unsplash.com/photo-1514944617518-12c7891ec602', 'Facile', 'Préchauffez le four à 200°C. Pelez les gousses d’ail, ôtez leurs germes et coupez-les en longueur, en deux ou quatre. Déposez le rôti dans un plat allant au four. Piquez-le avec l’ail : avec un petit couteau, entaillez la chair pour y introduire les gousses. Enfournez pendant 15 minutes. Pendant ce temps, préparez les oignons et les pommes de terre. Épluchez-les. Coupez l’oignon en rondelles et les pommes de terre en grosses frites. Mélangez-les dans un saladier. Salez et poivrez. Après 15 minutes de cuisson, ajoutez les légumes autour du rôti. Couvrez d’une feuille d’aluminium et remettez le plat au four. Laissez cuire trois quart d’heure. Retournez les pommes de terre à mi-cuisson pour qu’elles soient toutes dorées. Servez chaud avec une salade verte à l’échalote', 80, 4, 1 ),
+( 5, 'Velouté de potimarron aux lentilles corail et lait de coco', 'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a', 'Facile', 'Couper l’oignon en petits morceaux et le mettre dans la casserole à suer avec un peu d’huile de coco. Couper le potimarron en morceaux et l’ajouter aux oignons. Laisser les oignons tomber.
+Puis ajouter l’eau, le bouillon de légumes, le laurier, le thym, le gingembre, sel et poivre. Laisser cuire 10 min puis ajouter les lentilles corail. Laisser cuire 10 à 15 min. Avec une écumoire, retirer le laurier et le thym. Puis mixer le tout en ajoutant le lait de coco. Goûter et ajuster l’assaisonnement. C’est prêt. Déguster.', 40, 4, 1 ),
+( 6, 'Soufflé au gruyère', 'https://images.unsplash.com/photo-1579711220373-155ffc441b36', 'Facile', 'Préparation de la béchamel. Dans une casserole, faites fondre le beurre avec la farine. Salez et poivrez. Remuez énergiquement sur feu assez vif et versez progressivement le lait tout en continuant à remuer (idéalement avec un fouet ou une spatule en bois). Montez ainsi une béchamel. Laissez la cuire quelques minutes pour qu’elle soit épaisse et bien lisse. Préparation du soufflé.
+Faites préchauffer le four Th 6 (180°C). Sortez la béchamel du feu. Lorsque la béchamel est tiède, ajoutez le fromage, les œufs et la noix de muscade. Mélangez bien. Battez les blancs en neige ferme (vive le robot !). Incorporez-les à la béchamel à l’aide d’une spatule de manière à ce que le mélange soit bien homogène, sans y aller trop énergiquement pour ne pas écraser la neige. Cuisson du soufflé. Beurrez un moule à soufflé (bords hauts) et remplissez-le de la préparation, puis enfournez. Attention un soufflé double de taille, choisissez votre moule en fonction ! Au bout de 10 min, montez la température à th 7 (210°C). Laissez cuire encore 35 min (soit 45 en tout). Vous pouvez vérifier la cuisson en plantant un couteau dans le soufflé et constater que le cœur n’est plus liquide. Dégustez immédiatement, avec une salade verte par exemple.', 70, 4, 1 )
+;
 
 
 
@@ -726,7 +731,11 @@ INSERT INTO  "type_defines_recipe" ("recipe_id", "type_id")  VALUES
 ( 3, 4 ),
 ( 3, 8 ),
 ( 4, 3 ),
-( 4, 8 );
+( 4, 8 ),
+( 5, 4 ),
+( 5, 7 ),
+( 6, 1 ),
+( 6, 8 );
 
 
 INSERT INTO  "recipe_contains_ingredient" ("recipe_id", "ingredient_id", "quantity", "unit")  VALUES
@@ -758,7 +767,25 @@ INSERT INTO  "recipe_contains_ingredient" ("recipe_id", "ingredient_id", "quanti
 ( 4, 189, 0.4, null ),
 ( 4, 338, 1, null ),
 ( 4, 483, 0.1, null ),
-( 4, 488, 0.1, null );
+( 4, 488, 0.1, null ),
+( 5, 223, 1.5, null ),
+( 5, 312, 0.4, null ),
+( 5, 189, 0.3, null ),
+( 5, 485, 0.005, null ),
+( 5, 486, 1, null ),
+( 5, 7, 0.4, null ),
+( 5, 261, 0.002, null ),
+( 5, 157, 0.0002, null ),
+( 5, 462, 0.005, null ),
+( 5, 5, 1, null ),
+( 6, 378, 125, null ),
+( 6, 290, 0.1, null ),
+( 6, 379, 0.05, null ),
+( 6, 454, 0.08, null ),
+( 6, 452, 6, null ),
+( 6, 178, 0.001, null ),
+( 6, 483, 0.002, null ),
+( 6, 488, 0.001, null );
 
 
 
