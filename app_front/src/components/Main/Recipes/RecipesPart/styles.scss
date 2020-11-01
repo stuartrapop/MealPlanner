@@ -2,8 +2,8 @@
 .container__recipes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 80%;
+  justify-content: space-around;
+  width: 100%;
   margin : 0 auto;
   background-color: white;
   padding-bottom: 100px;
@@ -39,6 +39,7 @@
   max-height: 100%;
 }
 .card__recipes .face2 {
+  width: 400px;
   position: relative;
   display: flex;
   align-items: center;
@@ -85,53 +86,13 @@
 .recipes__button {
   background-color : #d8cfc9;
   border-radius: 15px;
-  color : #3f6149;
+  color : white;
   padding : 1rem 0.5rem;
-  border: solid 1px #3f6149;
+  border: solid 1px white;
 }
 .recipes__button:hover {
-  background-color : #3f6149;
+  background-color : white;
   border: solid 1px #d8cfc9;
   color :#d8cfc9;
 }
 
-
-@media (max-width: 1200px) {
-  // .container__recipes {
-  //   display: flex;
-  //   flex-wrap: wrap;
-    
-  // }
-  // .card__recipes {
-  //   width: 40%;
-  // }
-  // .card__recipes .card__recipes__face {
-  //   width: 100%;
-  //   height: 200px;
-    
-  // }
-  // .card__recipes__face.face1 {
-  //   width: 100%;
-  //   height: 200px;
-    
-  // }
-  // .face2 {
-  //   width : 99.9%;
-  // }
- }
-
- @media (max-width: 768px) {
-  .groups_details_container {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .my_groups {
-    width: 50%;
-  }
-
-  .group_members{
-    width: 50%;
-  }
-  
- }
