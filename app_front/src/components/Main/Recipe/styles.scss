@@ -124,6 +124,9 @@
   .recipe__citation {
     display: none;
   }
+  .recipe__desc {
+    font-size: 1rem;
+  }
   .one__recipe__sub__container {
     word-wrap: break-word;
     font-size: 0.2em;
@@ -131,8 +134,8 @@
   }
   .recipe__title {
     color : #3f6149;
-    font-size: 3rem;
-    letter-spacing: 20px;
+    font-size: 2rem;
+    letter-spacing: 10px;
     text-transform: uppercase;
     padding: 5rem 0;
     margin : 0 auto;

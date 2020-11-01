@@ -86,43 +86,43 @@ const ShoppingList = ({ userInfos, groupId }) => {
   });
 console.log(transformArray);
 
-  // const list = condensedShoppingList.map((oneItem) => {
-  //   let countable;
-  //   let volume;
-  //   let weight;
-  //   let quantity;
-  //   if (oneItem.weight) {
-  //     if (oneItem.adjustedQuantity < 1) {
-  //       weight = 'Gramme(s)';
-  //       quantity = Math.round(((oneItem.adjustedQuantity * 1000) * 100) / 100);
-  //     }
-  //     else {
-  //       weight = 'Kilogramme(s)';
-  //       quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 10);
-  //     }
-  //   }
-  //   else if (oneItem.volume) {
-  //     if (oneItem.adjustedQuantity < 1) {
-  //       volume = 'Millilitre(s)';
-  //       quantity = Math.round(((oneItem.adjustedQuantity * 1000) * 100) / 100);
-  //     }
-  //     else {
-  //       volume = 'Litre(s)';
-  //       quantity = Math.round(((oneItem.adjustedQuantity) * 10) / 10);
-  //     }
-  //   }
-  //   else if (oneItem.countable) {
-  //     countable = 'Pièce(s)';
-  //     quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 100);
-  //   }
-  //   console.log('oneitem', oneItem);
-  //   return (
-  //     <tr className="list__item">
-  //       <td className="list__item__quantity">{quantity}</td>
-  //       <td>{weight}{volume}{countable}</td>
-  //     </tr>
-  //   );
-  // });
+  const list = condensedShoppingList.map((oneItem) => {
+    let countable;
+    let volume;
+    let weight;
+    let quantity;
+    if (oneItem.weight) {
+      if (oneItem.adjustedQuantity < 1) {
+        weight = 'Gramme(s)';
+        quantity = Math.round(((oneItem.adjustedQuantity * 1000) * 100) / 100);
+      }
+      else {
+        weight = 'Kilogramme(s)';
+        quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 10);
+      }
+    }
+    else if (oneItem.volume) {
+      if (oneItem.adjustedQuantity < 1) {
+        volume = 'Millilitre(s)';
+        quantity = Math.round(((oneItem.adjustedQuantity * 1000) * 100) / 100);
+      }
+      else {
+        volume = 'Litre(s)';
+        quantity = Math.round(((oneItem.adjustedQuantity) * 10) / 10);
+      }
+    }
+    else if (oneItem.countable) {
+      countable = 'Pièce(s)';
+      quantity = Math.round(((oneItem.adjustedQuantity) * 100) / 100);
+    }
+    console.log('oneitem', oneItem);
+    return (
+      <tr className="list__item">
+        <td className="list__item__quantity">{quantity}</td>
+        <td>{weight}{volume}{countable}</td>
+      </tr>
+    );
+  });
 
   return (
 
@@ -134,7 +134,7 @@ console.log(transformArray);
             <td className="list__item__quantity">quantité</td>
             <td>unité</td>
           </tr>
-          {/* {list} */}
+          {list}
         </table>
       </div>
       <div>{ingredientsByFamily.Sucres}</div>
