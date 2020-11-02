@@ -1,8 +1,6 @@
 @use "src/styles/vars" as v;
 
-.presentation {
-  padding: 2em 0;
-}
+
 
 .rollover {
   height : 20vh;
@@ -29,42 +27,20 @@ $assets: (
 }
 
 
-// Global styles
-* { box-sizing: border-box; }
 
-p {
-  font-family: $ff-sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
 
-blockquote {
-  position: relative;
-  padding-left: 1.5rem;
-  font-family: $ff-serif;
-  font-size: 2rem;
-  line-height: 1.25;
-  letter-spacing: -0.05rem;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 100%;
-    background-color: $color-accent;
-    border-radius: 60px;
-  }
-}
+
+
+
 
 
 // Fixed background image element
-figure {
+.hero__image {
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
+  margin-left:0;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -76,6 +52,7 @@ figure {
   position: relative;
   width: 100vw;
   height: 20vh;
+  margin-left : 0;
   
   @each $asset in $assets {
     $i: index($assets, $asset);
@@ -94,7 +71,7 @@ figure {
   
   @supports (-webkit-overflow-scrolling: touch) {
     clip: unset;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
 
@@ -119,66 +96,3 @@ figure {
   }
 }
 
-
-// Content section
-.content {
-  position: relative;
-  margin: 0 auto 8rem;
-  padding: 2rem;
-  
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    z-index: 99;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  }
-}
-
-.content__inner {
-  margin: 0 auto;
-  max-width: 700px;
-    
-  > * + *   { margin-top: 1.5rem; }
-  > blockquote {  margin: 3rem 0; }
-}
-
-.content__title {
-  font-family: $ff-serif;
-  font-size: 3rem;
-  line-height: 1.25;
-  letter-spacing: -0.125rem;
-  text-align: center;
-  
-  @media (min-width: 600px) {
-    font-size: 4rem;
-  }
-}
-
-.content__author {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-  width: 100%;
-  font-family: $ff-serif;
-  font-size: 1.5rem;
-  letter-spacing: -0.125rem;
-  text-align: center;
-  
-  &:before,
-  &:after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background-color: $color-accent;
-  }
-  
-  &:before { margin-right: 1rem; }
-  &:after  { margin-left:  1rem; }
-}

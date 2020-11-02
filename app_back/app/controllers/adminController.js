@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const { User, Group } = require('../models');
 const groupController = require('./groupController');
 
+
+// used for bcrypt -- salt rounds linked to complexity and time to generate password
 const saltRounds = 10;
 
 const adminController = {
@@ -12,6 +14,7 @@ const adminController = {
     res.json({ error: ['page not found'] });
   },
 
+  // checks if active session put in place by express-session
   isLogged: (req, res) => {
     console.log('>> POST /isLogged', req.session.user);
     if (req.session.user) {
@@ -31,6 +34,7 @@ const adminController = {
     res.json({ isLogged: false });
   },
 
+// check in user table for matching password
   login: async (req, res) => {
     try {
       const { email } = req.body;
@@ -47,7 +51,7 @@ const adminController = {
 
       await bcrypt.compare(password, user.password).then((result) => {
         console.log('in compare result', result);
-
+        //this is where express session is set
         if (result) {
           req.session.user = user;
           console.log('<< 200 OK', user);
@@ -110,7 +114,7 @@ const adminController = {
       res.status(500).json({ error });
     }
   },
-
+// create account if unique email need to require unique username as well later
   createAccount: async (req, res) => {
     try {
       const userDetails = {
@@ -157,7 +161,7 @@ const adminController = {
                   pseudo: createdUser.userName,
                   userId: createdUser.id,
                 });
-
+                // all users get a default group. And can never be owners of less than one group
                 Group.create({ name: `Mon groupe-${createdUser.userName}` })
                   .then((newGroup) => {
                     groupController.associateUser(createdUser.id, newGroup.id, 'Propriétaire');
@@ -179,7 +183,7 @@ const adminController = {
       res.status(500).json({ error });
     }
   },
-
+// to delete account need to remove all groups first
   deleteAccount: async (req, res) => {
     try {
       const userId = parseInt(req.params.id, 10);

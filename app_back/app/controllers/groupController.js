@@ -1,10 +1,9 @@
 const { Group, User } = require('../models');
 const mealController = require('./mealController');
-const { checkAdmin } = require('../middleware/authorizations');
+
 
 const groupController = {
-
-  // les cards d'une liste
+// used for debug - gets all group info with recipes and ingredients and members
   allGroups: async (req, res) => {
     const groups = await Group.findAll({
       include: [
@@ -42,7 +41,7 @@ const groupController = {
   },
 
   // function to remove a non Owner member
-  removeMember: async (req, res) => {
+removeMember: async (req, res) => {
     try {
       console.log('arrived in removeMember');
       const groupId = parseInt(req.body.groupId, 10);

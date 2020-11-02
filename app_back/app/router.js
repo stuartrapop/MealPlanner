@@ -18,6 +18,7 @@ const {
 // Joi validator for new user
 const loginSchema = require('./schemas/login');
 const changeUserDetailsSchema = require('./schemas/changeUserDetails');
+const groupNameSchema = require('./schemas/groupName');
 const { validateBody } = require('./services/validator');
 
 const { checkUserOrAdmin, checkAdmin, groupOwner } = require('./middleware/authorizations');
@@ -32,7 +33,7 @@ router.get('/families', familyController.allFamilies);
 router.get('/groups', groupController.allGroups);
 router.get('/group/:id', groupController.oneGroup);
 
-router.post('/group/create', groupController.createGroup);
+router.post('/group/create', validateBody(groupNameSchema), groupController.createGroup);
 router.patch('/group/changeMemberRole', groupController.changeMemberRole);
 router.patch('/group/:id', groupOwner(), groupController.updateGroup);
 router.delete('/group/:id', groupOwner(), groupController.deleteGroup);

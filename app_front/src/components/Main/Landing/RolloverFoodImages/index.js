@@ -11,28 +11,20 @@ const RolloverFoodImages = () => {
 
       <section className="hero">
         <div className="hero-inner" id="section-1">
-          <figure />
-          <h2 className="hero__title">
-            
-          </h2>
+          <figure className="hero__image" />
+          <h2 className="hero__title" />
         </div>
         <div className="hero-inner" id="section-2">
-          <figure />
-          <h2 className="hero__title">
-            
-          </h2>
+          <figure className="hero__image" />
+          <h2 className="hero__title" />
         </div>
         <div className="hero-inner" id="section-3">
-          <figure />
-          <h2 className="hero__title">
-            
-          </h2>
+          <figure className="hero__image" />
+          <h2 className="hero__title" />
         </div>
         <div className="hero-inner" id="section-4">
-          <figure />
-          <h2 className="hero__title">
-            
-          </h2>
+          <figure className="hero__image" />
+          <h2 className="hero__title" />
         </div>
 
       </section>
