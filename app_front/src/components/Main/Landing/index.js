@@ -7,6 +7,7 @@ import PresentationDetailed from '../../../containers/PresentationDetailed';
 
 import './styles.scss';
 import MySpace from '../../../containers/MySpace';
+import RolloverFoodImages from './RolloverFoodImages';
 
 const Landing = ({ isLogged }) => (
   <div className="landing__body">
@@ -15,6 +16,8 @@ const Landing = ({ isLogged }) => (
         <PresentationSimple />
         <div className="separator" />
         <LandingQuickSearch />
+        <div className="separator" />
+        <RolloverFoodImages />
         <div className="separator" />
         <TargetPresentation />
         <div className="separator" />
