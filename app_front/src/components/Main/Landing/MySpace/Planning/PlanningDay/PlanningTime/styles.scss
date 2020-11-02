@@ -6,6 +6,7 @@
   font-size: 0.8em;
   background-color: lightgray;
   position: relative;
+  border-right: 2px solid v.$primary-green;
 }
 
 .planning__day__box:after{
@@ -20,6 +21,19 @@
   background-color: v.$primary-green;
   font-weight: bold;
   position: absolute;
-  top: -5px;
-  left: -5px;
+  top: -7px;
+  left: -7px;
+}
+
+@media (min-width: 768px) {
+  .found__recipes li {
+    margin: 10px 10px;
+    padding: 0.4em;
+    font-size: 1em;
+    background-color: lightgray;
+    position: relative;
+    border-right: 4px solid v.$primary-green;
+  }
+
+  
 }

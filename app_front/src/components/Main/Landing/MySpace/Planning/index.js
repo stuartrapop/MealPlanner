@@ -74,7 +74,7 @@ const Planning = () => {
           <PlanningDay
             displayedDay={day.displayDay}
             stateLikeDay={day.stateLikeDay}
-            key={day.frenchDay}
+            key={day.stateLikeDay}
           />
         ))}
       </div>

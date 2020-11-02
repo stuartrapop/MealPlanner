@@ -32,6 +32,7 @@ export const TOGGLE_EDIT_GROUP_NAME_ZONE = 'TOGGLE_EDIT_GROUP_NAME_ZONE';
 export const UPDATE_GROUP_NEW_NAME_ACTION = 'UPDATE_GROUP_NEW_NAME_ACTION';
 export const SEND_NEW_GROUP_NAME = 'SEND_NEW_GROUP_NAME';
 export const CHANGE_ROLE_ACTION = 'CHANGE_ROLE_ACTION';
+export const SEND_GROUP_CREATION_ERROR = 'SEND_GROUP_CREATION_ERROR';
 
 export const fetchGroupsDatasAction = () => ({
   type: FETCH_GROUPS_DATAS,
@@ -203,4 +204,9 @@ export const changeRoleAction = (userRole, userId) => ({
   type: CHANGE_ROLE_ACTION,
   userRole,
   userId,
+});
+
+export const sendGroupCreationError = (errorMsg) => ({
+  type: SEND_GROUP_CREATION_ERROR,
+  errorMsg,
 });

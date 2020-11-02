@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   groupNameInputValue: state.groups.groupNameInputValue,
   editGroupNameZoneDisplay: state.groups.editGroupNameZoneDisplay,
   newGroupNameProposal: state.groups.newGroupNameProposal,
+  groupCreationError: state.groups.groupCreationError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

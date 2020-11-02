@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Button, Header, Icon, Modal, Input,
+  Button, Header, Icon, Modal, Input, Message,
 } from 'semantic-ui-react';
 import GroupMembers from '../../../containers/GroupMembers';
 
@@ -27,6 +27,7 @@ const GroupsPage = ({
   updateGroupNewNameAction,
   newGroupNameProposal,
   sendNewGroupNameAction,
+  groupCreationError,
 }) => {
   useEffect(() => {
     fetchAllUsers();
@@ -133,6 +134,11 @@ const GroupsPage = ({
               <Icon name="checkmark" /> Créer mon groupe
             </Button>
           </Modal.Actions>
+          {groupCreationError !== '' && (
+          <Message negative>
+            <Message.Header>{groupCreationError}</Message.Header>
+          </Message>
+          )}
         </Modal>
       </div>
       <div className="group_members">

@@ -149,7 +149,9 @@ const AddMeal = ({
 
   return (
     <div className="addmeal__container">
-      <h1>Vos repas prévus</h1>
+      <div className="meal__title__container">
+        <h1>Vos repas</h1>
+      </div>
       <div className="addmeal__body">
         <div>
           <ul className="scheduled__meals__container">
@@ -167,43 +169,45 @@ const AddMeal = ({
                 )}
               </div>
             </div>
-            {finalArray.map((day) => (
-              <div className="day__schedule__box" key={day[0].mealDay}>
-                <em className="day__date">{day[0].displayedDate}</em>
-                <div>
-                  {day.map((meal) => (
-                    <div key={meal.key} id={meal.key}>
-                      {userRoleInActiveGroup !== 'Lecture' && (
+            <div className="container__day__schedule">
+              {finalArray.map((day) => (
+                <div className="day__schedule__box" key={day[0].mealDay}>
+                  <em className="day__date">{day[0].displayedDate}</em>
+                  <div>
+                    {day.map((meal) => (
+                      <div key={meal.key} id={meal.key}>
+                        {userRoleInActiveGroup !== 'Lecture' && (
                         <>
                           <Icon name="minus" id="remove__meal__icon" onClick={removeMealClick} />
                         </>
-                      )}
-                      <em>{meal.mealType}</em>
-                      <ul className="scheduled__meal">
-                        {userRoleInActiveGroup !== 'Lecture' && (
-                        <AddRecipeZone
-                          id={meal.key}
-                        />
                         )}
-                        {meal.scheduledRecipes.map((recipe) => (
-                          <div key={recipe.id + meal.mealDate} className="recipe__box">
-                            <li className="scheduled__recipe">
-                              {userRoleInActiveGroup !== 'Lecture' && (
-                              <>
-                                <Icon id="remove__meal__icon" name="minus" onClick={removeRecipeClick} mealid={meal.key} recipeid={recipe.id} />
-                              </>
-                              )}
-                              <p>{recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i></p>
-                            </li>
-                          </div>
-                        ))}
-                      </ul>
-                      <div className="separator" />
-                    </div>
-                  ))}
+                        <em>{meal.mealType}</em>
+                        <ul className="scheduled__meal">
+                          {userRoleInActiveGroup !== 'Lecture' && (
+                          <AddRecipeZone
+                            id={meal.key}
+                          />
+                          )}
+                          {meal.scheduledRecipes.map((recipe) => (
+                            <div key={recipe.id + meal.mealDate} className="recipe__box">
+                              <li className="scheduled__recipe">
+                                {userRoleInActiveGroup !== 'Lecture' && (
+                                <>
+                                  <Icon id="remove__meal__icon" name="minus" onClick={removeRecipeClick} mealid={meal.key} recipeid={recipe.id} />
+                                </>
+                                )}
+                                <p>{recipe.title} - <i>{recipe.MealHasRecipe.numberPeople} personnes </i></p>
+                              </li>
+                            </div>
+                          ))}
+                        </ul>
+                        <div className="separator" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </ul>
         </div>
         <div className="advanced__search__access">

@@ -19,6 +19,7 @@ import {
   TOGGLE_ERROR_MESSAGE_DISPLAY,
   TOGGLE_EDIT_GROUP_NAME_ZONE,
   UPDATE_GROUP_NEW_NAME_ACTION,
+  SEND_GROUP_CREATION_ERROR,
 } from '../actions/groups';
 import {
   SAVE_USER,
@@ -46,6 +47,7 @@ export const initialState = {
   errorMessageDisplayed: false,
   editGroupNameZoneDisplay: -1,
   newGroupNameProposal: '',
+  groupCreationError: '',
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -159,6 +161,11 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         newGroupNameProposal: action.input,
+      };
+    case SEND_GROUP_CREATION_ERROR:
+      return {
+        ...state,
+        groupCreationError: action.errorMsg.message,
       };
     default:
       return state;

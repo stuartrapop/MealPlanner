@@ -18,3 +18,12 @@
   width: 30%;
   margin: 3px;
 }
+
+@media (min-width: 1200px) {
+  .planning__container {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  
+}

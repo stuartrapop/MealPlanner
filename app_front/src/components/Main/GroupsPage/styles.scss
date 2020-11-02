@@ -119,16 +119,8 @@
 
  @media (min-width: 1200px) {
   .groups_details_container {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .my_groups {
-    width: 50%;
-  }
-
-  .group_members{
-    width: 50%;
+    max-width: 70%;
+    margin: auto;
   }
   
  }

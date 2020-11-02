@@ -25,6 +25,7 @@ import {
   SEND_NEW_GROUP_NAME,
   toggleEditGroupNameZone,
   CHANGE_ROLE_ACTION,
+  sendGroupCreationError,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -115,7 +116,8 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case DELETE_GROUP_ACTION:
       groupId = action.groupId;
-      axios.delete(`${process.env.APISERVER}/group/${groupId}`, { withCredentials: true })
+      let { userId } = state.groups.userInfos;
+      axios.delete(`${process.env.APISERVER}/group/${groupId}/${userId}`, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           next(action);
@@ -126,7 +128,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case LEAVE_GROUP_ACTION:
       groupId = action.groupId;
-      let { userId } = action;
+      userId = action.userId;
       axios.post(`${process.env.APISERVER}/group/removeMember`, { groupId, userId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
@@ -147,6 +149,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
         })
         .catch((e) => {
           console.log(e);
+          store.dispatch(sendGroupCreationError(e.response.data.error.details[0]));
         });
       break;
     case FETCH_ALL_USERS:

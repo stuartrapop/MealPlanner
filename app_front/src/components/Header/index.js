@@ -47,7 +47,7 @@ const Header = ({
         <div>
           {isLogged === false && (
             <div className="connexion__zone" onClick={handleClick}>
-              <Icon name="user circle outline" size="huge" className="login__icon" />
+              <Icon name="user circle outline" size="huge" className="login__icon shake" />
               <p>S'incrire / Se connecter</p>
             </div>
           )}

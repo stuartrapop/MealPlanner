@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Input, Card, Icon, Image, Label, Button,
+  Input, Card, Icon, Image, Button,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { getSlugFromTitle } from '../../../../selectors/recipes';
 import './styles.scss';
 
 const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
   const handleOnChange = (event) => {
     modifySearch(event.target.value);
   };
+
   return (
     <section className="landing__search">
       <h1>Un avant goût de nos recettes ?</h1>
@@ -24,29 +26,33 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
         placeholder="Rechercher"
       />
       <h1>Nos coups de coeur du moment</h1>
-      {searchedRecipes.slice(0, 3).map((recipes) => (
-        <Card className="card__from__landing__page">
-          <Image key={recipes.id} id="trendy__recipe__img" src={recipes.url} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header />
-            <Card.Description>
-              <h2> {recipes.title}</h2>
-              <p> Temps de préparation : {recipes.cooking_time} minutes </p>
-              <p>  Difficulté de la recette : {recipes.difficulty} </p>
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star" />
-              <Icon name="star half" />
-              4.5/5
-            </a>
-          </Card.Content>
-        </Card>
-      ))}
+      <div className="quicksearch__results__container">
+        {searchedRecipes.slice(0, 3).map((recipes) => (
+          <Link to={`/recette/${getSlugFromTitle(recipes.title)}`} key={recipes.id}>
+            <Card id="card__from__landing__page">
+              <Image key={recipes.id} id="trendy__recipe__img" src={recipes.url} wrapped ui={false} />
+              <Card.Content>
+                <Card.Header />
+                <Card.Description>
+                  <h2> {recipes.title}</h2>
+                  <p> Temps de préparation : {recipes.cooking_time} minutes </p>
+                  <p>  Difficulté de la recette : {recipes.difficulty} </p>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a>
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star" />
+                  <Icon name="star half" />
+                  4.5/5
+                </a>
+              </Card.Content>
+            </Card>
+          </Link>
+        ))}
+      </div>
       <Link to="/recettes">
         <Button id="see__all__button">Découvrir toutes les recettes</Button>
       </Link>

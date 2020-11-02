@@ -12,7 +12,7 @@ const PlanningDay = ({ displayedDay, stateLikeDay }) => {
         <h1>{displayedDay}</h1>
       </div>
       {possibleTimes.map((time) => (
-        <div key={`${stateLikeDay}${time}`} className="planning__cell">
+        <div key={`${stateLikeDay} + ${time}`} className="planning__cell">
           <PlanningTime stateLikeDay={stateLikeDay} time={time} />
         </div>
       ))}
