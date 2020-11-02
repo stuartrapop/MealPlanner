@@ -228,6 +228,10 @@ const groupController = {
       const groupId = parseInt(req.params.groupId, 10);
       const userId = parseInt(req.params.userId, 10);
 
+      console.log('req params', req.params);
+      console.log('userId', userId);
+      console.log('groupId', groupId);
+
       const user = await User.findByPk(userId, {
         include: 'groups',
 
