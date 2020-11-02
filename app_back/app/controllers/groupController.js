@@ -29,7 +29,7 @@ const groupController = {
 
     const user = await User.findByPk(userId);
 
-    await group.addMembers(user, { through: { user_role: userRole } });
+    await group.addMember(user, { through: { user_role: userRole } });
   },
   // function to remove a user from a group
   removeUser: async (userId, groupId) => {
@@ -149,8 +149,7 @@ const groupController = {
       if (!group) {
         res.status(403).json({ error: 'group does not exist' });
       }
-
-      await group.setMembers(user, { through: { user_role: userRole } });
+      await group.addMembers(user, { through: { user_role: userRole } });
 
       group = await Group.findByPk(groupId, {
         include: 'members',
