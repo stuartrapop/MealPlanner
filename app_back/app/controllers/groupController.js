@@ -1,7 +1,6 @@
 const { Group, User } = require('../models');
 const mealController = require('./mealController');
 
-
 const groupController = {
 // used for debug - gets all group info with recipes and ingredients and members
   allGroups: async (req, res) => {
@@ -41,7 +40,7 @@ const groupController = {
   },
 
   // function to remove a non Owner member
-removeMember: async (req, res) => {
+  removeMember: async (req, res) => {
     try {
       console.log('arrived in removeMember');
       const groupId = parseInt(req.body.groupId, 10);
@@ -226,8 +225,8 @@ removeMember: async (req, res) => {
 
   deleteGroup: async (req, res) => {
     try {
-      const groupId = parseInt(req.params.id, 10);
-      const userId = parseInt(req.body.userId, 10);
+      const groupId = parseInt(req.params.groupId, 10);
+      const userId = parseInt(req.params.userId, 10);
 
       const user = await User.findByPk(userId, {
         include: 'groups',
