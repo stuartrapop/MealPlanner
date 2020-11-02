@@ -142,6 +142,7 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         addMealEntryActive: 0,
+        recipesSearchValue: '',
       };
     case TOGGLE_ERROR_MESSAGE_DISPLAY:
       return {

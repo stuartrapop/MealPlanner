@@ -1,7 +1,8 @@
 @use "src/styles/vars" as v;
 
 .add__recipe_zone .input {
-  width: 80%;
+  width: 100%;
+  margin: 0;
 }
 
 #select__number__people.inline.dropdown {
@@ -18,4 +19,8 @@
 
 .add__recipe_zone {
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

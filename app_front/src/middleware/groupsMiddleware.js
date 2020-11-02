@@ -26,6 +26,7 @@ import {
   toggleEditGroupNameZone,
   CHANGE_ROLE_ACTION,
   sendGroupCreationError,
+  resetActiveEntryIdAction,
 } from '../actions/groups';
 
 const groupsMiddleware = (store) => (next) => (action) => {
@@ -85,6 +86,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       axios.post(`${process.env.APISERVER}/meal/addRecipe`, { recipeId, mealId, numberPeople }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
+          store.dispatch(resetActiveEntryIdAction());
           next(action);
         })
         .catch((e) => {
