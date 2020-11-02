@@ -6,7 +6,9 @@ import Ingredients from './Ingredients';
 import Description from './Description';
 import './styles.scss';
 
-const Recipe = ({ getOneRecipe, recipe }) => {
+const Recipe = ({
+  getOneRecipe, recipe, count, increment, decrement,
+}) => {
   if (recipe.difficulty === 'Facile') {
     recipe.difficulty = <p>Difficulté de cette recette : <Icon name="circle" /><Icon name="circle outline" /><Icon name="circle outline" /> </p>;
   }
@@ -23,6 +25,11 @@ const Recipe = ({ getOneRecipe, recipe }) => {
   return (
     <section className="one__recipe">
       <h2 className="recipe__title">{recipe.title}</h2>
+      <div className="counter">
+        <button type="button" onClick={decrement}>⇩</button>
+        <div className="value">{count}</div>
+        <button type="button" onClick={increment}>⇧</button>
+      </div>
       <div className="recipe__desc">
         {recipe.difficulty}
         <p className="recipes__infos"> <Icon name="time" />  Temps de préparation : {recipe.cooking_time} minutes</p>
@@ -62,5 +69,15 @@ const Recipe = ({ getOneRecipe, recipe }) => {
 //     }).isRequired,
 //   ).isRequired,
 // };
+
+Recipe.propTypes = {
+  count: PropTypes.number,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+};
+
+Recipe.defaultProps = {
+  count: 0,
+};
 
 export default Recipe;

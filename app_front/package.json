@@ -55,6 +55,7 @@
     "webpack-merge": "^5.0.6"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.12",
     "axios": "^0.20.0",
     "date-fns": "^2.16.1",
     "dotenv-webpack": "^4.0.0",
