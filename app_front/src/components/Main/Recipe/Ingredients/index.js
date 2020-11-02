@@ -35,6 +35,7 @@ const Ingredients = ({ recipe }) => {
     }
     else if (ingredient.countable) {
       countable = 'Pcs';
+      quantity = Math.round(((quantity) * 100) / 100);
     }
     return (
       <li className="ingredient__list" key={ingredient.id}> <Icon id="fork__icon" name="food" />  {ingredient.name} :   <span id="quantity__span"> {quantity} {countable}{weight}{volume}</span> </li>

@@ -1,18 +1,5 @@
 import slugify from 'slugify';
 
-export const getTitleFromRecipesNumber = (recipeNumber) => {
-  let title = 'Pas de recette pour le moment';
-
-  if (recipeNumber === 1) {
-    title = 'Une seule recette mais très bonne :)';
-  }
-  if (recipeNumber > 1) {
-    title = 'Bienvenue sur mon site de recettes, régalez-vous !';
-  }
-
-  return title;
-};
-
 export const getSlugFromTitle = (title = '') => {
   // replace remplace la 1e occurence qu'il trouve si on lui donne en 1e argument
   // une chaine de caractère, pour remplacer dans l'ensemble de la string il faut passer
