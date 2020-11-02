@@ -10,30 +10,14 @@
 #footer__list {
   display:flex;
   justify-content: space-around;
-}
-.top__part {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  padding: 2em 0 0 0;
-  justify-content: space-between;
+  flex-direction: row;
 }
 
-.top__part.a {
-  text-decoration: none;
-  color : v.$link-blue 
-}
+@media (max-width: 1200px) {
 
-.top__part p {
-  text-decoration: none;
-  color : v.$link-blue 
+  #footer__list {
+ 
+  flex-direction: column;
+  align-items: center;
 }
-
-.bottom__part {
-  text-align: center;
-}
-
-.bottom__part p {
-  text-decoration: none;
-  color : v.$link-blue 
 }
