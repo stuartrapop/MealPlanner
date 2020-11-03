@@ -131,17 +131,10 @@ const adminController = {
       if (emailTest) {
         res.status(401).json({ error: 'cet email existe déjà' });
       }
-      let userNameTest;
-      console.log('emailTest', emailTest);
-      if (!emailTest) {
-        userNameTest = await User.findOne({
-          where: { userName: `${userDetails.userName}` },
-        });
-      }
 
-      if (userNameTest) {
-        res.status(401).json({ error: 'Le pseudo proposé est déja pris' });
-      }
+      const userNameTest = await User.findOne({
+        where: { userName: `${userDetails.userName}` },
+      });
 
       console.log('will create', (!emailTest && !userNameTest));
 
@@ -175,6 +168,15 @@ const adminController = {
             });
           });
         });
+      }
+      else {
+        if (emailTest) {
+          res.status(401).json({ error: 'cet email existe déjà' });
+        }
+
+        if (userNameTest) {
+          res.status(401).json({ error: 'Le pseudo proposé est déja pris' });
+        }
       }
     }
     catch (error) {
