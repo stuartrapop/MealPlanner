@@ -22,6 +22,8 @@ const mapStateToProps = (state) => ({
   editGroupNameZoneDisplay: state.groups.editGroupNameZoneDisplay,
   newGroupNameProposal: state.groups.newGroupNameProposal,
   groupCreationError: state.groups.groupCreationError,
+  gettingAllUsersLoading: state.groups.gettingAllUsersLoading,
+  groupMembersIsDefined: state.groups.groupMembersIsDefined,
 });
 
 const mapDispatchToProps = (dispatch) => ({

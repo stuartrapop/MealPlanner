@@ -75,21 +75,26 @@
 
 .login__form__button__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.login__form__button__container .ui.button {
+  margin: 0;
 }
 
 .login__failed {
   width: 90%;
-  margin: 10% auto;
+  margin: 0px auto;
 }
 
 .signin__failed {
   width: 90%;
-  margin: 10% auto;
+  margin: 0px auto;
 }
 
 .signin__successful {
   width: 90%;
-  margin: 10% auto;
+  margin: 0px auto;
 }
 

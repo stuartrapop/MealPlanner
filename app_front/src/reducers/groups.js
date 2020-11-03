@@ -48,6 +48,9 @@ export const initialState = {
   editGroupNameZoneDisplay: -1,
   newGroupNameProposal: '',
   groupCreationError: '',
+  groupMembers: {},
+  gettingAllUsersLoading: true,
+  groupMembersIsDefined: false,
 };
 
 const groupsReducer = (state = initialState, action = {}) => {
@@ -107,6 +110,7 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         groupMembers: action.data,
+        groupMembersIsDefined: true,
       };
     case TOGGLE_CREATE_GROUP_MODAL_ACTION:
       return {
@@ -122,6 +126,7 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         usersList: action.usersList,
+        gettingAllUsersLoading: false,
       };
     case TOGGLE_ADD_MEMBER_MODAL_ACTION:
       return {

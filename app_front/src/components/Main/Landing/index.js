@@ -14,13 +14,9 @@ const Landing = ({ isLogged }) => (
     {!isLogged && (
       <>
         <PresentationSimple />
-        <div className="separator" />
         <LandingQuickSearch />
-        <div className="separator" />
         <RolloverFoodImages />
-        <div className="separator" />
         <TargetPresentation />
-        <div className="separator" />
         <PresentationDetailed />
       </>
     )}

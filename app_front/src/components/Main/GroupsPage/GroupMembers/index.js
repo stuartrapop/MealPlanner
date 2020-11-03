@@ -161,15 +161,5 @@ const GroupMembers = ({
 export default GroupMembers;
 
 GroupMembers.propTypes = {
-  targetedGroup: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    users: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        firstname: PropTypes.string,
-        lastname: PropTypes.string,
-      }).isRequired,
-    ).isRequired,
-  }).isRequired,
+  
 };
