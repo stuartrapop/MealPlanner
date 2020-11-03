@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Input, Button, Icon } from 'semantic-ui-react';
-
 // == Import
 import './styles.scss';
 
@@ -32,7 +31,6 @@ const EditProfile = ({
   };
   const removeAccountOnClick = (event) => {
     console.log('evttarget id ', event.target.id);
-    
     removeAccount(event.target.id);
   };
 
