@@ -13,6 +13,7 @@ const Ingredients = ({ recipe }) => {
     let volume;
     let weight;
     let { quantity } = ingredient.RecipeContainsIngredient;
+
     if (ingredient.weight) {
       if (quantity < 1) {
         weight = 'g';

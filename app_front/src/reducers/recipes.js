@@ -24,7 +24,7 @@ const recipes = (state = initialState, action = {}) => {
         searchedRecipes: action.recipes,
         loading: false,
       };
-      // All recipes filtered according to user search bar's input
+      // All recipes filtered according to user search bar input
     case MODIFY_SEARCH:
       return {
         ...state,

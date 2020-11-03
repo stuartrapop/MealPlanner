@@ -45,7 +45,11 @@ const Recipe = ({
         </div>
         <div className="one__recipe__sub__container">
           <Description recipe={recipe} />
-          <Ingredients recipe={recipe.ingredients} />
+          <Ingredients 
+            recipe={recipe.ingredients} 
+            count={count} 
+            increment={increment} 
+            decrement={decrement}/>
         </div>
       </div>
       <div className="one__recipe__contains__button">
