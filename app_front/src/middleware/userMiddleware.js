@@ -73,6 +73,7 @@ const userMiddleware = (store) => (next) => (action) => {
           next(action);
         })
         .catch((e) => {
+          console.log('error message: ', e.response.data);
           const signInWentSuccesfully = false;
           store.dispatch(signIn(signInWentSuccesfully, e.response.data.error.details));
         });
