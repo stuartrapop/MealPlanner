@@ -1,7 +1,7 @@
 const { Ingredient } = require('../models');
 
 const ingredientController = {
-  // les cards d'une liste
+  // for debug purposes
   allIngredients: async (req, res) => {
     const ingredients = await Ingredient.findAll({
 

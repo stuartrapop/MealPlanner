@@ -1,5 +1,5 @@
 const { Family } = require('../models');
-
+// just used for debug
 const familyController = {
   // les cards d'une liste
   allFamilies: async (req, res) => {

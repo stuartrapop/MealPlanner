@@ -13,8 +13,12 @@
   flex-direction: row;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
 
+  .footer {
+    padding: v.$gutter * 0.25;
+  
+  }
   #footer__list {
  
   flex-direction: column;

@@ -1,10 +1,8 @@
 const { Group, User } = require('../models');
 const mealController = require('./mealController');
-const { checkAdmin } = require('../middleware/authorizations');
 
 const groupController = {
-
-  // les cards d'une liste
+// used for debug - gets all group info with recipes and ingredients and members
   allGroups: async (req, res) => {
     const groups = await Group.findAll({
       include: [
@@ -29,7 +27,7 @@ const groupController = {
 
     const user = await User.findByPk(userId);
 
-    await group.addMembers(user, { through: { user_role: userRole } });
+    await group.addMember(user, { through: { user_role: userRole } });
   },
   // function to remove a user from a group
   removeUser: async (userId, groupId) => {
@@ -75,7 +73,7 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-  // les cards d'une liste
+  // create a new group
   createGroup: async (req, res) => {
     try {
       const { name } = req.body;
@@ -99,7 +97,7 @@ const groupController = {
     }
   },
 
-  // les cards d'une liste
+  // add a member to a group
   addMember: async (req, res) => {
     try {
       const groupId = parseInt(req.body.groupId, 10);
@@ -131,7 +129,7 @@ const groupController = {
     }
   },
 
-  // les cards d'une liste
+  // change a non owner member to/from readonly to manage role
   changeMemberRole: async (req, res) => {
     try {
       const groupId = parseInt(req.body.groupId, 10);
@@ -149,8 +147,7 @@ const groupController = {
       if (!group) {
         res.status(403).json({ error: 'group does not exist' });
       }
-
-      await group.setMembers(user, { through: { user_role: userRole } });
+      await group.addMembers(user, { through: { user_role: userRole } });
 
       group = await Group.findByPk(groupId, {
         include: 'members',
@@ -166,6 +163,7 @@ const groupController = {
     }
   },
 
+  // change group name
   updateGroup: async (req, res) => {
     try {
       const { name } = req.body;
@@ -189,7 +187,7 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-
+  // view one group with all members
   oneGroup: async (req, res) => {
     try {
       const groupId = parseInt(req.params.id, 10);
@@ -225,11 +223,15 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-
+  // delete a group
   deleteGroup: async (req, res) => {
     try {
-      const groupId = parseInt(req.params.id, 10);
-      const userId = parseInt(req.body.userId, 10);
+      const groupId = parseInt(req.params.groupId, 10);
+      const userId = parseInt(req.params.userId, 10);
+
+      console.log('req params', req.params);
+      console.log('userId', userId);
+      console.log('groupId', groupId);
 
       const user = await User.findByPk(userId, {
         include: 'groups',
