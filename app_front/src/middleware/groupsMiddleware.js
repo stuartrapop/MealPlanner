@@ -181,7 +181,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
     case REMOVE_USER_ACTION:
       groupId = action.groupId;
       userId = action.userId;
-      axios.post('http://3.127.235.222:3000/group/removeMember', { groupId, userId }, { withCredentials: true })
+      axios.post(`${process.env.APISERVER}/group/removeMember`, { groupId, userId }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
           next(action);
@@ -192,7 +192,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       break;
     case SEND_NEW_GROUP_NAME:
       const { newName, groupid } = action;
-      axios.patch(`http://3.127.235.222:3000/group/${groupid}`, { name: newName }, { withCredentials: true })
+      axios.patch(`${process.env.APISERVER}/group/${groupid}`, { name: newName }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
           store.dispatch(toggleEditGroupNameZone(-1));
@@ -206,7 +206,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       userRole = action.userRole;
       userId = action.userId;
       groupId = state.groups.groupMembers.groupId;
-      axios.patch('http://3.127.235.222:3000/group/changeMemberRole', { userId, groupId, userRole }, { withCredentials: true })
+      axios.patch(`${process.env.APISERVER}/group/changeMemberRole`, { userId, groupId, userRole }, { withCredentials: true })
         .then(() => {
           store.dispatch(fetchGroupsDatasAction());
         })
