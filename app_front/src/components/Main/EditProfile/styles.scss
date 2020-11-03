@@ -7,38 +7,38 @@
   height: 80vh; 
 }
 
-#login__form__edit__profile {
+#form__edit__profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
 }
 
-#login__form__edit__profile h1 {
+#form__edit__profile h1 {
   color: black
 }
 
-#login__form__edit__profile .ui.input {
+#form__edit__profile .ui.input {
   margin-top: 1em;
 }
 
-#login__form__edit__profile .ui.input>input::placeholder {
+#form__edit__profile .ui.input>input::placeholder {
   color: rgba(52,52,52,0.7);
 }
 
-.login__form__button__container {
+.edit__button__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1em;
 }
 
-.login__form__button__container .ui.button {
+.edit__button__container .ui.button {
   margin-bottom: 1em;
 }
 
 @media (min-width: 768px) {
-  #login__form__edit__profile {
+  #form__edit__profile {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -47,9 +47,6 @@
     padding-top: 100px;
   }
 
-  #login__form__edit__profile h1 {
-    color: black;
-  }
  }
 
  @media (min-width: 1200px) {

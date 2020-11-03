@@ -67,14 +67,13 @@ const userMiddleware = (store) => (next) => (action) => {
         email, password, firstName, lastName, userName,
       }, { withCredentials: true })
         .then(() => {
-          const signInWentSuccesfully = true;
+          const signInWentSuccesfully = 1;
           store.dispatch(signIn(signInWentSuccesfully, []));
           store.dispatch(resetAllFieldsValue());
           next(action);
         })
         .catch((e) => {
-          console.log('error message: ', e.response.data);
-          const signInWentSuccesfully = false;
+          const signInWentSuccesfully = 2;
           store.dispatch(signIn(signInWentSuccesfully, e.response.data.error.details));
         });
       break;

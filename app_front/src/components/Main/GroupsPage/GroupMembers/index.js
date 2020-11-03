@@ -71,7 +71,7 @@ const GroupMembers = ({
       <h1>Membres du groupe {groupMembers.groupName}</h1>
       <ul className="member_list">
         {groupMembers.groupMemberArray.map((member) => (
-          <div>
+          <div key={member.userId}>
             {userRoleInGroup === 'Propriétaire' && (
               <li key={member.userId} className="user">
                 <div className="full_name">{member.firstName} {member.lastName}</div>
@@ -161,5 +161,18 @@ const GroupMembers = ({
 export default GroupMembers;
 
 GroupMembers.propTypes = {
-  
+  userInfos: PropTypes.object.isRequired,
+  groupMembers: PropTypes.object.isRequired,
+  memberSearchAction: PropTypes.func.isRequired,
+  usersList: PropTypes.object.isRequired, // liste de tous les utilisateurs du site
+  toggleAddMemberModal: PropTypes.func.isRequired,
+  addMemberModalBool: PropTypes.bool.isRequired,
+  showResults: PropTypes.func.isRequired,
+  membersSearchResults: PropTypes.array.isRequired,
+  membersSearchValue: PropTypes.string.isRequired,
+  addMemberToGroup: PropTypes.func.isRequired,
+  removeUserAction: PropTypes.func.isRequired,
+  errorMessageDisplayed: PropTypes.bool.isRequired,
+  toggleErrorMessageDisplay: PropTypes.func.isRequired,
+  changeRoleAction: PropTypes.func.isRequired,
 };

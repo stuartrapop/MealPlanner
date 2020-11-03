@@ -6,6 +6,9 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import {
+  Dimmer, Loader, Image, Segment,
+} from 'semantic-ui-react';
 import Recipes from '../../containers/Recipes';
 import Recipe from '../../containers/Recipe';
 import GroupsPage from '../../containers/GroupsPage';
@@ -22,7 +25,14 @@ import ShoppingList from '../../containers/ShoppingList';
 const Main = ({ loading }) => (
   <div className="main">
     <Switch>
-      {loading && (<div>loading</div>)}
+      {loading && (
+      <Segment>
+        <Dimmer active inverted>
+          <Loader size="large">Loading</Loader>
+        </Dimmer>
+        <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+      </Segment>
+      )}
       {!loading && (
         <div>
           <Route path="/" exact>

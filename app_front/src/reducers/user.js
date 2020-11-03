@@ -22,7 +22,7 @@ export const initialState = {
   userName: '',
   isLogged: false,
   logInError: false,
-  signInWentSuccesfully: null,
+  signInWentSuccesfully: 0,
   displaySignInComponent: false,
   errorMessage: [],
   editProfil: [],
@@ -44,7 +44,7 @@ const userReducer = (state = initialState, action = {}) => {
         isLogged: action.data.isLogged,
         pseudo: action.data.pseudo,
         logInError: false,
-        signInWentSuccesfully: null,
+        signInWentSuccesfully: 0,
       };
       return newState;
     case INSERT_DEFAULT_USER_INFOS:
@@ -82,7 +82,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         displaySignInComponent: !state.displaySignInComponent,
         logInError: false,
-        signInWentSuccesfully: null,
+        signInWentSuccesfully: 0,
       };
     case RESET_ALL_FIELDS_VALUE:
       return {

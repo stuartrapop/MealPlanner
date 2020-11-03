@@ -80,7 +80,7 @@ const LogInModal = ({
             </div>
           </form>
         )}
-        {signInWentSuccesfully && (
+        {signInWentSuccesfully === 1 && (
           <div className="signin__successful">
             <Message positive>
               <Message.Header>Votre enregistrement a bien été pris en compte !</Message.Header>
@@ -90,7 +90,7 @@ const LogInModal = ({
             </Message>
           </div>
         )}
-        {signInWentSuccesfully === false && (
+        {signInWentSuccesfully === 2 && (
           <div className="signin__failed">
             <Message
               error
@@ -121,7 +121,7 @@ LogInModal.propTypes = {
   handler: PropTypes.func.isRequired,
   logInError: PropTypes.bool.isRequired,
   handleSignin: PropTypes.func.isRequired,
-  signInWentSuccesfully: PropTypes.bool.isRequired,
+  signInWentSuccesfully: PropTypes.number.isRequired,
   handleToggleLogInComponent: PropTypes.func.isRequired,
   displaySignInComponent: PropTypes.bool.isRequired,
   errorMessage: PropTypes.array.isRequired,

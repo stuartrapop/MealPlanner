@@ -13,7 +13,6 @@ import './styles.scss';
 const GroupsPage = ({
   userInfos,
   fetchGroupMembers,
-  groupMembers,
   handleDeleteGroup,
   handleLeaveGroup,
   toggleCreateGroupModal,
@@ -79,12 +78,7 @@ const GroupsPage = ({
       {!gettingAllUsersLoading && (
       <>
         <div className="my_groups">
-          <Link to="/">
-            <div className="return__MySpace">
-              <Icon name="arrow left" />
-              Mon Espace
-            </div>
-          </Link>
+          <Link id="list__back__planning" to="/"> <Icon name="arrow alternate circle left outline" />Retourner sur mon planning </Link>
           <h1>Mes Groupes</h1>
           <ul className="group_list">
             {userInfos.groups.map((group, index) => (
@@ -172,7 +166,6 @@ export default GroupsPage;
 GroupsPage.propTypes = {
   userInfos: PropTypes.object.isRequired,
   fetchGroupMembers: PropTypes.func.isRequired,
-  groupMembers: PropTypes.object.isRequired,
   handleDeleteGroup: PropTypes.func.isRequired,
   handleLeaveGroup: PropTypes.func.isRequired,
   toggleCreateGroupModal: PropTypes.func.isRequired,
@@ -187,4 +180,6 @@ GroupsPage.propTypes = {
   newGroupNameProposal: PropTypes.string.isRequired,
   sendNewGroupNameAction: PropTypes.func.isRequired,
   groupCreationError: PropTypes.string.isRequired,
+  gettingAllUsersLoading: PropTypes.bool.isRequired,
+  groupMembersIsDefined: PropTypes.bool.isRequired,
 };
