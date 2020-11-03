@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const { User, Group } = require('../models');
 const groupController = require('./groupController');
 
-
 // used for bcrypt -- salt rounds linked to complexity and time to generate password
 const saltRounds = 10;
 
@@ -34,7 +33,7 @@ const adminController = {
     res.json({ isLogged: false });
   },
 
-// check in user table for matching password
+  // check in user table for matching password
   login: async (req, res) => {
     try {
       const { email } = req.body;
@@ -51,7 +50,7 @@ const adminController = {
 
       await bcrypt.compare(password, user.password).then((result) => {
         console.log('in compare result', result);
-        //this is where express session is set
+        // this is where express session is set
         if (result) {
           req.session.user = user;
           console.log('<< 200 OK', user);
@@ -114,7 +113,7 @@ const adminController = {
       res.status(500).json({ error });
     }
   },
-// create account if unique email need to require unique username as well later
+  // create account if unique email need to require unique username as well later
   createAccount: async (req, res) => {
     try {
       const userDetails = {
@@ -183,21 +182,56 @@ const adminController = {
       res.status(500).json({ error });
     }
   },
-// to delete account need to remove all groups first
+  // to delete account need to remove all groups first
   deleteAccount: async (req, res) => {
     try {
       const userId = parseInt(req.params.id, 10);
       const user = await User.findByPk(userId, {
-
+        include: ['favorites', {
+          association: 'groups',
+          include: 'members',
+        }],
       });
       // send the details or not found
       if (user) {
-        user.destroy();
-        res.json({ message: 'user successfuly destroied' });
+        const ownerGroupList = user.groups.filter((group) => group.UserBelongsGroup.user_role === 'Propriétaire');
+        const nonOwnerGroupList = user.groups.filter((group) => group.UserBelongsGroup.user_role !== 'Propriétaire');
+        for (const favorite of user.favorites) {
+          await user.removeFavorites(favorite.id);
+        }
+
+        for (const groupElement of ownerGroupList) {
+          const group = await Group.findByPk(groupElement.id, {
+            include: ['members', 'meals'],
+          });
+
+          for (const element of group.members) {
+            await groupController.removeUser(element.id, group.id);
+          }
+          for (const meal of group.meals) {
+            await mealController.deleteMealUtil(meal.id);
+          }
+          await group.destroy();
+        }
+
+        for (const groupElement of nonOwnerGroupList) {
+          const group = await Group.findByPk(groupElement.id, {
+            include: 'members',
+          });
+          await groupController.removeUser(user.id, group.id);
+        }
+        await user.destroy();
+
+        res.json({ message: 'user successfuly destroyed' });
+        return;
+        res.json({
+          user,
+          ownerGroupList,
+          nonOwnerGroupList,
+        });
       }
-      else {
-        res.status(401).json({ error: 'user not found' });
-      }
+
+      res.status(401).json({ error: 'user not found' });
     }
     catch (error) {
       console.log(error);

@@ -223,6 +223,8 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
+
+ 
   // delete a group
   deleteGroup: async (req, res) => {
     try {
@@ -235,7 +237,6 @@ const groupController = {
 
       const user = await User.findByPk(userId, {
         include: 'groups',
-
       });
 
       const ownerGroupList = user.groups.filter((group) => group.UserBelongsGroup.user_role === 'Propriétaire');
