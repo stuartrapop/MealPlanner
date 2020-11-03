@@ -642,9 +642,9 @@ VALUES
 (1, 'Stuart', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'admin', 'stuart@gmail.com'),
 (2, 'Virgil', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'admin', 'virgil@gmail.com'),
 (3, 'Clément', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'admin', 'clement@gmail.com'),
-(4, 'Stuart1', 'Rapoport', 'Stu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'stuart1@gmail.com'),
-(5, 'Virgil1', 'Kwiatkowski', 'Virg','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'user', 'virgil1@gmail.com'),
-(6, 'Clément2', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com');
+(4, 'Stuart1', 'Rapoport', 'Stu1','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'stuart1@gmail.com'),
+(5, 'Virgil1', 'Kwiatkowski', 'Virg1','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'user', 'virgil1@gmail.com'),
+(6, 'Clément2', 'Herpe', 'Clé2','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com');
 
 
 
