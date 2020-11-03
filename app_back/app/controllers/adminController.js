@@ -128,9 +128,7 @@ const adminController = {
       const emailTest = await User.findOne({
         where: { email: `${userDetails.email}` },
       });
-      if (emailTest) {
-        res.status(401).json({ error: 'cet email existe déjà' });
-      }
+
 
       const userNameTest = await User.findOne({
         where: { userName: `${userDetails.userName}` },
@@ -160,7 +158,7 @@ const adminController = {
                   });
               }
               else {
-                res.status(401).json({ error: 'wrong password' });
+                res.status(401).json({ error: 'creation error' });
               }
             }).catch((error) => {
               console.log(error);
@@ -171,11 +169,19 @@ const adminController = {
       }
       else {
         if (emailTest) {
-          res.status(401).json({ error: 'cet email existe déjà' });
+          res.status(401).json({
+            error: {
+              details: [{ message: 'cet email existe déjà' }],
+            },
+          });
         }
 
         if (userNameTest) {
-          res.status(401).json({ error: 'Le pseudo proposé est déja pris' });
+          res.status(401).json({
+            error: {
+              details: [{ message: 'Le pseudo proposé est déja pris' }],
+            },
+          });
         }
       }
     }
