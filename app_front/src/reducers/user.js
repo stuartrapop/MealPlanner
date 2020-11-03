@@ -52,6 +52,7 @@ const userReducer = (state = initialState, action = {}) => {
         userName: action.userName,
         firstName: action.firstName,
         lastName: action.lastName,
+        email: action.email,
       };
     case UPDATE_ACCOUNT_INFOS:
       return {

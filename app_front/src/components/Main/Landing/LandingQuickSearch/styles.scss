@@ -33,7 +33,9 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-
+#card__from__landing__difficulty{
+  font-size: 1.2em;
+}
 @media (min-width: 768px) {
   .quicksearch__results__container{
     display: flex;
