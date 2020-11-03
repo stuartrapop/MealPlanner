@@ -129,7 +129,6 @@ const adminController = {
         where: { email: `${userDetails.email}` },
       });
 
-
       const userNameTest = await User.findOne({
         where: { userName: `${userDetails.userName}` },
       });

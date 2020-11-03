@@ -4,22 +4,15 @@ import './styles.scss';
 import Pdf from 'react-to-pdf';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import {
-  Page, Text, View, Document, StyleSheet, ReactPDF
-} from '@react-pdf/renderer';
+
 
 const ref = React.createRef();
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
+
+const options = {
+  orientation: 'landscape',
+  unit: 'in',
+  format: [4, 2],
+};
 
 const ShoppingList = ({ userInfos, groupId }) => {
   const listForShopping = [];
@@ -133,25 +126,16 @@ const ShoppingList = ({ userInfos, groupId }) => {
   ));
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>
-            <div className="list__body">
-              <h2 className="list__title"> Ma liste de courses</h2>
-              <Link id="list__back__planning" to="/"> <Icon name="arrow alternate circle left outline" />Retourner sur mon planning </Link>
+   <div>
 
-              <div ref={ref} className="list__container">
-                {finalArray}
-              </div>
-              <Pdf targetRef={ref} filename="ma-liste-de-crouses.pdf">
-                {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
-              </Pdf>
-            </div>
-          </Text>
-        </View>
-      </Page>
-    </Document>
+        <div ref={ref} className="list__container">
+          {finalArray}
+        </div>
+        <Pdf targetRef={ref} y={-5} scale={0.6} filename="ma-liste-de-crouses.pdf">
+          {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
+        </Pdf>
+
+</div>
   );
 };
 
