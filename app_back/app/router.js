@@ -36,6 +36,8 @@ router.get('/group/:id', groupController.oneGroup);
 router.post('/group/create', validateBody(groupNameSchema), groupController.createGroup);
 router.patch('/group/changeMemberRole', groupController.changeMemberRole);
 router.patch('/group/:id', groupOwner(), groupController.updateGroup);
+
+// not able to easily send parameters in delete route, therefore add two ids in route
 router.delete('/group/:groupId/:userId', groupController.deleteGroup);
 router.post('/group/addMember', groupController.addMember);
 router.post('/group/removeMember', groupController.removeMember);

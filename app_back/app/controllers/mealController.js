@@ -1,7 +1,7 @@
 const { Meal, Group, Recipe } = require('../models');
 
 const mealController = {
-  // les cards d'une liste
+  // view all meals
   allMeals: async (req, res) => {
     const meals = await Meal.findAll({
       include: 'recipes',
@@ -68,7 +68,7 @@ const mealController = {
       res.status(500).json({ error });
     }
   },
-  // les cards d'une liste
+  // create a meal for a group
   createMeal: async (req, res) => {
     try {
       const { day } = req.body;

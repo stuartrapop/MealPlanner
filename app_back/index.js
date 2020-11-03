@@ -1,6 +1,6 @@
-require('dotenv').config();
+require('dotenv').config(); // used for .env file.
 const express = require('express');
-const session = require('express-session');
+const session = require('express-session'); // for cookies
 const path = require('path');
 
 const bodyParser = require('body-parser');
@@ -24,32 +24,9 @@ app.use('/api', createProxyMiddleware({ target: 'http://amanger.com', changeOrig
 const router = require('./app/router');
 
 app.use(bodyParser.json());
-/*
-app.use(session(
-  {
-    secret: 'g5g48er7gergGER',
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      sameSite: 'none',
-      maxAge: 1000 * 60 * 60 * 24, // cookie life in seconds. This maxAge is 1 day.
-    },
-  },
-));
 
-// middleware CORS authorize API access from anywhere
-app.use(cors({ origin: ['http:amanger.com', 'http://3.127.235.222', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'], credentials: true }));
-
-app.use((request, response, next) => {
-  response.header('Access-Control-Allow-Credentials', true);
-  response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  response.header('Access-Control-Allow-Methods', 'GET, PATCH, POST, OPTIONS, PUT, DELETE');
-  next();
-});
-*/
-
+// the set of instructions for cookies and cors which both works for secure and non secure
+// must change chrome://flags samesite settings to have localhost for front and aws for back
 Object.defineProperty(session.Cookie.prototype, 'sameSite', {
   // sameSite cannot be set to `None` if cookie is not marked secure
   get() {
@@ -74,15 +51,16 @@ app.use(session({
 
 // CORS
 app.use((req, res, next) => {
-  // on autorise explicitement le domaine du front
+  // Authorize mutiple urls for cors. Cors now down with out cors package
 
   const allowedOrigins = ['http:amanger.com', 'http://3.127.235.222', 'https:amanger.com', 'http://localhost:8080', 'http://192.168.95.145:8080', 'http://192.168.95.179:8080', 'http://90.114.25.203:8080', 'http://90.93.86.61:8080'];
   const { origin } = req.headers;
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
+  // old line whch only allowed one url
   // res.header('Access-Control-Allow-Origin', 'http://3.127.235.222/');
-  // on autorise le partage du cookie
+  
   res.header('Access-Control-Allow-Credentials', true);
   // on autorise le partage de ressources entre origines
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');

@@ -1,5 +1,7 @@
 const { Group } = require('../models');
 
+// check right for changing personal info
+
 const checkUserOrAdmin = () => (req, res, next) => {
   const userId = parseInt(req.params.id, 10);
   console.log('userId', userId);
@@ -15,6 +17,7 @@ const checkUserOrAdmin = () => (req, res, next) => {
   }
 };
 
+// for admin reserved areas
 const checkAdmin = () => (req, res, next) => {
   if (!req.session.user) {
     res.status(401).json({ error: 'must be logged in and admin' });
@@ -27,6 +30,7 @@ const checkAdmin = () => (req, res, next) => {
   }
 };
 
+// only group owners or admin can make these changes
 const groupOwner = () => (req, res, next) => {
   if (!req.session.user) {
     res.status(401).json({ error: 'must be logged in and group owner or admin to perform this action ' });
@@ -44,7 +48,7 @@ const groupOwner = () => (req, res, next) => {
         console.log('group members', group.members);
         const checkUser = group.members.find((member) => member.id === userId);
         console.log('checkUser', checkUser);
-        
+
         if (checkUser.UserBelongsGroup.user_role === 'Propriétaire') {
           next();
         }

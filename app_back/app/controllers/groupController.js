@@ -73,7 +73,7 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-  // les cards d'une liste
+  // create a new group
   createGroup: async (req, res) => {
     try {
       const { name } = req.body;
@@ -97,7 +97,7 @@ const groupController = {
     }
   },
 
-  // les cards d'une liste
+  // add a member to a group
   addMember: async (req, res) => {
     try {
       const groupId = parseInt(req.body.groupId, 10);
@@ -129,7 +129,7 @@ const groupController = {
     }
   },
 
-  // les cards d'une liste
+  // change a non owner member to/from readonly to manage role
   changeMemberRole: async (req, res) => {
     try {
       const groupId = parseInt(req.body.groupId, 10);
@@ -163,6 +163,7 @@ const groupController = {
     }
   },
 
+  // change group name
   updateGroup: async (req, res) => {
     try {
       const { name } = req.body;
@@ -186,7 +187,7 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-
+  // view one group with all members
   oneGroup: async (req, res) => {
     try {
       const groupId = parseInt(req.params.id, 10);
@@ -222,7 +223,7 @@ const groupController = {
       res.status(500).json({ error });
     }
   },
-
+  // delete a group
   deleteGroup: async (req, res) => {
     try {
       const groupId = parseInt(req.params.groupId, 10);
