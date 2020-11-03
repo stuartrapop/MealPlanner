@@ -48,7 +48,7 @@ const Header = ({
           {isLogged === false && (
             <div className="connexion__zone" onClick={handleClick}>
               <Icon name="user circle outline" size="huge" className="login__icon shake" />
-              <p>S'incrire / Se connecter</p>
+              <p>S'inscrire / Se connecter</p>
             </div>
           )}
           {isLogged === true && (
@@ -75,10 +75,8 @@ const Header = ({
                     <Menu.Item>
                       <Link to="/about" onClick={menuClick}> L'Equipe </Link>
                     </Menu.Item>
-                    <Menu.Item
-                      onClick={logOutClick}
-                    >
-                      <Link to="/"> Déconnexion</Link>
+                    <Menu.Item>
+                      <Link to="/" onClick={logOutClick}> Déconnexion</Link>
                     </Menu.Item>
                   </Menu>
                 </div>

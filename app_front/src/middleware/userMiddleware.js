@@ -12,7 +12,11 @@ import {
   HANDLE_LOG_OUT,
   UPDATE_ACCOUNT_INFOS,
   REMOVE_ACCOUNT,
+  resetAllFieldsValue,
 } from '../actions/user';
+
+import { handleMenuDisplay } from '../actions/header';
+
 import { fetchGroupsDatasAction } from '../actions/groups';
 
 axios.defaults.withCredentials = true;
@@ -65,6 +69,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then(() => {
           const signInWentSuccesfully = true;
           store.dispatch(signIn(signInWentSuccesfully, []));
+          store.dispatch(resetAllFieldsValue());
           next(action);
         })
         .catch((e) => {
@@ -75,6 +80,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case HANDLE_LOG_OUT:
       axios.post(`${process.env.APISERVER}/logout`, {}, { withCredentials: true })
         .then(() => {
+          store.dispatch(handleMenuDisplay());
           next(action);
         })
         .catch((e) => {

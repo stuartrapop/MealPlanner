@@ -8,6 +8,7 @@ import {
   TOGGLE_LOG_IN_COMPONENT,
   INSERT_DEFAULT_USER_INFOS,
   UPDATE_ACCOUNT_INFOS,
+  RESET_ALL_FIELDS_VALUE,
 } from '../actions/user';
 
 export const initialState = {
@@ -82,6 +83,15 @@ const userReducer = (state = initialState, action = {}) => {
         displaySignInComponent: !state.displaySignInComponent,
         logInError: false,
         signInWentSuccesfully: null,
+      };
+    case RESET_ALL_FIELDS_VALUE:
+      return {
+        ...state,
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        userName: '',
       };
     default:
       return state;
