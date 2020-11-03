@@ -66,7 +66,7 @@
   margin : 0 auto;
   display: flex;
   justify-content: space-around;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color : #232323;
 }
 .one__recipe__contains__button {
@@ -144,6 +144,8 @@
   }
   .recipe__desc {
     font-size: 1rem;
+    display: flex;
+    flex-direction: column;
   }
   .one__recipe__sub__container {
     word-wrap: break-word;

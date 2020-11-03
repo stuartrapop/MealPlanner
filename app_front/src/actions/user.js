@@ -67,11 +67,12 @@ export const modifyDetails = (editProfil) => ({
   editProfil,
 });
 
-export const insertDefaultUserInfos = (userName, firstName, lastName) => ({
+export const insertDefaultUserInfos = (userName, firstName, lastName, email) => ({
   type: INSERT_DEFAULT_USER_INFOS,
   userName,
   firstName,
   lastName,
+  email,
 });
 export const updateAccountInfos = () => ({
   type: UPDATE_ACCOUNT_INFOS,
