@@ -69,7 +69,7 @@ router.get('/user/:id', checkUserOrAdmin(), userController.oneUser);
 // this route uses joi validator
 router.post('/user/create', validateBody(loginSchema), adminController.createAccount);
 router.patch('/user/:id', checkUserOrAdmin(), validateBody(changeUserDetailsSchema), adminController.updateAccount);
-router.delete('/user/:id', checkUserOrAdmin(), adminController.deleteAccount);
+router.delete('/user/:id', adminController.deleteAccount);
 
 router.patch('/changePassword', checkUserOrAdmin(), adminController.changePassword);
 
