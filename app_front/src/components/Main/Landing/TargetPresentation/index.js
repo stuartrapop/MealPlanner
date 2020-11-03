@@ -1,9 +1,6 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-import friends from './friends.jpg';
-import families from './families.jpg';
-import colocs from './colocs.jpg';
 
 import './styles.scss';
 
