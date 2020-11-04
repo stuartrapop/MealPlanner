@@ -23,6 +23,7 @@ import {
 } from '../actions/groups';
 import {
   SAVE_USER,
+  REMOVE_ACCOUNT,
 } from '../actions/user';
 
 export const initialState = {
@@ -174,6 +175,12 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         groupCreationError: action.errorMsg.message,
+      };
+
+    case REMOVE_ACCOUNT:
+      return {
+        ...state,
+        userInfos: {},
       };
     default:
       return state;

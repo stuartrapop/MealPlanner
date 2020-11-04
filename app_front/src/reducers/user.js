@@ -9,6 +9,7 @@ import {
   INSERT_DEFAULT_USER_INFOS,
   UPDATE_ACCOUNT_INFOS,
   RESET_ALL_FIELDS_VALUE,
+  REMOVE_ACCOUNT,
 } from '../actions/user';
 
 export const initialState = {
@@ -93,6 +94,20 @@ const userReducer = (state = initialState, action = {}) => {
         firstName: '',
         lastName: '',
         userName: '',
+      };
+
+    case REMOVE_ACCOUNT:
+      console.log("in remove account user reducer");
+      return {
+        ...state,
+        id: 0,
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        userName: '',
+        isLogged: false,
+        pseudo: '',
       };
     default:
       return state;

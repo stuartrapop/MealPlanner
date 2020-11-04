@@ -106,7 +106,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then(() => {
           // next(action);
           console.log('success');
-          store.dispatch(fetchGroupsDatasAction());
+          next(action);
         })
         .catch((e) => {
           console.error(e);
