@@ -1,6 +1,6 @@
 import React from 'react';
 import PlanningDay from './PlanningDay';
-
+import { Icon } from 'semantic-ui-react'
 import './styles.scss';
 
 const Planning = () => {
@@ -63,7 +63,7 @@ const Planning = () => {
 
   return (
     <div className="addmeal__container">
-      <h1>Votre planning</h1>
+      <h1 className="addmeal__container__title"> <Icon name="calendar alternate" />Votre planning de la semaine</h1>
       <div className="planning__container">
         <div className="planning__description">
           <div className="description__component">Petit-Déjeuner</div>

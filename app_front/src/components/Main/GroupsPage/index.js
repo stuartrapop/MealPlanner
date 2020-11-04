@@ -78,8 +78,13 @@ const GroupsPage = ({
       {!gettingAllUsersLoading && (
       <>
         <div className="my_groups">
-          <Link id="list__back__planning" to="/"> <Icon name="arrow alternate circle left outline" />Retourner sur mon planning </Link>
-          <h1>Mes Groupes</h1>
+          <h1 className="groups__title">Mes Groupes</h1>
+          <Link to="/">
+            <div className="return__MySpace">
+              <Icon name="arrow left" />
+              Mon Espace
+            </div>
+          </Link>
           <ul className="group_list">
             {userInfos.groups.map((group, index) => (
               <li key={group.id} className="group">
@@ -119,7 +124,7 @@ const GroupsPage = ({
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="25" cy="25" r="25" fill="#2ECC71" />
+                <circle cx="25" cy="25" r="25" fill="#68b67c" />
                 <line x1="25.5" y1="17" x2="25.5" y2="34" stroke="white" strokeWidth="3" />
                 <line x1="34" y1="25.5" x2="17" y2="25.5" stroke="white" strokeWidth="3" />
               </svg>

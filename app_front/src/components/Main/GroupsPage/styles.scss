@@ -16,23 +16,12 @@
   text-decoration: underline;
 }
 
-.groups_details_container h1 {
+.groups_details_container  {
   font-size: 1.2em;
   text-align: left;
   font-weight: bold;
   padding: 0.5em;
   width: 100%;
-}
-
-.my_groups {
-  padding: 2em;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.my_groups h1 {
-  color: #2ECC71;
 }
 
 .groups_details_container svg {
@@ -45,7 +34,7 @@
 
 .group_members {
   padding: 2em;
-  background-color: #2ECC71;
+  background-color:hsl(136, 35%, 56%);
   min-height: 300px;
   color: white;
   display: flex;
@@ -99,6 +88,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.groups__title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: center;
+  margin : 0 auto 4rem auto;
+  font-weight: lighter;
+  color : hsl(136, 35%, 56%);
 }
 
 @media (min-width: 768px) {

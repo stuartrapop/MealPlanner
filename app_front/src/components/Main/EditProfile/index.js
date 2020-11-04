@@ -30,7 +30,6 @@ const EditProfile = ({
   };
   const removeAccountOnClick = (event) => {
     console.log('evttarget id ', event.target.id);
-    
     removeAccount(event.target.id);
   };
 

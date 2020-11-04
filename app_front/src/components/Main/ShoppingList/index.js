@@ -1,18 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+// import PropTypes from 'prop-types';
 import './styles.scss';
 import Pdf from 'react-to-pdf';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 
-
 const ref = React.createRef();
-
-const options = {
-  orientation: 'landscape',
-  unit: 'in',
-  format: [4, 2],
-};
 
 const ShoppingList = ({ userInfos, groupId }) => {
   const listForShopping = [];
@@ -37,6 +30,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
                 {
                   familyName: ingredient.families[0].name,
                   ingredientName: ingredient.name,
+                  ingredientId: ingredient.id,
                   weight: ingredient.weight,
                   volume: ingredient.volume,
                   countable: ingredient.countable,
@@ -82,12 +76,16 @@ const ShoppingList = ({ userInfos, groupId }) => {
   const ingredientsByFamily = groupByFamily(condensedShoppingList, 'familyId');
   // We transfor our oubject of arrays into array of arrays so we can map on it.
   const arrayOfIngredients = (Object.values(ingredientsByFamily));
+  console.log(arrayOfIngredients);
+
   const finalArray = arrayOfIngredients.map((family) => (
     (
-      <div className="list__ingredient__family">
-        <p className="list__family__title"> <Icon name="tag" />  {family[0].familyName}</p>
+      <div key={family.id} className="list__ingredient__family">
+        <p className="list__family__title">   {family[0].familyName}</p>
         <div className="list__ingredients">
           {family.map((ingredient) => {
+            console.log(ingredient);
+
             let countable;
             let volume;
             let weight;
@@ -117,7 +115,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
               quantity = Math.round(((quantity) * 100) / 100);
             }
             return (
-              <div className="list__ingredient__details"> {ingredient.ingredientName} : {quantity} {countable}{weight}{volume}</div>
+              <div key={`${ingredient.ingredientId}`} className="list__ingredient__details"> {ingredient.ingredientName} : {quantity} {countable}{weight}{volume}</div>
             );
           })}
         </div>
@@ -126,6 +124,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
   ));
 
   return (
+<<<<<<< HEAD
    <div>
 
         <div ref={ref} className="list__container">
@@ -136,6 +135,17 @@ const ShoppingList = ({ userInfos, groupId }) => {
         </Pdf>
 
 </div>
+=======
+    <div>
+      <div ref={ref} className="list__container">
+        {finalArray}
+      </div>
+      <Pdf targetRef={ref} scale={0.4} filename="ma-liste-de-crouses.pdf">
+        {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
+      </Pdf>
+    </div>
+
+>>>>>>> team_page
   );
 };
 

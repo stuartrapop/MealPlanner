@@ -59,6 +59,10 @@
     "axios": "^0.20.0",
     "date-fns": "^2.16.1",
     "dotenv-webpack": "^4.0.0",
+<<<<<<< HEAD
+=======
+    "html2canvas": "^1.0.0-rc.7",
+>>>>>>> team_page
     "jspdf": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
