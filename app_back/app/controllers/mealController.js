@@ -78,15 +78,18 @@ const mealController = {
       if (!group) {
         res.json({ error: 'group does not exist' });
       }
-      console.log(' inputs day ', day, ' time ', time);
 
       const mealExists = group.meals.find((meal) => (
-        (day === meal.day) && (time === meal.time)
+
+        (String(day) === String(meal.day)) && (time === meal.time)
       ));
+
+      console.log('mealExists', mealExists);
       if (mealExists) {
         res.json({ error: 'you have already scheduled  meal for this time' });
       }
       else {
+        console.log('meal being added day', day, ' time ', time);
         const meal = await Meal.create({ day, time });
         await group.addMeals(meal);
         group = await Group.findByPk(groupId, { include: 'meals' });
