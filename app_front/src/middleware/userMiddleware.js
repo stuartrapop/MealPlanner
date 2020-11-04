@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable no-case-declarations */
-
 import axios from 'axios';
 import {
   LOG_IN,
@@ -13,6 +12,7 @@ import {
   UPDATE_ACCOUNT_INFOS,
   REMOVE_ACCOUNT,
   resetAllFieldsValue,
+  logInWentSuccessfully,
 } from '../actions/user';
 
 import { handleMenuDisplay } from '../actions/header';
@@ -37,13 +37,12 @@ const userMiddleware = (store) => (next) => (action) => {
       axios.post(`${process.env.APISERVER}/login`, { email, password }, { withCredentials: true })
         .then((response) => {
           store.dispatch(saveUser(response.data));
+          store.dispatch(logInWentSuccessfully());
           next(action);
         })
         .catch((e) => {
           console.error(e);
-          let { logInError } = state.user;
-          logInError = true;
-          store.dispatch(sendErrorMessage(logInError));
+          store.dispatch(sendErrorMessage());
         });
       break;
     case CHECK_IS_LOGGED:

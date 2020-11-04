@@ -118,7 +118,6 @@ const AddMeal = ({
   const cleanedFromPastArray = groupedByDaysArray.filter((element) => element[0].mealDate >= todayInHours);
 
   const finalArray = cleanedFromPastArray;
-  console.log(finalArray);
 
   // On souhaite avoir le role de l'utilisateur dans le groupe actif
   const { UserBelongsGroup } = userInfos.groups[activeGroup];

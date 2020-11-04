@@ -66,6 +66,7 @@ i {
 
 .add__meal__clickable__part {
   display: flex;
+  align-items: center;
   margin-top: 2em;
   padding-top: 0.5rem;
   font-size: 1.5rem;
@@ -143,7 +144,7 @@ i {
 .addmeal__title {
   text-transform: uppercase;
   letter-spacing: 10px;
-  font-size: 4rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
   color : #3f6149;
 }
@@ -161,6 +162,9 @@ i {
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+  }
+  .addmeal__title {
+    font-size: 4rem;
   }
 
   .day__schedule__box {

@@ -57,7 +57,7 @@ const groupsMiddleware = (store) => (next) => (action) => {
       const dayString = `${choosenDay}`;
       const day = dayString.split('/').join('-');
       const time = choosenTime;
-      console.log(day, time, groupId);
+      console.log('création de repas, params = ', day, time, groupId);
       axios.post(`${process.env.APISERVER}/meal/create`, { day, time, groupId }, { withCredentials: true })
         .then(() => {
           store.dispatch(saveNewMeal());
