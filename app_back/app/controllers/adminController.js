@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 
 const { User, Group } = require('../models');
 const groupController = require('./groupController');
+const mealController = require('./mealController');
 
 // used for bcrypt -- salt rounds linked to complexity and time to generate password
 const saltRounds = 10;
