@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {
   Input, Button, Icon, Message,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 // == Import
 import './styles.scss';
 // == Composant
@@ -20,12 +21,13 @@ const LogInModal = ({
   handleLogin, // Fonction à la soumission du formulaire sans param
   isLogged,
   handler, // fonction du parent pour fermer la modale
-  logInError,
   handleSignin,
   signInWentSuccesfully,
   handleToggleLogInComponent, // fonction pour toggle le formulaire visible
   displaySignInComponent, // boolean représentant quel formulaire est affiché
   errorMessage, // tableau qui contient l'erreur retournée par le serveur dans la case message
+  logInError,
+  loginSuccess,
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -54,7 +56,11 @@ const LogInModal = ({
             <Input onChange={handleChange} name="logInEmail" placeholder="Adresse Email" value={logInEmail} />
             <Input onChange={handleChange} name="logInPassword" type="password" placeholder="Mot de passe" value={logInPassword} />
             <div className="login__form__button__container">
-              <Button primary type="submit" className="login-form-button" onClick={handleLoginClick}>Se Connecter</Button>
+              <Button primary type="submit" className="login-form-button" onClick={handleLoginClick}>
+                <Link to="/" className="login-form-button">
+                  Se Connecter
+                </Link>
+              </Button>
               <Button secondary className="login-form-button" onClick={toggleLogInComponent}>Créer un compte</Button>
             </div>
             {logInError && (

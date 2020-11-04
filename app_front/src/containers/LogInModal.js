@@ -22,6 +22,7 @@ const mapStateToProps = (state) => ({
   signInWentSuccesfully: state.user.signInWentSuccesfully,
   displaySignInComponent: state.user.displaySignInComponent,
   errorMessage: state.user.errorMessage,
+  loginSuccess: state.user.loginSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -9,6 +9,7 @@ import {
   INSERT_DEFAULT_USER_INFOS,
   UPDATE_ACCOUNT_INFOS,
   RESET_ALL_FIELDS_VALUE,
+  LOGIN_WENT_SUCCESSFULLY,
 } from '../actions/user';
 
 export const initialState = {
@@ -26,6 +27,7 @@ export const initialState = {
   displaySignInComponent: false,
   errorMessage: [],
   editProfil: [],
+  loginSuccess: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -43,7 +45,6 @@ const userReducer = (state = initialState, action = {}) => {
         id: action.data.userId,
         isLogged: action.data.isLogged,
         pseudo: action.data.pseudo,
-        logInError: false,
         signInWentSuccesfully: 0,
       };
       return newState;
@@ -65,12 +66,13 @@ const userReducer = (state = initialState, action = {}) => {
     case SEND_ERROR_MESSAGE:
       return {
         ...state,
-        logInError: action.logInError,
+        logInError: true,
       };
     case LOG_OUT:
       return {
         ...state,
         isLogged: action.isLogged,
+        loginSuccess: false,
       };
     case SIGN_IN:
       return {
@@ -93,6 +95,11 @@ const userReducer = (state = initialState, action = {}) => {
         firstName: '',
         lastName: '',
         userName: '',
+      };
+    case LOGIN_WENT_SUCCESSFULLY:
+      return {
+        ...state,
+        loginSuccess: true,
       };
     default:
       return state;

@@ -67,6 +67,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-reveal": "^1.2.2",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-to-pdf": "^0.0.13",
     "redux": "^4.0.5",
