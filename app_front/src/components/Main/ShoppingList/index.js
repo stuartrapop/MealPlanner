@@ -111,8 +111,14 @@ const ShoppingList = ({ userInfos, groupId }) => {
               }
             }
             else if (ingredient.countable) {
-              countable = 'Pcs';
-              quantity = Math.round(((quantity) * 100) / 100);
+              if (quantity < 1) {
+                countable = 'Pcs';
+                quantity = 1;
+              }
+              else {
+                countable = 'Pcs';
+                quantity = Math.round(((quantity) * 100) / 100);
+              }
             }
             return (
               <div key={`${ingredient.ingredientId}`} className="list__ingredient__details"> {ingredient.ingredientName} : {quantity} {countable}{weight}{volume}</div>
@@ -125,6 +131,9 @@ const ShoppingList = ({ userInfos, groupId }) => {
 
   return (
     <div>
+      <div>
+        {/* <p className="shopping__list__title"> Ma liste de courses </p> */}
+      </div>
       <div ref={ref} className="list__container">
         {finalArray}
       </div>

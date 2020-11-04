@@ -14,7 +14,7 @@
 }
 
 #trendy__recipe__img img {
-  height: 200px;
+  height: 220px;
   object-fit: cover;
 }
 
@@ -39,7 +39,7 @@
 #card__ratings {
   color : black;
 }
-@media (min-width: 768px) {
+@media (min-width: 830px) {
   .quicksearch__results__container{
     display: flex;
     flex-direction: row;
@@ -56,7 +56,7 @@
 
   #card__from__landing__page {
     width: 100%;
-    height: 400px;
+    height: 420px;
   }
  }
 

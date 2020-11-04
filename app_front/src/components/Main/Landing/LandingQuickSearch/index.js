@@ -37,14 +37,14 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
                   <h2> {recipes.title}</h2>
                   <p> Temps de préparation : {recipes.cooking_time} minutes </p>
                   <p id="card__from__landing__difficulty">  Difficulté de la recette : {recipes.difficulty} </p>
-                  <a>
-                  <Icon id="card__ratings" name="star" />
-                  <Icon id="card__ratings" name="star" />
-                  <Icon id="card__ratings" name="star" />
-                  <Icon id="card__ratings" name="star" />
-                  <Icon id="card__ratings" name="star half" />
-                  4.5/5
-                </a>
+                  <a id="card__ratings">
+                    <Icon id="card__ratings" name="star" />
+                    <Icon id="card__ratings" name="star" />
+                    <Icon id="card__ratings" name="star" />
+                    <Icon id="card__ratings" name="star" />
+                    <Icon id="card__ratings" name="star half" />
+                    4.5/5
+                  </a>
                 </Card.Description>
               </Card.Content>
             </Card>

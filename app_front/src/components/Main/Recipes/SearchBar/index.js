@@ -14,7 +14,7 @@ const SearchBar = ({
     <div className="form__container">
       <form id="form__searchBar">
         <Input
-          id="form__input"
+          id="form__input2"
           onChange={handleOnChange}
           value={searchInput}
           type="text"
