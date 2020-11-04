@@ -27,7 +27,6 @@ const LogInModal = ({
   displaySignInComponent, // boolean représentant quel formulaire est affiché
   errorMessage, // tableau qui contient l'erreur retournée par le serveur dans la case message
   logInError,
-  loginSuccess,
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -57,7 +56,7 @@ const LogInModal = ({
             <Input onChange={handleChange} name="logInPassword" type="password" placeholder="Mot de passe" value={logInPassword} />
             <div className="login__form__button__container">
               <Button primary type="submit" className="login-form-button" onClick={handleLoginClick}>
-                <Link to="/" className="login-form-button">
+                <Link to="/">
                   Se Connecter
                 </Link>
               </Button>
