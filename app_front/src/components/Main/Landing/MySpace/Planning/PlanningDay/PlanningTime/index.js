@@ -16,12 +16,19 @@ const PlanningTime = ({
       {mealIsIncluded && (
       <div className="planning__day__box--found">
         <ul className="found__recipes">
-          {includedMealContent.recipes.map((recipe) => (
-            <li key={`${recipe.id}${stateLikeDay}`}>
-              {recipe.title}
-              <div className="notification__number__people">{recipe.MealHasRecipe.numberPeople}</div>
-            </li>
-          ))}
+          {includedMealContent.recipes.map((recipe) => {
+            console.log('recipe', recipe);
+
+            return (
+              <li key={`${recipe.id}${stateLikeDay}`}>
+                <div className="meal__container">
+                  <img className="meal__pic" src={recipe.url} alt="meal planning" />
+                  {recipe.title}
+                </div>
+                <div className="notification__number__people">{recipe.MealHasRecipe.numberPeople}</div>
+              </li>
+            );
+          })}
         </ul>
       </div>
       )}

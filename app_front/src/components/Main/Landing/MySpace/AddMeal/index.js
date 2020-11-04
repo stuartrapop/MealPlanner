@@ -150,17 +150,18 @@ const AddMeal = ({
   return (
     <div className="addmeal__container">
       <div className="meal__title__container">
-        <h1>Vos repas</h1>
+        <h1 className="addmeal__title">Mon espace personnel</h1>
       </div>
       <div className="addmeal__body">
         <div>
           <ul className="scheduled__meals__container">
             <div className="add__meal__container">
               <div className="add__meal--right">
-                <Dropdown selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
+                <Link id="manage__group" to="/mon-espace/groupes"> Gérer mes groupes </Link>
+                <Dropdown id="dropdown" selection options={groupOptions} onChange={handleChooseGroup} value={groupValueDropdown} />
               </div>
               <div className="add__meal--left">
-                <Link to="/mon-espace/groupes"> Gérer mes groupes </Link>
+
                 {userRoleInActiveGroup !== 'Lecture' && (
                 <div className="add__meal__clickable__part" onClick={toggleAddMealModal}>
                   <Icon id="add__meal__icon" name="plus square outline" size="large" />
@@ -211,9 +212,9 @@ const AddMeal = ({
           </ul>
         </div>
         <div className="advanced__search__access">
-          <h2> En manque d'inspiration ?</h2>
+          <h2 className="advanced__subtitle"> En manque d'inspiration ?</h2>
           <Link to="/recettes">
-            <Button inverted color="orange">Parcourir les recettes !</Button>
+            <Button id="button__redirt__recipes">Parcourir les recettes !</Button>
           </Link>
         </div>
       </div>

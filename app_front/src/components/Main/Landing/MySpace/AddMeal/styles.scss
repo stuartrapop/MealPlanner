@@ -33,6 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 3rem;
 }
 
 .recipe__small__separator {
@@ -56,20 +57,30 @@ i {
   flex-direction: column;
   align-items: center;
 }
+.add__meal--right {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .add__meal__clickable__part {
   display: flex;
   margin-top: 2em;
+  padding-top: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .day__schedule__box{
   padding: 1em;
   margin: 1em auto;
-  background-color: lightgray;
+  background-color: hsl(136, 35%, 56%);
+  color: white;
   -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
   -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
   box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
   width: 90%;
+  border-radius: 10px;
 }
 
 .day__date {
@@ -79,8 +90,9 @@ i {
   padding: 0.5em;
   display: block;
   text-align: center;
-  background-color: v.$primary-green;
-  color: white;
+  background-color: white;
+  border-radius: 10px;
+  color: #272321;
   margin-bottom: 1em;
   border: 1px solid v.$light-grey;
 }
@@ -99,8 +111,48 @@ i {
 .scheduled__recipe p {
   font-size: 1em;
 }
-
-
+#button__redirt__recipes {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+}
+#button__redirt__recipes:hover {
+  color : white;
+  background-color: #332e2b;
+  transition: 1s;
+}
+.advanced__subtitle {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.5rem;
+}
+#manage__group {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+  font-size: 1rem;
+  padding : 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+#manage__group:hover {
+  color : white;
+  background-color: #332e2b;
+  transition: 1s;
+}
+.addmeal__title {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+#dropdown {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 2rem ;
+}
 @media (min-width: 768px) {
   .container__day__schedule {
     display: flex;
@@ -112,6 +164,9 @@ i {
 
   .day__schedule__box {
     width: 40%;
+  }
+  .add__meal--right {
+    display: block;
   }
 }
 

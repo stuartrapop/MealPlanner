@@ -128,7 +128,7 @@ const ShoppingList = ({ userInfos, groupId }) => {
       <div ref={ref} className="list__container">
         {finalArray}
       </div>
-      <Pdf targetRef={ref} scale={0.6} filename="ma-liste-de-crouses.pdf">
+      <Pdf targetRef={ref} scale={0.4} filename="ma-liste-de-crouses.pdf">
         {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
       </Pdf>
     </div>

@@ -4,9 +4,7 @@ import './styles.scss';
 
 import stuart from './Stuart.png';
 import clement from './Clément.png';
-import virgil from './Virgil.png';
-
-
+import virgil from './Virgil1.png';
 
 const About = () => (
   <div className="about">
@@ -30,7 +28,7 @@ const About = () => (
         <div className="team__member">
           <img className="team__picture" src={stuart} alt="member__stuart" />
           <p className="team__desc"> Stuart Rapoport</p>
-          <p className="team__desc1"> Product owner- Lead dev back</p>
+          <p className="team__desc1"> Product owner - Lead dev back</p>
         </div>
         <div className="team__member">
           <img className="team__picture" src={clement} alt="member__clément" />

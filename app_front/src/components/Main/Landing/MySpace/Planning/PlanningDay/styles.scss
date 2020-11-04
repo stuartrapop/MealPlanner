@@ -9,22 +9,31 @@
   margin: auto; 
   display: flex;
   margin-bottom: 1em;
+  border-radius: 10px;
+  
 }
 
 .planning__day__header {
-  background-color: v.$primary-green;
+  background-color: #d8cfc9;
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
 }
 
 .planning__day__header h1{
-  font-size: 1em;
-  color: white;
+  font-size: 0.8em;
+  color: #3f6149;
+  background-color: white;
+  border-radius: 10px;
   margin: 0;
   text-align: center;
   padding: 0.5em;
+  width : 80%;
+  margin : 1rem auto;
   text-transform: capitalize;
 }
 
@@ -40,6 +49,17 @@
   .planning__day {
     min-height: 50px;
   }
-
+  .planning__day__header h1{
+    font-size: 1.5em;
+    color: #3f6149;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
+    padding: 0.5em;
+    width : 80%;
+    margin : 1rem auto;
+    text-transform: capitalize;
+  }
   
 }

@@ -17,6 +17,22 @@
 .description__component {
   width: 30%;
   margin: 3px;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+.addmeal__container__title {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 4rem;
+}
+#link__shopping__list {
+  font-size: 1rem;
+  background-color : #232323;
+  color : #d8cfc9;
+  padding : 1rem 1.5rem;
+  border: solid 1px #d8cfc9;
+  margin-top : 2rem;
+  text-align: center;
 }
 
 @media (min-width: 1200px) {
@@ -24,6 +40,16 @@
     max-width: 80%;
     margin: auto;
   }
-
+  .description__component {
+    font-size: 1.5rem;
+  }
+  #link__shopping__list {
+    font-size: 1rem;
+}
   
+}
+@media (min-width: 768px) {
+  #link__shopping__list {
+    font-size: 1rem;
+}
 }
