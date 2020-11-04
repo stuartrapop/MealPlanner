@@ -124,18 +124,6 @@ const ShoppingList = ({ userInfos, groupId }) => {
   ));
 
   return (
-<<<<<<< HEAD
-   <div>
-
-        <div ref={ref} className="list__container">
-          {finalArray}
-        </div>
-        <Pdf targetRef={ref} y={-5} scale={0.6} filename="ma-liste-de-crouses.pdf">
-          {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
-        </Pdf>
-
-</div>
-=======
     <div>
       <div ref={ref} className="list__container">
         {finalArray}
@@ -145,7 +133,6 @@ const ShoppingList = ({ userInfos, groupId }) => {
       </Pdf>
     </div>
 
->>>>>>> team_page
   );
 };
 
