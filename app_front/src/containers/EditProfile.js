@@ -9,12 +9,12 @@ import {
 } from '../actions/user';
 
 const mapStateToProps = (state) => ({
-  email: 'stuart @gmail.com',
+  email: state.user.email,
   firstName: state.user.firstName,
   lastName: state.user.lastName,
   userName: state.user.userName,
   editProfil: state.user.editProfil,
-  defaultUserInfos: state.groups.userInfos,
+  defaultUserInfos: state.groups.userInfos, 
 });
 // test
 const mapDispatchToProps = (dispatch) => ({
@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeLoginFieldValue(value, name));
   },
   insertDefaultUserInfos: ({
-    userName, firstName, lastName,
+    userName, firstName, lastName, email
   }) => {
-    dispatch(insertDefaultUserInfos(userName, firstName, lastName));
+    dispatch(insertDefaultUserInfos(userName, firstName, lastName, email));
   },
   updateAccountInfos: () => {
     dispatch(updateAccountInfos());
@@ -34,11 +34,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// Container
 const GroupMembersContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(EditProfile);
 
-// == Export
 export default GroupMembersContainer;

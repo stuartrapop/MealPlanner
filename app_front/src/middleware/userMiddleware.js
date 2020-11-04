@@ -101,9 +101,11 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       break;
     case REMOVE_ACCOUNT:
-      axios.delete(`${process.env.APISERVER}/user/${id}`, {}, { withCredentials: true })
+      console.log('action.accountId', action.accountId);
+      axios.delete(`${process.env.APISERVER}/user/${action.accountId}`, {}, { withCredentials: true })
         .then(() => {
-          next(action);
+          // next(action);
+          console.log('success');
           store.dispatch(fetchGroupsDatasAction());
         })
         .catch((e) => {

@@ -29,8 +29,11 @@ const EditProfile = ({
     updateAccountInfos();
   };
   const removeAccountOnClick = (event) => {
+    console.log('evttarget id ', event.target.id);
+    
     removeAccount(event.target.id);
   };
+
   return (
     <div className="parameters__container">
       <Form id="form__edit__profile">

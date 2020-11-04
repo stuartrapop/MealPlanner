@@ -27,7 +27,17 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
       />
       <h1>Nos coups de coeur du moment</h1>
       <div className="quicksearch__results__container">
-        {searchedRecipes.slice(0, 3).map((recipes) => (
+        {searchedRecipes.slice(0, 3).map((recipes) => {
+          if (recipes.difficulty === 'Facile') {
+            recipes.difficulty = <p>Difficulté de cette recette : <Icon name="circle" /><Icon name="circle outline" /><Icon name="circle outline" /> </p>;
+          }
+          else if (recipes.difficulty === 'Moyenne') {
+            recipes.difficulty = <p>Difficulté de cette recette : <Icon name="circle" /><Icon name="circle" /><Icon name="circle outline" /> </p>;
+          }
+          else if (recipes.difficulty === 'Difficile') {
+            recipes.difficulty = <p>Difficulté de cette recette : <Icon name="circle" /><Icon name="circle" /><Icon name="circle" /> </p>;
+          }
+          return(
           <Link to={`/recette/${getSlugFromTitle(recipes.title)}`} key={recipes.id}>
             <Card id="card__from__landing__page">
               <Image key={recipes.id} id="trendy__recipe__img" src={recipes.url} wrapped ui={false} />
@@ -36,7 +46,7 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
                 <Card.Description>
                   <h2> {recipes.title}</h2>
                   <p> Temps de préparation : {recipes.cooking_time} minutes </p>
-                  <p>  Difficulté de la recette : {recipes.difficulty} </p>
+                  <p id="card__from__landing__difficulty">  Difficulté de la recette : {recipes.difficulty} </p>
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
@@ -51,7 +61,7 @@ const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
               </Card.Content>
             </Card>
           </Link>
-        ))}
+        )})}
       </div>
       <Link to="/recettes">
         <Button id="see__all__button">Découvrir toutes les recettes</Button>

@@ -11,7 +11,7 @@ export const initialState = {
   recipe: [],
   displayRecipe: 1,
   displayRecipeSlug: '',
-  value: 0,
+  value: 4,
 };
 
 const recipes = (state = initialState, action = {}) => {

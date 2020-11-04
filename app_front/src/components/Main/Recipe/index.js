@@ -25,12 +25,8 @@ const Recipe = ({
   return (
     <section className="one__recipe">
       <h2 className="recipe__title">{recipe.title}</h2>
-      <div className="counter">
-        <button type="button" onClick={decrement}>⇩</button>
-        <div className="value">{count}</div>
-        <button type="button" onClick={increment}>⇧</button>
-      </div>
       <div className="recipe__desc">
+        <p className="recipes__infos"> <Icon name="smile outline" />  Cette recette vous est proposée pour {count} personnes</p>
         {recipe.difficulty}
         <p className="recipes__infos"> <Icon name="time" />  Temps de préparation : {recipe.cooking_time} minutes</p>
       </div>
@@ -45,16 +41,18 @@ const Recipe = ({
         </div>
         <div className="one__recipe__sub__container">
           <Description recipe={recipe} />
-          <Ingredients 
-            recipe={recipe.ingredients} 
-            count={count} 
-            increment={increment} 
-            decrement={decrement}/>
+          <Ingredients
+            recipe={recipe.ingredients}
+            people={recipe.number_people}
+            count={count}
+            increment={increment}
+            decrement={decrement}
+          />
         </div>
       </div>
       <div className="one__recipe__contains__button">
         <Link className="one__recipe__button" to="/recettes"> Voir d'autres recettes </Link>
-        <Link className="one__recipe__button" to="/"> Ajouter cette recette à mon planning </Link>
+        <Link className="one__recipe__button" to="/"> Retourner à mon planning </Link>
       </div>
     </section>
   );
