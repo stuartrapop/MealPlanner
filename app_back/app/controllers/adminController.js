@@ -151,7 +151,7 @@ const adminController = {
                   userId: createdUser.id,
                 });
                 // all users get a default group. And can never be owners of less than one group
-                Group.create({ name: `Mon groupe-${createdUser.userName}` })
+                Group.create({ name: `Chez ${createdUser.userName}` })
                   .then((newGroup) => {
                     groupController.associateUser(createdUser.id, newGroup.id, 'Propriétaire');
                   });

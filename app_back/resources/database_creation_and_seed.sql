@@ -644,7 +644,14 @@ VALUES
 (3, 'Clément', 'Herpe', 'Clé','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'admin', 'clement@gmail.com'),
 (4, 'Stuart1', 'Rapoport', 'Stu1','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'stuart1@gmail.com'),
 (5, 'Virgil1', 'Kwiatkowski', 'Virg1','$2b$10$OP88Ko9oBgEUqGo9sGETr.yKSwvAZeRQq5T/9JjnbqSaXruB305mG', 'user', 'virgil1@gmail.com'),
-(6, 'Clément2', 'Herpe', 'Clé2','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com');
+(6, 'Clément2', 'Herpe', 'Clé2','$2b$10$LsLZ7qOWXUkCGKDpSDiWUeb5vN0uUpNLnN9eR0KsCbapXGzeqHPHO', 'user', 'clement1@gmail.com'),
+(7, 'Emmanuel', 'Macron', 'Manu','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'emmanuel@gmail.com'),
+(8, 'Vladimir', 'Putin', 'Vlad','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'vladimir@gmail.com'),
+(9, 'Donald', 'Trump', 'Don','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'donald@gmail.com'),
+(10, 'Justin', 'Trudeau', 'Just','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'justin@gmail.com'),
+(11, 'Giuseppe', 'Conté', 'Giuseppe','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'giuseppe@gmail.com'),
+(12, 'Angela', 'Merkel', 'Angé','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'angela@gmail.com'),
+(13, 'Yoshihide', 'Suga', 'Yoyo','$2b$10$AZFl5xODySPZeu69FePQV.sh6iQO0vF6kM/Df2bPS7lcnjRKF6LMy', 'user', 'yoshihide@gmail.com');
 
 
 
