@@ -38,15 +38,19 @@ const Ingredients = ({
       }
       else {
         volume = 'L';
-        quantity = Math.round(((quantity / people) * counter) / 100);
+        quantity = Math.round((((quantity / people) * counter) * 100) / 100);
       }
     }
     else if (ingredient.countable) {
-      countable = 'Pcs';
-      // quantity = Math.round(((quantity) * 100) / 100);
+      if (quantity < 1) {
+        countable = 'Pcs';
+        quantity = 1;
+      }
+      else {
+        countable = 'Pcs';
+        quantity = Math.round(((quantity) * 100) / 100);
+      }
     }
-
-    // quantity = Math.round(((quantity / people) * counter) * 100) / 100;
     return (
       <li className="ingredient__list" key={ingredient.id}> <Icon id="fork__icon" name="food" />  {ingredient.name} :   <span id="quantity__span"> {quantity} {countable}{weight}{volume}</span> </li>
     );
