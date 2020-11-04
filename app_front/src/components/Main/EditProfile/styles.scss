@@ -2,7 +2,7 @@
 
 .parameters__container {
   background: linear-gradient(90deg, rgba(255,255,255,0.00043767507002800965) 44%, rgba(52,52,52,0.5102415966386555) 100%),
-  url(brooke-lark-08bOYnH_r_E-unsplash.jpg) fixed;
+  url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1231&q=80') fixed;
   background-size: cover;
   height: 80vh; 
 }
@@ -19,12 +19,24 @@
 }
 
 #form__edit__profile .ui.input {
-  margin-top: 1em;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+#form__edit__profile .field {
+  margin-bottom: 0;
 }
 
 #form__edit__profile .ui.input>input::placeholder {
   color: rgba(52,52,52,0.7);
 }
+
+#label__params {
+  margin-left: 1.2em;
+  background-color: #f14b3f;
+  color: white;
+}
+
 
 .edit__button__container {
   display: flex;

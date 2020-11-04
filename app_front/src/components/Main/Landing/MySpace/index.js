@@ -35,9 +35,9 @@ const MySpace = ({ fetchGroupsDatas, loading }) => {
       <>
         <AddMeal />
         <Planning />
+        <Link to="/liste">Génerer ma liste de courses</Link>
       </>
       )}
-      <Link to="/liste">Génerer ma liste de courses</Link>
     </div>
   );
 };

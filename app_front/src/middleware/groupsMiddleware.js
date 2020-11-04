@@ -171,10 +171,10 @@ const groupsMiddleware = (store) => (next) => (action) => {
         .then(() => {
           store.dispatch(fetchGroupMembers(groupId));
           store.dispatch(toggleAddMemberModalAction());
-          store.dispatch(toggleErrorMessageDisplay());
           next(action);
         })
         .catch((e) => {
+          store.dispatch(toggleErrorMessageDisplay());
           console.log(e);
         });
       break;

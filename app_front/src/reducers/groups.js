@@ -132,6 +132,8 @@ const groupsReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         addMemberModalBool: !state.addMemberModalBool,
+        errorMessageDisplayed: false,
+        membersSearchValue: '',
       };
     case SHOW_POSSIBLE_MEMBERS_ACTION:
       return {

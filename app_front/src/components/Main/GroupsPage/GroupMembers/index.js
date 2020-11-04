@@ -37,7 +37,9 @@ const GroupMembers = ({
   const handleMemberSearchChange = (evt, data) => {
     memberSearchAction(data.value);
     const possibleMembers = source.filter((member) => member.title.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(data.value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()));
-    showResults(possibleMembers);
+    // On test pour voir si le résultat potentiel n'est pas déjà dans le groupe
+    const showMemberList = possibleMembers.filter((possible) => !groupMembers.groupMemberArray.find((gm) => gm.pseudo === possible.title));
+    showResults(showMemberList);
   };
 
   const openAddMemberModal = () => {
