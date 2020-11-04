@@ -5,15 +5,15 @@ const sequelize = require('../database');
 class Type extends Model {}
 
 Type.init({
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-    {
-    sequelize,
-    tableName: 'type'
+
+},
+{
+  sequelize,
+  tableName: 'type',
 });
 
 module.exports = Type;

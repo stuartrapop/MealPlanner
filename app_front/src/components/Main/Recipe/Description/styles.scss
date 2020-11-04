@@ -1,0 +1,49 @@
+@use "src/styles/vars" as v;
+
+.recipe__description__container {
+  width: 50%;
+  font-size: 1.5rem;
+  border-top : 1px solid #d8cfc9;
+  border-bottom : 1px solid #d8cfc9;
+  border-left : 1px solid #d8cfc9;
+  color: #242323;
+  font-weight: lighter;
+}
+.recipe__instruction__title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+}
+.recipe__instruction__text {
+  text-align: justify;
+  padding : 0 4rem 2rem 4rem;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+@media (max-width: 1200px) {
+  .recipe__description__container {
+    border-top : 1px solid #d8cfc9;
+    border-right : 1px solid #d8cfc9;
+    border-left : 1px solid #d8cfc9;
+
+  }
+  .recipe__instruction__text {
+    line-height: 2.5rem;
+  }
+  
+ }
+ @media (max-width: 767px) {
+  .recipe__description__container {
+    border-top : 1px solid #d8cfc9;
+    border-right : 1px solid #d8cfc9;
+    border-left : 1px solid #d8cfc9;
+
+  }
+  .recipe__instruction__text {
+    font-size: 1rem;
+    line-height: 2.5rem;
+  }
+  
+ }

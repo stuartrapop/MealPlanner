@@ -1,0 +1,27 @@
+@use "src/styles/vars" as v;
+
+.footer {
+  width: 100%;
+  color : v.$link-blue;
+  padding: v.$gutter;
+
+}
+
+#footer__list {
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    padding: v.$gutter * 0.25;
+  
+  }
+  #footer__list {
+ 
+  flex-direction: column;
+  align-items: center;
+}
+}

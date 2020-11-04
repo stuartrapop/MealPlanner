@@ -1,0 +1,177 @@
+@use "src/styles/vars" as v;
+
+.one__recipe {
+  width: 80%;
+  margin : 0 auto;
+}
+.one__recipe__sub__container {
+  display: flex;
+  justify-content: space-between;
+}
+.recipe__title {
+  text-align: center;
+  color : #3f6149;
+  font-size: 5rem;
+  letter-spacing: 30px;
+  text-transform: uppercase;
+  padding: 5rem 0;
+  margin : 0 auto;
+  width: 80%;
+  vertical-align: middle;
+
+}
+.recipe__pic__image {
+  object-fit:cover;
+  object-position:50% 50%;
+  position: relative ;
+  width: 50%;
+  box-sizing: border-box;
+  height: 500px;
+
+}
+.recipe__picture {
+  display: flex;
+  justify-content: space-between;
+  max-height: 30%;
+}
+.recipe__citation {
+  background-color: #d8cfc9;
+  color : white;
+  vertical-align: middle;
+  max-width: 50%;
+}
+.recipe__citation:hover {
+  color : #232323;
+  transition: 1s;
+}
+#recipe__quote__left {
+  font-size: 4rem;
+  padding: 2rem 0 0 4rem;
+}
+#recipe__quote__right {
+  font-size: 4rem;
+  text-align: right;
+  display: block;
+  margin : 0 80%;
+}
+.recipe__sentence {
+  padding : 2rem;
+  font-size: 3rem;
+  margin : 0 auto;
+  margin-left: 2rem;
+  text-align: center;
+}
+.recipe__desc{
+  width: 80%;
+  margin : 0 auto;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+  color : #232323;
+}
+.one__recipe__contains__button {
+  margin: 0 auto;
+  margin: 4rem 0; 
+  display: flex;
+  justify-content: space-evenly;
+}
+.one__recipe__button {
+  
+  background-color : #232323;
+  color : #d8cfc9;
+  padding : 1rem 1.5rem;
+  border: solid 1px #d8cfc9;
+  margin : 0 1rem;
+  text-align: center;
+  width: 20%;
+}
+.one__recipe__button:hover {
+  background-color : #d8cfc9;
+  border: solid 1px #232323;
+  color :#232323;
+}
+.counter {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin: 1em auto;
+  padding:0.5em 0 .3em 0;
+  font-size: 2em;
+  background: #333;
+  border-radius: 10px;
+  color: white;
+}
+
+.counter button {
+  color: white;
+  background: none;
+  font-size: .5em;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .one__recipe__sub__container {
+    display: flex;
+    flex-direction: column;
+    width: 200%;
+
+  }
+  .recipe__picture {
+    display: flex;
+    flex-direction: column;
+    max-height: 30%;
+    width: 200%;
+  }
+  .recipe__title {
+    color : #3f6149;
+    font-size: 3rem;
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    padding: 5rem 0;
+    margin : 0 auto;
+    vertical-align: middle;
+    width: 80%;
+  }
+  .one__recipe__button {
+    width : 40%;
+    border-radius: 10px;
+  }
+ }
+
+ @media (max-width: 767px) {
+  .recipe__citation {
+    display: none;
+  }
+  .recipe__desc {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .one__recipe__sub__container {
+    word-wrap: break-word;
+    font-size: 0.2em;
+    margin: 0;
+  }
+  .recipe__title {
+    color : #3f6149;
+    font-size: 2rem;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    padding: 5rem 0;
+    margin : 0 auto;
+    vertical-align: middle;
+    width: 80%;
+  }
+  .one__recipe__contains__button {
+    flex-direction: column;
+    margin : 1rem 0;
+  }
+  .one__recipe__button {
+    width : 90%;
+    border-radius: 10px;
+    
+  }
+  .ingredient__list {
+    font-size : 1rem;
+  }
+ }

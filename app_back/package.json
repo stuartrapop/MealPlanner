@@ -9,18 +9,31 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.0",
     "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "eslint": "^7.11.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "http-proxy-middleware": "^1.0.6",
     "joi": "^17.2.1",
+    "joi-password-complexity": "^4.2.1",
     "multer": "^1.4.2",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
     "sanitize-html": "^2.1.0",
     "sequelize": "^6.3.5",
     "serialize-javascript": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "babel-eslint": "^10.1.0"
   }
 }

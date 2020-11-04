@@ -1,0 +1,18 @@
+.recipes__container {
+  margin : 0 auto;
+}
+.pic__container {
+  margin : 0;
+  border-radius: 0;
+}
+.pic__header {
+  object-fit:cover;
+  object-position:50% 50%;
+  position: relative ;
+  border-radius: 0;
+  opacity: 0.5;
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+}
+

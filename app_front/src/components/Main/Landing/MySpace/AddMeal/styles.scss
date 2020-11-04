@@ -1,0 +1,177 @@
+@use "src/styles/vars" as v;
+
+.scheduled__meals__container{
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: left;
+}
+
+.scheduled__meal {
+  margin: 1em 0;
+  font-weight: bold;
+}
+
+.scheduled__recipe {
+  margin: 0.5em 0 0.5em 2em;
+  font-weight: normal;
+}
+
+#add__meal__icon {
+  color: v.$primary-green;
+}
+
+.advanced__search__access h2 {
+  font-size: 1.1em;
+}
+
+.advanced__search__access {
+  margin-bottom: 2em;
+}
+
+.add__meal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.recipe__small__separator {
+  height: 2px;
+  width: 70%;
+  margin: auto;
+  background-color: grey;
+}
+
+em {
+  font-weight: bold;
+}
+
+i {
+  font-style: italic;
+}
+
+.add__meal--left {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add__meal--right {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add__meal__clickable__part {
+  display: flex;
+  margin-top: 2em;
+  padding-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.day__schedule__box{
+  padding: 1em;
+  margin: 1em auto;
+  background-color: hsl(136, 35%, 56%);
+  color: white;
+  -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.33);
+  width: 90%;
+  border-radius: 10px;
+}
+
+.day__date {
+  font-size: 1.3em;
+  text-transform: capitalize;
+  width: 100%;
+  padding: 0.5em;
+  display: block;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  color: #272321;
+  margin-bottom: 1em;
+  border: 1px solid v.$light-grey;
+}
+
+.separator {
+  height: 1px;
+  width: 98%;
+  background-color: darkgray;
+  margin: .3em auto .3em auto;
+}
+
+.scheduled__recipe {
+  display: flex;
+}
+
+.scheduled__recipe p {
+  font-size: 1em;
+}
+#button__redirt__recipes {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+}
+#button__redirt__recipes:hover {
+  color : white;
+  background-color: #332e2b;
+  transition: 1s;
+}
+.advanced__subtitle {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.5rem;
+}
+#manage__group {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+  font-size: 1rem;
+  padding : 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+#manage__group:hover {
+  color : white;
+  background-color: #332e2b;
+  transition: 1s;
+}
+.addmeal__title {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+#dropdown {
+  color : #332e2b;
+  border : solid 1px #332e2b;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 2rem ;
+}
+@media (min-width: 768px) {
+  .container__day__schedule {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .day__schedule__box {
+    width: 40%;
+  }
+  .add__meal--right {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .day__schedule__box {
+    width: 30%;
+  }
+}

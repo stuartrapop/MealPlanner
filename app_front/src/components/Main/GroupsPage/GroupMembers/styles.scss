@@ -1,0 +1,62 @@
+.user {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.3em;
+}
+
+.member_list {
+  width: 100%;
+}
+
+.add_member {
+  font-weight: bold;
+}
+
+.full_name {
+  display: flex;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 60%;
+}
+
+.group_members_container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dropdown:hover .choix_deroulant {
+  display: block;
+}
+
+.dropdown_choice {
+  display: none;
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.role_choice::after {
+  content: "▼";
+  margin-left: 1em;
+}
+
+
+.dimmable .ui .input {
+  width: 100%;
+  margin: auto;
+}
+
+.dimmable .ui.modal .actions>.button {
+  margin-left: 0;
+}
+
+.dimmable .ui.basic.modal>.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+#select__member__role {
+  width: 30%;
+}

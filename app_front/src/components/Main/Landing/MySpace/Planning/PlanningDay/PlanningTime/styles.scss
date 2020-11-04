@@ -1,0 +1,61 @@
+@use "src/styles/vars" as v;
+
+.found__recipes li {
+  margin: 5px 2px;
+  padding: 0.2em;
+  font-size: 0.8em;
+  background-color: lightgray;
+  position: relative;
+  border-right: 2px solid v.$primary-green;
+}
+
+.planning__day__box:after{
+  content: '.';
+  visibility: hidden;
+}
+
+.notification__number__people {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: v.$primary-green;
+  font-weight: bold;
+  position: absolute;
+  top: -7px;
+  left: -7px;
+}
+.meal__pic {
+  width : 100%;
+    height : 100px;
+    object-fit:cover;
+    object-position:50% 50%;
+    position: relative ;
+}
+@media (min-width: 768px) {
+  .found__recipes li {
+    margin: 10px 10px;
+    padding: 0.4em;
+    font-size: 1em;
+    background-color: #d8cfc9;
+    position: relative;
+    border-right: 4px solid v.$primary-green;
+  }
+  .found__recipes li:hover {
+    margin: 10px 10px;
+    padding: 0.4em;
+    font-size: 1em;
+    background-color: #42342b;
+    transition : 1s;
+    color : white;
+    position: relative;
+    border-right: 4px solid v.$primary-green;
+  }
+
+  
+}
+
+@media (max-width: 767px) {
+.meal__pic {
+  display: none;
+}
+}

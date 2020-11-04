@@ -1,0 +1,81 @@
+@use "src/styles/vars" as v;
+
+.list__body {
+  width : 80%;
+  margin : 0 auto;
+}
+.list__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin : 0 auto;
+  height: 100vh ;
+  padding: 1rem;
+}
+.list__ingredient__family{
+  width : 25%;
+  margin : 2rem;
+  font-size: 1.5rem;
+  border : solid 1px #d8cfc9;
+  border-radius: 5px;
+}
+.list__ingredients {
+  font-size: 1.5rem;
+  color: #242323;
+  font-weight: lighter;
+  padding : 1rem 2rem 4rem 1rem;
+
+}
+.list__family__title {
+  background-color: #d8cfc9;
+  color : white;
+  padding : 2rem 1rem;
+  text-align: center;
+
+}
+.list__title {
+  text-align: center;
+  color : #3f6149;
+  font-size: 3rem;
+  letter-spacing: 20px;
+  text-transform: uppercase;
+  padding: 5rem 0;
+  margin : 0 auto;
+  vertical-align: middle;
+  width: 80%;
+}
+.list__button_pdf {
+  background-color: #242323;
+  color : white;
+  border-radius: 5px;
+  padding : 1rem 0.5rem;
+  border :none;
+  margin : 0 auto;
+  font-size: 1.2rem;
+  display: block;
+}
+.list__ingredient__details {
+  margin-bottom: 0.8rem;
+}
+#list__back__planning {
+  color : #242323;
+  font-size: 1.5rem;
+  margin-bottom : 2rem;
+}
+@media (max-width: 1200px) {
+  .list__container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin : 0 auto;
+  }
+  .list__ingredient__family{
+    width : 70%;
+    margin : 2rem  auto;
+    font-size: 1.5rem;
+    border : solid 1px #d8cfc9;
+    border-radius: 5px;
+  }
+}

@@ -1,6 +1,12 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import user from './user';
+import recipes from './recipes';
+import header from './header';
+import groups from './groups';
 
 export default combineReducers({
-  counter,
+  user,
+  recipes,
+  header,
+  groups,
 });

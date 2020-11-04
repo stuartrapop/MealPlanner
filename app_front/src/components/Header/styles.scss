@@ -1,0 +1,67 @@
+@use "src/styles/vars" as v;
+
+.header__content {
+  width : 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+.login__icon {
+  color: v.$primary-green;
+}
+
+.connexion__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.header__logo {
+  height: 50px;
+}
+
+#hamburger__menu__icon {
+  color: v.$primary-green;
+}
+
+.hamburger__menu__container {
+  background-color: rgba(20, 20, 20, 0.8);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+}
+
+#hamburger__menu {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+#hamburger__menu .item {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+#hamburger__menu .item:hover {
+  background-color: black;
+  font-size: 1.2em;
+}
+
+.connexion__zone {
+  color: rgba(20, 20, 20, 0.8);
+}
+
+.connexion__zone:hover {
+  color: black;
+  transform: scale(1.2);
+}

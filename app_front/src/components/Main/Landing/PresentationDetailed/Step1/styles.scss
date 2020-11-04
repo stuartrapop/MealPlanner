@@ -1,0 +1,20 @@
+@use "src/styles/vars" as v;
+
+.recipe__result__illustration {
+  height: 250px;
+  margin-left: 50px;
+}
+
+.step1__container {
+  padding: 1em;
+  width: 100%;
+}
+
+.step1__container h1,p{
+  font-size: 1.2em;
+}
+
+.searchbar__illustration {
+  width: 300px;
+  margin-bottom: 1em;
+}

@@ -1,0 +1,22 @@
+@use "src/styles/vars" as v;
+
+.step3__container{
+  padding : 2em;
+  width: 100%;
+}
+
+.shoppinglist__illustration {
+  background-color: white;
+  padding: 20px 20px 40px 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#signin__button {
+  background-color: white;
+  width: 100px;
+}
+
+.step3__container h1,p{
+  font-size: 1.2em;
+}

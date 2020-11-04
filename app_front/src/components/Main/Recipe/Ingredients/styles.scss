@@ -1,0 +1,30 @@
+@use "src/styles/vars" as v;
+
+.recipe__ingredients {
+  width: 50%;
+  font-size: 1.5rem;
+  border : 1px solid #d8cfc9;
+  color: #242323;
+  font-weight: lighter;
+  padding-left : 2rem;
+}
+.ingredient__list {
+  margin-bottom: 1.5rem;
+}
+#fork__icon {
+  color : #3f6149
+}
+#quantity__span {
+  background-color: #d8cfc9;
+  padding : 0.4rem 0.8rem;
+  border-radius: 10px;
+  color : white;
+  font-weight: bold;
+}
+.recipe__ingrdient__title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,62 @@
+@use "src/styles/vars" as v;
+
+.about {
+  width: 80%;
+  margin : 0 auto;
+  color :  rgb(44, 37, 37);
+  font-family: 'Roboto Slab';
+}
+.about__title {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
+.about__text {
+  text-align: justify;
+  line-height: 2rem;
+}
+.about__text1 {
+  text-align: justify;
+  line-height: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.4rem;
+}
+.team__member__container {
+  display: flex;
+}
+
+.team__picture {
+  object-fit:cover;
+  object-position:50% 50%;
+  position: relative ;
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+}
+.team__member {
+  margin : 2rem;
+  border-radius: 0px 0 10px 10px;
+  box-shadow: black 20px;
+  background-color: rgb(44, 37, 37);
+  color : white;
+}
+.team__desc {
+  text-align: center;
+}
+.team__desc1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+@media (max-width: 1200px) {
+  .team__member__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .team__member {
+    width : 70%;
+    margin : 2rem auto;
+  }
+}

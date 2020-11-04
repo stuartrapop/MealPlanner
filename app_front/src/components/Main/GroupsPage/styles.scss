@@ -1,0 +1,124 @@
+.groups_details_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.groups_details_container i.icon {
+  height: auto;
+}
+
+.group_list {
+  margin: 1em auto;
+  width: 95%;
+}
+
+.delete {
+  text-decoration: underline;
+}
+
+.groups_details_container  {
+  font-size: 1.2em;
+  text-align: left;
+  font-weight: bold;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.groups_details_container svg {
+  width: 100%;
+}
+
+.group_members_container svg {
+  width: 100%;
+}
+
+.group_members {
+  padding: 2em;
+  background-color:hsl(136, 35%, 56%);
+  min-height: 300px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0.8em;
+}
+
+.add_group {
+  font-weight: bold;
+}
+
+.modify__group__name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 0.2em;
+}
+
+.modify__group__name .ui.input {
+  width: 80%;
+}
+
+.group__role__action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 0.2em;
+}
+
+.group__role__action h2 {
+  font-size: 1em;
+  text-transform: capitalize;
+  margin: auto;
+}
+
+.group i.icon.outline {
+  margin-bottom: 0.4em;
+}
+
+.return__MySpace {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.groups__title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-align: center;
+  margin : 0 auto 4rem auto;
+  font-weight: lighter;
+  color : hsl(136, 35%, 56%);
+}
+
+@media (min-width: 768px) {
+
+  .groups_details_container svg {
+    width: 20%;
+  }
+
+  .group_members_container svg {
+    width: 20%;
+  }
+
+  .group_list {
+    margin: 1em auto;
+    width: 60%;
+  }
+ }
+
+ @media (min-width: 1200px) {
+  .groups_details_container {
+    max-width: 70%;
+    margin: auto;
+  }
+  
+ }

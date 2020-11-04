@@ -1,0 +1,26 @@
+@use "src/styles/vars" as v;
+
+.add__recipe_zone .input {
+  width: 100%;
+  margin: 0;
+}
+
+#select__number__people.inline.dropdown {
+  width: 10%;
+  margin-left: 7px;
+}
+
+.recipe__research__zone {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.add__recipe_zone {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
