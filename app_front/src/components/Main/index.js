@@ -22,16 +22,17 @@ import './styles.scss';
 import ShoppingList from '../../containers/ShoppingList';
 
 // == Composant
+
 const Main = ({ loading }) => (
   <div className="main">
     <Switch>
       {loading && (
-      <Segment>
-        <Dimmer active inverted>
-          <Loader size="large">Loading</Loader>
-        </Dimmer>
-        <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-      </Segment>
+        <Segment>
+          <Dimmer active inverted>
+            <Loader size="large">Loading</Loader>
+          </Dimmer>
+          <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+        </Segment>
       )}
       {!loading && (
         <div>

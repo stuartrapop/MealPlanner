@@ -14,6 +14,7 @@ export const INSERT_DEFAULT_USER_INFOS = 'INSERT_DEFAULT_USER_INFOS';
 export const UPDATE_ACCOUNT_INFOS = 'UPDATE_ACCOUNT_INFOS';
 export const REMOVE_ACCOUNT = 'REMOVE_ACCOUNT';
 export const RESET_ALL_FIELDS_VALUE = 'RESET_ALL_FIELDS_VALUE';
+export const LOGIN_WENT_SUCCESSFULLY = 'LOGIN_WENT_SUCCESSFULLY';
 
 export const changeLoginFieldValue = (value, name) => ({
   type: CHANGE_LOGIN_FIELD_VALUE,
@@ -84,4 +85,8 @@ export const removeAccount = (accountId) => ({
 
 export const resetAllFieldsValue = () => ({
   type: RESET_ALL_FIELDS_VALUE,
+});
+
+export const logInWentSuccessfully = () => ({
+  type: LOGIN_WENT_SUCCESSFULLY,
 });
