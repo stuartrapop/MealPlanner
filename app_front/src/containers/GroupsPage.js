@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// importer les actions from 'src/actions/user'
 import GroupsPage from '../components/Main/GroupsPage';
 import {
   fetchGroupMembers,

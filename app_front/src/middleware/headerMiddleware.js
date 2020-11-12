@@ -15,12 +15,12 @@ const headerMiddleware = (store) => (next) => (action) => {
     case DISPLAY_CONNEXION_MODAL:
       let { showModalBoolean } = state.header;
       showModalBoolean = true;
-      // On veut simplement changer l'état d'un booléen dans le state
+      // We want to change the value of the boolean in the state
       store.dispatch(showModal(showModalBoolean));
       break;
     case REMOVE_CONNEXION_MODAL:
       showModalBoolean = false;
-      // On veut simplement changer l'état d'un booléen dans le state
+      // We want to change the value of the boolean in the state
       store.dispatch(closeModal(showModalBoolean));
       break;
     case HANDLE_MENU_DISPLAY:

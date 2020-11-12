@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import AddRecipeZone from '../components/Main/Landing/MySpace/AddMeal/AddRecipeZone';
-import { changeActiveEntryId,
+import {
+  changeActiveEntryId,
   handleSearchChange,
   showResultsAction,
   addRecipeToDB,
@@ -44,11 +45,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// Container
 const AddRecipeZoneContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(AddRecipeZone);
 
-// == Export
 export default AddRecipeZoneContainer;

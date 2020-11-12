@@ -1,9 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import './styles.scss';
 import Pdf from 'react-to-pdf';
-import { Link } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react';
 
 const ref = React.createRef();
 
@@ -15,7 +13,6 @@ const ShoppingList = ({ userInfos, groupId }) => {
   const shoppingListResults = groupInfos.meals.map((meal) => {
     const startingDay = new Date();
     const mealDay = new Date(meal.day);
-    console.log(mealDay);
 
     startingDay.setDate(startingDay.getDate() - 0.99);
     if (mealDay >= startingDay) {
@@ -84,8 +81,8 @@ const ShoppingList = ({ userInfos, groupId }) => {
         <p className="list__family__title">   {family[0].familyName}</p>
         <div className="list__ingredients">
           {family.map((ingredient) => {
-            console.log(ingredient);
-
+            // we declare here four variables in order to do conversion,
+            // so ingredients will be displayed coherently to the user
             let countable;
             let volume;
             let weight;
@@ -128,15 +125,12 @@ const ShoppingList = ({ userInfos, groupId }) => {
       </div>
     )
   ));
-
   return (
     <div>
-      <div>
-        {/* <p className="shopping__list__title"> Ma liste de courses </p> */}
-      </div>
       <div ref={ref} className="list__container">
         {finalArray}
       </div>
+      {/* size of scale between 0 and 1 change the size of the screenshots taken by react-to-pdf, here we use 0.4 so all of ingredients we be included in the exported pdf */}
       <Pdf targetRef={ref} scale={0.4} filename="ma-liste-de-crouses.pdf">
         {({ toPdf }) => <button className="list__button_pdf" type="button" onClick={toPdf}>Ma liste de course au format Pdf</button>}
       </Pdf>

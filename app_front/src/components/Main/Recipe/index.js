@@ -7,7 +7,11 @@ import Description from './Description';
 import './styles.scss';
 
 const Recipe = ({
-  getOneRecipe, recipe, count, increment, decrement,
+  getOneRecipe,
+  recipe,
+  count,
+  increment,
+  decrement,
 }) => {
   if (recipe.difficulty === 'Facile') {
     recipe.difficulty = <p>Difficulté de cette recette : <Icon name="circle" /><Icon name="circle outline" /><Icon name="circle outline" /> </p>;
@@ -58,28 +62,23 @@ const Recipe = ({
   );
 };
 
-// Recipe.propTypes = {
-//   recipes: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number,
-//       title: PropTypes.string,
-//       author: PropTypes.string,
-//       difficulty: PropTypes.string,
-//       url: PropTypes.string,
-//       instruction: PropTypes.string,
-//       ingredients: PropTypes.array,
-//     }).isRequired,
-//   ).isRequired,
-// };
-
 Recipe.propTypes = {
+  recipe: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      difficulty: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      instruction: PropTypes.string.isRequired,
+      ingredients: PropTypes.array.isRequired,
+    }).isRequired,
+  ).isRequired,
   count: PropTypes.number,
   increment: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
+  getOneRecipe: PropTypes.func.isRequired,
 };
-
 Recipe.defaultProps = {
   count: 0,
 };
-
 export default Recipe;

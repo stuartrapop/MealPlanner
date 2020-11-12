@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 
 import AddMeal from '../components/Main/Landing/MySpace/AddMeal';
 
-import { chooseGroup, toggleMealModal, removeMealAction, removeRecipeAction, } from '../actions/groups';
+import {
+  chooseGroup,
+  toggleMealModal,
+  removeMealAction,
+  removeRecipeAction,
+} from '../actions/groups';
 
 const mapStateToProps = (state) => ({
   userInfos: state.groups.userInfos,
@@ -31,11 +36,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-// Container
 const AddMealContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(AddMeal);
 
-// == Export
 export default AddMealContainer;

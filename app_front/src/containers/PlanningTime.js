@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-
 import PlanningTime from '../components/Main/Landing/MySpace/Planning/PlanningDay/PlanningTime';
-
 import { } from '../actions/groups';
 
 const mapStateToProps = (state) => ({

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Input, Button, Divider, Form, Label,
+  Input, Button, Form, Label,
 } from 'semantic-ui-react';
 
 // == Import
@@ -14,7 +14,6 @@ const EditProfile = ({
   userName,
   firstName,
   lastName,
-  editProfil,
   changeField,
   defaultUserInfos,
   insertDefaultUserInfos,
@@ -31,8 +30,6 @@ const EditProfile = ({
     updateAccountInfos();
   };
   const removeAccountOnClick = (event) => {
-    console.log('evttarget ########', event.target);
-    console.log('defaultUserInfos ', defaultUserInfos);
     removeAccount(event.target.id);
   };
 
@@ -67,13 +64,23 @@ const EditProfile = ({
 
         <div className="edit__button__container">
           <Link to="/" onClick={updateClick} secondary className="login-form-button">  <Button positive>Mettre à jour mes informations</Button></Link>
-           <Link to="/" secondary className="login-form-button"><Button id={defaultUserInfos.userId} onClick={removeAccountOnClick} negative>Supprimer mon compte</Button></Link>
-
+          <Link to="/" secondary className="login-form-button"><Button id={defaultUserInfos.userId} onClick={removeAccountOnClick} negative>Supprimer mon compte</Button></Link>
         </div>
       </Form>
     </div>
   );
 };
+EditProfile.propTypes = {
+  email: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  defaultUserInfos: PropTypes.func.isRequired,
+  insertDefaultUserInfos: PropTypes.func.isRequired,
+  updateAccountInfos: PropTypes.func.isRequired,
+  removeAccount: PropTypes.func.isRequired,
 
+};
 // == Export
 export default EditProfile;

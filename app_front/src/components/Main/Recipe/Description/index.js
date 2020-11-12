@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { Icon } from 'semantic-ui-react';
 
 const Description = ({ recipe }) => (
-  <div className="recipe__description__container" key={recipe.id}>
+  <div className="recipe__description__container" key={(recipe.id.toString())}>
     <div className="recipe__text__container">
       <div className="recipe__instruction">
         <h3 className="recipe__instruction__title"> Voici les instructions à suivre :</h3>
@@ -15,15 +14,10 @@ const Description = ({ recipe }) => (
 );
 
 Description.propTypes = {
-  recipe: PropTypes.objectOf(
+  recipe: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string,
-      author: PropTypes.string,
-      difficulty: PropTypes.string,
-      url: PropTypes.string,
-      instruction: PropTypes.string,
-      ingredients: PropTypes.array,
+      id: PropTypes.string.isRequired,
+      instruction: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
 };
