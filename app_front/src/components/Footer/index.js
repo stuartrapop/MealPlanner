@@ -18,6 +18,7 @@ const Footer = () => (
       <List.Item as="a">Confidentialité</List.Item>
       <List.Item as="a"><Icon copyright name="copyright" /> aManger 2020 - Made in Jason</List.Item>
     </List>
+    
 
   </div>
 );

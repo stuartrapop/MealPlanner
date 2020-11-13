@@ -20,11 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// Container
 const AddMealModalContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(AddMealModal);
 
-// == Export
 export default AddMealModalContainer;

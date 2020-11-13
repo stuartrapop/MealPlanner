@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// importer les actions from 'src/actions/user'
 import GroupMembers from '../components/Main/GroupsPage/GroupMembers';
 import {
   toggleAddMemberModalAction,

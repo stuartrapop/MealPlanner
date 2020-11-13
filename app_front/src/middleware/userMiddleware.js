@@ -27,10 +27,9 @@ const userMiddleware = (store) => (next) => (action) => {
     id, firstName, lastName, userName,
   } = state.user;
   switch (action.type) {
-    // Sur l'action de LOG_IN, je tente de me connecter
+    // On this action we are trying to log in
     case LOG_IN:
-      // Je récupère les valeurs des champs email et password
-      // Depuis le state du store
+      // I am getting the values of email and password fields from the state of the store
       const { logInEmail, logInPassword } = state.user;
       let email = logInEmail;
       let password = logInPassword;
@@ -47,8 +46,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     case CHECK_IS_LOGGED:
       axios.post(`${process.env.APISERVER}/isLogged`, {}, {
-        // Sert à envoyer le cookie au serveur
-        // Sans ça, le serveur ne nous connais plus
+        // Aim to send the cookie to the server, without it, server doesn't recognize us anymore
         withCredentials: true,
       }).then((response) => {
         console.log(response.data);
