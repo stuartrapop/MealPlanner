@@ -6,11 +6,13 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import './styles.scss';
 // == Import
 import Header from '../../containers/Header';
 import Footer from '../Footer';
 import Main from '../../containers/Main';
-import './styles.scss';
+
+import 'semantic-ui-css/semantic.min.css';
 
 // == Composant
 const App = ({ checkIsLogged, fetchrecipes }) => {

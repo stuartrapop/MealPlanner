@@ -5,12 +5,13 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 // == Import : local
+require('./styles/index.scss');
 // Composants
 import App from './containers/App';
 // Store
 import store from './store';
 
-import 'semantic-ui-css/semantic.min.css';
+
 
 dotenv.config();
 

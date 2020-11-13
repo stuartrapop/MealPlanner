@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Search, Dropdown, Icon,
 } from 'semantic-ui-react';
 
-import './styles.scss';
+
 
 const AddRecipeZone = ({
   id, // Id du meal dans lequel on souhaite ajouter une recette

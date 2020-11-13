@@ -1,8 +1,8 @@
 import React from 'react';
+import './styles.scss';
 import { Card, Image } from 'semantic-ui-react';
 
 
-import './styles.scss';
 
 const TargetPresentation = () => (
   <section className="target">

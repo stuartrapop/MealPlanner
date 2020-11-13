@@ -1,7 +1,8 @@
 import React from 'react';
-import PlanningDay from './PlanningDay';
-import { Icon } from 'semantic-ui-react'
+
 import './styles.scss';
+import { Icon } from 'semantic-ui-react'
+import PlanningDay from './PlanningDay';
 
 const Planning = () => {
   // Fonction pour obtenir le nom des jours en Français

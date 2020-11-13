@@ -2,13 +2,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Icon,
   Menu,
 } from 'semantic-ui-react';
 import LogInModal from '../../containers/LogInModal';
 // == Import
-import './styles.scss';
+
 
 // == Composant
 const Header = ({

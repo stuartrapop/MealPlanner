@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// == Import
+import './styles.scss';
 import {
   Input, Button, Divider, Form, Label,
 } from 'semantic-ui-react';
 
-// == Import
-import './styles.scss';
+
 
 // == Composant
 const EditProfile = ({

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './styles.scss';
 import { Icon } from 'semantic-ui-react';
 import Ingredients from './Ingredients';
 import Description from './Description';
-import './styles.scss';
+
 
 const Recipe = ({
   getOneRecipe, recipe, count, increment, decrement,

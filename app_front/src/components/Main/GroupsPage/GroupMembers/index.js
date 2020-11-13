@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Button, Header, Icon, Modal, Dropdown, Search, Message,
 } from 'semantic-ui-react';
 
-import './styles.scss';
+
 
 const GroupMembers = ({
   userInfos,

@@ -2,12 +2,13 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Input, Button, Icon, Message,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 // == Import
-import './styles.scss';
+
 // == Composant
 const LogInModal = ({
   logInEmail, // valeur du champ email dans le form login

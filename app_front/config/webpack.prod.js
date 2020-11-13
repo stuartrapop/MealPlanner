@@ -32,7 +32,7 @@ module.exports = merge(common, {
           },
           {
             loader: 'css-loader',
-            options: { importLoaders: 3 },
+            options: { importLoaders: 2 },
           },
           'postcss-loader',
           'resolve-url-loader',
@@ -43,6 +43,7 @@ module.exports = merge(common, {
             },
           },
         ],
+        sideEffects: true,
       },
     ],
   },
@@ -62,6 +63,7 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: 'all',
     },
+    
   },
   performance: {
     hints: false,

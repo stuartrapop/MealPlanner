@@ -2,12 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './styles.scss';
 import { Icon, Button, Dropdown } from 'semantic-ui-react';
 // import AddMealModal from './AddMealModal';
 import AddMealModal from '../../../../../containers/AddMealModal';
 import AddRecipeZone from '../../../../../containers/AddRecipeZone';
 
-import './styles.scss';
+
 
 const AddMeal = ({
   userInfos,

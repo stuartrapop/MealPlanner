@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Input, Card, Icon, Image, Button,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSlugFromTitle } from '../../../../selectors/recipes';
-import './styles.scss';
+
 
 const LandingQuickSearch = ({ searchedRecipes, searchInput, modifySearch }) => {
   const handleOnChange = (event) => {

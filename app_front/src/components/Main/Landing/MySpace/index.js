@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './styles.scss';
 import {
   Dimmer, Loader, Image, Segment,
 } from 'semantic-ui-react';
@@ -7,7 +8,7 @@ import PropTypes from 'prop-types';
 import AddMeal from '../../../../containers/AddMeal';
 import Planning from './Planning';
 
-import './styles.scss';
+
 import { fetchRecipes } from '../../../../actions/recipes';
 
 const MySpace = ({ fetchGroupsDatas, loading }) => {

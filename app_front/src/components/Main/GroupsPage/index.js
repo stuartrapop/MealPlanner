@@ -3,12 +3,13 @@ import {
   Link,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import {
   Button, Header, Icon, Modal, Input, Message, Dimmer, Loader, Image, Segment,
 } from 'semantic-ui-react';
 import GroupMembers from '../../../containers/GroupMembers';
 
-import './styles.scss';
+
 
 const GroupsPage = ({
   userInfos,

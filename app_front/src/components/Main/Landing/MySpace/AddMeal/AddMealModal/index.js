@@ -1,8 +1,9 @@
 import React from 'react';
+import './styles.scss';
 import { Button, Dropdown, Icon } from 'semantic-ui-react';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import fr from 'date-fns/locale/fr';
-import './styles.scss';
+
 import 'react-datepicker/dist/react-datepicker.css';
 
 registerLocale('fr', fr);

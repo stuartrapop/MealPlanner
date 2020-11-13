@@ -1,10 +1,11 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 import { Icon } from 'semantic-ui-react';
 
 // == Import
-import './styles.scss';
+
 
 // == Composant
 const Ingredients = ({
