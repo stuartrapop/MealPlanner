@@ -13,6 +13,7 @@ const {
   reviewController,
   typeController,
   userController,
+  imageController,
 } = require('./controllers');
 
 // Joi validator for new user
@@ -53,6 +54,8 @@ router.post('/meal/removeRecipe', mealController.removeRecipe);
 
 router.get('/recipes', recipeController.allRecipes);
 router.get('/recipe/:id', recipeController.oneRecipe);
+router.post('/recipe/create', recipeController.createRecipe);
+router.patch('/recipe/:id', recipeController.updateRecipe);
 
 router.get('/recipes/reviews', reviewController.allReviews);
 
@@ -77,6 +80,8 @@ router.patch('/changePassword', checkUserOrAdmin(), adminController.changePasswo
 router.post('/login', adminController.login);
 router.post('/isLogged', adminController.isLogged);
 router.post('/logout', adminController.logout);
+
+// router.post('/upload', imageController.upload);
 
 router.use(adminController.notFound);
 

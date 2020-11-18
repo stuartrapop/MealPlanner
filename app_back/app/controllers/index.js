@@ -7,11 +7,17 @@ const userController = require('./userController');
 const typeController = require('./typeController');
 const reviewController = require('./reviewController');
 const adminController = require('./adminController');
+const imageController = require('./imageController');
 
-
-
-
-
-
-
-module.exports = { familyController, groupController, ingredientController, mealController, recipeController, reviewController, typeController, userController, adminController };
+module.exports = {
+  familyController,
+  groupController,
+  ingredientController,
+  mealController,
+  recipeController,
+  reviewController,
+  typeController,
+  userController,
+  adminController,
+  imageController,
+};
