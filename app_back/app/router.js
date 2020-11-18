@@ -81,7 +81,7 @@ router.post('/login', adminController.login);
 router.post('/isLogged', adminController.isLogged);
 router.post('/logout', adminController.logout);
 
-// router.post('/upload', imageController.upload);
+ router.post('/upload', imageController.upload);
 
 router.use(adminController.notFound);
 
